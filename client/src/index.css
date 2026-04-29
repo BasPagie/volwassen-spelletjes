@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply antialiased;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-brand-500 hover:bg-brand-600 text-white font-display font-bold 
+           py-2.5 sm:py-3 px-6 sm:px-8 rounded-2xl text-base sm:text-lg shadow-lg hover:shadow-xl 
+           transform hover:scale-105 active:scale-95 transition-all duration-200;
+  }
+
+  .btn-secondary {
+    @apply bg-white hover:bg-gray-50 text-brand-700 font-display font-bold 
+           py-2.5 sm:py-3 px-6 sm:px-8 rounded-2xl text-base sm:text-lg shadow-md hover:shadow-lg border-2 border-brand-200
+           transform hover:scale-105 active:scale-95 transition-all duration-200;
+  }
+
+  .card {
+    @apply bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl p-4 sm:p-6;
+  }
+
+  .word-tile {
+    @apply font-display font-bold text-center py-3 sm:py-5 px-1.5 sm:px-3 rounded-xl cursor-pointer
+           select-none transition-all duration-200 text-xs sm:text-base
+           shadow-md hover:shadow-lg transform hover:scale-105 active:scale-95;
+  }
+
+  .word-tile-default {
+    @apply word-tile bg-white text-gray-800 border-2 border-gray-200 hover:border-brand-300;
+  }
+
+  .word-tile-selected {
+    @apply word-tile bg-brand-500 text-white border-2 border-brand-600 scale-105;
+  }
+
+  .word-tile-hinted {
+    @apply word-tile relative bg-amber-50 text-amber-900 border-2 border-amber-400 
+           ring-2 ring-amber-200 hover:border-amber-500;
+  }
+}
