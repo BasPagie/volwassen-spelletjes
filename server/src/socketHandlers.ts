@@ -4,6 +4,7 @@ import type {
   ServerToClientEvents,
   GameSettings,
   RoundResult,
+  WhatAmISettings,
 } from '../../shared/types.js';
 import {
   createRoom,
@@ -13,6 +14,7 @@ import {
   getSocketMapping,
   getSocketIdForPlayer,
   updateSettings,
+  updateWhatAmISettings,
   isHost,
   addBotToRoom,
   removeBotFromRoom,
@@ -42,6 +44,22 @@ import {
   finishBotPlayers,
 } from './gameEngine.js';
 import { PREMADE_AVATARS } from '../../shared/types.js';
+import {
+  startWhatAmIGame,
+  processGuess,
+  buildPlayerView,
+  buildModeratorView,
+  isAllGuessed,
+  finishGame,
+  cleanupWhatAmIGame,
+  getWhatAmIInstance,
+  getPackMeta,
+  scheduleWhatAmIBotGuesses,
+  getCurrentTurnPlayerId,
+  skipTurn,
+  giveUp,
+} from './whatAmIEngine.js';
+import { DEFAULT_WHATAMI_SETTINGS } from '../../shared/types.js';
 
 type IOServer = Server<ClientToServerEvents, ServerToClientEvents>;
 type IOSocket = Socket<ClientToServerEvents, ServerToClientEvents>;
@@ -90,13 +108,15 @@ function isValidAvatar(raw: string): boolean {
 export function registerSocketHandlers(io: IOServer, socket: IOSocket): void {
 
   // ─── Create Room ─────────────────────────────────────
-  socket.on('create-room', ({ nickname, avatarUrl }) => {
+  socket.on('create-room', ({ nickname, avatarUrl, gameCategory }) => {
     const safeName = sanitizeNickname(nickname);
     if (!safeName || !isValidAvatar(avatarUrl)) {
       socket.emit('error', { message: 'Ongeldige naam of avatar.' });
       return;
     }
-    const result = createRoom(socket.id, safeName, avatarUrl);
+    const validCategories = ['woord', 'what-am-i', 'drawing'];
+    const safeCategory = validCategories.includes(gameCategory) ? gameCategory : 'woord';
+    const result = createRoom(socket.id, safeName, avatarUrl, safeCategory as import('../../shared/types.js').GameCategory);
     socket.join(result.room.roomId);
     socket.emit('room-created', { room: result.room, player: result.player });
     if (DEV_MODE) socket.emit('dev-mode-status', { enabled: true });
@@ -438,14 +458,16 @@ export function registerSocketHandlers(io: IOServer, socket: IOSocket): void {
     if (roomAdvancing.has(room.roomId)) return;
     roomAdvancing.add(room.roomId);
 
-    room.currentRoundIndex++;
+    try {
+      room.currentRoundIndex++;
 
-    if (room.currentRoundIndex >= room.settings.rounds.length) {
-      // Game over
-      roomAdvancing.delete(room.roomId);
-      endGame(io, room.roomId);
-    } else {
-      startNewRound(io, room.roomId);
+      if (room.currentRoundIndex >= room.settings.rounds.length) {
+        // Game over
+        endGame(io, room.roomId);
+      } else {
+        startNewRound(io, room.roomId);
+      }
+    } finally {
       roomAdvancing.delete(room.roomId);
     }
   });
@@ -604,6 +626,452 @@ export function registerSocketHandlers(io: IOServer, socket: IOSocket): void {
     console.log(`[Room] Player ${player.nickname} reconnected to ${roomId}`);
   });
 
+  // ─── Wie Ben Ik? — Update Settings ──────────────────
+  socket.on('whatami:update-settings', (settings) => {
+    const mapping = getSocketMapping(socket.id);
+    if (!mapping) return;
+    if (!isHost(mapping.roomId, mapping.playerId)) {
+      socket.emit('error', { message: 'Alleen de host kan instellingen wijzigen.' });
+      return;
+    }
+    const room = getRoom(mapping.roomId);
+    if (!room || room.gameCategory !== 'what-am-i') return;
+
+    // Basic validation
+    if (settings.timeLimitSeconds !== null && (typeof settings.timeLimitSeconds !== 'number' || settings.timeLimitSeconds < 60 || settings.timeLimitSeconds > 3600)) return;
+    if (typeof settings.hostPlays !== 'boolean') return;
+    if (!Array.isArray(settings.customCharacters)) return;
+
+    // Validate packIds against loaded packs
+    const loadedPackIds = getPackMeta().map((p) => p.id);
+    const safePackIds = Array.isArray((settings as any).packIds)
+      ? (settings as any).packIds.filter((id: unknown) => typeof id === 'string' && loadedPackIds.includes(id as string))
+      : [];
+
+    // Sanitize custom characters
+    const safeCustom = settings.customCharacters
+      .filter((c) => typeof c.name === 'string' && c.name.trim().length > 0)
+      .slice(0, 50)
+      .map((c, i) => ({
+        id: `custom-${i}`,
+        name: c.name.trim().slice(0, 80),
+        imageUrl: typeof c.imageUrl === 'string' && c.imageUrl.startsWith('https://') ? c.imageUrl.slice(0, 500) : undefined,
+        category: typeof c.category === 'string' ? c.category.slice(0, 50) : undefined,
+      }));
+
+    const safeSettings: WhatAmISettings = {
+      packIds: safePackIds,
+      customCharacters: safeCustom,
+      timeLimitSeconds: settings.timeLimitSeconds,
+      hostPlays: settings.hostPlays,
+      gameMode: settings.gameMode ?? 'free-for-all',
+      turnSeconds: settings.turnSeconds ?? 60,
+      questionsPerTurn: settings.questionsPerTurn ?? 0,
+    };
+
+    updateWhatAmISettings(mapping.roomId, safeSettings);
+    room.whatAmISettings = safeSettings;
+    io.to(mapping.roomId).emit('whatami:settings-updated', safeSettings);
+  });
+
+  // ─── Wie Ben Ik? — Start Game ────────────────────────
+  socket.on('whatami:start-game', () => {
+    const mapping = getSocketMapping(socket.id);
+    if (!mapping) return;
+    if (!isHost(mapping.roomId, mapping.playerId)) {
+      socket.emit('error', { message: 'Alleen de host kan het spel starten.' });
+      return;
+    }
+
+    const room = getRoom(mapping.roomId);
+    if (!room || room.gameCategory !== 'what-am-i') return;
+    if (room.status !== 'lobby') return;
+
+    const settings = room.whatAmISettings ?? DEFAULT_WHATAMI_SETTINGS;
+
+    const result = startWhatAmIGame(
+      room,
+      settings,
+      // onTick — broadcast personalised state to each player every second
+      (roomId) => {
+        const inst = getWhatAmIInstance(roomId);
+        if (!inst) return;
+        const currentRoom = getRoom(roomId);
+        if (!currentRoom) return;
+
+        for (const player of currentRoom.players) {
+          const sid = getSocketIdForPlayer(roomId, player.id);
+          if (!sid) continue;
+          const isModeratorHost = player.isHost && !settings.hostPlays;
+          const state = isModeratorHost ? buildModeratorView(inst) : buildPlayerView(inst, player.id);
+          io.to(sid).emit('whatami:state-update', state);
+        }
+      },
+      // onExpire — time limit reached
+      (roomId) => {
+        const inst = finishGame(roomId);
+        if (!inst) return;
+        const currentRoom = getRoom(roomId);
+        if (!currentRoom) return;
+
+        currentRoom.status = 'finished';
+        for (const player of currentRoom.players) {
+          const sid = getSocketIdForPlayer(roomId, player.id);
+          if (!sid) continue;
+          const isModeratorHost = player.isHost && !settings.hostPlays;
+          const state = isModeratorHost ? buildModeratorView(inst) : buildPlayerView(inst, player.id);
+          io.to(sid).emit('whatami:game-end', state);
+        }
+        cleanupWhatAmIGame(roomId);
+        console.log(`[WieBenikl] Time expired: ${roomId}`);
+      },
+      // onTurnAdvance — turn-based mode: broadcast updated state
+      (roomId) => {
+        const inst = getWhatAmIInstance(roomId);
+        if (!inst) return;
+        const currentRoom = getRoom(roomId);
+        if (!currentRoom) return;
+
+        // Check if all guessed after turn advance
+        if (isAllGuessed(inst)) {
+          const finished = finishGame(roomId);
+          if (finished) {
+            currentRoom.status = 'finished';
+            for (const player of currentRoom.players) {
+              const sid = getSocketIdForPlayer(roomId, player.id);
+              if (!sid) continue;
+              const isModeratorHost = player.isHost && !settings.hostPlays;
+              const state = isModeratorHost ? buildModeratorView(finished) : buildPlayerView(finished, player.id);
+              io.to(sid).emit('whatami:game-end', state);
+            }
+            cleanupWhatAmIGame(roomId);
+            return;
+          }
+        }
+
+        for (const player of currentRoom.players) {
+          const sid = getSocketIdForPlayer(roomId, player.id);
+          if (!sid) continue;
+          const isModeratorHost = player.isHost && !settings.hostPlays;
+          const state = isModeratorHost ? buildModeratorView(inst) : buildPlayerView(inst, player.id);
+          io.to(sid).emit('whatami:state-update', state);
+        }
+      },
+    );
+
+    if ('error' in result) {
+      socket.emit('error', { message: result.error });
+      return;
+    }
+
+    room.status = 'playing';
+
+    // Send personalised game-start state to each player
+    for (const player of room.players) {
+      const sid = getSocketIdForPlayer(room.roomId, player.id);
+      if (!sid) continue;
+      const isModeratorHost = player.isHost && !settings.hostPlays;
+      const state = isModeratorHost ? buildModeratorView(result) : buildPlayerView(result, player.id);
+      io.to(sid).emit('whatami:state-update', state);
+    }
+
+    // Dev mode: schedule bot auto-guesses
+    if (DEV_MODE) {
+      const bots = room.players.filter((p) => p.isBot);
+      if (bots.length > 0) {
+        scheduleWhatAmIBotGuesses(room.roomId, bots, (roomId, playerId, placement, score) => {
+          const inst = getWhatAmIInstance(roomId);
+          const currentRoom = getRoom(roomId);
+          if (!inst || !currentRoom) return;
+
+          io.to(roomId).emit('whatami:player-guessed', { playerId, placement, score });
+
+          for (const p of currentRoom.players) {
+            const sid = getSocketIdForPlayer(roomId, p.id);
+            if (!sid) continue;
+            const isMod = p.isHost && !settings.hostPlays;
+            const playerState = isMod ? buildModeratorView(inst) : buildPlayerView(inst, p.id);
+            io.to(sid).emit('whatami:state-update', playerState);
+          }
+
+          if (isAllGuessed(inst)) {
+            const finished = finishGame(roomId);
+            if (finished) {
+              currentRoom.status = 'finished';
+              for (const p of currentRoom.players) {
+                const sid = getSocketIdForPlayer(roomId, p.id);
+                if (!sid) continue;
+                const isMod = p.isHost && !settings.hostPlays;
+                const playerState = isMod ? buildModeratorView(finished) : buildPlayerView(finished, p.id);
+                io.to(sid).emit('whatami:game-end', playerState);
+              }
+              cleanupWhatAmIGame(roomId);
+            }
+          }
+        });
+      }
+    }
+
+    console.log(`[WieBenik] Started: ${room.roomId}`);
+  });
+
+  // ─── Wie Ben Ik? — Guess ─────────────────────────────
+  socket.on('whatami:guess', ({ guess }) => {
+    if (isRateLimited(socket.id)) return;
+    if (typeof guess !== 'string' || guess.length === 0 || guess.length > 100) return;
+
+    const mapping = getSocketMapping(socket.id);
+    if (!mapping) return;
+
+    const room = getRoom(mapping.roomId);
+    if (!room || room.gameCategory !== 'what-am-i' || room.status !== 'playing') return;
+
+    const settings = room.whatAmISettings ?? DEFAULT_WHATAMI_SETTINGS;
+
+    // Build onTick and onTurnAdvance for turn-based processGuess
+    const onTick = (roomId: string) => {
+      const inst = getWhatAmIInstance(roomId);
+      if (!inst) return;
+      const currentRoom = getRoom(roomId);
+      if (!currentRoom) return;
+      for (const player of currentRoom.players) {
+        const sid = getSocketIdForPlayer(roomId, player.id);
+        if (!sid) continue;
+        const isModeratorHost = player.isHost && !settings.hostPlays;
+        const state = isModeratorHost ? buildModeratorView(inst) : buildPlayerView(inst, player.id);
+        io.to(sid).emit('whatami:state-update', state);
+      }
+    };
+
+    const onTurnAdvance = (roomId: string) => {
+      const inst = getWhatAmIInstance(roomId);
+      if (!inst) return;
+      const currentRoom = getRoom(roomId);
+      if (!currentRoom) return;
+      if (isAllGuessed(inst)) {
+        const finished = finishGame(roomId);
+        if (finished) {
+          currentRoom.status = 'finished';
+          for (const player of currentRoom.players) {
+            const sid = getSocketIdForPlayer(roomId, player.id);
+            if (!sid) continue;
+            const isModeratorHost = player.isHost && !settings.hostPlays;
+            const state = isModeratorHost ? buildModeratorView(finished) : buildPlayerView(finished, player.id);
+            io.to(sid).emit('whatami:game-end', state);
+          }
+          cleanupWhatAmIGame(roomId);
+          return;
+        }
+      }
+      for (const player of currentRoom.players) {
+        const sid = getSocketIdForPlayer(roomId, player.id);
+        if (!sid) continue;
+        const isModeratorHost = player.isHost && !settings.hostPlays;
+        const state = isModeratorHost ? buildModeratorView(inst) : buildPlayerView(inst, player.id);
+        io.to(sid).emit('whatami:state-update', state);
+      }
+    };
+
+    const result = processGuess(mapping.roomId, mapping.playerId, guess, onTick, onTurnAdvance);
+    if (!result) return;
+
+    // Send result to guesser
+    socket.emit('whatami:guess-result', {
+      correct: result.correct,
+      cooldownUntil: result.cooldownUntil,
+      characterName: result.characterName,
+    });
+
+    if (result.correct) {
+      // Broadcast to all that this player guessed
+      io.to(mapping.roomId).emit('whatami:player-guessed', {
+        playerId: mapping.playerId,
+        placement: result.placement!,
+        score: result.score!,
+      });
+    }
+
+    // Always send updated state (turn may have advanced)
+    const inst = getWhatAmIInstance(mapping.roomId);
+    if (inst) {
+      for (const player of room.players) {
+        const sid = getSocketIdForPlayer(mapping.roomId, player.id);
+        if (!sid) continue;
+        const isModeratorHost = player.isHost && !settings.hostPlays;
+        const state = isModeratorHost ? buildModeratorView(inst) : buildPlayerView(inst, player.id);
+        io.to(sid).emit('whatami:state-update', state);
+      }
+
+      // Check if all players have guessed
+      if (isAllGuessed(inst)) {
+        const finished = finishGame(mapping.roomId);
+        if (finished) {
+          room.status = 'finished';
+          for (const player of room.players) {
+            const sid = getSocketIdForPlayer(mapping.roomId, player.id);
+            if (!sid) continue;
+            const isModeratorHost = player.isHost && !settings.hostPlays;
+            const state = isModeratorHost ? buildModeratorView(finished) : buildPlayerView(finished, player.id);
+            io.to(sid).emit('whatami:game-end', state);
+          }
+          cleanupWhatAmIGame(mapping.roomId);
+          console.log(`[WieBenik] All guessed: ${mapping.roomId}`);
+        }
+      }
+    }
+  });
+
+  // ─── Wie Ben Ik? — Skip Turn ──────────────────────────
+  socket.on('whatami:skip-turn', () => {
+    const mapping = getSocketMapping(socket.id);
+    if (!mapping) return;
+
+    const room = getRoom(mapping.roomId);
+    if (!room || room.gameCategory !== 'what-am-i' || room.status !== 'playing') return;
+
+    const settings = room.whatAmISettings ?? DEFAULT_WHATAMI_SETTINGS;
+
+    const onTick = (roomId: string) => {
+      const inst = getWhatAmIInstance(roomId);
+      if (!inst) return;
+      const currentRoom = getRoom(roomId);
+      if (!currentRoom) return;
+      for (const player of currentRoom.players) {
+        const sid = getSocketIdForPlayer(roomId, player.id);
+        if (!sid) continue;
+        const isModeratorHost = player.isHost && !settings.hostPlays;
+        const state = isModeratorHost ? buildModeratorView(inst) : buildPlayerView(inst, player.id);
+        io.to(sid).emit('whatami:state-update', state);
+      }
+    };
+
+    const onTurnAdvance = (roomId: string) => {
+      const inst = getWhatAmIInstance(roomId);
+      if (!inst) return;
+      const currentRoom = getRoom(roomId);
+      if (!currentRoom) return;
+      for (const player of currentRoom.players) {
+        const sid = getSocketIdForPlayer(roomId, player.id);
+        if (!sid) continue;
+        const isModeratorHost = player.isHost && !settings.hostPlays;
+        const state = isModeratorHost ? buildModeratorView(inst) : buildPlayerView(inst, player.id);
+        io.to(sid).emit('whatami:state-update', state);
+      }
+    };
+
+    skipTurn(mapping.roomId, mapping.playerId, onTick, onTurnAdvance);
+  });
+
+  // ─── Wie Ben Ik? — Give Up ───────────────────────────
+  socket.on('whatami:give-up', () => {
+    const mapping = getSocketMapping(socket.id);
+    if (!mapping) return;
+
+    const room = getRoom(mapping.roomId);
+    if (!room || room.gameCategory !== 'what-am-i' || room.status !== 'playing') return;
+
+    const settings = room.whatAmISettings ?? DEFAULT_WHATAMI_SETTINGS;
+
+    const onTick = (roomId: string) => {
+      const inst = getWhatAmIInstance(roomId);
+      if (!inst) return;
+      const currentRoom = getRoom(roomId);
+      if (!currentRoom) return;
+      for (const player of currentRoom.players) {
+        const sid = getSocketIdForPlayer(roomId, player.id);
+        if (!sid) continue;
+        const isModeratorHost = player.isHost && !settings.hostPlays;
+        const state = isModeratorHost ? buildModeratorView(inst) : buildPlayerView(inst, player.id);
+        io.to(sid).emit('whatami:state-update', state);
+      }
+    };
+
+    const onTurnAdvance = (roomId: string) => {
+      const inst = getWhatAmIInstance(roomId);
+      if (!inst) return;
+      const currentRoom = getRoom(roomId);
+      if (!currentRoom) return;
+      if (isAllGuessed(inst)) {
+        const finished = finishGame(roomId);
+        if (finished) {
+          currentRoom.status = 'finished';
+          for (const player of currentRoom.players) {
+            const sid = getSocketIdForPlayer(roomId, player.id);
+            if (!sid) continue;
+            const isModeratorHost = player.isHost && !settings.hostPlays;
+            const state = isModeratorHost ? buildModeratorView(finished) : buildPlayerView(finished, player.id);
+            io.to(sid).emit('whatami:game-end', state);
+          }
+          cleanupWhatAmIGame(roomId);
+          return;
+        }
+      }
+      for (const player of currentRoom.players) {
+        const sid = getSocketIdForPlayer(roomId, player.id);
+        if (!sid) continue;
+        const isModeratorHost = player.isHost && !settings.hostPlays;
+        const state = isModeratorHost ? buildModeratorView(inst) : buildPlayerView(inst, player.id);
+        io.to(sid).emit('whatami:state-update', state);
+      }
+    };
+
+    const result = giveUp(mapping.roomId, mapping.playerId, onTick, onTurnAdvance);
+    if (!result) return;
+
+    // Tell the player their character
+    socket.emit('whatami:guess-result', {
+      correct: false,
+      characterName: result.characterName,
+    });
+
+    // Broadcast updated state
+    const inst = getWhatAmIInstance(mapping.roomId);
+    if (inst) {
+      for (const player of room.players) {
+        const sid = getSocketIdForPlayer(mapping.roomId, player.id);
+        if (!sid) continue;
+        const isModeratorHost = player.isHost && !settings.hostPlays;
+        const state = isModeratorHost ? buildModeratorView(inst) : buildPlayerView(inst, player.id);
+        io.to(sid).emit('whatami:state-update', state);
+      }
+
+      if (isAllGuessed(inst)) {
+        const finished = finishGame(mapping.roomId);
+        if (finished) {
+          room.status = 'finished';
+          for (const player of room.players) {
+            const sid = getSocketIdForPlayer(mapping.roomId, player.id);
+            if (!sid) continue;
+            const isModeratorHost = player.isHost && !settings.hostPlays;
+            const state = isModeratorHost ? buildModeratorView(finished) : buildPlayerView(finished, player.id);
+            io.to(sid).emit('whatami:game-end', state);
+          }
+          cleanupWhatAmIGame(mapping.roomId);
+        }
+      }
+    }
+  });
+
+  // ─── Wie Ben Ik? — Request State (reconnect) ─────────
+  socket.on('whatami:request-state', () => {
+    const mapping = getSocketMapping(socket.id);
+    if (!mapping) return;
+
+    const room = getRoom(mapping.roomId);
+    if (!room || room.gameCategory !== 'what-am-i') return;
+
+    const inst = getWhatAmIInstance(mapping.roomId);
+    if (!inst) return;
+
+    const settings = room.whatAmISettings ?? DEFAULT_WHATAMI_SETTINGS;
+    const player = room.players.find((p) => p.id === mapping.playerId);
+    if (!player) return;
+
+    const isModeratorHost = player.isHost && !settings.hostPlays;
+    const state = isModeratorHost ? buildModeratorView(inst) : buildPlayerView(inst, mapping.playerId);
+    socket.emit('whatami:state-update', state);
+  });
+
   // ─── Disconnect ──────────────────────────────────────
   socket.on('disconnect', () => {
     console.log(`[Socket] Disconnected: ${socket.id}`);
@@ -623,6 +1091,7 @@ function handleLeave(io: IOServer, socket: IOSocket): void {
   if (result.roomDeleted) {
     // Clean up all resources for this room
     cleanupGame(result.roomId);
+    cleanupWhatAmIGame(result.roomId);
     roomRoundResults.delete(result.roomId);
     const countdown = roomCountdowns.get(result.roomId);
     if (countdown) {
@@ -672,6 +1141,7 @@ function handleDisconnect(io: IOServer, socket: IOSocket): void {
 
     if (removeResult.roomDeleted) {
       cleanupGame(roomId);
+      cleanupWhatAmIGame(roomId);
       roomRoundResults.delete(roomId);
       const countdown = roomCountdowns.get(roomId);
       if (countdown) {

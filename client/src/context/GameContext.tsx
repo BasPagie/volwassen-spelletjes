@@ -13,6 +13,8 @@ import type {
   PlayerProgress,
   RoundResult,
   FinalResults,
+  WhatAmIClientGameState,
+  WhatAmISettings,
 } from "shared/types";
 
 // ─── State ─────────────────────────────────────────────
@@ -31,6 +33,8 @@ export interface GameState {
   timeRemainingMs: number | null;
   errorMessage: string | null;
   devMode: boolean;
+  // Wie Ben Ik?
+  whatAmIState: WhatAmIClientGameState | null;
 }
 
 const initialState: GameState = {
@@ -48,6 +52,7 @@ const initialState: GameState = {
   timeRemainingMs: null,
   errorMessage: null,
   devMode: false,
+  whatAmIState: null,
 };
 
 // ─── Actions ───────────────────────────────────────────
@@ -90,7 +95,23 @@ export type GameAction =
       finalResults: FinalResults | null;
       playerProgress: PlayerProgress[];
     }
-  | { type: "RESET" };
+  | { type: "RESET" }
+  // ─── Wie Ben Ik? ─────────────────────────────────────
+  | { type: "SET_WHATAMI_STATE"; state: WhatAmIClientGameState }
+  | {
+      type: "WHATAMI_GUESS_RESULT";
+      correct: boolean;
+      cooldownUntil?: number;
+      characterName?: string;
+    }
+  | {
+      type: "WHATAMI_PLAYER_GUESSED";
+      playerId: string;
+      placement: number;
+      score: number;
+    }
+  | { type: "WHATAMI_GAME_END"; state: WhatAmIClientGameState }
+  | { type: "WHATAMI_SETTINGS_UPDATED"; settings: WhatAmISettings };
 
 function gameReducer(state: GameState, action: GameAction): GameState {
   switch (action.type) {
@@ -265,6 +286,79 @@ function gameReducer(state: GameState, action: GameAction): GameState {
 
     case "RESET":
       return initialState;
+
+    case "SET_WHATAMI_STATE":
+      return { ...state, whatAmIState: action.state, phase: "playing" };
+
+    case "WHATAMI_GUESS_RESULT":
+      if (!state.whatAmIState || !state.player) return state;
+      return {
+        ...state,
+        whatAmIState: {
+          ...state.whatAmIState,
+          players: state.whatAmIState.players.map((p) =>
+            p.playerId === state.player!.id
+              ? { ...p, cooldownUntil: action.cooldownUntil ?? p.cooldownUntil }
+              : p,
+          ),
+        },
+      };
+
+    case "WHATAMI_PLAYER_GUESSED":
+      if (!state.whatAmIState) return state;
+      return {
+        ...state,
+        whatAmIState: {
+          ...state.whatAmIState,
+          players: state.whatAmIState.players.map((p) =>
+            p.playerId === action.playerId
+              ? {
+                  ...p,
+                  guessedCorrectly: true,
+                  placement: action.placement,
+                  score: action.score,
+                }
+              : p,
+          ),
+        },
+      };
+
+    case "WHATAMI_GAME_END": {
+      // Build finalResults from WhatAmI state so Results page works
+      const sortedPlayers = [...action.state.players].sort(
+        (a, b) =>
+          b.score - a.score || (a.placement ?? 999) - (b.placement ?? 999),
+      );
+      const finalResults: FinalResults = {
+        players: sortedPlayers.map((p, idx) => {
+          const roomPlayer = state.room?.players.find(
+            (rp) => rp.id === p.playerId,
+          );
+          return {
+            playerId: p.playerId,
+            nickname: roomPlayer?.nickname ?? "Speler",
+            avatarUrl: roomPlayer?.avatarUrl ?? "",
+            totalScore: p.score,
+            roundScores: [p.score],
+            rank: idx + 1,
+          };
+        }),
+        roundResults: [],
+      };
+      return {
+        ...state,
+        whatAmIState: { ...action.state, status: "finished" },
+        phase: "finished",
+        finalResults,
+      };
+    }
+
+    case "WHATAMI_SETTINGS_UPDATED":
+      if (!state.room) return state;
+      return {
+        ...state,
+        room: { ...state.room, whatAmISettings: action.settings },
+      };
 
     default:
       return state;

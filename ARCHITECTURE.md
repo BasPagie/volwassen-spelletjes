@@ -1,6 +1,6 @@
-# Woord — Complete Codebase Architecture
+# Volwassen Spelletjes — Complete Codebase Architecture
 
-> **Woord** is a real-time, multiplayer Dutch word puzzle game for browser-based quiz nights. It combines NYT Connections with rounds inspired by the Dutch TV show _De Slimste Mens_. Every player joins from their own device, the host configures and launches rounds, and everyone plays simultaneously.
+> **Volwassen Spelletjes** is a real-time, multiplayer Dutch party game platform for browser-based quiz nights. It features two game categories: **Woordspellen** (word games combining NYT Connections with rounds inspired by _De Slimste Mens_) and **Wie Ben Ik?** (a character guessing game with image cards). Every player joins from their own device, the host configures and launches games, and everyone plays simultaneously.
 
 ---
 
@@ -15,12 +15,15 @@
    - 3.4 [Round State (Client View)](#34-round-state-client-view)
    - 3.5 [Results & Scoring Types](#35-results--scoring-types)
    - 3.6 [Socket Event Contracts](#36-socket-event-contracts)
+   - 3.7 [Wie Ben Ik? Types](#37-wie-ben-ik-types)
 4. [Server](#4-server)
    - 4.1 [Entry Point (`index.ts`)](#41-entry-point-indexts)
    - 4.2 [Room Management (`rooms.ts`)](#42-room-management-roomsts)
    - 4.3 [Game Engine (`gameEngine.ts`)](#43-game-engine-gameenginets)
-   - 4.4 [Socket Handlers (`socketHandlers.ts`)](#44-socket-handlers-sockethandlersts)
-   - 4.5 [Puzzle Store (`puzzleStore.ts`)](#45-puzzle-store-puzzlestorests)
+   - 4.4 [What Am I Engine (`whatAmIEngine.ts`)](#44-what-am-i-engine-whatamienginets)
+   - 4.5 [Character Store (`characterStore.ts`)](#45-character-store-characterstorests)
+   - 4.6 [Socket Handlers (`socketHandlers.ts`)](#46-socket-handlers-sockethandlersts)
+   - 4.7 [Puzzle Store (`puzzleStore.ts`)](#47-puzzle-store-puzzlestorests)
 5. [Client](#5-client)
    - 5.1 [Build & Configuration](#51-build--configuration)
    - 5.2 [App Entry & Routing](#52-app-entry--routing)
@@ -31,10 +34,11 @@
    - 5.7 [Game Components](#57-game-components)
    - 5.8 [Supporting UI Components](#58-supporting-ui-components)
 6. [Game Modes — Rules & Scoring](#6-game-modes--rules--scoring)
-7. [Complete Data Flow: A Round from Start to Finish](#7-complete-data-flow-a-round-from-start-to-finish)
-8. [Networking, Resilience & Security](#8-networking-resilience--security)
-9. [Deployment](#9-deployment)
-10. [Development Setup](#10-development-setup)
+7. [Wie Ben Ik? — Architecture Deep Dive](#7-wie-ben-ik--architecture-deep-dive)
+8. [Complete Data Flow: A Round from Start to Finish](#7-complete-data-flow-a-round-from-start-to-finish)
+9. [Networking, Resilience & Security](#8-networking-resilience--security)
+10. [Deployment](#9-deployment)
+11. [Development Setup](#10-development-setup)
 
 ---
 
@@ -63,7 +67,8 @@
 **Key architectural decisions:**
 
 - **No database.** All game state lives in server-side `Map` objects. This is fine because rooms are ephemeral — they exist only for the duration of a game session. If the server restarts, all rooms are lost.
-- **Personalized round state.** The server builds a unique `RoundState` per player on every submission. Each player sees their own shuffled words, solved groups, found answers, and remaining attempts. Players never share a mutable view.
+- **Two game categories.** The platform supports `'woord'` (word puzzle rounds) and `'what-am-i'` (character guessing). Each has its own engine, settings, and UI flow, but shares the room/player/lobby infrastructure.
+- **Personalized round state.** The server builds a unique state per player on every submission. Players never share a mutable view. In Wie Ben Ik?, each player's own character is hidden from them until they guess or give up.
 - **Server-authoritative.** All game logic (validation, scoring, fuzzy matching, timer) runs server-side. The client is a dumb renderer that sends user actions and displays the resulting state.
 - **Socket.IO rooms.** Each game room maps to a Socket.IO room, allowing efficient `io.to(roomId).emit(...)` broadcasts.
 
@@ -72,7 +77,7 @@
 ## 2. Project Structure & Monorepo Layout
 
 ```
-woord-game/
+volwassen-spelletjes/
 ├── package.json              ← Root orchestrator (scripts: dev, build, start)
 ├── railway.json              ← Railway deployment config
 ├── README.md                 ← User-facing readme
@@ -85,12 +90,16 @@ woord-game/
 ├── server/                   ← Express + Socket.IO backend
 │   ├── package.json          ← deps: express, socket.io, uuid | devDeps: tsx, typescript
 │   ├── tsconfig.json         ← Compiles to ES2020/NodeNext, outputs to dist/
+│   ├── data/
+│   │   └── characters.json   ← 5 character packs × 24 characters for Wie Ben Ik?
 │   └── src/
 │       ├── index.ts          ← HTTP server, Socket.IO setup, static file serving
 │       ├── rooms.ts          ← Room CRUD, player join/leave/kick/reconnect, bot management
-│       ├── gameEngine.ts     ← Core game logic, scoring, puzzle selection, fuzzy matching
+│       ├── gameEngine.ts     ← Core word game logic, scoring, fuzzy matching
+│       ├── whatAmIEngine.ts   ← Wie Ben Ik? game logic, turns, timers, scoring
+│       ├── characterStore.ts  ← Character pack loading, Wikipedia image resolution
 │       ├── socketHandlers.ts ← All socket event handlers, rate limiting, validation
-│       └── puzzleStore.ts    ← 120+ hardcoded Dutch puzzles across 4 game modes
+│       └── puzzleStore.ts    ← 120+ hardcoded Dutch puzzles across 4 word game modes
 │
 └── client/                   ← React SPA
     ├── package.json          ← deps: react, react-router-dom, socket.io-client, framer-motion
@@ -109,23 +118,26 @@ woord-game/
         ├── hooks/
         │   └── useSocketEvents.ts ← Maps 22+ socket events → dispatch actions + navigation
         ├── pages/
-        │   ├── Landing.tsx   ← Create game (nickname + avatar)
+        │   ├── Landing.tsx   ← Create game (nickname + avatar + category selection)
         │   ├── Join.tsx      ← Join via invite link
         │   ├── Lobby.tsx     ← Settings, player list, start game
         │   ├── Game.tsx      ← Active gameplay (countdown → intro → game → overlays)
         │   └── Results.tsx   ← Final leaderboard with podium reveal
         └── components/
-            ├── ConnectionsGame.tsx   ← 4×4 word tile grid
-            ├── PuzzelrondeGame.tsx   ← Word grid + answer input
-            ├── OpenDeurGame.tsx      ← Trivia Q&A with answer slots
-            ├── LingoGame.tsx         ← Wordle-style letter grid + keyboard
-            ├── AvatarPicker.tsx      ← Emoji grid + custom image upload
-            ├── GameSettingsPanel.tsx  ← Rounds, difficulty, timer, lives config
-            ├── PlayerList.tsx        ← Player cards (scores, kick, connection status)
-            ├── ProgressSidebar.tsx   ← Real-time player progress during gameplay
-            ├── TimerBar.tsx          ← Animated countdown bar (green→orange→red)
-            ├── RoundEndOverlay.tsx   ← Round scores + rankings modal
-            └── WaitingOverlay.tsx    ← "Waiting for others" modal
+            ├── ConnectionsGame.tsx    ← 4×4 word tile grid
+            ├── PuzzelrondeGame.tsx    ← Word grid + answer input
+            ├── OpenDeurGame.tsx       ← Trivia Q&A with answer slots
+            ├── LingoGame.tsx          ← Wordle-style letter grid + keyboard
+            ├── WhatAmIGame.tsx        ← Wie Ben Ik? gameplay (character cards grid, guess input)
+            ├── WhatAmILobbySettings.tsx ← Pack selection, custom chars, import/export, game mode
+            ├── CharacterCard.tsx      ← Individual player card with image/overlay/states
+            ├── AvatarPicker.tsx       ← Emoji grid + custom image upload
+            ├── GameSettingsPanel.tsx   ← Rounds, difficulty, timer, lives config
+            ├── PlayerList.tsx         ← Player cards (scores, kick, connection status)
+            ├── ProgressSidebar.tsx    ← Real-time player progress during gameplay
+            ├── TimerBar.tsx           ← Animated countdown bar (green→orange→red)
+            ├── RoundEndOverlay.tsx    ← Round scores + rankings modal
+            └── WaitingOverlay.tsx     ← "Waiting for others" modal
 ```
 
 ### Root `package.json` Scripts
@@ -1599,7 +1611,90 @@ bonus = max(0, floor((timeLimitMs - timeTakenMs) / 1000) * 2)
 
 ---
 
-## 7. Complete Data Flow: A Round from Start to Finish
+## 7. Wie Ben Ik? — Architecture Deep Dive
+
+### Game Category
+
+Wie Ben Ik? is a separate game category (`'what-am-i'`) from the word games (`'woord'`). Selected at room creation on the Landing page.
+
+### Character Packs (`server/data/characters.json`)
+
+5 pre-built packs with 24 characters each:
+
+- **Popcultuur** — Actors and celebrities
+- **Muziek** — Musicians and artists
+- **Memes & Internet** — Viral personalities, YouTubers, TikTokkers
+- **Fictie & Series** — Iconic fictional characters
+- **Nederland Nu** — Dutch celebrities
+
+Characters are loaded via `characterStore.ts` which:
+
+- Reads `characters.json` at startup using `readFileSync`
+- Auto-generates IDs: `${pack.id}-${idx + 1}`
+- Resolves Wikipedia images on startup via REST API
+- Has `WIKI_NAME_OVERRIDES` for characters whose Wikipedia page name differs
+
+### Game Engine (`whatAmIEngine.ts`)
+
+Server-authoritative state machine:
+
+- **`startWhatAmIGame()`** — Shuffles and assigns characters, starts timer/turns
+- **`processGuess()`** — Validates guess (fuzzy matching), handles cooldown, scoring, placements
+- **`giveUp()`** — Marks player done with 0 points, reveals character
+- **`advanceTurn()`** — (Turn-based mode) Moves to next unfinished player
+- **`buildPlayerView()`** — Builds per-player state (hides own character unless gave up/guessed)
+- **`buildModeratorView()`** — Host sees all characters when spectating
+- **`isAllGuessed()`** — Checks if game should end
+- **`finishGame()`** — Clears timers, marks game finished
+
+### Game Modes
+
+1. **Free-for-all** — Everyone guesses simultaneously. Optional time limit (10 min or unlimited). Cooldown after wrong guess.
+2. **Turn-based** — Players take turns. Configurable turn time (30/60/90s) and questions-per-turn (unlimited, 3, or 5).
+
+### Scoring
+
+Points based on speed:
+
+- Earlier placements get more points (calculated as percentage of remaining time × base)
+- Give-up always scores 0
+
+### Client State
+
+The `WhatAmIClientGameState` is sent to each player containing:
+
+- All player states (character hidden for own unless done)
+- Game status, timers, current turn info
+- `gaveUp` flag per player for UI differentiation
+
+### Custom Characters (Client-side)
+
+`WhatAmILobbySettings.tsx` manages:
+
+- Pack selection (toggle on/off)
+- Manual character addition with Wikipedia auto-image-fetch
+- Import/export (JSON or line-separated text, file upload)
+- Saved lists in localStorage (toggleable as pack-like pills)
+- Inline editing (name, category, imageUrl)
+- Image resolution progress bar with failed-image indicators
+
+### Socket Events
+
+| Event                     | Direction       | Purpose                                   |
+| ------------------------- | --------------- | ----------------------------------------- |
+| `whatami:start`           | Client → Server | Host starts the game                      |
+| `whatami:state-update`    | Server → Client | Broadcast updated game state              |
+| `whatami:guess`           | Client → Server | Player submits a guess                    |
+| `whatami:guess-result`    | Server → Client | Correct/wrong + character name on correct |
+| `whatami:give-up`         | Client → Server | Player gives up                           |
+| `whatami:skip-turn`       | Client → Server | Skip current turn (turn-based)            |
+| `whatami:game-end`        | Server → Client | Game finished, final state                |
+| `whatami:update-settings` | Client → Server | Host changes game settings                |
+| `whatami:request-state`   | Client → Server | Reconnect/request current state           |
+
+---
+
+## 8. Complete Data Flow: A Round from Start to Finish
 
 Here's exactly what happens, message by message, for a Connections round with 2 players:
 

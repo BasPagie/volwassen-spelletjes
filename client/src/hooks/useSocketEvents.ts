@@ -148,6 +148,27 @@ export function useSocketEvents() {
       navigateRef.current('/');
     });
 
+    // ─── Wie Ben Ik? ─────────────────────────────────────
+    socket.on('whatami:settings-updated', (settings) => {
+      dispatch({ type: 'WHATAMI_SETTINGS_UPDATED', settings });
+    });
+
+    socket.on('whatami:state-update', (state) => {
+      dispatch({ type: 'SET_WHATAMI_STATE', state });
+    });
+
+    socket.on('whatami:guess-result', ({ correct, cooldownUntil, characterName }) => {
+      dispatch({ type: 'WHATAMI_GUESS_RESULT', correct, cooldownUntil, characterName });
+    });
+
+    socket.on('whatami:player-guessed', ({ playerId, placement, score }) => {
+      dispatch({ type: 'WHATAMI_PLAYER_GUESSED', playerId, placement, score });
+    });
+
+    socket.on('whatami:game-end', (state) => {
+      dispatch({ type: 'WHATAMI_GAME_END', state });
+    });
+
     return () => {
       socket.off('room-created');
       socket.off('room-joined');
@@ -174,6 +195,11 @@ export function useSocketEvents() {
       socket.off('dev-mode-status');
       socket.off('reconnected');
       socket.off('reconnect-failed');
+      socket.off('whatami:settings-updated');
+      socket.off('whatami:state-update');
+      socket.off('whatami:guess-result');
+      socket.off('whatami:player-guessed');
+      socket.off('whatami:game-end');
     };
   }, [socket, dispatch]);
 }

@@ -10,6 +10,8 @@ import ConnectionsGame from "../components/ConnectionsGame";
 import PuzzelrondeGame from "../components/PuzzelrondeGame";
 import OpenDeurGame from "../components/OpenDeurGame";
 import LingoGame from "../components/LingoGame";
+import WhatAmIGame from "../components/WhatAmIGame";
+import DrawingGameStub from "../components/DrawingGameStub";
 import TimerBar from "../components/TimerBar";
 import ProgressSidebar from "../components/ProgressSidebar";
 import RoundEndOverlay from "../components/RoundEndOverlay";
@@ -94,6 +96,40 @@ export default function Game() {
       navigate(`/results/${roomId}`);
     }
   }, [state.phase, roomId, navigate]);
+
+  // ─── Wie Ben Ik? branch ─────────────────────────────
+  if (state.room?.gameCategory === "what-am-i") {
+    if (!state.whatAmIState) {
+      return (
+        <div className="h-screen flex items-center justify-center">
+          <div className="text-center">
+            <div className="text-6xl mb-4 animate-bounce">🎭</div>
+            <p className="font-display font-bold text-xl text-gray-600">
+              Wie Ben Ik? wordt geladen...
+            </p>
+          </div>
+        </div>
+      );
+    }
+    return (
+      <WhatAmIGame
+        gameState={state.whatAmIState}
+        currentPlayerId={state.player?.id ?? ""}
+        currentPlayerIsHost={state.player?.isHost ?? false}
+        hostPlays={state.room.whatAmISettings?.hostPlays ?? true}
+        players={state.room.players}
+        onGuess={(guess) => socket?.emit("whatami:guess", { guess })}
+        onSkipTurn={() => socket?.emit("whatami:skip-turn")}
+        onGiveUp={() => socket?.emit("whatami:give-up")}
+        onPlayAgain={() => socket?.emit("play-again")}
+      />
+    );
+  }
+
+  // ─── Drawing branch ──────────────────────────────────
+  if (state.room?.gameCategory === "drawing") {
+    return <DrawingGameStub />;
+  }
 
   const handleSubmitGroup = (words: string[]) => {
     if (!socket) return;

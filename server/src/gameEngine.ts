@@ -42,6 +42,7 @@ interface PlayerRoundTracker {
   lingoGuessesPerWord: Map<number, LingoGuess[]>;
   lingoCompletedWords: LingoWordResult[];
   shuffledWords?: string[]; // stable shuffle for puzzelronde
+  connectionsShuffledWords?: string[]; // stable shuffle for connections
 }
 
 // ─── Game instance per room ────────────────────────────
@@ -241,9 +242,11 @@ export function getPlayerRoundState(roomId: string, playerId: string, room: Game
   if (puzzle.type === 'connections') {
     const solvedGroups = tracker.solvedGroups.map((i) => puzzle.groups[i]);
     const solvedWords = new Set(solvedGroups.flatMap((g) => g.words));
-    const remainingWords = shuffle(
-      puzzle.groups.flatMap((g) => g.words).filter((w) => !solvedWords.has(w))
-    );
+    // Use stable shuffled order from tracker (set on first call)
+    if (!tracker.connectionsShuffledWords) {
+      tracker.connectionsShuffledWords = shuffle(puzzle.groups.flatMap((g) => g.words));
+    }
+    const remainingWords = tracker.connectionsShuffledWords.filter((w) => !solvedWords.has(w));
 
     return {
       type: 'connections',

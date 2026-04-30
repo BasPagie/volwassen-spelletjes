@@ -4,6 +4,8 @@ import type {
   GameRoom,
   Player,
   GameSettings,
+  GameCategory,
+  WhatAmISettings,
 } from '../../shared/types.js';
 import { PREMADE_AVATARS } from '../../shared/types.js';
 
@@ -20,7 +22,7 @@ const socketToRoom = new Map<string, { roomId: string; playerId: string }>();
 // Track pending disconnects (playerId → timeout) for grace period
 const disconnectTimers = new Map<string, ReturnType<typeof setTimeout>>();
 
-export function createRoom(socketId: string, nickname: string, avatarUrl: string): { room: GameRoom; player: Player } {
+export function createRoom(socketId: string, nickname: string, avatarUrl: string, gameCategory: GameCategory = 'woord'): { room: GameRoom; player: Player } {
   const roomId = generateRoomId();
   const playerId = uuidv4();
 
@@ -50,6 +52,7 @@ export function createRoom(socketId: string, nickname: string, avatarUrl: string
     },
     status: 'lobby',
     currentRoundIndex: 0,
+    gameCategory,
   };
 
   rooms.set(roomId, room);
@@ -235,6 +238,13 @@ export function updateSettings(roomId: string, settings: GameSettings): boolean 
   const room = rooms.get(roomId);
   if (!room || room.status !== 'lobby') return false;
   room.settings = settings;
+  return true;
+}
+
+export function updateWhatAmISettings(roomId: string, settings: import('../../shared/types.js').WhatAmISettings): boolean {
+  const room = rooms.get(roomId);
+  if (!room || room.status !== 'lobby') return false;
+  room.whatAmISettings = settings;
   return true;
 }
 

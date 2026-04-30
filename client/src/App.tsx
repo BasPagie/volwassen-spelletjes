@@ -5,6 +5,7 @@ import Join from "./pages/Join";
 import Lobby from "./pages/Lobby";
 import Game from "./pages/Game";
 import Results from "./pages/Results";
+import TestCharacters from "./pages/TestCharacters";
 import { useGame } from "./context/GameContext";
 
 function ErrorToast() {
@@ -31,6 +32,7 @@ export default function App() {
       </AnimatePresence>
       <Routes>
         <Route path="/" element={<Landing />} />
+        <Route path="/test/characters" element={<TestCharacters />} />
         <Route path="/join/:roomId" element={<Join />} />
         <Route path="/lobby/:roomId" element={<Lobby />} />
         <Route path="/game/:roomId" element={<Game />} />

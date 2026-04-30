@@ -7,7 +7,9 @@ import { useGame } from "../context/GameContext";
 import { useSocketEvents } from "../hooks/useSocketEvents";
 import PlayerList from "../components/PlayerList";
 import GameSettingsPanel from "../components/GameSettingsPanel";
-import type { GameSettings } from "shared/types";
+import WhatAmILobbySettings from "../components/WhatAmILobbySettings";
+import DrawingGameStub from "../components/DrawingGameStub";
+import type { GameSettings, WhatAmISettings } from "shared/types";
 
 export default function Lobby() {
   useSocketEvents();
@@ -17,7 +19,11 @@ export default function Lobby() {
   const socket = useSocket();
   const { state } = useGame();
   const [copied, setCopied] = useState(false);
-  const isFirstVisit = !localStorage.getItem("woord-rules-seen");
+  const rulesKey =
+    state.room?.gameCategory === "what-am-i"
+      ? "whatami-rules-seen"
+      : "woord-rules-seen";
+  const isFirstVisit = !localStorage.getItem(rulesKey);
   const [showInfo, setShowInfo] = useState(isFirstVisit);
   const [waitExpired, setWaitExpired] = useState(false);
 
@@ -64,9 +70,18 @@ export default function Lobby() {
     socket.emit("update-settings", settings);
   };
 
+  const handleWhatAmISettingsChange = (settings: WhatAmISettings) => {
+    if (!socket) return;
+    socket.emit("whatami:update-settings", settings);
+  };
+
   const handleStartGame = () => {
     if (!socket) return;
-    socket.emit("start-game");
+    if (state.room?.gameCategory === "what-am-i") {
+      socket.emit("whatami:start-game");
+    } else {
+      socket.emit("start-game");
+    }
   };
 
   if (!state.room) {
@@ -129,6 +144,8 @@ export default function Lobby() {
     navigate("/");
   };
 
+  const isWhatAmI = state.room.gameCategory === "what-am-i";
+
   return (
     <div className="h-screen overflow-y-auto py-6 px-4">
       <div className="max-w-6xl mx-auto">
@@ -146,18 +163,40 @@ export default function Lobby() {
             ← Terug
           </button>
           <h1
-            className="font-display font-black text-3xl text-transparent bg-clip-text 
-                        bg-gradient-to-r from-brand-500 to-orange-500"
+            className={`font-display font-black text-3xl text-transparent bg-clip-text 
+                        bg-gradient-to-r ${
+                          isWhatAmI
+                            ? "from-purple-500 to-fuchsia-500"
+                            : "from-brand-500 to-orange-500"
+                        }`}
           >
             Wachtkamer
           </h1>
-          <button
-            onClick={() => setShowInfo(true)}
-            className="ml-3 px-3 py-1 rounded-full bg-brand-100 hover:bg-brand-200 text-brand-600 
-                       font-display font-bold text-xs transition-colors"
-          >
-            📖 Uitleg
-          </button>
+          <div className="flex items-center gap-2 ml-3">
+            <span
+              className={`px-2 py-0.5 rounded-full text-xs font-display font-bold ${
+                isWhatAmI
+                  ? "bg-purple-100 text-purple-700"
+                  : "bg-brand-100 text-brand-700"
+              }`}
+            >
+              {state.room.gameCategory === "woord"
+                ? "🧠 Woordspellen"
+                : state.room.gameCategory === "what-am-i"
+                  ? "🎭 Wie Ben Ik?"
+                  : "✏️ Tekenwedstrijd"}
+            </span>
+            <button
+              onClick={() => setShowInfo(true)}
+              className={`px-3 py-1 rounded-full font-display font-bold text-xs transition-colors ${
+                isWhatAmI
+                  ? "bg-purple-100 hover:bg-purple-200 text-purple-600"
+                  : "bg-brand-100 hover:bg-brand-200 text-brand-600"
+              }`}
+            >
+              📖 Uitleg
+            </button>
+          </div>
         </motion.div>
 
         {/* Room code + invite | spelers klaar + start button */}
@@ -170,8 +209,11 @@ export default function Lobby() {
           {/* Left: room code + invite link */}
           <div className="flex items-center gap-2">
             <span
-              className="bg-brand-100 text-brand-700 font-display font-bold 
-                         px-3 py-1.5 rounded-full text-xs shrink-0"
+              className={`font-display font-bold px-3 py-1.5 rounded-full text-xs shrink-0 ${
+                isWhatAmI
+                  ? "bg-purple-100 text-purple-700"
+                  : "bg-brand-100 text-brand-700"
+              }`}
             >
               {roomId}
             </span>
@@ -187,7 +229,9 @@ export default function Lobby() {
                 ${
                   copied
                     ? "bg-green-500 text-white"
-                    : "bg-brand-500 hover:bg-brand-600 text-white"
+                    : isWhatAmI
+                      ? "bg-purple-500 hover:bg-purple-600 text-white"
+                      : "bg-brand-500 hover:bg-brand-600 text-white"
                 }`}
             >
               {copied ? "✓" : "📋"}
@@ -205,7 +249,12 @@ export default function Lobby() {
                 </span>
                 <button
                   onClick={handleStartGame}
-                  className="btn-primary text-base sm:text-lg px-6 sm:px-10 py-2.5 sm:py-3 whitespace-nowrap w-full sm:w-auto"
+                  className={`text-base sm:text-lg px-6 sm:px-10 py-2.5 sm:py-3 whitespace-nowrap w-full sm:w-auto
+                    font-display font-bold rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 active:scale-95 transition-all duration-200 text-white ${
+                      isWhatAmI
+                        ? "bg-purple-600 hover:bg-purple-700"
+                        : "bg-brand-500 hover:bg-brand-600"
+                    }`}
                 >
                   🚀 Start Spel!
                 </button>
@@ -245,18 +294,28 @@ export default function Lobby() {
             />
           </motion.div>
 
-          {/* Settings */}
+          {/* Settings — conditional per game category */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3 }}
             className="card"
           >
-            <GameSettingsPanel
-              settings={state.room.settings}
-              onChange={handleSettingsChange}
-              isHost={isPlayerHost}
-            />
+            {state.room.gameCategory === "woord" ? (
+              <GameSettingsPanel
+                settings={state.room.settings}
+                onChange={handleSettingsChange}
+                isHost={isPlayerHost}
+              />
+            ) : state.room.gameCategory === "what-am-i" ? (
+              <WhatAmILobbySettings
+                settings={state.room.whatAmISettings}
+                onChange={handleWhatAmISettingsChange}
+                isHost={isPlayerHost}
+              />
+            ) : (
+              <DrawingGameStub />
+            )}
           </motion.div>
         </div>
 
@@ -313,7 +372,7 @@ export default function Lobby() {
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm px-4"
             onClick={() => {
               setShowInfo(false);
-              localStorage.setItem("woord-rules-seen", "1");
+              localStorage.setItem(rulesKey, "1");
             }}
           >
             <motion.div
@@ -328,80 +387,132 @@ export default function Lobby() {
                 📖 Hoe werkt het?
               </h2>
 
-              <div className="space-y-3 text-sm text-gray-600 leading-relaxed">
-                <GameModeCard
-                  icon="🔗"
-                  name="Connections"
-                  color="blue"
-                  short="16 woorden, 4 groepen. Ken je van de NYT."
-                  details={[
-                    "Verdeel 16 woorden in 4 groepen van 4",
-                    "Tik 4 woorden aan en bevestig je keuze",
-                    "🎯 +100 punten per goede groep",
-                    "❌ -25 punten bij een foute gok",
-                    "💡 Bijna goed? Juiste woorden kleuren geel als hint",
-                  ]}
-                />
-
-                <GameModeCard
-                  icon="🧩"
-                  name="Puzzelronde"
-                  color="purple"
-                  short="16 woorden, raad het verbindende woord."
-                  details={[
-                    "Je ziet 16 woorden die in 4 groepen van 4 horen",
-                    "Elk groepje deelt een verbindend woord",
-                    "Typ het verbindende woord in om de groep op te lossen",
-                    "🎯 +150 punten per goed antwoord",
-                    "✅ Geen straf voor fout, typfoutjes worden geaccepteerd",
-                  ]}
-                />
-
-                <GameModeCard
-                  icon="🚪"
-                  name="Open Deur"
-                  color="amber"
-                  short="3 vragen, typ zoveel goede antwoorden als je kan."
-                  details={[
-                    "3 vragen met elk 4 juiste antwoorden",
-                    "Je ziet de eerste letter van elk antwoord als hint",
-                    "🎯 +50 punten per goed antwoord",
-                    "✅ Geen straf voor fout, gewoon proberen!",
-                    "➡️ Vastzit? Ga naar de volgende vraag",
-                  ]}
-                />
-
-                <GameModeCard
-                  icon="🟩"
-                  name="Lingo"
-                  color="green"
-                  short="Raad het 5-letter woord in zo min mogelijk beurten."
-                  details={[
-                    "Je krijgt de eerste letter als hint, 5 pogingen per woord",
-                    "🟩 Groen = juiste letter, juiste plek",
-                    "🟨 Geel = letter zit in het woord, verkeerde plek",
-                    "⬜ Grijs = letter zit niet in het woord",
-                    "🎯 +100 punten per woord + 20 bonus per overgebleven poging",
-                    "🔢 3 woorden per ronde",
-                  ]}
-                />
-
-                <div className="border-t border-gray-100 pt-3">
-                  <p className="font-display font-bold text-gray-700 mb-1.5">
-                    💡 Goed om te weten
-                  </p>
-                  <ul className="space-y-1 text-gray-500">
-                    <li>• Iedereen speelt tegelijk, dus snelheid telt</li>
-                    <li>• Eerder klaar = bonuspunten</li>
-                    <li>• Typfoutjes worden door de vingers gezien</li>
-                  </ul>
+              {state.room?.gameCategory === "what-am-i" ? (
+                <div className="space-y-3 text-sm text-gray-600 leading-relaxed">
+                  <div className="rounded-xl p-4 bg-purple-50">
+                    <p className="font-display font-bold text-purple-700 mb-2">
+                      🎭 Wie Ben Ik?
+                    </p>
+                    <p>
+                      Elk speler krijgt een karakter toegewezen dat ze zelf{" "}
+                      <strong>niet</strong> kunnen zien — maar de anderen wel.
+                      Raad wie jij bent door je eigen naam in te typen!
+                    </p>
+                  </div>
+                  <div className="border-t border-gray-100 pt-3 space-y-2">
+                    <div className="flex gap-2 items-start">
+                      <span className="text-lg">👀</span>
+                      <p>
+                        Je ziet de karakters van alle andere spelers, maar niet
+                        die van jjezelf.
+                      </p>
+                    </div>
+                    <div className="flex gap-2 items-start">
+                      <span className="text-lg">⌨️</span>
+                      <p>
+                        Typ je gok in en druk op Enter. Typfoutjes en
+                        achternamen worden geaccepteerd.
+                      </p>
+                    </div>
+                    <div className="flex gap-2 items-start">
+                      <span className="text-lg">❌</span>
+                      <p>
+                        Fout geraden? Je moet <strong>30 seconden</strong>{" "}
+                        wachten voor je opnieuw mag gokken.
+                      </p>
+                    </div>
+                    <div className="flex gap-2 items-start">
+                      <span className="text-lg">🏆</span>
+                      <p>
+                        Sneller en met minder fouten = meer punten. Eerste die
+                        raadt krijgt een plaatsingsbonus!
+                      </p>
+                    </div>
+                    <div className="flex gap-2 items-start">
+                      <span className="text-lg">⏱️</span>
+                      <p>
+                        Er is een tijdslimiet — nog niet geraden als de tijd op
+                        is? Dan scoor je nul voor deze ronde.
+                      </p>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <div className="space-y-3 text-sm text-gray-600 leading-relaxed">
+                  <GameModeCard
+                    icon="🔗"
+                    name="Connections"
+                    color="blue"
+                    short="16 woorden, 4 groepen. Ken je van de NYT."
+                    details={[
+                      "Verdeel 16 woorden in 4 groepen van 4",
+                      "Tik 4 woorden aan en bevestig je keuze",
+                      "🎯 +100 punten per goede groep",
+                      "❌ -25 punten bij een foute gok",
+                      "💡 Bijna goed? Juiste woorden kleuren geel als hint",
+                    ]}
+                  />
+
+                  <GameModeCard
+                    icon="🧩"
+                    name="Puzzelronde"
+                    color="purple"
+                    short="16 woorden, raad het verbindende woord."
+                    details={[
+                      "Je ziet 16 woorden die in 4 groepen van 4 horen",
+                      "Elk groepje deelt een verbindend woord",
+                      "Typ het verbindende woord in om de groep op te lossen",
+                      "🎯 +150 punten per goed antwoord",
+                      "✅ Geen straf voor fout, typfoutjes worden geaccepteerd",
+                    ]}
+                  />
+
+                  <GameModeCard
+                    icon="🚪"
+                    name="Open Deur"
+                    color="amber"
+                    short="3 vragen, typ zoveel goede antwoorden als je kan."
+                    details={[
+                      "3 vragen met elk 4 juiste antwoorden",
+                      "Je ziet de eerste letter van elk antwoord als hint",
+                      "🎯 +50 punten per goed antwoord",
+                      "✅ Geen straf voor fout, gewoon proberen!",
+                      "➡️ Vastzit? Ga naar de volgende vraag",
+                    ]}
+                  />
+
+                  <GameModeCard
+                    icon="🟩"
+                    name="Lingo"
+                    color="green"
+                    short="Raad het 5-letter woord in zo min mogelijk beurten."
+                    details={[
+                      "Je krijgt de eerste letter als hint, 5 pogingen per woord",
+                      "🟩 Groen = juiste letter, juiste plek",
+                      "🟨 Geel = letter zit in het woord, verkeerde plek",
+                      "⬜ Grijs = letter zit niet in het woord",
+                      "🎯 +100 punten per woord + 20 bonus per overgebleven poging",
+                      "🔢 3 woorden per ronde",
+                    ]}
+                  />
+
+                  <div className="border-t border-gray-100 pt-3">
+                    <p className="font-display font-bold text-gray-700 mb-1.5">
+                      💡 Goed om te weten
+                    </p>
+                    <ul className="space-y-1 text-gray-500">
+                      <li>• Iedereen speelt tegelijk, dus snelheid telt</li>
+                      <li>• Eerder klaar = bonuspunten</li>
+                      <li>• Typfoutjes worden door de vingers gezien</li>
+                    </ul>
+                  </div>
+                </div>
+              )}
 
               <button
                 onClick={() => {
                   setShowInfo(false);
-                  localStorage.setItem("woord-rules-seen", "1");
+                  localStorage.setItem(rulesKey, "1");
                 }}
                 className="btn-primary w-full mt-4"
               >

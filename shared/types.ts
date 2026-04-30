@@ -1,3 +1,6 @@
+// ─── Game Category ─────────────────────────────────────
+export type GameCategory = 'woord' | 'what-am-i' | 'drawing';
+
 // ─── Player ────────────────────────────────────────────
 export interface Player {
   id: string;
@@ -53,6 +56,71 @@ export interface GameRoom {
   settings: GameSettings;
   status: RoomStatus;
   currentRoundIndex: number;
+  gameCategory: GameCategory;
+  whatAmISettings?: WhatAmISettings;
+}
+
+// ─── Wie Ben Ik? (What Am I?) ──────────────────────────
+export interface WhatAmICharacter {
+  id: string;
+  name: string;
+  imageUrl?: string;
+  category?: string;
+}
+
+export interface WhatAmICharacterPack {
+  id: string;
+  name: string;
+  description: string;
+  characters: WhatAmICharacter[];
+}
+
+export type WhatAmIGameMode = 'free-for-all' | 'turns';
+
+export interface WhatAmISettings {
+  packIds: string[];               // selected packs (can be multiple); empty = packs only via customCharacters
+  customCharacters: WhatAmICharacter[]; // always merged in if non-empty
+  timeLimitSeconds: number | null; // null = until everyone guessed (free-for-all only)
+  hostPlays: boolean;
+  gameMode: WhatAmIGameMode;       // free-for-all or turn-based
+  turnSeconds: number;             // seconds per turn in turn-based mode
+  questionsPerTurn: number;        // how many guesses per round (1, 2, or 3)
+}
+
+export const DEFAULT_WHATAMI_SETTINGS: WhatAmISettings = {
+  packIds: ['popculture'],
+  customCharacters: [],
+  timeLimitSeconds: 600,
+  hostPlays: true,
+  gameMode: 'free-for-all',
+  turnSeconds: 60,
+  questionsPerTurn: 1,
+};
+
+export interface WhatAmIPlayerState {
+  playerId: string;
+  /** The character assigned to this player — null when sent to the player themselves */
+  assignedCharacter: WhatAmICharacter | null;
+  guessedCorrectly: boolean;
+  gaveUp: boolean;
+  placement: number | null;       // 1-based, null = not finished yet
+  wrongGuesses: number;
+  cooldownUntil: number | null;   // epoch ms, null = not in cooldown
+  score: number;
+}
+
+export interface WhatAmIClientGameState {
+  status: 'playing' | 'finished';
+  gameMode: WhatAmIGameMode;
+  packName: string;
+  timeLimitSeconds: number | null;
+  startTime: number;              // epoch ms
+  timeRemainingMs: number | null;
+  players: WhatAmIPlayerState[];
+  // Turn-based fields (only set when gameMode === 'turns')
+  currentTurnPlayerId?: string;   // whose turn it is
+  turnTimeRemainingMs?: number | null;   // ms left in current turn
+  turnNumber?: number;            // overall turn count
 }
 
 // ─── Puzzles ───────────────────────────────────────────
@@ -202,7 +270,7 @@ export interface FinalResults {
 
 // ─── Socket Events ─────────────────────────────────────
 export interface ClientToServerEvents {
-  'create-room': (data: { nickname: string; avatarUrl: string }) => void;
+  'create-room': (data: { nickname: string; avatarUrl: string; gameCategory: GameCategory }) => void;
   'join-room': (data: { roomId: string; nickname: string; avatarUrl: string }) => void;
   'leave-room': () => void;
   'update-settings': (settings: GameSettings) => void;
@@ -220,6 +288,13 @@ export interface ClientToServerEvents {
   'dev-remove-bot': (data: { playerId: string }) => void;
   'reconnect-attempt': (data: { roomId: string; playerId: string }) => void;
   'check-room': (data: { roomId: string }) => void;
+  // ─── Wie Ben Ik? ───────────────────────────────────
+  'whatami:update-settings': (settings: WhatAmISettings) => void;
+  'whatami:start-game': () => void;
+  'whatami:guess': (data: { guess: string }) => void;
+  'whatami:skip-turn': () => void;
+  'whatami:give-up': () => void;
+  'whatami:request-state': () => void;
 }
 
 export interface ServerToClientEvents {
@@ -249,6 +324,12 @@ export interface ServerToClientEvents {
   'reconnected': (data: { room: GameRoom; player: Player; roundState: RoundState | null; phase: 'lobby' | 'playing' | 'round-end' | 'finished'; roundResult: RoundResult | null; finalResults: FinalResults | null; playerProgress: PlayerProgress[] }) => void;
   'reconnect-failed': () => void;
   'room-check': (data: { exists: boolean; joinable: boolean }) => void;
+  // ─── Wie Ben Ik? ───────────────────────────────────
+  'whatami:settings-updated': (settings: WhatAmISettings) => void;
+  'whatami:state-update': (state: WhatAmIClientGameState) => void;
+  'whatami:guess-result': (data: { correct: boolean; cooldownUntil?: number; characterName?: string }) => void;
+  'whatami:player-guessed': (data: { playerId: string; placement: number; score: number }) => void;
+  'whatami:game-end': (data: WhatAmIClientGameState) => void;
 }
 
 // ─── Pre-made Avatars ──────────────────────────────────

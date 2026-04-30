@@ -1,0 +1,637 @@
+[
+  {
+    "id": "popculture",
+    "name": "🎬 Popcultuur",
+    "description": "Acteurs, zangers en beroemdheden die iedereen kent",
+    "characters": [
+      {
+        "name": "Will Smith",
+        "category": "Acteur",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/TechCrunch_Disrupt_San_Francisco_2019_-_Day_1_%2848834070763%29_%28cropped%29.jpg/330px-TechCrunch_Disrupt_San_Francisco_2019_-_Day_1_%2848834070763%29_%28cropped%29.jpg"
+      },
+      {
+        "name": "Zendaya",
+        "category": "Actrice",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Zendaya_-_2019_by_Glenn_Francis.jpg/330px-Zendaya_-_2019_by_Glenn_Francis.jpg"
+      },
+      {
+        "name": "Timothée Chalamet",
+        "category": "Acteur",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Timoth%C3%A9e_Chalamet-63482_%28cropped%29.jpg/330px-Timoth%C3%A9e_Chalamet-63482_%28cropped%29.jpg"
+      },
+      {
+        "name": "Margot Robbie",
+        "category": "Actrice",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/SYDNEY%2C_AUSTRALIA_-_JANUARY_23_Margot_Robbie_arrives_at_the_Australian_Premiere_of_%27I%2C_Tonya%27_on_January_23%2C_2018_in_Sydney%2C_Australia_%2828074883999%29_%28cropped_2%29.jpg/330px-thumbnail.jpg"
+      },
+      {
+        "name": "Keanu Reeves",
+        "category": "Acteur",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Keanu_Reeves_at_TIFF_2025_02_%28Cropped%29.jpg/330px-Keanu_Reeves_at_TIFF_2025_02_%28Cropped%29.jpg"
+      },
+      {
+        "name": "Emma Watson",
+        "category": "Actrice",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Emma_Watson_2013.jpg/330px-Emma_Watson_2013.jpg"
+      },
+      {
+        "name": "Robert Downey Jr.",
+        "category": "Acteur",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Robert_Downey_Jr._2014_Comic-Con.jpg/330px-Robert_Downey_Jr._2014_Comic-Con.jpg"
+      },
+      {
+        "name": "Adam Sandler",
+        "category": "Acteur",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Jackie_Sandler_Adam_Sandler_Jay_Kelly-36_%283x4%29.jpg/330px-Jackie_Sandler_Adam_Sandler_Jay_Kelly-36_%283x4%29.jpg"
+      },
+      {
+        "name": "Johnny Depp",
+        "category": "Acteur",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Johnny_Depp_2020.jpg/330px-Johnny_Depp_2020.jpg"
+      },
+      {
+        "name": "Dwayne Johnson",
+        "category": "Acteur",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Dwayne_Johnson-1764_%28cropped%29.jpg/330px-Dwayne_Johnson-1764_%28cropped%29.jpg"
+      },
+      {
+        "name": "Jim Carrey",
+        "category": "Acteur",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Jim_Carrey_2020_%28cropped2%29.jpg/330px-Jim_Carrey_2020_%28cropped2%29.jpg"
+      },
+      {
+        "name": "Jack Black",
+        "category": "Acteur",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/TenaciousDO2160623_%2838_of_62%29_Jack_Black.jpg/330px-TenaciousDO2160623_%2838_of_62%29_Jack_Black.jpg"
+      },
+      {
+        "name": "Leonardo DiCaprio",
+        "category": "Acteur",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/LeoPTABFI191125-28_%28cropped%29.jpg/330px-LeoPTABFI191125-28_%28cropped%29.jpg"
+      },
+      {
+        "name": "Tom Holland",
+        "category": "Acteur",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Tom_Holland_during_pro-am_Wentworth_golf_club_2023-2_%28cropped%29.jpg/330px-Tom_Holland_during_pro-am_Wentworth_golf_club_2023-2_%28cropped%29.jpg"
+      },
+      {
+        "name": "Chris Hemsworth",
+        "category": "Acteur",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Chris_Hemsworth_-_Crime_101.jpg/330px-Chris_Hemsworth_-_Crime_101.jpg"
+      },
+      {
+        "name": "Scarlett Johansson",
+        "category": "Actrice",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Scarlett_Johansson-8588.jpg/330px-Scarlett_Johansson-8588.jpg"
+      },
+      {
+        "name": "Ryan Reynolds",
+        "category": "Acteur",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Deadpool_2_Japan_Premiere_Red_Carpet_Ryan_Reynolds_%28cropped%29.jpg/330px-Deadpool_2_Japan_Premiere_Red_Carpet_Ryan_Reynolds_%28cropped%29.jpg"
+      },
+      {
+        "name": "Jennifer Lawrence",
+        "category": "Actrice",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Jennifer_Lawrence%2C_Cannes_Film_Festival_2025.jpg/330px-Jennifer_Lawrence%2C_Cannes_Film_Festival_2025.jpg"
+      },
+      {
+        "name": "Brad Pitt",
+        "category": "Acteur",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Brad_Pitt-69858.jpg/330px-Brad_Pitt-69858.jpg"
+      },
+      {
+        "name": "Angelina Jolie",
+        "category": "Actrice",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Angelina_Jolie-643531_%28cropped%29.jpg/330px-Angelina_Jolie-643531_%28cropped%29.jpg"
+      },
+      {
+        "name": "Morgan Freeman",
+        "category": "Acteur",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Morgan_Freeman_at_The_Pentagon_on_2_August_2023_-_230802-D-PM193-3363_%28cropped%29.jpg/330px-Morgan_Freeman_at_The_Pentagon_on_2_August_2023_-_230802-D-PM193-3363_%28cropped%29.jpg"
+      },
+      {
+        "name": "Tom Hanks",
+        "category": "Acteur",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/TomHanksPrincEdw031223_%2811_of_41%29_%28cropped%29.jpg/330px-TomHanksPrincEdw031223_%2811_of_41%29_%28cropped%29.jpg"
+      },
+      {
+        "name": "Florence Pugh",
+        "category": "Actrice",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Florence_Pugh_at_the_2024_Toronto_International_Film_Festival_13_%28cropped_2_%E2%80%93_color_adjusted%29.jpg/330px-Florence_Pugh_at_the_2024_Toronto_International_Film_Festival_13_%28cropped_2_%E2%80%93_color_adjusted%29.jpg"
+      },
+      {
+        "name": "Pedro Pascal",
+        "category": "Acteur",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Pedro_Pascal_at_the_2025_Cannes_Film_Festival_04.jpg/330px-Pedro_Pascal_at_the_2025_Cannes_Film_Festival_04.jpg"
+      }
+    ]
+  },
+  {
+    "id": "muziek",
+    "name": "🎵 Artiesten",
+    "description": "Artiesten en zangers die je op elk festival hoort",
+    "characters": [
+      {
+        "name": "Taylor Swift",
+        "category": "Zangeres",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Taylor_Swift_at_the_2023_MTV_Video_Music_Awards_%283%29.png/330px-Taylor_Swift_at_the_2023_MTV_Video_Music_Awards_%283%29.png"
+      },
+      {
+        "name": "Billie Eilish",
+        "category": "Zangeres",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/BillieEilishO2140725-39_-_54665577407_%28cropped%29.jpg/330px-BillieEilishO2140725-39_-_54665577407_%28cropped%29.jpg"
+      },
+      {
+        "name": "Drake",
+        "category": "Rapper",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Drake_at_The_Carter_Effect_2017_%2836818935200%29_%28cropped%29.jpg/330px-Drake_at_The_Carter_Effect_2017_%2836818935200%29_%28cropped%29.jpg"
+      },
+      {
+        "name": "Rihanna",
+        "category": "Zangeres",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Rihanna_Fenty_2018.png/330px-Rihanna_Fenty_2018.png"
+      },
+      {
+        "name": "Kanye West",
+        "category": "Rapper",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Kanye_West_at_the_2009_Tribeca_Film_Festival_%28crop_2%29.jpg/330px-Kanye_West_at_the_2009_Tribeca_Film_Festival_%28crop_2%29.jpg"
+      },
+      {
+        "name": "Beyoncé",
+        "category": "Zangeres",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Beyonc%C3%A9_-_Tottenham_Hotspur_Stadium_-_1st_June_2023_%2810_of_118%29_%2852946364598%29_%28best_crop%29.jpg/330px-Beyonc%C3%A9_-_Tottenham_Hotspur_Stadium_-_1st_June_2023_%2810_of_118%29_%2852946364598%29_%28best_crop%29.jpg"
+      },
+      {
+        "name": "Ed Sheeran",
+        "category": "Zanger",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Ed_Sheeran-6886_%28cropped%29.jpg/330px-Ed_Sheeran-6886_%28cropped%29.jpg"
+      },
+      {
+        "name": "Post Malone",
+        "category": "Rapper / Zanger",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Post_Malone_July_2021_%28cropped%29.jpg/330px-Post_Malone_July_2021_%28cropped%29.jpg"
+      },
+      {
+        "name": "Lady Gaga",
+        "category": "Zangeres",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Lady_Gaga_at_Joe_Biden%27s_inauguration_%28cropped_5%29.jpg/330px-Lady_Gaga_at_Joe_Biden%27s_inauguration_%28cropped_5%29.jpg"
+      },
+      {
+        "name": "Eminem",
+        "category": "Rapper",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Eminem_2021_Color_Corrected.jpg/330px-Eminem_2021_Color_Corrected.jpg"
+      },
+      {
+        "name": "Harry Styles",
+        "category": "Zanger",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/HarryStylesWembley170623_%2865_of_93%29_%2852982678051%29_%28cropped_2%29.jpg/330px-HarryStylesWembley170623_%2865_of_93%29_%2852982678051%29_%28cropped_2%29.jpg"
+      },
+      {
+        "name": "Adele",
+        "category": "Zangeres",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Adele_2016.jpg/330px-Adele_2016.jpg"
+      },
+      {
+        "name": "The Weeknd",
+        "category": "Zanger",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/The_Weeknd_Portrait_by_Brian_Ziff.jpg/330px-The_Weeknd_Portrait_by_Brian_Ziff.jpg"
+      },
+      {
+        "name": "Dua Lipa",
+        "category": "Zangeres",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Dua_Lipa-69798_%28cropped%29.jpg/330px-Dua_Lipa-69798_%28cropped%29.jpg"
+      },
+      {
+        "name": "Kendrick Lamar",
+        "category": "Rapper",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/KendrickSZASPurs230725-144_%28cropped%29_desaturated.jpg/330px-KendrickSZASPurs230725-144_%28cropped%29_desaturated.jpg"
+      },
+      {
+        "name": "Bruno Mars",
+        "category": "Zanger",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/BrunoMars24KMagicWorldTourLive_%28cropped%29.jpg/330px-BrunoMars24KMagicWorldTourLive_%28cropped%29.jpg"
+      },
+      {
+        "name": "Frank Ocean",
+        "category": "Zanger",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Frank_Ocean_2022_Blonded.jpg/330px-Frank_Ocean_2022_Blonded.jpg"
+      },
+      {
+        "name": "Olivia Rodrigo",
+        "category": "Zangeres",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Glasto2025-546_%28cropped%29_%282%29.jpg/330px-Glasto2025-546_%28cropped%29_%282%29.jpg"
+      },
+      {
+        "name": "Travis Scott",
+        "category": "Rapper",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/2025-0120_Cole_Gahagan_Michael_Rubin_Travis_Scott_%28cropped%29.jpg/330px-2025-0120_Cole_Gahagan_Michael_Rubin_Travis_Scott_%28cropped%29.jpg"
+      },
+      {
+        "name": "SZA",
+        "category": "Zangeres",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/KendrickSZASPurs230725-19_-_54683179509_%28cropped%29_%28cropped%29.jpg/330px-KendrickSZASPurs230725-19_-_54683179509_%28cropped%29_%28cropped%29.jpg"
+      },
+      {
+        "name": "Doja Cat",
+        "category": "Zangeres / Rapper",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Doja_Cat_x_Amazon1.1_%28cropped%29.jpg/330px-Doja_Cat_x_Amazon1.1_%28cropped%29.jpg"
+      },
+      {
+        "name": "Bad Bunny",
+        "category": "Reggaeton",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Bad_Bunny_2019_by_Glenn_Francis_%28cropped%29.jpg/330px-Bad_Bunny_2019_by_Glenn_Francis_%28cropped%29.jpg"
+      },
+      {
+        "name": "Freddie Mercury",
+        "category": "Zanger / Queen",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Freddie_Mercury_performing_in_New_Haven%2C_CT%2C_November_1977.jpg/330px-Freddie_Mercury_performing_in_New_Haven%2C_CT%2C_November_1977.jpg"
+      },
+      {
+        "name": "David Bowie",
+        "category": "Zanger",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/David-Bowie_Chicago_2002-08-08_photoby_Adam-Bielawski-cropped.jpg/330px-David-Bowie_Chicago_2002-08-08_photoby_Adam-Bielawski-cropped.jpg"
+      }
+    ]
+  },
+  {
+    "id": "memes-internet",
+    "name": "🌐 Memes & Internet",
+    "description": "Virale persoonlijkheden en internetfenomenen",
+    "characters": [
+      {
+        "name": "Elon Musk",
+        "category": "Tech / Memes",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Elon_Musk_-_54820081119_%28cropped%29.jpg/330px-Elon_Musk_-_54820081119_%28cropped%29.jpg"
+      },
+      {
+        "name": "MrBeast",
+        "category": "YouTuber",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/MrBeast_in_2026_%28cropped%29_2.png/330px-MrBeast_in_2026_%28cropped%29_2.png"
+      },
+      {
+        "name": "PewDiePie",
+        "category": "YouTuber",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pewdiepie_head_shot.jpg/330px-Pewdiepie_head_shot.jpg"
+      },
+      {
+        "name": "Kim Kardashian",
+        "category": "Reality TV",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Kim_Kardashian_West_2014.jpg/330px-Kim_Kardashian_West_2014.jpg"
+      },
+      {
+        "name": "Snoop Dogg",
+        "category": "Rapper / Meme",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Snoop_Dogg_2023_%2853775197331%29_%28cropped%29_%28cropped%29.jpg/330px-Snoop_Dogg_2023_%2853775197331%29_%28cropped%29_%28cropped%29.jpg"
+      },
+      {
+        "name": "Rick Astley",
+        "category": "Rickroll",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Glasto2023_%28149_of_468%29_%2853009108914%29_%28cropped%29.jpg/330px-Glasto2023_%28149_of_468%29_%2853009108914%29_%28cropped%29.jpg"
+      },
+      {
+        "name": "Gordon Ramsay",
+        "category": "Chef / TV",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Ramsay_on_Muppets4_%28cropped%29.png/330px-Ramsay_on_Muppets4_%28cropped%29.png"
+      },
+      {
+        "name": "Steve Irwin",
+        "category": "Crocodile Hunter",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Steve_Irwin.jpg/330px-Steve_Irwin.jpg"
+      },
+      {
+        "name": "Shaquille O'Neal",
+        "category": "Basketbal / Meme",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/TechCrunch_Disrupt_2023_-_Day_1_%28cropped%29.jpg/330px-TechCrunch_Disrupt_2023_-_Day_1_%28cropped%29.jpg"
+      },
+      {
+        "name": "Nicolas Cage",
+        "category": "Acteur / Meme",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Festival_de_cinema_de_Sitges_2018_%2830240292207%29_%28cropped%29.jpg/330px-Festival_de_cinema_de_Sitges_2018_%2830240292207%29_%28cropped%29.jpg"
+      },
+      {
+        "name": "Danny DeVito",
+        "category": "Acteur / Meme",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Danny_DeVito_cropped_and_edited_for_brightness.jpg/330px-Danny_DeVito_cropped_and_edited_for_brightness.jpg"
+      },
+      {
+        "name": "Linus Sebastian",
+        "category": "Linus Tech Tips",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Linus_Sebastian_at_LTX_2023_%28cropped%29.jpg/330px-Linus_Sebastian_at_LTX_2023_%28cropped%29.jpg"
+      },
+      {
+        "name": "Mark Zuckerberg",
+        "category": "Tech / Meme",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Mark_Zuckerberg_in_September_2025_%28cropped%29.jpg/330px-Mark_Zuckerberg_in_September_2025_%28cropped%29.jpg"
+      },
+      {
+        "name": "Bob Ross",
+        "category": "TV / Meme",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/7/70/Bob_at_Easel.jpg"
+      },
+      {
+        "name": "Marques Brownlee",
+        "category": "Tech YouTuber (MKBHD)",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Marques_Brownlee_cropped.jpg/330px-Marques_Brownlee_cropped.jpg"
+      },
+      {
+        "name": "Andrew Tate",
+        "category": "Internet / Controversy",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Andrew_Tate_-_James_Tamim_Upload_%28Cropped_Wide_Portrait%29.png/330px-Andrew_Tate_-_James_Tamim_Upload_%28Cropped_Wide_Portrait%29.png"
+      },
+      {
+        "name": "David Attenborough",
+        "category": "Natuur / TV",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3d/B%C3%A6rekraftsprisen_2018_%28cropped%29.jpg"
+      },
+      {
+        "name": "Joe Rogan",
+        "category": "Podcast",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Joe_Rogan.png/330px-Joe_Rogan.png"
+      },
+      {
+        "name": "Henry Cavill",
+        "category": "Acteur / Gamer",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Henry_Cavill_%2848417913146%29_%28cropped%29.jpg/330px-Henry_Cavill_%2848417913146%29_%28cropped%29.jpg"
+      },
+      {
+        "name": "Will Ferrell",
+        "category": "Acteur / Meme",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Will_Ferrell_at_the_2024_Toronto_International_Film_Festival_5_%28cropped%29.jpg/330px-Will_Ferrell_at_the_2024_Toronto_International_Film_Festival_5_%28cropped%29.jpg"
+      },
+      {
+        "name": "Keanu Reeves",
+        "category": "Acteur / Meme",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Keanu_Reeves_at_TIFF_2025_02_%28Cropped%29.jpg/330px-Keanu_Reeves_at_TIFF_2025_02_%28Cropped%29.jpg"
+      },
+      {
+        "name": "Arnold Schwarzenegger",
+        "category": "Acteur / Meme",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Arnold_Schwarzenegger_2019_%28rotated-cropped%29.jpg/330px-Arnold_Schwarzenegger_2019_%28rotated-cropped%29.jpg"
+      },
+      {
+        "name": "Gabe Newell",
+        "category": "Valve / Steam",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/The_International_2018_%2843263984845%29_%28cropped%29.jpg/330px-The_International_2018_%2843263984845%29_%28cropped%29.jpg"
+      },
+      {
+        "name": "Rowan Atkinson",
+        "category": "Mr. Bean / Meme",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Atkinson_Rowan_crop.jpg"
+      }
+    ]
+  },
+  {
+    "id": "fictiepersonages",
+    "name": "📺 Fictie & Series",
+    "description": "Iconische personages uit films en series die je kent",
+    "characters": [
+      {
+        "name": "Shrek",
+        "category": "Animatiefilm",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/4/4d/Shrek_%28character%29.png"
+      },
+      {
+        "name": "Harry Potter",
+        "category": "Film / Boek",
+        "imageUrl": "https://static.wikia.nocookie.net/neoencyclopedia/images/4/44/HarryPotter5poster.jpg/revision/latest?cb=20121121021021"
+      },
+      {
+        "name": "Darth Vader",
+        "category": "Star Wars",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Darth_Vader_-_2007_Disney_Weekends.jpg/330px-Darth_Vader_-_2007_Disney_Weekends.jpg"
+      },
+      {
+        "name": "SpongeBob",
+        "category": "Tekenfilm",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7a/SpongeBob_SquarePants_character.png"
+      },
+      {
+        "name": "Walter White",
+        "category": "Breaking Bad",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/0/03/Walter_White_S5B.png"
+      },
+      {
+        "name": "The Joker",
+        "category": "DC Comics",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/5/5f/Batman_Three_Jokers.jpg"
+      },
+      {
+        "name": "Gandalf",
+        "category": "Lord of the Rings",
+        "imageUrl": "https://static.wikia.nocookie.net/lotr/images/e/e7/Gandalf_the_Grey.jpg/revision/latest/scale-to-width-down/732?cb=20121110131754"
+      },
+      {
+        "name": "Mario",
+        "category": "Games",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/5/5c/Mario_by_Shigehisa_Nakaue.png"
+      },
+      {
+        "name": "Batman",
+        "category": "DC Comics",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/c/c7/Batman_Infobox.jpg"
+      },
+      {
+        "name": "Homer Simpson",
+        "category": "The Simpsons",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/0/02/Homer_Simpson_2006.png"
+      },
+      {
+        "name": "Pikachu",
+        "category": "Pokémon",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/a/a6/Pok%C3%A9mon_Pikachu_art.png"
+      },
+      {
+        "name": "Gollum",
+        "category": "Lord of the Rings",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Gollum_s_journey_commences_by_Frederic_Bennett_%28detail%29.jpg"
+      },
+      {
+        "name": "Sonic the Hedgehog",
+        "category": "Games",
+        "imageUrl": "https://cdn.sega.co.uk/mhc-sega/public/styles/1280/public/content/media/images/raster/s_sonicworld_home_hero_sonic_1280x1280-785ed3fc.png.webp?itok=qUOTEkDt"
+      },
+      {
+        "name": "Wolverine",
+        "category": "Marvel",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/d/d3/Wolverine_%28circa_2024%29.jpg"
+      },
+      {
+        "name": "Elsa",
+        "category": "Frozen",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/5/5e/Elsa_from_Disney%27s_Frozen.png"
+      },
+      {
+        "name": "Link",
+        "category": "Zelda",
+        "imageUrl": "https://i.redd.it/all-which-link-is-your-favorite-v0-9ibbxcquxkib1.jpg?width=479&format=pjpg&auto=webp&s=8d48d811c35647122e2a618f855cdb54e887391a"
+      },
+      {
+        "name": "Dracula",
+        "category": "Horror",
+        "imageUrl": "https://images.squarespace-cdn.com/content/v1/5cead773c5ca7e000154123e/1635731165048-NQ8FZIT0T0DNVH14KAKE/Dracula+-+Bela+Lugosi+1931.jpg?format=1000w"
+      },
+      {
+        "name": "Superman",
+        "category": "DC Comics",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/3/35/Supermanflying.png"
+      },
+      {
+        "name": "Geralt of Rivia",
+        "category": "The Witcher",
+        "imageUrl": "https://i.redd.it/pjnxt2p3j6p31.jpg"
+      },
+      {
+        "name": "Baby Yoda",
+        "category": "Star Wars",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/a/a0/Grogu_%28Star_Wars%29.jpg"
+      },
+      {
+        "name": "Crash Bandicoot",
+        "category": "Games",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/a/a3/IAT_Crash_Bandicoot.png"
+      },
+      {
+        "name": "Pac-Man",
+        "category": "Games",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Pac-Man_ingame_and_2D_alternative_design.png/330px-Pac-Man_ingame_and_2D_alternative_design.png"
+      },
+      {
+        "name": "Yoda",
+        "category": "Star Wars",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/9/9b/Yoda_Empire_Strikes_Back.png"
+      },
+      {
+        "name": "Captain Jack Sparrow",
+        "category": "Pirates of the Caribbean",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Johnny_Depp_as_Captain_Jack_Sparrow_in_Queensland%2C_Australia.jpg/330px-Johnny_Depp_as_Captain_Jack_Sparrow_in_Queensland%2C_Australia.jpg"
+      }
+    ]
+  },
+  {
+    "id": "nederland-nu",
+    "name": "🇳🇱 Nederland Nu",
+    "description": "Bekende Nederlanders die onze generatie kent",
+    "characters": [
+      {
+        "name": "Lil Kleine",
+        "category": "Rapper",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Lil_kleine_jorik_scholten-1518018394.jpg/330px-Lil_kleine_jorik_scholten-1518018394.jpg"
+      },
+      {
+        "name": "Nikkie de Jager",
+        "category": "YouTuber / MUA",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/NikkiedeJager2020-2.jpg/330px-NikkiedeJager2020-2.jpg"
+      },
+      {
+        "name": "Armin van Buuren",
+        "category": "DJ",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Armin_van_Buuren%2C_November_2025_%28cropped%29.jpg/330px-Armin_van_Buuren%2C_November_2025_%28cropped%29.jpg"
+      },
+      {
+        "name": "Eva Jinek",
+        "category": "Talkshow",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Eva_Jinek_%282018%29.jpg/330px-Eva_Jinek_%282018%29.jpg"
+      },
+      {
+        "name": "Matthijs van Nieuwkerk",
+        "category": "TV",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Matthijs-van-Nieuwkerk.jpg/330px-Matthijs-van-Nieuwkerk.jpg"
+      },
+      {
+        "name": "Tiësto",
+        "category": "DJ",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Tiesto_LIV_Las_Vegas.png"
+      },
+      {
+        "name": "Martin Garrix",
+        "category": "DJ",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Martin_Garrix_%40_Web_Summit_2017.jpg/330px-Martin_Garrix_%40_Web_Summit_2017.jpg"
+      },
+      {
+        "name": "Giel Beelen",
+        "category": "Radio",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Giel_Beelen_during_Serious_Request_2012.jpg/330px-Giel_Beelen_during_Serious_Request_2012.jpg"
+      },
+      {
+        "name": "Boef",
+        "category": "Rapper",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Boef_2018.jpg/330px-Boef_2018.jpg"
+      },
+      {
+        "name": "Marco Borsato",
+        "category": "Zanger",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Marco_Borsato_2016.tif/lossy-page1-330px-Marco_Borsato_2016.tif.jpg"
+      },
+      {
+        "name": "Max Verstappen",
+        "category": "F1",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/2024-08-25_Motorsport%2C_Formel_1%2C_Gro%C3%9Fer_Preis_der_Niederlande_2024_STP_3973_by_Stepro_%28medium_crop%29.jpg/330px-2024-08-25_Motorsport%2C_Formel_1%2C_Gro%C3%9Fer_Preis_der_Niederlande_2024_STP_3973_by_Stepro_%28medium_crop%29.jpg"
+      },
+      {
+        "name": "Thierry Baudet",
+        "category": "Politiek",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Thierry_Baudet_%282025%29_%287%29_%28cropped%29.jpg/330px-Thierry_Baudet_%282025%29_%287%29_%28cropped%29.jpg"
+      },
+      {
+        "name": "Famke Louise",
+        "category": "Zangeres",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Famke_Louise_bij_DWDD_in_2018_%28cropped%29.jpg/330px-Famke_Louise_bij_DWDD_in_2018_%28cropped%29.jpg"
+      },
+      {
+        "name": "Pieter Omtzigt",
+        "category": "Politiek",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Pieter_Omtzigt%2C_November_2019.jpg/330px-Pieter_Omtzigt%2C_November_2019.jpg"
+      },
+      {
+        "name": "Caroline van der Plas",
+        "category": "Politiek",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Caroline_van_der_Plas.jpg/330px-Caroline_van_der_Plas.jpg"
+      },
+      {
+        "name": "Jesse Klaver",
+        "category": "Politiek",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Jesse_Klaver_2020_%286%29_%28cropped%29.jpg/330px-Jesse_Klaver_2020_%286%29_%28cropped%29.jpg"
+      },
+      {
+        "name": "André Kuipers",
+        "category": "Astronaut",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/ESA_astronaut_Andr%C3%A9_Kuipers.jpg/330px-ESA_astronaut_Andr%C3%A9_Kuipers.jpg"
+      },
+      {
+        "name": "Jort Kelder",
+        "category": "TV / Ondernemer",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Jort_Kelder_%282021%29_%28cropped%29.jpg/330px-Jort_Kelder_%282021%29_%28cropped%29.jpg"
+      },
+      {
+        "name": "Mark Rutte",
+        "category": "Politiek",
+        "imageUrl": "https://www.debatinstituut.nl/wp-content/uploads/2021/02/Mark-Rutte.jpg"
+      },
+      {
+        "name": "Willem-Alexander",
+        "category": "Koning",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Zijne_Majesteit_Koning_Willem-Alexander_met_koningsmantel_april_2013_%28cropped%29.jpeg/330px-Zijne_Majesteit_Koning_Willem-Alexander_met_koningsmantel_april_2013_%28cropped%29.jpeg"
+      },
+      {
+        "name": "Máxima",
+        "category": "Koningin",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Koningin-maxima-okt-15-s.jpg/330px-Koningin-maxima-okt-15-s.jpg"
+      },
+      {
+        "name": "Geert Wilders",
+        "category": "Politiek",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Cumbre_de_Madrid_8_de_Febrero_-_54314677909.jpg/330px-Cumbre_de_Madrid_8_de_Febrero_-_54314677909.jpg"
+      },
+      {
+        "name": "Doutzen Kroes",
+        "category": "Model",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Doutzen_Kroes_2012_Shankbone.JPG/330px-Doutzen_Kroes_2012_Shankbone.JPG"
+      },
+      {
+        "name": "Sylvie Meis",
+        "category": "TV / Model",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Deutscher_Fernsehpreis_2012_-_Sylvie_van_der_Vaart_2.jpg/330px-Deutscher_Fernsehpreis_2012_-_Sylvie_van_der_Vaart_2.jpg"
+      }
+    ]
+  }
+]

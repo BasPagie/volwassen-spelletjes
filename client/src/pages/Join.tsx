@@ -13,9 +13,20 @@ export default function Join() {
   const navigate = useNavigate();
   const socket = useSocket();
   const [nickname, setNickname] = useState("");
-  const [avatar, setAvatar] = useState(
-    PREMADE_AVATARS[Math.floor(Math.random() * PREMADE_AVATARS.length)],
-  );
+  const [avatar, setAvatar] = useState(() => {
+    try {
+      const saved = localStorage.getItem("custom-avatars");
+      if (saved) {
+        const arr = JSON.parse(saved);
+        if (arr[0]) return arr[0];
+      }
+    } catch {
+      /* ignore */
+    }
+    const old = localStorage.getItem("custom-avatar");
+    if (old) return old;
+    return PREMADE_AVATARS[Math.floor(Math.random() * PREMADE_AVATARS.length)];
+  });
   const [joining, setJoining] = useState(false);
   const [error, setError] = useState("");
   const [roomStatus, setRoomStatus] = useState<
