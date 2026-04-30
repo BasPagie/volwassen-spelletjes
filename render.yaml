@@ -3,8 +3,8 @@ services:
     name: spelletjeskamer
     runtime: node
     plan: free
-    buildCommand: npm run install:all && npm run build
-    startCommand: node server/dist/server/src/index.js
+    buildCommand: NODE_ENV=development npm run install:all && npm run build
+    startCommand: NODE_ENV=production node server/dist/server/src/index.js
     envVars:
-      - key: NODE_ENV
-        value: production
+      - key: NODE_VERSION
+        value: 22
