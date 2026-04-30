@@ -1,4 +1,4 @@
-import { readFileSync } from 'fs';
+import { readFileSync, existsSync } from 'fs';
 import { join } from 'path';
 import type { WhatAmICharacter, WhatAmICharacterPack } from '../../shared/types.js';
 
@@ -11,8 +11,11 @@ interface RawPack {
 }
 
 function loadPacksFromFile(): WhatAmICharacterPack[] {
-  // tsx/node provides __dirname in CJS mode; path is server/src → go up to server/data
-  const filePath = join(__dirname, '..', 'data', 'characters.json');
+  // In dev (tsx): __dirname = server/src → ../data
+  // In prod (compiled): __dirname = server/dist/server/src → ../../../data
+  const devPath = join(__dirname, '..', 'data', 'characters.json');
+  const prodPath = join(__dirname, '..', '..', '..', 'data', 'characters.json');
+  const filePath = existsSync(devPath) ? devPath : prodPath;
   const raw: RawPack[] = JSON.parse(readFileSync(filePath, 'utf-8'));
 
   return raw.map((pack) => ({

@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: spelletjeskamer
+    runtime: node
+    plan: free
+    buildCommand: npm run install:all && npm run build
+    startCommand: node server/dist/server/src/index.js
+    envVars:
+      - key: NODE_ENV
+        value: production

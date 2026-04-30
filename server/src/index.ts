@@ -13,11 +13,12 @@ const CORS_ORIGINS = process.env.CORS_ORIGIN
   ? process.env.CORS_ORIGIN.split(',')
   : ['http://localhost:5173', 'http://localhost:5174', 'http://127.0.0.1:5173', 'http://127.0.0.1:5174'];
 
+const isProduction = process.env.NODE_ENV === 'production';
+
 const io = new Server<ClientToServerEvents, ServerToClientEvents>(server, {
-  cors: {
-    origin: CORS_ORIGINS,
-    methods: ['GET', 'POST'],
-  },
+  cors: isProduction
+    ? { origin: true }  // Allow same-origin in production
+    : { origin: CORS_ORIGINS, methods: ['GET', 'POST'] },
 });
 
 app.use(express.json());
