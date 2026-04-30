@@ -189,8 +189,18 @@ export default function WhatAmIGame({
             ) : (
               <span>
                 🔄 Beurt van{" "}
-                <span className="text-purple-700">
-                  {currentTurnPlayer?.avatarUrl}{" "}
+                <span className="text-purple-700 inline-flex items-center gap-1">
+                  {currentTurnPlayer?.avatarUrl &&
+                  (currentTurnPlayer.avatarUrl.startsWith("data:") ||
+                    currentTurnPlayer.avatarUrl.startsWith("http")) ? (
+                    <img
+                      src={currentTurnPlayer.avatarUrl}
+                      alt=""
+                      className="w-5 h-5 rounded-full object-cover inline"
+                    />
+                  ) : (
+                    <span>{currentTurnPlayer?.avatarUrl}</span>
+                  )}{" "}
                   {currentTurnPlayer?.nickname ?? "..."}
                 </span>
               </span>
@@ -362,7 +372,17 @@ export default function WhatAmIGame({
                                 : `#${idx + 1}`}
                         </span>
                         <span className="text-xl">
-                          {player?.avatarUrl ?? "👤"}
+                          {player?.avatarUrl &&
+                          (player.avatarUrl.startsWith("data:") ||
+                            player.avatarUrl.startsWith("http")) ? (
+                            <img
+                              src={player.avatarUrl}
+                              alt=""
+                              className="w-6 h-6 rounded-full object-cover inline"
+                            />
+                          ) : (
+                            <>{player?.avatarUrl ?? "👤"}</>
+                          )}
                         </span>
                         <div className="flex-1">
                           <p className="font-display font-bold text-gray-800">

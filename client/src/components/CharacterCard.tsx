@@ -130,7 +130,17 @@ export default function CharacterCard({ playerState, player, isOwn }: Props) {
       {/* Player name + character name */}
       <div className="p-2 sm:p-3">
         <div className="flex items-center gap-1.5 mb-1">
-          <span className="text-lg">{player?.avatarUrl ?? "👤"}</span>
+          {player?.avatarUrl &&
+          (player.avatarUrl.startsWith("data:") ||
+            player.avatarUrl.startsWith("http")) ? (
+            <img
+              src={player.avatarUrl}
+              alt=""
+              className="w-6 h-6 rounded-full object-cover"
+            />
+          ) : (
+            <span className="text-lg">{player?.avatarUrl ?? "👤"}</span>
+          )}
           <span className="font-display font-bold text-sm text-gray-700 truncate">
             {player?.nickname ?? "Speler"}
           </span>

@@ -344,7 +344,17 @@ export default function Lobby() {
                     key={bot.id}
                     className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-orange-100 text-orange-700 text-xs font-display"
                   >
-                    {bot.avatarUrl} {bot.nickname}
+                    {bot.avatarUrl.startsWith("data:") ||
+                    bot.avatarUrl.startsWith("http") ? (
+                      <img
+                        src={bot.avatarUrl}
+                        alt=""
+                        className="w-4 h-4 rounded-full object-cover inline"
+                      />
+                    ) : (
+                      <span>{bot.avatarUrl}</span>
+                    )}{" "}
+                    {bot.nickname}
                     <button
                       onClick={() =>
                         socket?.emit("dev-remove-bot", {
