@@ -557,6 +557,7 @@ export function registerSocketHandlers(io: IOServer, socket: IOSocket): void {
     socket.emit('room-check', {
       exists: !!room,
       joinable: !!room && room.status === 'lobby',
+      gameCategory: room?.gameCategory ?? null,
     });
   });
 

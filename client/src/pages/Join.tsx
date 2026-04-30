@@ -32,6 +32,7 @@ export default function Join() {
   const [roomStatus, setRoomStatus] = useState<
     "checking" | "joinable" | "started" | "not-found"
   >("checking");
+  const [gameCategory, setGameCategory] = useState<string | null>(null);
 
   // Check if room exists on mount
   useEffect(() => {
@@ -40,13 +41,16 @@ export default function Join() {
     const handleCheck = ({
       exists,
       joinable,
+      gameCategory: cat,
     }: {
       exists: boolean;
       joinable: boolean;
+      gameCategory?: string | null;
     }) => {
       if (!exists) setRoomStatus("not-found");
       else if (!joinable) setRoomStatus("started");
       else setRoomStatus("joinable");
+      if (cat) setGameCategory(cat);
     };
 
     socket.on("room-check", handleCheck);
@@ -88,10 +92,14 @@ export default function Join() {
         className="text-center mb-8"
       >
         <h1
-          className="font-display font-black text-4xl sm:text-5xl text-transparent bg-clip-text 
-                        bg-gradient-to-r from-brand-500 via-orange-500 to-pink-500 mb-2"
+          className={`font-display font-black text-4xl sm:text-5xl text-transparent bg-clip-text 
+                        bg-gradient-to-r ${
+                          gameCategory === "what-am-i"
+                            ? "from-purple-500 to-fuchsia-500"
+                            : "from-pink-500 via-rose-400 to-amber-400"
+                        } mb-2`}
         >
-          Woord
+          Spelletjeskamer
         </h1>
         {roomStatus === "joinable" && (
           <p className="text-lg text-gray-600 font-display">
@@ -160,10 +168,18 @@ export default function Join() {
         >
           <div className="text-center mb-4">
             <span
-              className="inline-block bg-brand-100 text-brand-700 font-display font-bold 
-                           px-4 py-1.5 rounded-full text-sm"
+              className={`inline-block font-display font-bold px-4 py-1.5 rounded-full text-sm ${
+                gameCategory === "what-am-i"
+                  ? "bg-purple-100 text-purple-700"
+                  : "bg-brand-100 text-brand-700"
+              }`}
             >
-              Kamer: {roomId}
+              {gameCategory === "what-am-i"
+                ? "🎭 Wie Ben Ik?"
+                : gameCategory === "drawing"
+                  ? "✏️ Tekenwedstrijd"
+                  : "🧠 Woordspellen"}{" "}
+              — Kamer: {roomId}
             </span>
           </div>
 

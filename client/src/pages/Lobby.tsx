@@ -167,10 +167,10 @@ export default function Lobby() {
                         bg-gradient-to-r ${
                           isWhatAmI
                             ? "from-purple-500 to-fuchsia-500"
-                            : "from-brand-500 to-orange-500"
+                            : "from-pink-500 via-rose-400 to-amber-400"
                         }`}
           >
-            Wachtkamer
+            Spelletjeskamer
           </h1>
           <div className="flex items-center gap-2 ml-3">
             <span

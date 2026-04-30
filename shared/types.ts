@@ -323,7 +323,7 @@ export interface ServerToClientEvents {
   'dev-mode-status': (data: { enabled: boolean }) => void;
   'reconnected': (data: { room: GameRoom; player: Player; roundState: RoundState | null; phase: 'lobby' | 'playing' | 'round-end' | 'finished'; roundResult: RoundResult | null; finalResults: FinalResults | null; playerProgress: PlayerProgress[] }) => void;
   'reconnect-failed': () => void;
-  'room-check': (data: { exists: boolean; joinable: boolean }) => void;
+  'room-check': (data: { exists: boolean; joinable: boolean; gameCategory?: string | null }) => void;
   // ─── Wie Ben Ik? ───────────────────────────────────
   'whatami:settings-updated': (settings: WhatAmISettings) => void;
   'whatami:state-update': (state: WhatAmIClientGameState) => void;
