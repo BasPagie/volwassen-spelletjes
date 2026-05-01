@@ -5,6 +5,7 @@ import { useSocketEvents } from "../hooks/useSocketEvents";
 import AvatarPicker from "../components/AvatarPicker";
 import { PREMADE_AVATARS } from "shared/types";
 import type { GameCategory } from "shared/types";
+import { getCategoryTheme } from "../lib/categoryThemes";
 
 const GAME_CATEGORIES: {
   id: GameCategory;
@@ -34,9 +35,18 @@ const GAME_CATEGORIES: {
     available: true,
   },
   {
+    id: "snelste-vinger",
+    icon: "🏃",
+    title: "Snelste Vinger",
+    subtitle: "Buzz als eerste het juiste antwoord!",
+    color: "text-red-700",
+    bg: "bg-red-50 border-red-300 hover:bg-red-100",
+    available: true,
+  },
+  {
     id: "drawing",
-    icon: "✏️",
-    title: "Tekenwedstrijd",
+    icon: "🔮",
+    title: "Komt snel...",
     subtitle: "Binnenkort beschikbaar!",
     color: "text-gray-400",
     bg: "bg-gray-50 border-gray-200 cursor-not-allowed opacity-60",
@@ -91,6 +101,7 @@ export default function Landing() {
   };
 
   const selectedCat = GAME_CATEGORIES.find((c) => c.id === selectedCategory);
+  const theme = getCategoryTheme(selectedCategory ?? "woord");
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 py-8 overflow-y-auto">
@@ -127,18 +138,18 @@ export default function Landing() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.35 }}
-            className="w-full max-w-2xl"
+            className="w-full max-w-3xl"
           >
             <p className="text-center text-sm font-display font-semibold text-gray-500 mb-3 uppercase tracking-wide">
               Kies een spel
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div className="flex flex-wrap justify-center gap-4">
               {GAME_CATEGORIES.map((cat) => (
                 <button
                   key={cat.id}
                   onClick={() => cat.available && handleSelectCategory(cat.id)}
                   disabled={!cat.available}
-                  className={`rounded-2xl border-2 p-5 text-left transition-all ${cat.bg}`}
+                  className={`rounded-2xl border-2 p-5 text-left transition-all w-44 ${cat.bg}`}
                 >
                   <div className="text-4xl mb-3">{cat.icon}</div>
                   <div
@@ -166,11 +177,7 @@ export default function Landing() {
             <div className="relative flex items-center justify-center mb-5">
               <button
                 onClick={() => setStep("pick")}
-                className={`absolute left-0 flex items-center gap-1.5 text-sm font-display font-semibold text-gray-500 transition-colors px-3 py-1.5 rounded-lg border border-gray-200 ${
-                  selectedCategory === "what-am-i"
-                    ? "hover:text-purple-600 hover:bg-purple-50 hover:border-purple-300"
-                    : "hover:text-brand-600 hover:bg-brand-50 hover:border-brand-300"
-                }`}
+                className={`absolute left-0 flex items-center gap-1.5 text-sm font-display font-semibold text-gray-500 transition-colors px-3 py-1.5 rounded-lg border border-gray-200 ${theme.badgeHover}`}
               >
                 ← Terug
               </button>
@@ -184,9 +191,7 @@ export default function Landing() {
               <AvatarPicker
                 value={avatar}
                 onChange={setAvatar}
-                accentColor={
-                  selectedCategory === "what-am-i" ? "purple" : "brand"
-                }
+                accentColor={theme.colorKey}
               />
 
               {/* Nickname */}
@@ -201,11 +206,8 @@ export default function Landing() {
                   placeholder="Voer je naam in..."
                   maxLength={20}
                   autoFocus
-                  className={`w-full px-4 py-3 rounded-xl border-2 border-gray-200 outline-none transition-all text-lg font-display ${
-                    selectedCategory === "what-am-i"
-                      ? "focus:border-purple-400 focus:ring-2 focus:ring-purple-200"
-                      : "focus:border-brand-400 focus:ring-2 focus:ring-brand-200"
-                  }`}
+                  className={`w-full px-4 py-3 rounded-xl border-2 border-gray-200 outline-none transition-all text-lg font-display
+                    focus:border-current focus:ring-2 focus:ring-current/20 ${theme.accentText}`}
                   onKeyDown={(e) => e.key === "Enter" && handleCreate()}
                 />
               </div>
@@ -216,11 +218,7 @@ export default function Landing() {
                 disabled={!nickname.trim() || !socket || creating}
                 className={`w-full font-display font-bold py-2.5 sm:py-3 px-6 sm:px-8 rounded-2xl text-base sm:text-lg shadow-lg hover:shadow-xl 
                            transform hover:scale-105 active:scale-95 transition-all duration-200 text-white
-                           disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none ${
-                             selectedCategory === "what-am-i"
-                               ? "bg-purple-600 hover:bg-purple-700"
-                               : "bg-brand-500 hover:bg-brand-600"
-                           }`}
+                           disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none ${theme.accentHover}`}
               >
                 {creating ? (
                   <span className="flex items-center justify-center gap-2">

@@ -28,8 +28,31 @@ function getSavedAvatars(): string[] {
 interface AvatarPickerProps {
   value: string;
   onChange: (avatar: string) => void;
-  accentColor?: "brand" | "purple";
+  accentColor?: "brand" | "purple" | "red" | "teal";
 }
+
+const ACCENT_STYLES = {
+  brand: {
+    border: "border-brand-300 hover:border-brand-500",
+    activeBg: "bg-brand-100 border-brand-500",
+    activeBorder: "border-brand-500",
+  },
+  purple: {
+    border: "border-purple-300 hover:border-purple-500",
+    activeBg: "bg-purple-100 border-purple-500",
+    activeBorder: "border-purple-500",
+  },
+  red: {
+    border: "border-red-300 hover:border-red-500",
+    activeBg: "bg-red-100 border-red-500",
+    activeBorder: "border-red-500",
+  },
+  teal: {
+    border: "border-teal-300 hover:border-teal-500",
+    activeBg: "bg-teal-100 border-teal-500",
+    activeBorder: "border-teal-500",
+  },
+};
 
 export default function AvatarPicker({
   value,
@@ -137,11 +160,7 @@ export default function AvatarPicker({
         onClick={() => setShowPicker(!showPicker)}
         className={`w-20 h-20 rounded-full bg-white border-4 
                    flex items-center justify-center text-4xl shadow-lg transition-all duration-200
-                   hover:scale-110 active:scale-95 overflow-hidden ${
-                     accentColor === "purple"
-                       ? "border-purple-300 hover:border-purple-500"
-                       : "border-brand-300 hover:border-brand-500"
-                   }`}
+                   hover:scale-110 active:scale-95 overflow-hidden ${ACCENT_STYLES[accentColor].border}`}
       >
         {isCustom ? (
           <img
@@ -189,9 +208,7 @@ export default function AvatarPicker({
                                transition-all duration-150 hover:scale-110 active:scale-95
                                ${
                                  value === emoji
-                                   ? accentColor === "purple"
-                                     ? "bg-purple-100 border-2 border-purple-500 shadow-md"
-                                     : "bg-brand-100 border-2 border-brand-500 shadow-md"
+                                   ? `${ACCENT_STYLES[accentColor].activeBg} border-2 shadow-md`
                                    : "bg-gray-50 hover:bg-gray-100 border-2 border-transparent"
                                }`}
                   >
@@ -219,9 +236,7 @@ export default function AvatarPicker({
                             className={`w-10 h-10 rounded-full overflow-hidden border-2 transition-all
                               ${
                                 value === avatar
-                                  ? accentColor === "purple"
-                                    ? "border-purple-500 shadow-md"
-                                    : "border-brand-500 shadow-md"
+                                  ? `${ACCENT_STYLES[accentColor].activeBorder} shadow-md`
                                   : "border-gray-200 hover:border-gray-400"
                               }`}
                           >

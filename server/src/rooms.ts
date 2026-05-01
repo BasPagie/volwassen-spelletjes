@@ -248,6 +248,13 @@ export function updateWhatAmISettings(roomId: string, settings: import('../../sh
   return true;
 }
 
+export function updateSnelsteVingerSettings(roomId: string, settings: import('../../shared/types.js').SnelsteVingerSettings): boolean {
+  const room = rooms.get(roomId);
+  if (!room || room.status !== 'lobby') return false;
+  room.snelsteVingerSettings = settings;
+  return true;
+}
+
 export function getPlayerInRoom(roomId: string, playerId: string): Player | undefined {
   const room = rooms.get(roomId);
   return room?.players.find((p) => p.id === playerId);

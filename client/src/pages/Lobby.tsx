@@ -9,9 +9,15 @@ import PlayerList from "../components/PlayerList";
 import GameSettingsPanel from "../components/GameSettingsPanel";
 import WhatAmILobbySettings from "../components/WhatAmILobbySettings";
 import DrawingGameStub from "../components/DrawingGameStub";
+import SnelsteVingerLobbySettings from "../components/SnelsteVingerLobbySettings";
+import { getCategoryTheme } from "../lib/categoryThemes";
 import { isMuted, toggleMute } from "../hooks/useSoundEffect";
 import SkeletonLoader from "../components/SkeletonLoader";
-import type { GameSettings, WhatAmISettings } from "shared/types";
+import type {
+  GameSettings,
+  WhatAmISettings,
+  SnelsteVingerSettings,
+} from "shared/types";
 
 export default function Lobby() {
   useSocketEvents();
@@ -80,10 +86,20 @@ export default function Lobby() {
     socket.emit("whatami:update-settings", settings);
   };
 
+  const handleSnelsteVingerSettingsChange = (
+    settings: SnelsteVingerSettings,
+  ) => {
+    if (!socket) return;
+    dispatch({ type: "SNELSTEVINGER_SETTINGS_UPDATED", settings }); // Optimistic
+    socket.emit("snelstevinger:update-settings", settings);
+  };
+
   const handleStartGame = () => {
     if (!socket) return;
     if (state.room?.gameCategory === "what-am-i") {
       socket.emit("whatami:start-game");
+    } else if (state.room?.gameCategory === "snelste-vinger") {
+      socket.emit("snelstevinger:start-game");
     } else {
       socket.emit("start-game");
     }
@@ -143,6 +159,8 @@ export default function Lobby() {
   };
 
   const isWhatAmI = state.room.gameCategory === "what-am-i";
+  const isSnelsteVinger = state.room.gameCategory === "snelste-vinger";
+  const theme = getCategoryTheme(state.room.gameCategory);
 
   return (
     <div className="h-screen overflow-y-auto py-6 px-4">
@@ -162,35 +180,25 @@ export default function Lobby() {
           </button>
           <h1
             className={`font-display font-black text-3xl text-transparent bg-clip-text 
-                        bg-gradient-to-r ${
-                          isWhatAmI
-                            ? "from-purple-500 to-fuchsia-500"
-                            : "from-pink-500 via-rose-400 to-amber-400"
-                        }`}
+                        bg-gradient-to-r ${theme.gradient}`}
           >
             Spelletjeskamer
           </h1>
           <div className="flex items-center gap-2 ml-3">
             <span
-              className={`px-2 py-0.5 rounded-full text-xs font-display font-bold ${
-                isWhatAmI
-                  ? "bg-purple-100 text-purple-700"
-                  : "bg-brand-100 text-brand-700"
-              }`}
+              className={`px-2 py-0.5 rounded-full text-xs font-display font-bold ${theme.badge}`}
             >
               {state.room.gameCategory === "woord"
                 ? "🧠 Woordspellen"
                 : state.room.gameCategory === "what-am-i"
                   ? "🎭 Wie Ben Ik?"
-                  : "✏️ Tekenwedstrijd"}
+                  : state.room.gameCategory === "snelste-vinger"
+                    ? "🏃 Snelste Vinger"
+                    : "🔮 Komt snel..."}
             </span>
             <button
               onClick={() => setShowInfo(true)}
-              className={`px-3 py-1 rounded-full font-display font-bold text-xs transition-colors ${
-                isWhatAmI
-                  ? "bg-purple-100 hover:bg-purple-200 text-purple-600"
-                  : "bg-brand-100 hover:bg-brand-200 text-brand-600"
-              }`}
+              className={`px-3 py-1 rounded-full font-display font-bold text-xs transition-colors ${theme.badgeHover}`}
             >
               📖 Uitleg
             </button>
@@ -214,11 +222,7 @@ export default function Lobby() {
           {/* Left: room code + invite link */}
           <div className="flex items-center gap-2">
             <span
-              className={`font-display font-bold px-3 py-1.5 rounded-full text-xs shrink-0 ${
-                isWhatAmI
-                  ? "bg-purple-100 text-purple-700"
-                  : "bg-brand-100 text-brand-700"
-              }`}
+              className={`font-display font-bold px-3 py-1.5 rounded-full text-xs shrink-0 ${theme.badge}`}
             >
               {roomId}
             </span>
@@ -234,9 +238,7 @@ export default function Lobby() {
                   ${
                     copied
                       ? "bg-green-500 text-white"
-                      : isWhatAmI
-                        ? "bg-purple-500 hover:bg-purple-600 text-white"
-                        : "bg-brand-500 hover:bg-brand-600 text-white"
+                      : `${theme.accentHover} text-white`
                   }`}
             >
               {copied ? "✓" : "📋"}
@@ -255,11 +257,7 @@ export default function Lobby() {
                 <button
                   onClick={handleStartGame}
                   className={`text-base sm:text-lg px-6 sm:px-10 py-2.5 sm:py-3 whitespace-nowrap w-full sm:w-auto
-                    font-display font-bold rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 active:scale-95 transition-all duration-200 text-white ${
-                      isWhatAmI
-                        ? "bg-purple-600 hover:bg-purple-700"
-                        : "bg-brand-500 hover:bg-brand-600"
-                    }`}
+                    font-display font-bold rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 active:scale-95 transition-all duration-200 text-white ${theme.accentHover}`}
                 >
                   🚀 Start Spel!
                 </button>
@@ -316,6 +314,12 @@ export default function Lobby() {
               <WhatAmILobbySettings
                 settings={state.room.whatAmISettings}
                 onChange={handleWhatAmISettingsChange}
+                isHost={isPlayerHost}
+              />
+            ) : state.room.gameCategory === "snelste-vinger" ? (
+              <SnelsteVingerLobbySettings
+                settings={state.room.snelsteVingerSettings}
+                onChange={handleSnelsteVingerSettingsChange}
                 isHost={isPlayerHost}
               />
             ) : (
@@ -448,6 +452,55 @@ export default function Lobby() {
                       <p>
                         Er is een tijdslimiet — nog niet geraden als de tijd op
                         is? Dan scoor je nul voor deze ronde.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ) : state.room?.gameCategory === "snelste-vinger" ? (
+                <div className="space-y-3 text-sm text-gray-600 leading-relaxed">
+                  <div className="rounded-xl p-4 bg-red-50">
+                    <p className="font-display font-bold text-red-700 mb-2">
+                      🏃 Snelste Vinger
+                    </p>
+                    <p>
+                      Een snelle trivia-quiz! De server stelt vragen en wie als
+                      eerste het juiste antwoord intypt, scoort punten.
+                    </p>
+                  </div>
+                  <div className="border-t border-gray-100 pt-3 space-y-2">
+                    <div className="flex gap-2 items-start">
+                      <span className="text-lg">⌨️</span>
+                      <p>
+                        Typ je antwoord in en druk op <strong>BUZZ</strong>.
+                        Eerste correcte antwoord wint de vraag!
+                      </p>
+                    </div>
+                    <div className="flex gap-2 items-start">
+                      <span className="text-lg">❌</span>
+                      <p>
+                        Fout geantwoord? Je krijgt strafpunten en mag opnieuw
+                        proberen zolang de tijd loopt.
+                      </p>
+                    </div>
+                    <div className="flex gap-2 items-start">
+                      <span className="text-lg">⏱️</span>
+                      <p>
+                        Elke vraag heeft een tijdslimiet. Geen goed antwoord?
+                        Niemand scoort en we gaan door.
+                      </p>
+                    </div>
+                    <div className="flex gap-2 items-start">
+                      <span className="text-lg">🔥</span>
+                      <p>
+                        Meerdere vragen achter elkaar goed? Je bouwt een streak
+                        op voor bonuspunten!
+                      </p>
+                    </div>
+                    <div className="flex gap-2 items-start">
+                      <span className="text-lg">🏆</span>
+                      <p>
+                        Na alle vragen wint de speler met de meeste punten.
+                        Typfoutjes worden geaccepteerd.
                       </p>
                     </div>
                   </div>

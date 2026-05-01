@@ -12,6 +12,7 @@ import OpenDeurGame from "../components/OpenDeurGame";
 import LingoGame from "../components/LingoGame";
 import WhatAmIGame from "../components/WhatAmIGame";
 import DrawingGameStub from "../components/DrawingGameStub";
+import SnelsteVingerGame from "../components/SnelsteVingerGame";
 import TimerBar from "../components/TimerBar";
 import ProgressSidebar from "../components/ProgressSidebar";
 import RoundEndOverlay from "../components/RoundEndOverlay";
@@ -102,7 +103,10 @@ export default function Game() {
   // ─── Countdown (shared by all game types) ───────────
   if (
     state.phase === "countdown" ||
-    (!state.roundState && !state.whatAmIState && state.countdown !== null)
+    (!state.roundState &&
+      !state.whatAmIState &&
+      !state.snelsteVingerState &&
+      state.countdown !== null)
   ) {
     return (
       <div className="h-screen flex items-center justify-center bg-gradient-to-b from-gray-900 to-gray-800">
@@ -163,6 +167,14 @@ export default function Game() {
   // ─── Drawing branch ──────────────────────────────────
   if (state.room?.gameCategory === "drawing") {
     return <DrawingGameStub />;
+  }
+
+  // ─── Snelste Vinger branch ────────────────────────────
+  if (state.room?.gameCategory === "snelste-vinger") {
+    if (!state.snelsteVingerState) {
+      return <SkeletonLoader variant="game" />;
+    }
+    return <SnelsteVingerGame state={state.snelsteVingerState} />;
   }
 
   const handleSubmitGroup = (words: string[]) => {

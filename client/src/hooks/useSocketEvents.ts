@@ -202,6 +202,38 @@ export function useSocketEvents() {
       dispatch({ type: 'ADD_TOAST', toast: { id: nextToastId(), message: `💡 Hint: ${hint}`, type: 'info' } });
     });
 
+    // ─── Snelste Vinger ──────────────────────────────────
+    socket.on('snelstevinger:settings-updated', (settings) => {
+      dispatch({ type: 'SNELSTEVINGER_SETTINGS_UPDATED', settings });
+    });
+
+    socket.on('snelstevinger:question', (state) => {
+      dispatch({ type: 'SET_SNELSTEVINGER_STATE', state });
+    });
+
+    socket.on('snelstevinger:buzz-result', ({ correct }) => {
+      playSound(correct ? 'correct' : 'wrong');
+      if (!correct) {
+        dispatch({ type: 'ADD_TOAST', toast: { id: nextToastId(), message: '❌ Fout! Probeer opnieuw', type: 'error' } });
+      }
+    });
+
+    socket.on('snelstevinger:question-won', ({ winnerName, correctAnswer, scores }) => {
+      playSound('correct');
+      dispatch({ type: 'ADD_TOAST', toast: { id: nextToastId(), message: `🏆 ${winnerName} had het goed: ${correctAnswer}`, type: 'success' } });
+      dispatch({ type: 'UPDATE_SNELSTEVINGER_STATE', patch: { winnerId: scores[0]?.playerId ?? null, winnerName, correctAnswer, scores, phase: 'reveal' } });
+    });
+
+    socket.on('snelstevinger:question-timeout', ({ correctAnswer, scores }) => {
+      playSound('wrong');
+      dispatch({ type: 'ADD_TOAST', toast: { id: nextToastId(), message: `⏱️ Tijd voorbij! Antwoord: ${correctAnswer}`, type: 'warning' } });
+      dispatch({ type: 'UPDATE_SNELSTEVINGER_STATE', patch: { winnerId: null, winnerName: null, correctAnswer, scores, phase: 'reveal' } });
+    });
+
+    socket.on('snelstevinger:game-end', ({ scores }) => {
+      dispatch({ type: 'SNELSTEVINGER_GAME_END', state: { questionIndex: 0, totalQuestions: 0, question: '', category: '', timeRemainingMs: 0, answered: false, buzzedWrong: false, winnerId: null, winnerName: null, correctAnswer: null, scores, phase: 'finished' } });
+    });
+
     return () => {
       socket.off('room-created');
       socket.off('room-joined');
@@ -234,6 +266,12 @@ export function useSocketEvents() {
       socket.off('whatami:player-guessed');
       socket.off('whatami:game-end');
       socket.off('hint-given');
+      socket.off('snelstevinger:settings-updated');
+      socket.off('snelstevinger:question');
+      socket.off('snelstevinger:buzz-result');
+      socket.off('snelstevinger:question-won');
+      socket.off('snelstevinger:question-timeout');
+      socket.off('snelstevinger:game-end');
     };
   }, [socket, dispatch]);
 }

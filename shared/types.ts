@@ -1,5 +1,5 @@
 // ─── Game Category ─────────────────────────────────────
-export type GameCategory = 'woord' | 'what-am-i' | 'drawing';
+export type GameCategory = 'woord' | 'what-am-i' | 'drawing' | 'snelste-vinger';
 
 // ─── Player ────────────────────────────────────────────
 export interface Player {
@@ -58,6 +58,7 @@ export interface GameRoom {
   currentRoundIndex: number;
   gameCategory: GameCategory;
   whatAmISettings?: WhatAmISettings;
+  snelsteVingerSettings?: SnelsteVingerSettings;
 }
 
 // ─── Wie Ben Ik? (What Am I?) ──────────────────────────
@@ -121,6 +122,52 @@ export interface WhatAmIClientGameState {
   currentTurnPlayerId?: string;   // whose turn it is
   turnTimeRemainingMs?: number | null;   // ms left in current turn
   turnNumber?: number;            // overall turn count
+}
+
+// ─── Snelste Vinger (Fastest Finger) ───────────────────
+export interface SnelsteVingerSettings {
+  categoryIds: string[];           // selected trivia categories
+  questionCount: number;           // how many questions per game
+  timePerQuestion: number;         // seconds per question
+  hostPlays: boolean;
+  pointsCorrect: number;           // points for correct buzz
+  pointsWrongPenalty: number;      // penalty for wrong buzz (positive number, subtracted)
+  streakBonus: boolean;            // +25 per consecutive correct answer
+}
+
+export const DEFAULT_SNELSTEVINGER_SETTINGS: SnelsteVingerSettings = {
+  categoryIds: ['popcultuur', 'gaming', 'muziek', 'internet', 'series', 'wetenschap', 'random'],
+  questionCount: 15,
+  timePerQuestion: 15,
+  hostPlays: true,
+  pointsCorrect: 100,
+  pointsWrongPenalty: 25,
+  streakBonus: true,
+};
+
+export interface SnelsteVingerPlayerScore {
+  playerId: string;
+  nickname: string;
+  avatarUrl: string;
+  score: number;
+  streak: number;
+  correctCount: number;
+  wrongCount: number;
+}
+
+export interface SnelsteVingerClientState {
+  questionIndex: number;
+  totalQuestions: number;
+  question: string;
+  category: string;
+  timeRemainingMs: number;
+  answered: boolean;              // current player already answered correctly this question
+  buzzedWrong: boolean;           // current player buzzed wrong this question
+  winnerId: string | null;        // who won this question (null = still open)
+  winnerName: string | null;
+  correctAnswer: string | null;   // revealed after question ends
+  scores: SnelsteVingerPlayerScore[];
+  phase: 'question' | 'reveal' | 'finished';
 }
 
 // ─── Puzzles ───────────────────────────────────────────
@@ -296,6 +343,10 @@ export interface ClientToServerEvents {
   'whatami:give-up': () => void;
   'whatami:request-state': () => void;
   'host:give-hint': (data: { hint: string }) => void;
+  // ─── Snelste Vinger ────────────────────────────────
+  'snelstevinger:update-settings': (settings: SnelsteVingerSettings) => void;
+  'snelstevinger:start-game': () => void;
+  'snelstevinger:buzz': (data: { answer: string }) => void;
 }
 
 export interface ServerToClientEvents {
@@ -332,6 +383,13 @@ export interface ServerToClientEvents {
   'whatami:player-guessed': (data: { playerId: string; placement: number; score: number }) => void;
   'whatami:game-end': (data: WhatAmIClientGameState) => void;
   'hint-given': (data: { hint: string }) => void;
+  // ─── Snelste Vinger ────────────────────────────────
+  'snelstevinger:settings-updated': (settings: SnelsteVingerSettings) => void;
+  'snelstevinger:question': (data: SnelsteVingerClientState) => void;
+  'snelstevinger:buzz-result': (data: { correct: boolean; penalty?: number }) => void;
+  'snelstevinger:question-won': (data: { winnerId: string; winnerName: string; correctAnswer: string; scores: SnelsteVingerPlayerScore[] }) => void;
+  'snelstevinger:question-timeout': (data: { correctAnswer: string; scores: SnelsteVingerPlayerScore[] }) => void;
+  'snelstevinger:game-end': (data: { scores: SnelsteVingerPlayerScore[] }) => void;
 }
 
 // ─── Pre-made Avatars ──────────────────────────────────

@@ -58,6 +58,7 @@ import {
   giveUp,
 } from './whatAmIEngine.js';
 import { DEFAULT_WHATAMI_SETTINGS } from '../../shared/types.js';
+import { DEFAULT_SNELSTEVINGER_SETTINGS } from '../../shared/types.js';
 import {
   broadcastWhatAmIState,
   broadcastWhatAmIGameEnd,
@@ -65,6 +66,21 @@ import {
   createOnTick,
   createOnTurnAdvance,
 } from './whatAmIBroadcast.js';
+import {
+  startSnelsteVingerGame,
+  processSnelsteVingerBuzz,
+  advanceQuestion,
+  getSnelsteVingerInstance,
+  cleanupSnelsteVingerGame,
+  buildClientState,
+  buildScores,
+  getCurrentAnswer,
+  setQuestionTimer,
+  clearQuestionTimer,
+  setRevealTimer,
+  clearRevealTimer,
+} from './snelsteVingerEngine.js';
+import { updateSnelsteVingerSettings } from './rooms.js';
 
 type IOServer = Server<ClientToServerEvents, ServerToClientEvents>;
 type IOSocket = Socket<ClientToServerEvents, ServerToClientEvents>;
@@ -119,7 +135,7 @@ export function registerSocketHandlers(io: IOServer, socket: IOSocket): void {
       socket.emit('error', { message: 'Ongeldige naam of avatar.' });
       return;
     }
-    const validCategories = ['woord', 'what-am-i', 'drawing'];
+    const validCategories = ['woord', 'what-am-i', 'drawing', 'snelste-vinger'];
     const safeCategory = validCategories.includes(gameCategory) ? gameCategory : 'woord';
     const result = createRoom(socket.id, safeName, avatarUrl, safeCategory as import('../../shared/types.js').GameCategory);
     socket.join(result.room.roomId);
@@ -891,6 +907,127 @@ export function registerSocketHandlers(io: IOServer, socket: IOSocket): void {
     socket.emit('whatami:state-update', state);
   });
 
+  // ─── Snelste Vinger — Update Settings ────────────────
+  socket.on('snelstevinger:update-settings', (settings) => {
+    const mapping = getSocketMapping(socket.id);
+    if (!mapping) return;
+    if (!isHost(mapping.roomId, mapping.playerId)) return;
+
+    const room = getRoom(mapping.roomId);
+    if (!room || room.gameCategory !== 'snelste-vinger') return;
+
+    if (updateSnelsteVingerSettings(mapping.roomId, settings)) {
+      io.to(mapping.roomId).emit('snelstevinger:settings-updated', settings);
+    }
+  });
+
+  // ─── Snelste Vinger — Start Game ─────────────────────
+  socket.on('snelstevinger:start-game', () => {
+    const mapping = getSocketMapping(socket.id);
+    if (!mapping) return;
+    if (!isHost(mapping.roomId, mapping.playerId)) {
+      socket.emit('error', { message: 'Alleen de host kan het spel starten.' });
+      return;
+    }
+
+    const room = getRoom(mapping.roomId);
+    if (!room || room.gameCategory !== 'snelste-vinger') return;
+    if (room.status !== 'lobby') return;
+
+    const settings = room.snelsteVingerSettings ?? DEFAULT_SNELSTEVINGER_SETTINGS;
+    const roomId = room.roomId;
+
+    // Pre-validate
+    const players = settings.hostPlays
+      ? room.players.filter((p) => p.connected || p.isBot)
+      : room.players.filter((p) => (p.connected || p.isBot) && !p.isHost);
+
+    if (players.length < 2) {
+      socket.emit('error', { message: 'Er zijn minimaal 2 spelers nodig voor Snelste Vinger.' });
+      return;
+    }
+
+    if ((settings.categoryIds ?? []).length === 0) {
+      socket.emit('error', { message: 'Selecteer minimaal één trivia-categorie.' });
+      return;
+    }
+
+    // Countdown 3-2-1-GO then start
+    io.to(roomId).emit('game-started');
+
+    let count = 3;
+    io.to(roomId).emit('countdown', { count });
+    count--;
+    const countdownInterval = setInterval(() => {
+      if (!getRoom(roomId)) {
+        clearInterval(countdownInterval);
+        roomCountdowns.delete(roomId);
+        return;
+      }
+      if (count >= 0) {
+        io.to(roomId).emit('countdown', { count });
+        count--;
+      } else {
+        clearInterval(countdownInterval);
+        roomCountdowns.delete(roomId);
+
+        // Start the game
+        const result = startSnelsteVingerGame(room, settings);
+        if ('error' in result) {
+          io.to(roomId).emit('error', { message: result.error });
+          return;
+        }
+
+        room.status = 'playing';
+        startSnelsteVingerQuestion(io, roomId);
+      }
+    }, 1000);
+    roomCountdowns.set(roomId, countdownInterval);
+
+    console.log(`[SnelsteVinger] Started: ${roomId}`);
+  });
+
+  // ─── Snelste Vinger — Buzz ───────────────────────────
+  socket.on('snelstevinger:buzz', ({ answer }) => {
+    if (isRateLimited(socket.id)) return;
+    if (typeof answer !== 'string' || answer.length === 0 || answer.length > 200) return;
+
+    const mapping = getSocketMapping(socket.id);
+    if (!mapping) return;
+
+    const room = getRoom(mapping.roomId);
+    if (!room || room.gameCategory !== 'snelste-vinger' || room.status !== 'playing') return;
+
+    const instance = getSnelsteVingerInstance(mapping.roomId);
+    if (!instance) return;
+
+    const result = processSnelsteVingerBuzz(mapping.roomId, mapping.playerId, answer);
+    if ('error' in result) return;
+
+    socket.emit('snelstevinger:buzz-result', { correct: result.correct, penalty: result.penalty });
+
+    if (result.correct) {
+      // Someone won this question — stop the timer and broadcast
+      clearQuestionTimer(mapping.roomId);
+      const scores = buildScores(instance);
+      const correctAnswer = getCurrentAnswer(mapping.roomId) ?? '';
+      const winnerName = instance.playerInfo.get(mapping.playerId)?.nickname ?? '';
+
+      io.to(mapping.roomId).emit('snelstevinger:question-won', {
+        winnerId: mapping.playerId,
+        winnerName,
+        correctAnswer,
+        scores,
+      });
+
+      // Auto-advance after 3s reveal
+      const revealTimeout = setTimeout(() => {
+        handleSnelsteVingerAdvance(io, mapping.roomId);
+      }, 3000);
+      setRevealTimer(mapping.roomId, revealTimeout);
+    }
+  });
+
   // ─── Disconnect ──────────────────────────────────────
   socket.on('disconnect', () => {
     console.log(`[Socket] Disconnected: ${socket.id}`);
@@ -911,6 +1048,7 @@ function handleLeave(io: IOServer, socket: IOSocket): void {
     // Clean up all resources for this room
     cleanupGame(result.roomId);
     cleanupWhatAmIGame(result.roomId);
+    cleanupSnelsteVingerGame(result.roomId);
     roomRoundResults.delete(result.roomId);
     const countdown = roomCountdowns.get(result.roomId);
     if (countdown) {
@@ -961,6 +1099,7 @@ function handleDisconnect(io: IOServer, socket: IOSocket): void {
     if (removeResult.roomDeleted) {
       cleanupGame(roomId);
       cleanupWhatAmIGame(roomId);
+      cleanupSnelsteVingerGame(roomId);
       roomRoundResults.delete(roomId);
       const countdown = roomCountdowns.get(roomId);
       if (countdown) {
@@ -1081,4 +1220,113 @@ function endGame(io: IOServer, roomId: string): void {
 
   io.to(roomId).emit('game-end', finalResults);
   cleanupGame(roomId);
+}
+
+// ─── Snelste Vinger Helpers ────────────────────────────
+
+function startSnelsteVingerQuestion(io: IOServer, roomId: string): void {
+  const instance = getSnelsteVingerInstance(roomId);
+  if (!instance) return;
+
+  const room = getRoom(roomId);
+  if (!room) return;
+
+  const settings = room.snelsteVingerSettings ?? DEFAULT_SNELSTEVINGER_SETTINGS;
+
+  // Broadcast personalized state to each player
+  for (const player of room.players) {
+    if (!settings.hostPlays && player.isHost) continue;
+    const playerSocketId = getSocketIdForPlayer(roomId, player.id);
+    if (playerSocketId) {
+      const state = buildClientState(instance, player.id);
+      io.to(playerSocketId).emit('snelstevinger:question', state);
+    }
+  }
+
+  // Also send to spectating host if applicable
+  if (!settings.hostPlays) {
+    const host = room.players.find((p) => p.isHost);
+    if (host) {
+      const hostSocketId = getSocketIdForPlayer(roomId, host.id);
+      if (hostSocketId) {
+        const state = buildClientState(instance, host.id);
+        io.to(hostSocketId).emit('snelstevinger:question', state);
+      }
+    }
+  }
+
+  // Start question timer
+  const questionTimer = setInterval(() => {
+    const inst = getSnelsteVingerInstance(roomId);
+    if (!inst || inst.winnerId) {
+      clearInterval(questionTimer);
+      return;
+    }
+
+    const elapsed = Date.now() - inst.questionStartTime;
+    const remaining = settings.timePerQuestion * 1000 - elapsed;
+
+    if (remaining <= 0) {
+      clearInterval(questionTimer);
+      clearQuestionTimer(roomId);
+
+      // Time's up — nobody answered
+      const correctAnswer = getCurrentAnswer(roomId) ?? '';
+      const scores = buildScores(inst);
+      io.to(roomId).emit('snelstevinger:question-timeout', { correctAnswer, scores });
+
+      // Reset all streaks (nobody won)
+      for (const [, data] of inst.scores) {
+        data.streak = 0;
+      }
+
+      // Auto-advance after 3s reveal
+      const revealTimeout = setTimeout(() => {
+        handleSnelsteVingerAdvance(io, roomId);
+      }, 3000);
+      setRevealTimer(roomId, revealTimeout);
+    }
+  }, 250);
+  setQuestionTimer(roomId, questionTimer);
+}
+
+function handleSnelsteVingerAdvance(io: IOServer, roomId: string): void {
+  clearRevealTimer(roomId);
+
+  const result = advanceQuestion(roomId);
+  if (result === 'finished') {
+    // Game over
+    const instance = getSnelsteVingerInstance(roomId);
+    const room = getRoom(roomId);
+    if (instance && room) {
+      const scores = buildScores(instance);
+      io.to(roomId).emit('snelstevinger:game-end', { scores });
+
+      // Update player scores on room for results page
+      for (const s of scores) {
+        const player = room.players.find((p) => p.id === s.playerId);
+        if (player) player.score = s.score;
+      }
+
+      room.status = 'finished';
+
+      // Build final results for the Results page
+      const finalResults = {
+        players: scores.map((s, i) => ({
+          playerId: s.playerId,
+          nickname: s.nickname,
+          avatarUrl: s.avatarUrl,
+          totalScore: s.score,
+          roundScores: [s.score],
+          rank: i + 1,
+        })),
+        roundResults: [],
+      };
+      io.to(roomId).emit('game-end', finalResults);
+    }
+    cleanupSnelsteVingerGame(roomId);
+  } else {
+    // Next question
+    startSnelsteVingerQuestion(io, roomId);
+  }
 }

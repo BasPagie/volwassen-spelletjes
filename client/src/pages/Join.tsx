@@ -6,6 +6,8 @@ import { useSocketEvents } from "../hooks/useSocketEvents";
 import AvatarPicker from "../components/AvatarPicker";
 import SkeletonLoader from "../components/SkeletonLoader";
 import { PREMADE_AVATARS } from "shared/types";
+import type { GameCategory } from "shared/types";
+import { getCategoryTheme } from "../lib/categoryThemes";
 
 export default function Join() {
   useSocketEvents();
@@ -38,6 +40,7 @@ export default function Join() {
     "checking" | "joinable" | "started" | "not-found"
   >("checking");
   const [gameCategory, setGameCategory] = useState<string | null>(null);
+  const joinTheme = getCategoryTheme((gameCategory ?? "woord") as GameCategory);
 
   // Check if room exists on mount
   useEffect(() => {
@@ -100,11 +103,7 @@ export default function Join() {
       >
         <h1
           className={`font-display font-black text-4xl sm:text-5xl text-transparent bg-clip-text 
-                        bg-gradient-to-r ${
-                          gameCategory === "what-am-i"
-                            ? "from-purple-500 to-fuchsia-500"
-                            : "from-pink-500 via-rose-400 to-amber-400"
-                        } mb-2`}
+                        bg-gradient-to-r ${joinTheme.gradient} mb-2`}
         >
           Spelletjeskamer
         </h1>
@@ -170,17 +169,15 @@ export default function Join() {
         >
           <div className="text-center mb-4">
             <span
-              className={`inline-block font-display font-bold px-4 py-1.5 rounded-full text-sm ${
-                gameCategory === "what-am-i"
-                  ? "bg-purple-100 text-purple-700"
-                  : "bg-brand-100 text-brand-700"
-              }`}
+              className={`inline-block font-display font-bold px-4 py-1.5 rounded-full text-sm ${joinTheme.badge}`}
             >
               {gameCategory === "what-am-i"
                 ? "🎭 Wie Ben Ik?"
-                : gameCategory === "drawing"
-                  ? "✏️ Tekenwedstrijd"
-                  : "🧠 Woordspellen"}{" "}
+                : gameCategory === "snelste-vinger"
+                  ? "🏃 Snelste Vinger"
+                  : gameCategory === "drawing"
+                    ? "🔮 Komt snel..."
+                    : "🧠 Woordspellen"}{" "}
               — Kamer: {roomId}
             </span>
           </div>

@@ -15,6 +15,8 @@ import type {
   FinalResults,
   WhatAmIClientGameState,
   WhatAmISettings,
+  SnelsteVingerClientState,
+  SnelsteVingerSettings,
 } from "shared/types";
 
 // ─── State ─────────────────────────────────────────────
@@ -42,6 +44,8 @@ export interface GameState {
   toasts: Toast[];
   // Wie Ben Ik?
   whatAmIState: WhatAmIClientGameState | null;
+  // Snelste Vinger
+  snelsteVingerState: SnelsteVingerClientState | null;
 }
 
 const initialState: GameState = {
@@ -61,6 +65,7 @@ const initialState: GameState = {
   devMode: false,
   toasts: [],
   whatAmIState: null,
+  snelsteVingerState: null,
 };
 
 // ─── Actions ───────────────────────────────────────────
@@ -121,7 +126,15 @@ export type GameAction =
       score: number;
     }
   | { type: "WHATAMI_GAME_END"; state: WhatAmIClientGameState }
-  | { type: "WHATAMI_SETTINGS_UPDATED"; settings: WhatAmISettings };
+  | { type: "WHATAMI_SETTINGS_UPDATED"; settings: WhatAmISettings }
+  // ─── Snelste Vinger ───────────────────────────────
+  | { type: "SET_SNELSTEVINGER_STATE"; state: SnelsteVingerClientState }
+  | {
+      type: "UPDATE_SNELSTEVINGER_STATE";
+      patch: Partial<SnelsteVingerClientState>;
+    }
+  | { type: "SNELSTEVINGER_GAME_END"; state: SnelsteVingerClientState }
+  | { type: "SNELSTEVINGER_SETTINGS_UPDATED"; settings: SnelsteVingerSettings };
 
 function gameReducer(state: GameState, action: GameAction): GameState {
   switch (action.type) {
@@ -377,6 +390,49 @@ function gameReducer(state: GameState, action: GameAction): GameState {
       return {
         ...state,
         room: { ...state.room, whatAmISettings: action.settings },
+      };
+
+    case "SET_SNELSTEVINGER_STATE":
+      return {
+        ...state,
+        snelsteVingerState: action.state,
+        phase: "playing",
+        countdown: null,
+      };
+
+    case "UPDATE_SNELSTEVINGER_STATE":
+      if (!state.snelsteVingerState) return state;
+      return {
+        ...state,
+        snelsteVingerState: { ...state.snelsteVingerState, ...action.patch },
+      };
+
+    case "SNELSTEVINGER_GAME_END": {
+      const scores = action.state.scores;
+      const finalResults: FinalResults = {
+        players: scores.map((s, idx) => ({
+          playerId: s.playerId,
+          nickname: s.nickname,
+          avatarUrl: s.avatarUrl,
+          totalScore: s.score,
+          roundScores: [s.score],
+          rank: idx + 1,
+        })),
+        roundResults: [],
+      };
+      return {
+        ...state,
+        snelsteVingerState: { ...action.state, phase: "finished" },
+        phase: "finished",
+        finalResults,
+      };
+    }
+
+    case "SNELSTEVINGER_SETTINGS_UPDATED":
+      if (!state.room) return state;
+      return {
+        ...state,
+        room: { ...state.room, snelsteVingerSettings: action.settings },
       };
 
     default:
