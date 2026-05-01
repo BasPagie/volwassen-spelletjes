@@ -92,6 +92,7 @@ export default function WhatAmILobbySettings({
   const [newCharCategory, setNewCharCategory] = useState("");
   const [searching, setSearching] = useState(false);
   const [searchDone, setSearchDone] = useState(false);
+  const [showCustomSection, setShowCustomSection] = useState(false);
   const searchTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const lookupCharacter = useCallback(
@@ -475,316 +476,340 @@ export default function WhatAmILobbySettings({
 
       {/* Custom character builder */}
       <div>
-        <span className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">
-          Extra karakters
-          {current.customCharacters.length > 0 && (
-            <span className="ml-2 normal-case text-purple-500 font-bold">
-              {current.customCharacters.length} toegevoegd
-            </span>
-          )}
-        </span>
-        <div className="bg-gray-50/50 rounded-2xl border border-gray-100 p-3 space-y-3">
-          {current.customCharacters.length > 0 && (
-            <div className="space-y-1.5 mb-3">
-              {current.customCharacters.map((c) => {
-                const isEditing = editingId === c.id;
-                const hasFailed = failedImages.has(c.id);
-                return (
-                  <div
-                    key={c.id}
-                    className={`rounded-lg border ${hasFailed && !isEditing ? "border-orange-300 bg-orange-50" : "border-gray-200 bg-gray-50"}`}
-                  >
-                    {/* Collapsed view */}
-                    <div className="flex items-center gap-2 p-2">
-                      {c.imageUrl ? (
-                        <img
-                          src={c.imageUrl}
-                          alt={c.name}
-                          className="w-8 h-8 rounded-full object-cover"
-                        />
-                      ) : (
-                        <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-sm">
-                          {hasFailed ? "⚠️" : "👤"}
-                        </div>
-                      )}
-                      <div
-                        className="flex-1 min-w-0 cursor-pointer"
-                        onClick={() =>
-                          isHost && setEditingId(isEditing ? null : c.id)
-                        }
-                      >
-                        <p className="font-display font-bold text-sm text-gray-800 truncate">
-                          {c.name}
-                        </p>
-                        {c.category && (
-                          <p className="font-display text-xs text-gray-400 truncate">
-                            {c.category}
-                          </p>
-                        )}
-                        {hasFailed && !isEditing && (
-                          <p className="font-display text-xs text-orange-500 font-bold">
-                            Geen afbeelding — klik om te bewerken
-                          </p>
-                        )}
-                      </div>
-                      {isHost && (
-                        <div className="flex items-center gap-1">
-                          <button
-                            onClick={() =>
-                              setEditingId(isEditing ? null : c.id)
-                            }
-                            className="w-7 h-7 flex items-center justify-center rounded-md border border-gray-200 bg-white text-gray-500 hover:border-purple-400 hover:text-purple-600 hover:bg-purple-50 transition-all text-sm"
-                            title="Bewerken"
-                          >
-                            ✏️
-                          </button>
-                          <button
-                            onClick={() => removeCharacter(c.id)}
-                            className="w-7 h-7 flex items-center justify-center rounded-md border border-gray-200 bg-white text-red-400 hover:border-red-400 hover:text-red-600 hover:bg-red-50 transition-all font-bold text-lg leading-none"
-                            title="Verwijderen"
-                          >
-                            ×
-                          </button>
-                        </div>
-                      )}
-                    </div>
-                    {/* Expanded edit view */}
-                    {isEditing && isHost && (
-                      <div className="px-2 pb-2 pt-1 space-y-1.5 border-t border-gray-200">
-                        <input
-                          type="text"
-                          value={c.name}
-                          onChange={(e) =>
-                            updateCharacter(c.id, { name: e.target.value })
-                          }
-                          placeholder="Naam"
-                          className="w-full px-2 py-1.5 rounded-lg border border-gray-200 text-sm font-display outline-none focus:border-purple-400"
-                        />
-                        <input
-                          type="text"
-                          value={c.category || ""}
-                          onChange={(e) =>
-                            updateCharacter(c.id, {
-                              category: e.target.value || undefined,
-                            })
-                          }
-                          placeholder="Categorie (optioneel)"
-                          className="w-full px-2 py-1.5 rounded-lg border border-gray-200 text-xs font-display outline-none focus:border-purple-400"
-                        />
-                        <div className="flex gap-1.5">
-                          <input
-                            type="url"
-                            value={c.imageUrl || ""}
-                            onChange={(e) =>
-                              updateCharacter(c.id, {
-                                imageUrl: e.target.value || undefined,
-                              })
-                            }
-                            placeholder="Afbeelding URL (https://...)"
-                            className={`flex-1 px-2 py-1.5 rounded-lg border text-xs font-display outline-none ${hasFailed ? "border-orange-300 bg-orange-50 focus:border-orange-400" : "border-gray-200 focus:border-purple-400"}`}
-                          />
-                        </div>
-                        {hasFailed && (
-                          <p className="text-xs text-orange-500 font-display">
-                            ⚠️ Wikipedia had geen afbeelding — plak hier een URL
-                            of laat leeg
-                          </p>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-          )}
-
-          {/* Import / Export / Save buttons */}
-          {isHost && (
-            <div className="flex flex-wrap gap-2 mb-3">
-              <button
-                onClick={() => setShowImport(!showImport)}
-                className="px-3 py-1.5 rounded-lg border border-blue-200 bg-blue-50 text-blue-600 font-display font-bold text-xs hover:bg-blue-100 transition-all"
-              >
-                📥 Importeren
-              </button>
-              {current.customCharacters.length > 0 && (
-                <>
-                  <button
-                    onClick={exportCharacters}
-                    className="px-3 py-1.5 rounded-lg border border-green-200 bg-green-50 text-green-600 font-display font-bold text-xs hover:bg-green-100 transition-all"
-                  >
-                    📤 Exporteren
-                  </button>
-                  <button
-                    onClick={handleSaveCurrent}
-                    className="px-3 py-1.5 rounded-lg border border-purple-200 bg-purple-50 text-purple-600 font-display font-bold text-xs hover:bg-purple-100 transition-all"
-                  >
-                    💾 Opslaan
-                  </button>
-                  <button
-                    onClick={() => update({ customCharacters: [] })}
-                    className="px-3 py-1.5 rounded-lg border border-red-200 bg-red-50 text-red-500 font-display font-bold text-xs hover:bg-red-100 transition-all"
-                  >
-                    🗑️ Alles wissen
-                  </button>
-                </>
-              )}
-            </div>
-          )}
-
-          {/* Import panel */}
-          {isHost && showImport && (
-            <div className="mb-3 p-3 rounded-xl bg-blue-50 border border-blue-200 space-y-2">
-              <p className="text-xs font-display font-bold text-blue-700">
-                Plak JSON of een lijst met namen (1 per regel):
-              </p>
-              <p className="text-xs font-display text-blue-500">
-                JSON: [{"{"}"name": "...", "category": "..."{"}"}, ...] of
-                simpel: naam per regel
-              </p>
-              <textarea
-                value={importText}
-                onChange={(e) => {
-                  setImportText(e.target.value);
-                  setImportError("");
-                }}
-                placeholder={
-                  '[\n  {"name": "Shrek", "category": "Film"},\n  {"name": "Harry Potter"}\n]\n\nOf simpel:\nShrek, Film\nHarry Potter'
-                }
-                rows={6}
-                className="w-full px-3 py-2 rounded-lg border border-blue-200 text-sm font-mono outline-none focus:border-blue-400 resize-y"
-              />
-              {importError && (
-                <p className="text-xs text-red-500 font-display font-bold">
-                  ❌ {importError}
-                </p>
-              )}
-              <div className="flex gap-2">
-                <button
-                  onClick={handleImportSubmit}
-                  disabled={!importText.trim()}
-                  className="flex-1 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-display font-bold text-sm transition-all disabled:opacity-40"
-                >
-                  Importeer tekst
-                </button>
-                <button
-                  onClick={() => fileInputRef.current?.click()}
-                  className="px-4 py-2 rounded-lg border-2 border-blue-300 text-blue-600 font-display font-bold text-sm hover:bg-blue-100 transition-all"
-                >
-                  📁 Bestand
-                </button>
-                <input
-                  ref={fileInputRef}
-                  type="file"
-                  accept=".json,.txt,.csv"
-                  onChange={handleFileImport}
-                  className="hidden"
-                />
-              </div>
-            </div>
-          )}
-
-          {/* Image resolving progress */}
-          {resolving && (
-            <div className="mb-3 p-3 rounded-xl bg-amber-50 border border-amber-200">
-              <p className="text-xs font-display font-bold text-amber-700 mb-1.5">
-                🔍 Afbeeldingen ophalen van Wikipedia... ({resolving.done}/
-                {resolving.total})
-              </p>
-              <div className="w-full h-2 rounded-full bg-amber-200 overflow-hidden">
-                <div
-                  className="h-full bg-amber-500 rounded-full transition-all duration-300"
-                  style={{
-                    width: `${(resolving.done / resolving.total) * 100}%`,
-                  }}
-                />
-              </div>
-            </div>
-          )}
-
-          {isHost && (
-            <div className="space-y-2 p-3 rounded-xl bg-purple-50 border border-purple-200">
-              <div className="relative">
-                <input
-                  type="text"
-                  value={newCharName}
-                  onChange={(e) => handleNameChange(e.target.value)}
-                  onBlur={handleNameBlur}
-                  onKeyDown={(e) => e.key === "Enter" && addCharacter()}
-                  placeholder="Naam karakter (bijv. Napoleon)*"
-                  maxLength={80}
-                  className="w-full px-3 py-2 rounded-lg border border-gray-200 text-sm font-display outline-none focus:border-purple-400"
-                />
-                {searching && (
-                  <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-purple-500 font-display">
-                    Zoeken...
+        {!(showCustomSection || current.customCharacters.length > 0) ? (
+          <button
+            onClick={() => setShowCustomSection(true)}
+            className="w-full py-3 rounded-2xl border-2 border-dashed border-purple-200 bg-purple-50/50 
+                       text-purple-600 font-display font-bold text-sm hover:border-purple-400 hover:bg-purple-100/50 transition-all"
+          >
+            + Eigen karakters toevoegen
+          </button>
+        ) : (
+          <>
+            <div className="flex items-center justify-between mb-2">
+              <span className="block text-xs font-bold text-gray-400 uppercase tracking-wider">
+                Extra karakters
+                {current.customCharacters.length > 0 && (
+                  <span className="ml-2 normal-case text-purple-500 font-bold">
+                    {current.customCharacters.length} toegevoegd
                   </span>
                 )}
-              </div>
-
-              {/* Preview found image */}
-              {newCharImage && (
-                <div className="flex items-center gap-2 p-2 rounded-lg bg-white border border-gray-200">
-                  <img
-                    src={newCharImage}
-                    alt="Preview"
-                    className="w-10 h-10 rounded-full object-cover"
-                  />
-                  <div className="flex-1 min-w-0">
-                    <p className="text-xs text-green-600 font-display font-bold">
-                      ✓ Afbeelding gevonden via Wikipedia
-                    </p>
-                    {newCharCategory && (
-                      <p className="text-xs text-gray-500 font-display truncate">
-                        {newCharCategory}
-                      </p>
-                    )}
-                  </div>
-                  <button
-                    onClick={() => setNewCharImage("")}
-                    className="text-gray-400 hover:text-red-500 text-sm font-bold"
-                    title="Verwijder afbeelding"
-                  >
-                    ×
-                  </button>
+              </span>
+              {current.customCharacters.length === 0 && (
+                <button
+                  onClick={() => setShowCustomSection(false)}
+                  className="text-xs text-gray-400 hover:text-gray-600 font-display transition-colors"
+                >
+                  Sluiten ×
+                </button>
+              )}
+            </div>
+            <div className="bg-gray-50/50 rounded-2xl border border-gray-100 p-3 space-y-3">
+              {current.customCharacters.length > 0 && (
+                <div className="space-y-1.5 mb-3">
+                  {current.customCharacters.map((c) => {
+                    const isEditing = editingId === c.id;
+                    const hasFailed = failedImages.has(c.id);
+                    return (
+                      <div
+                        key={c.id}
+                        className={`rounded-lg border ${hasFailed && !isEditing ? "border-orange-300 bg-orange-50" : "border-gray-200 bg-gray-50"}`}
+                      >
+                        {/* Collapsed view */}
+                        <div className="flex items-center gap-2 p-2">
+                          {c.imageUrl ? (
+                            <img
+                              src={c.imageUrl}
+                              alt={c.name}
+                              className="w-8 h-8 rounded-full object-cover"
+                            />
+                          ) : (
+                            <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-sm">
+                              {hasFailed ? "⚠️" : "👤"}
+                            </div>
+                          )}
+                          <div
+                            className="flex-1 min-w-0 cursor-pointer"
+                            onClick={() =>
+                              isHost && setEditingId(isEditing ? null : c.id)
+                            }
+                          >
+                            <p className="font-display font-bold text-sm text-gray-800 truncate">
+                              {c.name}
+                            </p>
+                            {c.category && (
+                              <p className="font-display text-xs text-gray-400 truncate">
+                                {c.category}
+                              </p>
+                            )}
+                            {hasFailed && !isEditing && (
+                              <p className="font-display text-xs text-orange-500 font-bold">
+                                Geen afbeelding — klik om te bewerken
+                              </p>
+                            )}
+                          </div>
+                          {isHost && (
+                            <div className="flex items-center gap-1">
+                              <button
+                                onClick={() =>
+                                  setEditingId(isEditing ? null : c.id)
+                                }
+                                className="w-7 h-7 flex items-center justify-center rounded-md border border-gray-200 bg-white text-gray-500 hover:border-purple-400 hover:text-purple-600 hover:bg-purple-50 transition-all text-sm"
+                                title="Bewerken"
+                              >
+                                ✏️
+                              </button>
+                              <button
+                                onClick={() => removeCharacter(c.id)}
+                                className="w-7 h-7 flex items-center justify-center rounded-md border border-gray-200 bg-white text-red-400 hover:border-red-400 hover:text-red-600 hover:bg-red-50 transition-all font-bold text-lg leading-none"
+                                title="Verwijderen"
+                              >
+                                ×
+                              </button>
+                            </div>
+                          )}
+                        </div>
+                        {/* Expanded edit view */}
+                        {isEditing && isHost && (
+                          <div className="px-2 pb-2 pt-1 space-y-1.5 border-t border-gray-200">
+                            <input
+                              type="text"
+                              value={c.name}
+                              onChange={(e) =>
+                                updateCharacter(c.id, { name: e.target.value })
+                              }
+                              placeholder="Naam"
+                              className="w-full px-2 py-1.5 rounded-lg border border-gray-200 text-sm font-display outline-none focus:border-purple-400"
+                            />
+                            <input
+                              type="text"
+                              value={c.category || ""}
+                              onChange={(e) =>
+                                updateCharacter(c.id, {
+                                  category: e.target.value || undefined,
+                                })
+                              }
+                              placeholder="Categorie (optioneel)"
+                              className="w-full px-2 py-1.5 rounded-lg border border-gray-200 text-xs font-display outline-none focus:border-purple-400"
+                            />
+                            <div className="flex gap-1.5">
+                              <input
+                                type="url"
+                                value={c.imageUrl || ""}
+                                onChange={(e) =>
+                                  updateCharacter(c.id, {
+                                    imageUrl: e.target.value || undefined,
+                                  })
+                                }
+                                placeholder="Afbeelding URL (https://...)"
+                                className={`flex-1 px-2 py-1.5 rounded-lg border text-xs font-display outline-none ${hasFailed ? "border-orange-300 bg-orange-50 focus:border-orange-400" : "border-gray-200 focus:border-purple-400"}`}
+                              />
+                            </div>
+                            {hasFailed && (
+                              <p className="text-xs text-orange-500 font-display">
+                                ⚠️ Wikipedia had geen afbeelding — plak hier een
+                                URL of laat leeg
+                              </p>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
               )}
 
-              {/* Show category input if not auto-filled */}
-              {!newCharCategory && (
-                <input
-                  type="text"
-                  value={newCharCategory}
-                  onChange={(e) => setNewCharCategory(e.target.value)}
-                  placeholder="Categorie (bijv. Historisch) — optioneel"
-                  maxLength={50}
-                  className="w-full px-3 py-2 rounded-lg border border-gray-200 text-sm font-display outline-none focus:border-purple-400"
-                />
+              {/* Import / Export / Save buttons */}
+              {isHost && (
+                <div className="flex flex-wrap gap-2 mb-3">
+                  <button
+                    onClick={() => setShowImport(!showImport)}
+                    className="px-3 py-1.5 rounded-lg border border-blue-200 bg-blue-50 text-blue-600 font-display font-bold text-xs hover:bg-blue-100 transition-all"
+                  >
+                    📥 Importeren
+                  </button>
+                  {current.customCharacters.length > 0 && (
+                    <>
+                      <button
+                        onClick={exportCharacters}
+                        className="px-3 py-1.5 rounded-lg border border-green-200 bg-green-50 text-green-600 font-display font-bold text-xs hover:bg-green-100 transition-all"
+                      >
+                        📤 Exporteren
+                      </button>
+                      <button
+                        onClick={handleSaveCurrent}
+                        className="px-3 py-1.5 rounded-lg border border-purple-200 bg-purple-50 text-purple-600 font-display font-bold text-xs hover:bg-purple-100 transition-all"
+                      >
+                        💾 Opslaan
+                      </button>
+                      <button
+                        onClick={() => update({ customCharacters: [] })}
+                        className="px-3 py-1.5 rounded-lg border border-red-200 bg-red-50 text-red-500 font-display font-bold text-xs hover:bg-red-100 transition-all"
+                      >
+                        🗑️ Alles wissen
+                      </button>
+                    </>
+                  )}
+                </div>
               )}
 
-              {/* Manual URL fallback */}
-              {!newCharImage && searchDone && (
-                <input
-                  type="url"
-                  value={newCharImage}
-                  onChange={(e) => setNewCharImage(e.target.value)}
-                  placeholder="Geen afbeelding gevonden — plak handmatig een URL"
-                  maxLength={500}
-                  className="w-full px-3 py-2 rounded-lg border border-orange-200 bg-orange-50 text-sm font-display outline-none focus:border-orange-400"
-                />
+              {/* Import panel */}
+              {isHost && showImport && (
+                <div className="mb-3 p-3 rounded-xl bg-blue-50 border border-blue-200 space-y-2">
+                  <p className="text-xs font-display font-bold text-blue-700">
+                    Plak JSON of een lijst met namen (1 per regel):
+                  </p>
+                  <p className="text-xs font-display text-blue-500">
+                    JSON: [{"{"}"name": "...", "category": "..."{"}"}, ...] of
+                    simpel: naam per regel
+                  </p>
+                  <textarea
+                    value={importText}
+                    onChange={(e) => {
+                      setImportText(e.target.value);
+                      setImportError("");
+                    }}
+                    placeholder={
+                      '[\n  {"name": "Shrek", "category": "Film"},\n  {"name": "Harry Potter"}\n]\n\nOf simpel:\nShrek, Film\nHarry Potter'
+                    }
+                    rows={6}
+                    className="w-full px-3 py-2 rounded-lg border border-blue-200 text-sm font-mono outline-none focus:border-blue-400 resize-y"
+                  />
+                  {importError && (
+                    <p className="text-xs text-red-500 font-display font-bold">
+                      ❌ {importError}
+                    </p>
+                  )}
+                  <div className="flex gap-2">
+                    <button
+                      onClick={handleImportSubmit}
+                      disabled={!importText.trim()}
+                      className="flex-1 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-display font-bold text-sm transition-all disabled:opacity-40"
+                    >
+                      Importeer tekst
+                    </button>
+                    <button
+                      onClick={() => fileInputRef.current?.click()}
+                      className="px-4 py-2 rounded-lg border-2 border-blue-300 text-blue-600 font-display font-bold text-sm hover:bg-blue-100 transition-all"
+                    >
+                      📁 Bestand
+                    </button>
+                    <input
+                      ref={fileInputRef}
+                      type="file"
+                      accept=".json,.txt,.csv"
+                      onChange={handleFileImport}
+                      className="hidden"
+                    />
+                  </div>
+                </div>
               )}
 
-              <button
-                onClick={addCharacter}
-                disabled={!newCharName.trim() || searching}
-                className="w-full py-2 rounded-lg bg-purple-600 hover:bg-purple-700 text-white font-display font-bold text-sm 
+              {/* Image resolving progress */}
+              {resolving && (
+                <div className="mb-3 p-3 rounded-xl bg-amber-50 border border-amber-200">
+                  <p className="text-xs font-display font-bold text-amber-700 mb-1.5">
+                    🔍 Afbeeldingen ophalen van Wikipedia... ({resolving.done}/
+                    {resolving.total})
+                  </p>
+                  <div className="w-full h-2 rounded-full bg-amber-200 overflow-hidden">
+                    <div
+                      className="h-full bg-amber-500 rounded-full transition-all duration-300"
+                      style={{
+                        width: `${(resolving.done / resolving.total) * 100}%`,
+                      }}
+                    />
+                  </div>
+                </div>
+              )}
+
+              {isHost && (
+                <div className="space-y-2 p-3 rounded-xl bg-purple-50 border border-purple-200">
+                  <div className="relative">
+                    <input
+                      type="text"
+                      value={newCharName}
+                      onChange={(e) => handleNameChange(e.target.value)}
+                      onBlur={handleNameBlur}
+                      onKeyDown={(e) => e.key === "Enter" && addCharacter()}
+                      placeholder="Naam karakter (bijv. Napoleon)*"
+                      maxLength={80}
+                      className="w-full px-3 py-2 rounded-lg border border-gray-200 text-sm font-display outline-none focus:border-purple-400"
+                    />
+                    {searching && (
+                      <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-purple-500 font-display">
+                        Zoeken...
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Preview found image */}
+                  {newCharImage && (
+                    <div className="flex items-center gap-2 p-2 rounded-lg bg-white border border-gray-200">
+                      <img
+                        src={newCharImage}
+                        alt="Preview"
+                        className="w-10 h-10 rounded-full object-cover"
+                      />
+                      <div className="flex-1 min-w-0">
+                        <p className="text-xs text-green-600 font-display font-bold">
+                          ✓ Afbeelding gevonden via Wikipedia
+                        </p>
+                        {newCharCategory && (
+                          <p className="text-xs text-gray-500 font-display truncate">
+                            {newCharCategory}
+                          </p>
+                        )}
+                      </div>
+                      <button
+                        onClick={() => setNewCharImage("")}
+                        className="text-gray-400 hover:text-red-500 text-sm font-bold"
+                        title="Verwijder afbeelding"
+                      >
+                        ×
+                      </button>
+                    </div>
+                  )}
+
+                  {/* Show category input if not auto-filled */}
+                  {!newCharCategory && (
+                    <input
+                      type="text"
+                      value={newCharCategory}
+                      onChange={(e) => setNewCharCategory(e.target.value)}
+                      placeholder="Categorie (bijv. Historisch) — optioneel"
+                      maxLength={50}
+                      className="w-full px-3 py-2 rounded-lg border border-gray-200 text-sm font-display outline-none focus:border-purple-400"
+                    />
+                  )}
+
+                  {/* Manual URL fallback */}
+                  {!newCharImage && searchDone && (
+                    <input
+                      type="url"
+                      value={newCharImage}
+                      onChange={(e) => setNewCharImage(e.target.value)}
+                      placeholder="Geen afbeelding gevonden — plak handmatig een URL"
+                      maxLength={500}
+                      className="w-full px-3 py-2 rounded-lg border border-orange-200 bg-orange-50 text-sm font-display outline-none focus:border-orange-400"
+                    />
+                  )}
+
+                  <button
+                    onClick={addCharacter}
+                    disabled={!newCharName.trim() || searching}
+                    className="w-full py-2 rounded-lg bg-purple-600 hover:bg-purple-700 text-white font-display font-bold text-sm 
                          transition-all disabled:opacity-40 disabled:cursor-not-allowed"
-              >
-                {searching ? "Afbeelding zoeken..." : "+ Karakter toevoegen"}
-              </button>
+                  >
+                    {searching
+                      ? "Afbeelding zoeken..."
+                      : "+ Karakter toevoegen"}
+                  </button>
+                </div>
+              )}
             </div>
-          )}
-        </div>
+          </>
+        )}
       </div>
 
       {/* ── SECTION: Spelmodus ───────────────────── */}
