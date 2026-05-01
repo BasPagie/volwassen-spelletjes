@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useVisualViewport } from "../hooks/useVisualViewport";
 import type { OpenDeurRoundState } from "shared/types";
 
 interface OpenDeurGameProps {
@@ -18,6 +19,7 @@ export default function OpenDeurGame({
   const [flash, setFlash] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const wrongCountRef = useRef(0);
+  const { keyboardOpen } = useVisualViewport();
 
   // Focus input on mount and question change, reset wrong counter
   useEffect(() => {
@@ -144,7 +146,10 @@ export default function OpenDeurGame({
       </div>
 
       {/* Input */}
-      <form onSubmit={handleSubmit} className="flex gap-2 mb-3 sm:mb-4">
+      <form
+        onSubmit={handleSubmit}
+        className={`flex gap-2 mb-3 sm:mb-4 ${keyboardOpen ? "sticky bottom-2 z-10 bg-white/90 backdrop-blur-sm p-2 rounded-xl -mx-2" : ""}`}
+      >
         <motion.div
           animate={shake ? { x: [-8, 8, -6, 6, -3, 3, 0] } : {}}
           transition={{ duration: 0.4 }}

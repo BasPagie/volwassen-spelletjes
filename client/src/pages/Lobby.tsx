@@ -9,6 +9,8 @@ import PlayerList from "../components/PlayerList";
 import GameSettingsPanel from "../components/GameSettingsPanel";
 import WhatAmILobbySettings from "../components/WhatAmILobbySettings";
 import DrawingGameStub from "../components/DrawingGameStub";
+import { isMuted, toggleMute } from "../hooks/useSoundEffect";
+import SkeletonLoader from "../components/SkeletonLoader";
 import type { GameSettings, WhatAmISettings } from "shared/types";
 
 export default function Lobby() {
@@ -17,8 +19,9 @@ export default function Lobby() {
   const { roomId } = useParams<{ roomId: string }>();
   const navigate = useNavigate();
   const socket = useSocket();
-  const { state } = useGame();
+  const { state, dispatch } = useGame();
   const [copied, setCopied] = useState(false);
+  const [muted, setMuted] = useState(isMuted());
   const rulesKey =
     state.room?.gameCategory === "what-am-i"
       ? "whatami-rules-seen"
@@ -67,11 +70,13 @@ export default function Lobby() {
 
   const handleSettingsChange = (settings: GameSettings) => {
     if (!socket) return;
+    dispatch({ type: "SETTINGS_UPDATED", settings }); // Optimistic
     socket.emit("update-settings", settings);
   };
 
   const handleWhatAmISettingsChange = (settings: WhatAmISettings) => {
     if (!socket) return;
+    dispatch({ type: "WHATAMI_SETTINGS_UPDATED", settings }); // Optimistic
     socket.emit("whatami:update-settings", settings);
   };
 
@@ -128,14 +133,7 @@ export default function Lobby() {
       );
     }
 
-    return (
-      <div className="h-screen flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin text-4xl mb-4">🎲</div>
-          <p className="text-gray-600 font-display">Herverbinden...</p>
-        </div>
-      </div>
-    );
+    return <SkeletonLoader variant="lobby" />;
   }
 
   const handleLeave = () => {
@@ -196,6 +194,13 @@ export default function Lobby() {
             >
               📖 Uitleg
             </button>
+            <button
+              onClick={() => setMuted(toggleMute())}
+              className="px-2.5 py-1 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 font-display font-bold text-xs transition-colors"
+              title={muted ? "Geluid aan" : "Geluid uit"}
+            >
+              {muted ? "🔇" : "🔊"}
+            </button>
           </div>
         </motion.div>
 
@@ -221,18 +226,18 @@ export default function Lobby() {
               readOnly
               value={inviteUrl}
               className="flex-1 min-w-0 sm:w-40 lg:w-56 px-3 py-1.5 rounded-lg bg-gray-50 border border-gray-200 
-                         text-xs font-mono text-gray-500 truncate"
+                           text-xs font-mono text-gray-500 truncate"
             />
             <button
               onClick={handleCopyLink}
               className={`px-3 py-1.5 rounded-lg font-display font-bold text-xs transition-all shrink-0
-                ${
-                  copied
-                    ? "bg-green-500 text-white"
-                    : isWhatAmI
-                      ? "bg-purple-500 hover:bg-purple-600 text-white"
-                      : "bg-brand-500 hover:bg-brand-600 text-white"
-                }`}
+                  ${
+                    copied
+                      ? "bg-green-500 text-white"
+                      : isWhatAmI
+                        ? "bg-purple-500 hover:bg-purple-600 text-white"
+                        : "bg-brand-500 hover:bg-brand-600 text-white"
+                  }`}
             >
               {copied ? "✓" : "📋"}
             </button>

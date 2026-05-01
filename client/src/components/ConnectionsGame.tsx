@@ -1,6 +1,7 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { ConnectionsRoundState, ConnectionsGroup } from "shared/types";
+import confetti from "canvas-confetti";
 
 const GROUP_COLORS: Record<
   number,
@@ -40,6 +41,15 @@ export default function ConnectionsGame({
   const [selected, setSelected] = useState<string[]>([]);
   const [shaking, setShaking] = useState(false);
   const [lastWrong, setLastWrong] = useState<string[]>([]);
+
+  // Fire confetti when all groups solved
+  const prevSolvedCount = useRef(roundState.solvedGroups.length);
+  useEffect(() => {
+    if (roundState.solvedGroups.length === 4 && prevSolvedCount.current < 4) {
+      confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+    }
+    prevSolvedCount.current = roundState.solvedGroups.length;
+  }, [roundState.solvedGroups.length]);
 
   const handleTileClick = useCallback((word: string) => {
     setSelected((prev) => {

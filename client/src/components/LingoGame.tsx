@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useVisualViewport } from "../hooks/useVisualViewport";
 import type {
   LingoRoundState,
   LingoLetterFeedback,
@@ -33,6 +34,7 @@ export default function LingoGame({
   const inputRef = useRef<HTMLInputElement>(null);
   const prevGuessCountRef = useRef(roundState.guesses.length);
   const prevWordIndexRef = useRef(roundState.currentWordIndex);
+  const { viewportHeight } = useVisualViewport();
 
   // Buffer the roundState so animations can finish before transitioning
   const [displayState, setDisplayState] = useState(roundState);
@@ -199,7 +201,10 @@ export default function LingoGame({
   const gridRows: JSX.Element[] = [];
 
   return (
-    <div className="flex flex-col items-center gap-3 sm:gap-4">
+    <div
+      className="flex flex-col items-center gap-3 sm:gap-4 overflow-hidden"
+      style={{ maxHeight: viewportHeight - 60 }}
+    >
       {/* Word progress */}
       <motion.div
         initial={{ opacity: 0, y: -10 }}
@@ -335,6 +340,7 @@ export default function LingoGame({
         onKeyDown={handleKeyDown}
         maxLength={displayState.wordLength}
         className="sr-only"
+        inputMode="none"
         autoComplete="off"
         autoCapitalize="characters"
         aria-label="Typ je gok"

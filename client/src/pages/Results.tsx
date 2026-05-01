@@ -6,6 +6,8 @@ import { getSession } from "../context/SocketContext";
 import { useGame } from "../context/GameContext";
 import { useSocketEvents } from "../hooks/useSocketEvents";
 import { PREMADE_AVATARS } from "shared/types";
+import confetti from "canvas-confetti";
+import { playSound } from "../hooks/useSoundEffect";
 
 // Phases: drumroll → 3rd → 2nd → 1st → leaderboard
 type RevealPhase = "drumroll" | "third" | "second" | "first" | "leaderboard";
@@ -51,6 +53,36 @@ export default function Results() {
 
     return () => clearTimeout(timer);
   }, [phase, phaseOrder]);
+
+  // Sound + confetti per phase
+  useEffect(() => {
+    if (phase === "drumroll") {
+      // Clear any leftover confetti from previous screens
+      confetti.reset();
+      playSound("drumroll");
+    } else if (phase === "first") {
+      playSound("victory");
+      confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
+      setTimeout(
+        () =>
+          confetti({
+            particleCount: 80,
+            spread: 100,
+            origin: { x: 0.2, y: 0.7 },
+          }),
+        300,
+      );
+      setTimeout(
+        () =>
+          confetti({
+            particleCount: 80,
+            spread: 100,
+            origin: { x: 0.8, y: 0.7 },
+          }),
+        600,
+      );
+    }
+  }, [phase]);
 
   const handlePlayAgain = () => {
     if (!socket) return;

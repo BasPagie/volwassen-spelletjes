@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { WhatAmIClientGameState, Player } from "shared/types";
 import CharacterCard from "./CharacterCard";
+import { useSocket } from "../context/SocketContext";
+import confetti from "canvas-confetti";
 
 interface Props {
   gameState: WhatAmIClientGameState;
@@ -60,6 +62,15 @@ export default function WhatAmIGame({
     const interval = setInterval(update, 500);
     return () => clearInterval(interval);
   }, [myState?.cooldownUntil]);
+
+  // Fire confetti on correct guess
+  const prevGuessed = useRef(false);
+  useEffect(() => {
+    if (myState?.guessedCorrectly && !prevGuessed.current) {
+      confetti({ particleCount: 120, spread: 70, origin: { y: 0.65 } });
+    }
+    prevGuessed.current = !!myState?.guessedCorrectly;
+  }, [myState?.guessedCorrectly]);
 
   // Time remaining (free-for-all)
   const [timeLeft, setTimeLeft] = useState<number | null>(
@@ -325,15 +336,8 @@ export default function WhatAmIGame({
           </motion.div>
         )}
 
-        {/* Moderator host banner */}
-        {isModeratorHost && !isFinished && (
-          <div className="bg-orange-50 border-2 border-orange-200 rounded-2xl p-4 mb-4 text-center">
-            <p className="font-display font-bold text-orange-700">
-              👀 Je bent moderator — jij ziet alle karakters. Begeleid de vragen
-              via Discord!
-            </p>
-          </div>
-        )}
+        {/* Moderator host banner + hint */}
+        {isModeratorHost && !isFinished && <ModeratorPanel />}
 
         {/* Game end screen */}
         <AnimatePresence>
@@ -420,6 +424,48 @@ export default function WhatAmIGame({
             </motion.div>
           )}
         </AnimatePresence>
+      </div>
+    </div>
+  );
+}
+
+function ModeratorPanel() {
+  const socket = useSocket();
+  const [hint, setHint] = useState("");
+  const [sent, setSent] = useState(false);
+
+  const sendHint = () => {
+    if (!hint.trim() || !socket) return;
+    socket.emit("host:give-hint", { hint: hint.trim() });
+    setHint("");
+    setSent(true);
+    setTimeout(() => setSent(false), 2000);
+  };
+
+  return (
+    <div className="bg-orange-50 border-2 border-orange-200 rounded-2xl p-4 mb-4">
+      <p className="font-display font-bold text-orange-700 text-center mb-3">
+        👀 Je bent moderator — jij ziet alle karakters
+      </p>
+      <div className="flex gap-2">
+        <input
+          type="text"
+          value={hint}
+          onChange={(e) => setHint(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && sendHint()}
+          placeholder="Geef een hint..."
+          maxLength={200}
+          className="flex-1 px-3 py-2 rounded-xl border-2 border-orange-200 focus:border-orange-400
+                     focus:outline-none font-display text-sm transition-colors"
+        />
+        <button
+          onClick={sendHint}
+          disabled={!hint.trim()}
+          className="px-4 py-2 rounded-xl bg-orange-500 text-white font-display font-bold text-sm
+                     hover:bg-orange-600 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
+        >
+          {sent ? "✓" : "💡"}
+        </button>
       </div>
     </div>
   );

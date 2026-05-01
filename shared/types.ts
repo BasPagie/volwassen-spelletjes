@@ -88,7 +88,7 @@ export interface WhatAmISettings {
 }
 
 export const DEFAULT_WHATAMI_SETTINGS: WhatAmISettings = {
-  packIds: ['popculture'],
+  packIds: ['popculture', 'muziek', 'memes-internet', 'fictiepersonages', 'nederland-nu'],
   customCharacters: [],
   timeLimitSeconds: 600,
   hostPlays: true,
@@ -295,6 +295,7 @@ export interface ClientToServerEvents {
   'whatami:skip-turn': () => void;
   'whatami:give-up': () => void;
   'whatami:request-state': () => void;
+  'host:give-hint': (data: { hint: string }) => void;
 }
 
 export interface ServerToClientEvents {
@@ -330,6 +331,7 @@ export interface ServerToClientEvents {
   'whatami:guess-result': (data: { correct: boolean; cooldownUntil?: number; characterName?: string }) => void;
   'whatami:player-guessed': (data: { playerId: string; placement: number; score: number }) => void;
   'whatami:game-end': (data: WhatAmIClientGameState) => void;
+  'hint-given': (data: { hint: string }) => void;
 }
 
 // ─── Pre-made Avatars ──────────────────────────────────

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useSocket } from "../context/SocketContext";
 import { useSocketEvents } from "../hooks/useSocketEvents";
 import AvatarPicker from "../components/AvatarPicker";
+import SkeletonLoader from "../components/SkeletonLoader";
 import { PREMADE_AVATARS } from "shared/types";
 
 export default function Join() {
@@ -12,8 +13,12 @@ export default function Join() {
   const { roomId } = useParams<{ roomId: string }>();
   const navigate = useNavigate();
   const socket = useSocket();
-  const [nickname, setNickname] = useState("");
+  const [nickname, setNickname] = useState(
+    () => localStorage.getItem("player-nickname") ?? "",
+  );
   const [avatar, setAvatar] = useState(() => {
+    const savedAvatar = localStorage.getItem("player-avatar");
+    if (savedAvatar) return savedAvatar;
     try {
       const saved = localStorage.getItem("custom-avatars");
       if (saved) {
@@ -71,6 +76,8 @@ export default function Join() {
     setJoining(true);
     setError("");
 
+    localStorage.setItem("player-nickname", nickname.trim());
+    localStorage.setItem("player-avatar", avatar);
     socket.emit("join-room", {
       roomId,
       nickname: nickname.trim(),
@@ -151,12 +158,7 @@ export default function Join() {
       )}
 
       {/* Still checking */}
-      {roomStatus === "checking" && (
-        <div className="text-center">
-          <div className="animate-spin text-4xl mb-4">🎲</div>
-          <p className="text-gray-600 font-display">Laden...</p>
-        </div>
-      )}
+      {roomStatus === "checking" && <SkeletonLoader variant="join" />}
 
       {/* Room is joinable — show join form */}
       {roomStatus === "joinable" && (

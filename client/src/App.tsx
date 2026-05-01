@@ -1,43 +1,80 @@
-import { Routes, Route } from "react-router-dom";
-import { AnimatePresence, motion } from "framer-motion";
+import { Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 import Landing from "./pages/Landing";
 import Join from "./pages/Join";
 import Lobby from "./pages/Lobby";
 import Game from "./pages/Game";
 import Results from "./pages/Results";
 import TestCharacters from "./pages/TestCharacters";
-import { useGame } from "./context/GameContext";
+import ErrorBoundary from "./components/ErrorBoundary";
+import ToastContainer from "./components/ToastContainer";
+import PageTransition from "./components/PageTransition";
 
-function ErrorToast() {
-  const { state, dispatch } = useGame();
-  if (!state.errorMessage) return null;
+function AnimatedRoutes() {
+  const location = useLocation();
   return (
-    <motion.div
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      className="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-red-500 text-white px-6 py-3 rounded-xl shadow-lg font-display font-bold cursor-pointer"
-      onClick={() => dispatch({ type: "CLEAR_ERROR" })}
-    >
-      {state.errorMessage}
-    </motion.div>
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route
+          path="/"
+          element={
+            <PageTransition>
+              <Landing />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/test/characters"
+          element={
+            <PageTransition>
+              <TestCharacters />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/join/:roomId"
+          element={
+            <PageTransition>
+              <Join />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/lobby/:roomId"
+          element={
+            <PageTransition>
+              <Lobby />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/game/:roomId"
+          element={
+            <PageTransition>
+              <Game />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/results/:roomId"
+          element={
+            <PageTransition>
+              <Results />
+            </PageTransition>
+          }
+        />
+      </Routes>
+    </AnimatePresence>
   );
 }
 
 export default function App() {
   return (
-    <div className="min-h-screen">
-      <AnimatePresence>
-        <ErrorToast />
-      </AnimatePresence>
-      <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="/test/characters" element={<TestCharacters />} />
-        <Route path="/join/:roomId" element={<Join />} />
-        <Route path="/lobby/:roomId" element={<Lobby />} />
-        <Route path="/game/:roomId" element={<Game />} />
-        <Route path="/results/:roomId" element={<Results />} />
-      </Routes>
-    </div>
+    <ErrorBoundary>
+      <div className="min-h-screen">
+        <ToastContainer />
+        <AnimatedRoutes />
+      </div>
+    </ErrorBoundary>
   );
 }

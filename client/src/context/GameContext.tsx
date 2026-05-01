@@ -18,6 +18,12 @@ import type {
 } from "shared/types";
 
 // ─── State ─────────────────────────────────────────────
+export interface Toast {
+  id: string;
+  message: string;
+  type: "success" | "info" | "warning" | "error";
+}
+
 export interface GameState {
   player: Player | null;
   room: GameRoom | null;
@@ -33,6 +39,7 @@ export interface GameState {
   timeRemainingMs: number | null;
   errorMessage: string | null;
   devMode: boolean;
+  toasts: Toast[];
   // Wie Ben Ik?
   whatAmIState: WhatAmIClientGameState | null;
 }
@@ -52,6 +59,7 @@ const initialState: GameState = {
   timeRemainingMs: null,
   errorMessage: null,
   devMode: false,
+  toasts: [],
   whatAmIState: null,
 };
 
@@ -84,6 +92,8 @@ export type GameAction =
   | { type: "TIME_UPDATE"; timeRemainingMs: number }
   | { type: "SET_ERROR"; message: string }
   | { type: "CLEAR_ERROR" }
+  | { type: "ADD_TOAST"; toast: Toast }
+  | { type: "REMOVE_TOAST"; id: string }
   | { type: "SET_DEV_MODE"; enabled: boolean }
   | {
       type: "RECONNECTED";
@@ -263,6 +273,15 @@ function gameReducer(state: GameState, action: GameAction): GameState {
 
     case "CLEAR_ERROR":
       return { ...state, errorMessage: null };
+
+    case "ADD_TOAST":
+      return { ...state, toasts: [...state.toasts, action.toast] };
+
+    case "REMOVE_TOAST":
+      return {
+        ...state,
+        toasts: state.toasts.filter((t) => t.id !== action.id),
+      };
 
     case "SET_DEV_MODE":
       return { ...state, devMode: action.enabled };

@@ -3,6 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { useSocket } from '../context/SocketContext';
 import { saveSession, clearSession } from '../context/SocketContext';
 import { useGame } from '../context/GameContext';
+import { playSound } from './useSoundEffect';
+
+let toastId = 0;
+function nextToastId() { return `toast-${++toastId}`; }
 
 export function useSocketEvents() {
   const socket = useSocket();
@@ -32,10 +36,16 @@ export function useSocketEvents() {
 
     socket.on('player-joined', ({ player }) => {
       dispatch({ type: 'PLAYER_JOINED', player });
+      playSound('join');
+      dispatch({ type: 'ADD_TOAST', toast: { id: nextToastId(), message: `${player.nickname} doet mee!`, type: 'info' } });
     });
 
     socket.on('player-left', ({ playerId, newHostId, disconnected }) => {
       dispatch({ type: 'PLAYER_LEFT', playerId, newHostId, disconnected });
+      if (!disconnected) {
+        playSound('wrong');
+        dispatch({ type: 'ADD_TOAST', toast: { id: nextToastId(), message: 'Een speler heeft het spel verlaten', type: 'warning' } });
+      }
     });
 
     socket.on('settings-updated', (settings) => {
@@ -44,10 +54,12 @@ export function useSocketEvents() {
 
     socket.on('game-started', () => {
       dispatch({ type: 'GAME_STARTED' });
+      playSound('gameStart');
     });
 
     socket.on('countdown', ({ count }) => {
       dispatch({ type: 'COUNTDOWN', count });
+      if (count <= 3) playSound('tick');
     });
 
     socket.on('score-updated', ({ playerId, score }) => {
@@ -64,10 +76,19 @@ export function useSocketEvents() {
 
     socket.on('answer-result', ({ correct, roundState }) => {
       dispatch({ type: 'UPDATE_ROUND_STATE', roundState, answerResult: { correct } });
+      playSound(correct ? 'correct' : 'wrong');
+      dispatch({ type: 'ADD_TOAST', toast: { id: nextToastId(), message: correct ? 'Goed antwoord! 🎉' : 'Helaas, fout antwoord', type: correct ? 'success' : 'error' } });
     });
 
     socket.on('opendeur-result', ({ correct, matchedAnswer, roundState, questionComplete }) => {
       dispatch({ type: 'UPDATE_ROUND_STATE', roundState });
+      if (correct) {
+        playSound('correct');
+        dispatch({ type: 'ADD_TOAST', toast: { id: nextToastId(), message: `Correct: ${matchedAnswer}! 🎉`, type: 'success' } });
+      } else {
+        playSound('wrong');
+        dispatch({ type: 'ADD_TOAST', toast: { id: nextToastId(), message: 'Helaas, dat is niet goed', type: 'error' } });
+      }
     });
 
     socket.on('opendeur-next-question', ({ roundState, previousAnswers }) => {
@@ -76,6 +97,10 @@ export function useSocketEvents() {
 
     socket.on('lingo-result', ({ correct, feedback, roundState }) => {
       dispatch({ type: 'UPDATE_ROUND_STATE', roundState });
+      if (correct) {
+        playSound('correct');
+        dispatch({ type: 'ADD_TOAST', toast: { id: nextToastId(), message: 'Woord geraden! 🎉', type: 'success' } });
+      }
     });
 
     socket.on('lingo-next-word', ({ roundState, previousWord }) => {
@@ -88,6 +113,7 @@ export function useSocketEvents() {
 
     socket.on('round-end', (result) => {
       dispatch({ type: 'ROUND_END', result });
+      playSound('roundEnd');
     });
 
     socket.on('game-end', (results) => {
@@ -96,8 +122,7 @@ export function useSocketEvents() {
 
     socket.on('error', ({ message }) => {
       console.error('[Game Error]', message);
-      dispatch({ type: 'SET_ERROR', message });
-      setTimeout(() => dispatch({ type: 'CLEAR_ERROR' }), 5000);
+      dispatch({ type: 'ADD_TOAST', toast: { id: nextToastId(), message, type: 'error' } });
     });
 
     socket.on('time-update', ({ timeRemainingMs }) => {
@@ -111,6 +136,7 @@ export function useSocketEvents() {
     });
 
     socket.on('kicked', () => {
+      dispatch({ type: 'ADD_TOAST', toast: { id: nextToastId(), message: 'Je bent uit het spel verwijderd', type: 'error' } });
       clearSession();
       dispatch({ type: 'RESET' });
       navigateRef.current('/');
@@ -159,14 +185,21 @@ export function useSocketEvents() {
 
     socket.on('whatami:guess-result', ({ correct, cooldownUntil, characterName }) => {
       dispatch({ type: 'WHATAMI_GUESS_RESULT', correct, cooldownUntil, characterName });
+      playSound(correct ? 'correct' : 'wrong');
+      dispatch({ type: 'ADD_TOAST', toast: { id: nextToastId(), message: correct ? `🎉 Goed geraden: ${characterName}!` : 'Niet goed, probeer opnieuw', type: correct ? 'success' : 'error' } });
     });
 
     socket.on('whatami:player-guessed', ({ playerId, placement, score }) => {
       dispatch({ type: 'WHATAMI_PLAYER_GUESSED', playerId, placement, score });
+      dispatch({ type: 'ADD_TOAST', toast: { id: nextToastId(), message: `Een speler heeft het geraden! 🏆`, type: 'info' } });
     });
 
     socket.on('whatami:game-end', (state) => {
       dispatch({ type: 'WHATAMI_GAME_END', state });
+    });
+
+    socket.on('hint-given', ({ hint }) => {
+      dispatch({ type: 'ADD_TOAST', toast: { id: nextToastId(), message: `💡 Hint: ${hint}`, type: 'info' } });
     });
 
     return () => {
@@ -200,6 +233,7 @@ export function useSocketEvents() {
       socket.off('whatami:guess-result');
       socket.off('whatami:player-guessed');
       socket.off('whatami:game-end');
+      socket.off('hint-given');
     };
   }, [socket, dispatch]);
 }

@@ -52,8 +52,12 @@ export default function Landing() {
   const [selectedCategory, setSelectedCategory] = useState<GameCategory | null>(
     null,
   );
-  const [nickname, setNickname] = useState("");
+  const [nickname, setNickname] = useState(
+    () => localStorage.getItem("player-nickname") ?? "",
+  );
   const [avatar, setAvatar] = useState(() => {
+    const savedAvatar = localStorage.getItem("player-avatar");
+    if (savedAvatar) return savedAvatar;
     try {
       const saved = localStorage.getItem("custom-avatars");
       if (saved) {
@@ -77,6 +81,8 @@ export default function Landing() {
   const handleCreate = () => {
     if (!socket || !nickname.trim() || !selectedCategory) return;
     setCreating(true);
+    localStorage.setItem("player-nickname", nickname.trim());
+    localStorage.setItem("player-avatar", avatar);
     socket.emit("create-room", {
       nickname: nickname.trim(),
       avatarUrl: avatar,

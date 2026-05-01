@@ -16,6 +16,8 @@ import TimerBar from "../components/TimerBar";
 import ProgressSidebar from "../components/ProgressSidebar";
 import RoundEndOverlay from "../components/RoundEndOverlay";
 import WaitingOverlay from "../components/WaitingOverlay";
+import SpectatorDashboard from "../components/SpectatorDashboard";
+import SkeletonLoader from "../components/SkeletonLoader";
 import type {
   ConnectionsRoundState,
   PuzzelrondeRoundState,
@@ -97,19 +99,51 @@ export default function Game() {
     }
   }, [state.phase, roomId, navigate]);
 
+  // ─── Countdown (shared by all game types) ───────────
+  if (
+    state.phase === "countdown" ||
+    (!state.roundState && !state.whatAmIState && state.countdown !== null)
+  ) {
+    return (
+      <div className="h-screen flex items-center justify-center bg-gradient-to-b from-gray-900 to-gray-800">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="text-center"
+        >
+          {state.countdown !== null && state.countdown > 0 ? (
+            <motion.div
+              key={state.countdown}
+              initial={{ scale: 2, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.5, opacity: 0 }}
+              transition={{ type: "spring", damping: 12 }}
+              className="text-9xl font-display font-black text-white"
+            >
+              {state.countdown}
+            </motion.div>
+          ) : state.countdown === 0 ? (
+            <motion.div
+              initial={{ scale: 0.5, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ type: "spring", damping: 10 }}
+              className="font-display font-black text-6xl text-transparent bg-clip-text 
+                          bg-gradient-to-r from-yellow-400 to-orange-500"
+            >
+              GO!
+            </motion.div>
+          ) : (
+            <div className="text-6xl animate-bounce">🎮</div>
+          )}
+        </motion.div>
+      </div>
+    );
+  }
+
   // ─── Wie Ben Ik? branch ─────────────────────────────
   if (state.room?.gameCategory === "what-am-i") {
     if (!state.whatAmIState) {
-      return (
-        <div className="h-screen flex items-center justify-center">
-          <div className="text-center">
-            <div className="text-6xl mb-4 animate-bounce">🎭</div>
-            <p className="font-display font-bold text-xl text-gray-600">
-              Wie Ben Ik? wordt geladen...
-            </p>
-          </div>
-        </div>
-      );
+      return <SkeletonLoader variant="whatami" />;
     }
     return (
       <WhatAmIGame
@@ -165,47 +199,6 @@ export default function Game() {
     if (!socket) return;
     socket.emit("play-again");
   };
-
-  // Show countdown overlay
-  if (
-    state.phase === "countdown" ||
-    (!state.roundState && state.countdown !== null)
-  ) {
-    return (
-      <div className="h-screen flex items-center justify-center bg-gradient-to-b from-gray-900 to-gray-800">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="text-center"
-        >
-          {state.countdown !== null && state.countdown > 0 ? (
-            <motion.div
-              key={state.countdown}
-              initial={{ scale: 2, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.5, opacity: 0 }}
-              transition={{ type: "spring", damping: 12 }}
-              className="text-9xl font-display font-black text-white"
-            >
-              {state.countdown}
-            </motion.div>
-          ) : state.countdown === 0 ? (
-            <motion.div
-              initial={{ scale: 0.5, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ type: "spring", damping: 10 }}
-              className="font-display font-black text-6xl text-transparent bg-clip-text 
-                          bg-gradient-to-r from-yellow-400 to-orange-500"
-            >
-              GO!
-            </motion.div>
-          ) : (
-            <div className="text-6xl animate-bounce">🎮</div>
-          )}
-        </motion.div>
-      </div>
-    );
-  }
 
   // Show round intro splash (Kahoot-style)
   if (showRoundIntro && introRoundType) {
@@ -277,20 +270,7 @@ export default function Game() {
       return null;
     }
 
-    return (
-      <div className="h-screen flex items-center justify-center">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="text-center"
-        >
-          <div className="text-6xl mb-4 animate-bounce">🎮</div>
-          <p className="font-display font-bold text-xl text-gray-600">
-            Ronde wordt geladen...
-          </p>
-        </motion.div>
-      </div>
-    );
+    return <SkeletonLoader variant="game" />;
   }
 
   const roundConfig = state.room.settings.rounds[state.room.currentRoundIndex];
@@ -376,19 +356,12 @@ export default function Game() {
             />
 
             {isSpectating ? (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="text-center py-12"
-              >
-                <div className="text-6xl mb-4">👀</div>
-                <p className="font-display font-bold text-xl text-gray-500">
-                  Je kijkt toe als host
-                </p>
-                <p className="text-sm text-gray-400 mt-2">
-                  Wacht tot de spelers klaar zijn...
-                </p>
-              </motion.div>
+              <SpectatorDashboard
+                progress={state.playerProgress}
+                players={state.room.players}
+                socket={socket}
+                totalGroups={totalGroups}
+              />
             ) : (
               <>
                 {/* Game component */}
