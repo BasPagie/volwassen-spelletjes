@@ -709,6 +709,21 @@ export function registerSocketHandlers(io: IOServer, socket: IOSocket): void {
     const settings = room.whatAmISettings ?? DEFAULT_WHATAMI_SETTINGS;
     const roomId = room.roomId;
 
+    // Pre-validate before starting countdown
+    const players = settings.hostPlays
+      ? room.players.filter((p) => p.connected || p.isBot)
+      : room.players.filter((p) => (p.connected || p.isBot) && !p.isHost);
+
+    if (players.length < 2) {
+      socket.emit('error', { message: 'Er zijn minimaal 2 spelers nodig voor Wie Ben Ik?' });
+      return;
+    }
+
+    if ((settings.packIds ?? []).length === 0 && (settings.customCharacters ?? []).length === 0) {
+      socket.emit('error', { message: 'Selecteer minimaal één karakter pakket of voeg eigen karakters toe.' });
+      return;
+    }
+
     // Emit game-started + countdown 3-2-1-GO before actually starting the game
     io.to(roomId).emit('game-started');
 
