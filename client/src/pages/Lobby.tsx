@@ -31,7 +31,9 @@ export default function Lobby() {
   const rulesKey =
     state.room?.gameCategory === "what-am-i"
       ? "whatami-rules-seen"
-      : "woord-rules-seen";
+      : state.room?.gameCategory === "snelste-vinger"
+        ? "snelstevinger-rules-seen"
+        : "woord-rules-seen";
   const isFirstVisit = !localStorage.getItem(rulesKey);
   const [showInfo, setShowInfo] = useState(isFirstVisit);
   const [waitExpired, setWaitExpired] = useState(false);
@@ -423,7 +425,7 @@ export default function Lobby() {
                       <span className="text-lg">👀</span>
                       <p>
                         Je ziet de karakters van alle andere spelers, maar niet
-                        die van jjezelf.
+                        die van jezelf.
                       </p>
                     </div>
                     <div className="flex gap-2 items-start">

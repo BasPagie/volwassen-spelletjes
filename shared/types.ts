@@ -348,6 +348,8 @@ export interface ClientToServerEvents {
   'snelstevinger:update-settings': (settings: SnelsteVingerSettings) => void;
   'snelstevinger:start-game': () => void;
   'snelstevinger:buzz': (data: { answer: string }) => void;
+  // ─── Briefing ──────────────────────────────────────
+  'player-ready': () => void;
 }
 
 export interface ServerToClientEvents {
@@ -391,6 +393,9 @@ export interface ServerToClientEvents {
   'snelstevinger:question-won': (data: { winnerId: string; winnerName: string; correctAnswer: string; scores: SnelsteVingerPlayerScore[] }) => void;
   'snelstevinger:question-timeout': (data: { correctAnswer: string; scores: SnelsteVingerPlayerScore[] }) => void;
   'snelstevinger:game-end': (data: { scores: SnelsteVingerPlayerScore[] }) => void;
+  // ─── Briefing ──────────────────────────────────────
+  'briefing-start': (data: { briefingKey: string; roundType?: RoundType; gameCategory: GameCategory }) => void;
+  'briefing-ready-count': (data: { ready: number; total: number }) => void;
 }
 
 // ─── Pre-made Avatars ──────────────────────────────────

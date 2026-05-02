@@ -67,7 +67,16 @@ export function useSocketEvents() {
     });
 
     socket.on('round-start', ({ roundState, roundIndex }) => {
+      dispatch({ type: 'CLEAR_BRIEFING' });
       dispatch({ type: 'ROUND_START', roundState, roundIndex });
+    });
+
+    socket.on('briefing-start', ({ briefingKey, roundType, gameCategory }) => {
+      dispatch({ type: 'SET_BRIEFING', briefingKey, roundType, gameCategory });
+    });
+
+    socket.on('briefing-ready-count', ({ ready, total }) => {
+      dispatch({ type: 'BRIEFING_READY_COUNT', ready, total });
     });
 
     socket.on('group-result', ({ roundState, hintWords }) => {
@@ -180,6 +189,7 @@ export function useSocketEvents() {
     });
 
     socket.on('whatami:state-update', (state) => {
+      dispatch({ type: 'CLEAR_BRIEFING' });
       dispatch({ type: 'SET_WHATAMI_STATE', state });
     });
 
@@ -208,6 +218,7 @@ export function useSocketEvents() {
     });
 
     socket.on('snelstevinger:question', (state) => {
+      dispatch({ type: 'CLEAR_BRIEFING' });
       dispatch({ type: 'SET_SNELSTEVINGER_STATE', state });
     });
 
@@ -272,6 +283,8 @@ export function useSocketEvents() {
       socket.off('snelstevinger:question-won');
       socket.off('snelstevinger:question-timeout');
       socket.off('snelstevinger:game-end');
+      socket.off('briefing-start');
+      socket.off('briefing-ready-count');
     };
   }, [socket, dispatch]);
 }

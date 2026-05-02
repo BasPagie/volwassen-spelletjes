@@ -5,6 +5,8 @@ import type {
   GameSettings,
   RoundResult,
   WhatAmISettings,
+  RoundType,
+  GameCategory,
 } from '../../shared/types.js';
 import {
   createRoom,
@@ -95,6 +97,103 @@ const roomCountdowns = new Map<string, ReturnType<typeof setInterval>>();
 
 // Guard against duplicate next-round clicks
 const roomAdvancing = new Set<string>();
+
+// ─── Briefing state ────────────────────────────────────
+interface BriefingState {
+  readyPlayers: Set<string>;
+  totalPlayers: number;
+  timeoutHandle: ReturnType<typeof setTimeout>;
+  startFn: () => void;
+}
+const roomBriefings = new Map<string, BriefingState>();
+
+function startBriefing(
+  io: IOServer,
+  roomId: string,
+  briefingKey: string,
+  roundType: RoundType | undefined,
+  gameCategory: GameCategory,
+  activePlayers: { id: string }[],
+  startFn: () => void,
+): void {
+  // Clean up any leftover briefing
+  cleanupBriefing(roomId);
+
+  const total = activePlayers.length;
+
+  const timeoutHandle = setTimeout(() => {
+    // Auto-start after 20s regardless
+    const briefing = roomBriefings.get(roomId);
+    if (briefing) {
+      roomBriefings.delete(roomId);
+      briefing.startFn();
+    }
+  }, 20_000);
+
+  roomBriefings.set(roomId, {
+    readyPlayers: new Set(),
+    totalPlayers: total,
+    timeoutHandle,
+    startFn,
+  });
+
+  io.to(roomId).emit('briefing-start', { briefingKey, roundType, gameCategory });
+
+  // Auto-ready bots (they can't click the button)
+  for (const p of activePlayers) {
+    if ('isBot' in p && (p as any).isBot) {
+      handlePlayerReady(io, roomId, p.id);
+    }
+  }
+}
+
+function handlePlayerReady(io: IOServer, roomId: string, playerId: string): void {
+  const briefing = roomBriefings.get(roomId);
+  if (!briefing) return;
+
+  briefing.readyPlayers.add(playerId);
+  io.to(roomId).emit('briefing-ready-count', {
+    ready: briefing.readyPlayers.size,
+    total: briefing.totalPlayers,
+  });
+
+  if (briefing.readyPlayers.size >= briefing.totalPlayers) {
+    clearTimeout(briefing.timeoutHandle);
+    roomBriefings.delete(roomId);
+    briefing.startFn();
+  }
+}
+
+function cleanupBriefing(roomId: string): void {
+  const briefing = roomBriefings.get(roomId);
+  if (briefing) {
+    clearTimeout(briefing.timeoutHandle);
+    roomBriefings.delete(roomId);
+  }
+}
+
+/** Run a 3-2-1-GO countdown, then call `fn`. */
+function startCountdownThenRun(io: IOServer, roomId: string, fn: () => void): void {
+  let count = 3;
+  io.to(roomId).emit('countdown', { count });
+  count--;
+  const countdownInterval = setInterval(() => {
+    if (!getRoom(roomId)) {
+      clearInterval(countdownInterval);
+      roomCountdowns.delete(roomId);
+      return;
+    }
+    if (count >= 0) {
+      io.to(roomId).emit('countdown', { count });
+      count--;
+    } else {
+      clearInterval(countdownInterval);
+      roomCountdowns.delete(roomId);
+      fn();
+    }
+  }, 1000);
+  roomCountdowns.set(roomId, countdownInterval);
+}
 
 // Simple per-socket rate limiter
 const socketEventTimestamps = new Map<string, number[]>();
@@ -247,29 +346,15 @@ export function registerSocketHandlers(io: IOServer, socket: IOSocket): void {
 
     io.to(room.roomId).emit('game-started');
 
-    // Countdown 3-2-1-GO before starting the first round
+    // Show briefing first, then countdown, then start the round
     const roomId = room.roomId;
-    let count = 3;
-    // Emit first count immediately, then tick every second
-    io.to(roomId).emit('countdown', { count });
-    count--;
-    const countdownInterval = setInterval(() => {
-      // Stop if room was deleted during countdown
-      if (!getRoom(roomId)) {
-        clearInterval(countdownInterval);
-        roomCountdowns.delete(roomId);
-        return;
-      }
-      if (count >= 0) {
-        io.to(roomId).emit('countdown', { count });
-        count--;
-      } else {
-        clearInterval(countdownInterval);
-        roomCountdowns.delete(roomId);
+    const roundConfig = room.settings.rounds[room.currentRoundIndex];
+    const active = activePlayers.filter((p) => p.connected || p.isBot);
+    startBriefing(io, roomId, roundConfig.type, roundConfig.type, 'woord', active, () => {
+      startCountdownThenRun(io, roomId, () => {
         startNewRound(io, roomId);
-      }
-    }, 1000);
-    roomCountdowns.set(roomId, countdownInterval);
+      });
+    });
   });
 
   // ─── Submit Group Guess ──────────────────────────────
@@ -486,7 +571,15 @@ export function registerSocketHandlers(io: IOServer, socket: IOSocket): void {
         // Game over
         endGame(io, room.roomId);
       } else {
-        startNewRound(io, room.roomId);
+        const roundConfig = room.settings.rounds[room.currentRoundIndex];
+        const active = room.players.filter(
+          (p) => (p.connected || p.isBot) && !(p.isHost && !room.settings.hostPlays)
+        );
+        startBriefing(io, room.roomId, roundConfig.type, roundConfig.type, 'woord', active, () => {
+          startCountdownThenRun(io, room.roomId, () => {
+            startNewRound(io, room.roomId);
+          });
+        });
       }
     } finally {
       roomAdvancing.delete(room.roomId);
@@ -510,6 +603,7 @@ export function registerSocketHandlers(io: IOServer, socket: IOSocket): void {
       player.score = 0;
     }
     roomRoundResults.delete(room.roomId);
+    cleanupBriefing(room.roomId);
 
     // Notify each player individually with their own player object
     for (const player of room.players) {
@@ -518,6 +612,13 @@ export function registerSocketHandlers(io: IOServer, socket: IOSocket): void {
         io.to(playerSocketId).emit('room-joined', { room, player });
       }
     }
+  });
+
+  // ─── Player Ready (Briefing) ─────────────────────────
+  socket.on('player-ready', () => {
+    const mapping = getSocketMapping(socket.id);
+    if (!mapping) return;
+    handlePlayerReady(io, mapping.roomId, mapping.playerId);
   });
 
   // ─── Dev: Add Bot ────────────────────────────────────
@@ -740,28 +841,20 @@ export function registerSocketHandlers(io: IOServer, socket: IOSocket): void {
       return;
     }
 
-    // Emit game-started + countdown 3-2-1-GO before actually starting the game
+    // Emit game-started, then show briefing, then countdown, then start
     io.to(roomId).emit('game-started');
 
-    let count = 3;
-    io.to(roomId).emit('countdown', { count });
-    count--;
-    const countdownInterval = setInterval(() => {
-      if (!getRoom(roomId)) {
-        clearInterval(countdownInterval);
-        roomCountdowns.delete(roomId);
-        return;
-      }
-      if (count >= 0) {
-        io.to(roomId).emit('countdown', { count });
-        count--;
-      } else {
-        clearInterval(countdownInterval);
-        roomCountdowns.delete(roomId);
+    const active = settings.hostPlays
+      ? room.players.filter((p) => p.connected || p.isBot)
+      : room.players.filter((p) => (p.connected || p.isBot) && !p.isHost);
 
-        // Countdown finished — now actually start the game
+    startBriefing(io, roomId, 'what-am-i', undefined, 'what-am-i', active, () => {
+      startCountdownThenRun(io, roomId, () => {
+        const currentRoom = getRoom(roomId);
+        if (!currentRoom) return;
+
         const result = startWhatAmIGame(
-          room,
+          currentRoom,
           settings,
           createOnTick(io, settings),
           (rid) => {
@@ -778,30 +871,24 @@ export function registerSocketHandlers(io: IOServer, socket: IOSocket): void {
           return;
         }
 
-        room.status = 'playing';
-
-        // Send personalised game-start state to each player
+        currentRoom.status = 'playing';
         broadcastWhatAmIState(io, roomId, settings);
 
-        // Dev mode: schedule bot auto-guesses
         if (DEV_MODE) {
-          const bots = room.players.filter((p) => p.isBot);
+          const bots = currentRoom.players.filter((p) => p.isBot);
           if (bots.length > 0) {
             scheduleWhatAmIBotGuesses(roomId, bots, (rid, playerId, placement, score) => {
               const inst = getWhatAmIInstance(rid);
-              const currentRoom = getRoom(rid);
-              if (!inst || !currentRoom) return;
-
+              const r = getRoom(rid);
+              if (!inst || !r) return;
               io.to(rid).emit('whatami:player-guessed', { playerId, placement, score });
               broadcastWhatAmIState(io, rid, settings);
-
               checkAllGuessedAndFinish(io, rid, settings);
             });
           }
         }
-      }
-    }, 1000);
-    roomCountdowns.set(roomId, countdownInterval);
+      });
+    });
 
     console.log(`[WieBenik] Started: ${room.roomId}`);
   });
@@ -952,37 +1039,28 @@ export function registerSocketHandlers(io: IOServer, socket: IOSocket): void {
       return;
     }
 
-    // Countdown 3-2-1-GO then start
+    // Show briefing first, then countdown, then start
     io.to(roomId).emit('game-started');
 
-    let count = 3;
-    io.to(roomId).emit('countdown', { count });
-    count--;
-    const countdownInterval = setInterval(() => {
-      if (!getRoom(roomId)) {
-        clearInterval(countdownInterval);
-        roomCountdowns.delete(roomId);
-        return;
-      }
-      if (count >= 0) {
-        io.to(roomId).emit('countdown', { count });
-        count--;
-      } else {
-        clearInterval(countdownInterval);
-        roomCountdowns.delete(roomId);
+    const active = settings.hostPlays
+      ? room.players.filter((p) => p.connected || p.isBot)
+      : room.players.filter((p) => (p.connected || p.isBot) && !p.isHost);
 
-        // Start the game
-        const result = startSnelsteVingerGame(room, settings);
+    startBriefing(io, roomId, 'snelste-vinger', undefined, 'snelste-vinger', active, () => {
+      startCountdownThenRun(io, roomId, () => {
+        const currentRoom = getRoom(roomId);
+        if (!currentRoom) return;
+
+        const result = startSnelsteVingerGame(currentRoom, settings);
         if ('error' in result) {
           io.to(roomId).emit('error', { message: result.error });
           return;
         }
 
-        room.status = 'playing';
+        currentRoom.status = 'playing';
         startSnelsteVingerQuestion(io, roomId);
-      }
-    }, 1000);
-    roomCountdowns.set(roomId, countdownInterval);
+      });
+    });
 
     console.log(`[SnelsteVinger] Started: ${roomId}`);
   });

@@ -16,6 +16,8 @@ import SnelsteVingerGame from "../components/SnelsteVingerGame";
 import TimerBar from "../components/TimerBar";
 import ProgressSidebar from "../components/ProgressSidebar";
 import { isMuted, toggleMute } from "../hooks/useSoundEffect";
+import BriefingScreen from "../components/BriefingScreen";
+import HelpModal from "../components/HelpModal";
 import RoundEndOverlay from "../components/RoundEndOverlay";
 import WaitingOverlay from "../components/WaitingOverlay";
 import SpectatorDashboard from "../components/SpectatorDashboard";
@@ -72,6 +74,7 @@ export default function Game() {
   const [introTotalRounds, setIntroTotalRounds] = useState(0);
   const lastRoundIndexRef = useRef<number | null>(null);
   const [muted, setMuted] = useState(isMuted());
+  const [showHelp, setShowHelp] = useState(false);
 
   // Show round intro when a new round starts
   useEffect(() => {
@@ -101,6 +104,20 @@ export default function Game() {
       navigate(`/results/${roomId}`);
     }
   }, [state.phase, roomId, navigate]);
+
+  // ─── Briefing (pre-round instructions for new players) ──
+  if (state.phase === "briefing" && state.briefing) {
+    return (
+      <BriefingScreen
+        briefingKey={state.briefing.briefingKey}
+        roundType={state.briefing.roundType}
+        gameCategory={state.briefing.gameCategory}
+        readyCount={state.briefing.readyCount}
+        totalCount={state.briefing.totalCount}
+        onReady={() => socket?.emit("player-ready")}
+      />
+    );
+  }
 
   // ─── Countdown (shared by all game types) ───────────
   if (
@@ -200,13 +217,22 @@ export default function Game() {
                 </button>
               )}
             </div>
-            <button
-              onClick={() => setMuted(toggleMute())}
-              className="absolute right-0 top-0 px-2.5 py-1 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 font-display font-bold text-xs transition-colors"
-              title={muted ? "Geluid aan" : "Geluid uit"}
-            >
-              {muted ? "🔇" : "🔊"}
-            </button>
+            <div className="absolute right-0 top-0 flex items-center gap-1">
+              <button
+                onClick={() => setShowHelp(true)}
+                className="px-2.5 py-1 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 font-display font-bold text-xs transition-colors"
+                title="Speluitleg"
+              >
+                ❓
+              </button>
+              <button
+                onClick={() => setMuted(toggleMute())}
+                className="px-2.5 py-1 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 font-display font-bold text-xs transition-colors"
+                title={muted ? "Geluid aan" : "Geluid uit"}
+              >
+                {muted ? "🔇" : "🔊"}
+              </button>
+            </div>
             <div className="flex items-center justify-center gap-2 sm:gap-3 mb-2 flex-wrap">
               <span className="px-3 py-1 rounded-full text-sm font-display font-bold bg-red-100 text-red-700">
                 🏃 Snelste Vinger
@@ -224,6 +250,11 @@ export default function Game() {
 
           <SnelsteVingerGame state={svState} />
         </div>
+        <HelpModal
+          instructionKey="snelste-vinger"
+          open={showHelp}
+          onClose={() => setShowHelp(false)}
+        />
       </div>
     );
   }
@@ -377,13 +408,22 @@ export default function Game() {
               </button>
             )}
           </div>
-          <button
-            onClick={() => setMuted(toggleMute())}
-            className="absolute right-0 top-0 px-2.5 py-1 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 font-display font-bold text-xs transition-colors"
-            title={muted ? "Geluid aan" : "Geluid uit"}
-          >
-            {muted ? "🔇" : "🔊"}
-          </button>
+          <div className="absolute right-0 top-0 flex items-center gap-1">
+            <button
+              onClick={() => setShowHelp(true)}
+              className="px-2.5 py-1 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 font-display font-bold text-xs transition-colors"
+              title="Speluitleg"
+            >
+              ❓
+            </button>
+            <button
+              onClick={() => setMuted(toggleMute())}
+              className="px-2.5 py-1 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 font-display font-bold text-xs transition-colors"
+              title={muted ? "Geluid aan" : "Geluid uit"}
+            >
+              {muted ? "🔇" : "🔊"}
+            </button>
+          </div>
           <div className="flex items-center justify-center gap-2 sm:gap-3 mb-2 flex-wrap">
             <span
               className={`px-3 py-1 rounded-full text-sm font-display font-bold
@@ -511,6 +551,11 @@ export default function Game() {
           onNextRound={handleNextRound}
         />
       )}
+      <HelpModal
+        instructionKey={roundConfig?.type ?? "connections"}
+        open={showHelp}
+        onClose={() => setShowHelp(false)}
+      />
     </div>
   );
 }

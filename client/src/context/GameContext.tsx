@@ -17,6 +17,8 @@ import type {
   WhatAmISettings,
   SnelsteVingerClientState,
   SnelsteVingerSettings,
+  RoundType,
+  GameCategory,
 } from "shared/types";
 
 // ─── State ─────────────────────────────────────────────
@@ -37,7 +39,14 @@ export interface GameState {
   currentRoundResult: RoundResult | null;
   finalResults: FinalResults | null;
   countdown: number | null;
-  phase: "idle" | "lobby" | "playing" | "countdown" | "round-end" | "finished";
+  phase:
+    | "idle"
+    | "lobby"
+    | "playing"
+    | "countdown"
+    | "briefing"
+    | "round-end"
+    | "finished";
   timeRemainingMs: number | null;
   errorMessage: string | null;
   devMode: boolean;
@@ -46,6 +55,14 @@ export interface GameState {
   whatAmIState: WhatAmIClientGameState | null;
   // Snelste Vinger
   snelsteVingerState: SnelsteVingerClientState | null;
+  // Briefing
+  briefing: {
+    briefingKey: string;
+    roundType?: RoundType;
+    gameCategory: GameCategory;
+    readyCount: number;
+    totalCount: number;
+  } | null;
 }
 
 const initialState: GameState = {
@@ -66,6 +83,7 @@ const initialState: GameState = {
   toasts: [],
   whatAmIState: null,
   snelsteVingerState: null,
+  briefing: null,
 };
 
 // ─── Actions ───────────────────────────────────────────
@@ -134,7 +152,16 @@ export type GameAction =
       patch: Partial<SnelsteVingerClientState>;
     }
   | { type: "SNELSTEVINGER_GAME_END"; state: SnelsteVingerClientState }
-  | { type: "SNELSTEVINGER_SETTINGS_UPDATED"; settings: SnelsteVingerSettings };
+  | { type: "SNELSTEVINGER_SETTINGS_UPDATED"; settings: SnelsteVingerSettings }
+  // ─── Briefing ─────────────────────────────────────
+  | {
+      type: "SET_BRIEFING";
+      briefingKey: string;
+      roundType?: RoundType;
+      gameCategory: GameCategory;
+    }
+  | { type: "BRIEFING_READY_COUNT"; ready: number; total: number }
+  | { type: "CLEAR_BRIEFING" };
 
 function gameReducer(state: GameState, action: GameAction): GameState {
   switch (action.type) {
@@ -213,6 +240,8 @@ function gameReducer(state: GameState, action: GameAction): GameState {
       return {
         ...state,
         countdown: action.count,
+        phase: "countdown",
+        briefing: null,
       };
 
     case "SCORE_UPDATED":
@@ -434,6 +463,34 @@ function gameReducer(state: GameState, action: GameAction): GameState {
         ...state,
         room: { ...state.room, snelsteVingerSettings: action.settings },
       };
+
+    case "SET_BRIEFING":
+      return {
+        ...state,
+        briefing: {
+          briefingKey: action.briefingKey,
+          roundType: action.roundType,
+          gameCategory: action.gameCategory,
+          readyCount: 0,
+          totalCount: 0,
+        },
+        phase: "briefing",
+        countdown: null,
+      };
+
+    case "BRIEFING_READY_COUNT":
+      if (!state.briefing) return state;
+      return {
+        ...state,
+        briefing: {
+          ...state.briefing,
+          readyCount: action.ready,
+          totalCount: action.total,
+        },
+      };
+
+    case "CLEAR_BRIEFING":
+      return { ...state, briefing: null };
 
     default:
       return state;

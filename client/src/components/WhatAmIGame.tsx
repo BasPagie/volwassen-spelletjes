@@ -5,6 +5,7 @@ import CharacterCard from "./CharacterCard";
 import { useSocket } from "../context/SocketContext";
 import confetti from "canvas-confetti";
 import { isMuted, toggleMute } from "../hooks/useSoundEffect";
+import HelpModal from "./HelpModal";
 
 interface Props {
   gameState: WhatAmIClientGameState;
@@ -136,6 +137,7 @@ export default function WhatAmIGame({
   });
 
   const [muted, setMuted] = useState(isMuted());
+  const [showHelp, setShowHelp] = useState(false);
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-purple-50 to-gray-50 px-2 sm:px-4 py-4 sm:py-6">
@@ -182,6 +184,13 @@ export default function WhatAmIGame({
               ⏱ {formatTime(turnTimeLeft)}
             </div>
           )}
+          <button
+            onClick={() => setShowHelp(true)}
+            className="px-2.5 py-1 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 font-display font-bold text-xs transition-colors shrink-0"
+            title="Speluitleg"
+          >
+            ❓
+          </button>
           <button
             onClick={() => setMuted(toggleMute())}
             className="px-2.5 py-1 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 font-display font-bold text-xs transition-colors shrink-0"
@@ -435,6 +444,11 @@ export default function WhatAmIGame({
           )}
         </AnimatePresence>
       </div>
+      <HelpModal
+        instructionKey="what-am-i"
+        open={showHelp}
+        onClose={() => setShowHelp(false)}
+      />
     </div>
   );
 }
