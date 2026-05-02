@@ -4,6 +4,7 @@ import type { WhatAmIClientGameState, Player } from "shared/types";
 import CharacterCard from "./CharacterCard";
 import { useSocket } from "../context/SocketContext";
 import confetti from "canvas-confetti";
+import { isMuted, toggleMute } from "../hooks/useSoundEffect";
 
 interface Props {
   gameState: WhatAmIClientGameState;
@@ -134,6 +135,8 @@ export default function WhatAmIGame({
     return 0;
   });
 
+  const [muted, setMuted] = useState(isMuted());
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-purple-50 to-gray-50 px-2 sm:px-4 py-4 sm:py-6">
       {/* Header */}
@@ -179,6 +182,13 @@ export default function WhatAmIGame({
               ⏱ {formatTime(turnTimeLeft)}
             </div>
           )}
+          <button
+            onClick={() => setMuted(toggleMute())}
+            className="px-2.5 py-1 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 font-display font-bold text-xs transition-colors shrink-0"
+            title={muted ? "Geluid aan" : "Geluid uit"}
+          >
+            {muted ? "🔇" : "🔊"}
+          </button>
         </div>
 
         {/* Turn indicator */}

@@ -161,6 +161,7 @@ export interface SnelsteVingerClientState {
   question: string;
   category: string;
   timeRemainingMs: number;
+  totalTimeMs: number;              // total time per question in ms
   answered: boolean;              // current player already answered correctly this question
   buzzedWrong: boolean;           // current player buzzed wrong this question
   winnerId: string | null;        // who won this question (null = still open)

@@ -7,7 +7,7 @@ import { useGame } from "../context/GameContext";
 import { useSocketEvents } from "../hooks/useSocketEvents";
 import { PREMADE_AVATARS } from "shared/types";
 import confetti from "canvas-confetti";
-import { playSound } from "../hooks/useSoundEffect";
+import { playSound, isMuted, toggleMute } from "../hooks/useSoundEffect";
 
 // Phases: drumroll → 3rd → 2nd → 1st → leaderboard
 type RevealPhase = "drumroll" | "third" | "second" | "first" | "leaderboard";
@@ -36,6 +36,7 @@ export default function Results() {
   const socket = useSocket();
   const { state } = useGame();
   const [phase, setPhase] = useState<RevealPhase>("drumroll");
+  const [muted, setMuted] = useState(isMuted());
   const playerCount = state.finalResults?.players.length ?? 0;
   const phaseOrder = getPhaseOrder(playerCount);
 
@@ -187,8 +188,17 @@ export default function Results() {
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-8"
+          className="text-center mb-8 relative"
         >
+          {showLeaderboard && (
+            <button
+              onClick={() => setMuted(toggleMute())}
+              className="absolute right-0 top-0 px-2.5 py-1 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 font-display font-bold text-xs transition-colors"
+              title={muted ? "Geluid aan" : "Geluid uit"}
+            >
+              {muted ? "🔇" : "🔊"}
+            </button>
+          )}
           <h1
             className="font-display font-black text-4xl sm:text-5xl text-transparent bg-clip-text
                         bg-gradient-to-r from-yellow-500 via-orange-500 to-red-500 mb-2"

@@ -222,6 +222,7 @@ export function buildClientState(
     question: question?.question ?? '',
     category: question?.category ?? '',
     timeRemainingMs,
+    totalTimeMs: instance.settings.timePerQuestion * 1000,
     answered: instance.answeredCorrectly.has(playerId),
     buzzedWrong: instance.buzzedWrong.has(playerId),
     winnerId: instance.winnerId,

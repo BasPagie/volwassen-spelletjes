@@ -15,6 +15,7 @@ import DrawingGameStub from "../components/DrawingGameStub";
 import SnelsteVingerGame from "../components/SnelsteVingerGame";
 import TimerBar from "../components/TimerBar";
 import ProgressSidebar from "../components/ProgressSidebar";
+import { isMuted, toggleMute } from "../hooks/useSoundEffect";
 import RoundEndOverlay from "../components/RoundEndOverlay";
 import WaitingOverlay from "../components/WaitingOverlay";
 import SpectatorDashboard from "../components/SpectatorDashboard";
@@ -70,6 +71,7 @@ export default function Game() {
   const [introRoundNumber, setIntroRoundNumber] = useState(0);
   const [introTotalRounds, setIntroTotalRounds] = useState(0);
   const lastRoundIndexRef = useRef<number | null>(null);
+  const [muted, setMuted] = useState(isMuted());
 
   // Show round intro when a new round starts
   useEffect(() => {
@@ -174,7 +176,56 @@ export default function Game() {
     if (!state.snelsteVingerState) {
       return <SkeletonLoader variant="game" />;
     }
-    return <SnelsteVingerGame state={state.snelsteVingerState} />;
+
+    const svState = state.snelsteVingerState;
+    const handleBackToLobbySV = () => socket?.emit("play-again");
+
+    return (
+      <div className="h-screen flex flex-col overflow-hidden px-2 sm:px-4 py-2 sm:py-3">
+        <div className="max-w-5xl mx-auto w-full flex flex-col flex-1 min-h-0">
+          {/* Header */}
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center mb-3 relative"
+          >
+            <div className="absolute left-0 top-0 flex items-center gap-1">
+              {state.player?.isHost && (
+                <button
+                  onClick={handleBackToLobbySV}
+                  className="flex items-center gap-1 px-3 py-1.5 rounded-lg
+                             bg-gray-100 hover:bg-gray-200 text-gray-600 font-display font-bold text-xs transition-colors"
+                >
+                  ← Lobby
+                </button>
+              )}
+            </div>
+            <button
+              onClick={() => setMuted(toggleMute())}
+              className="absolute right-0 top-0 px-2.5 py-1 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 font-display font-bold text-xs transition-colors"
+              title={muted ? "Geluid aan" : "Geluid uit"}
+            >
+              {muted ? "🔇" : "🔊"}
+            </button>
+            <div className="flex items-center justify-center gap-2 sm:gap-3 mb-2 flex-wrap">
+              <span className="px-3 py-1 rounded-full text-sm font-display font-bold bg-red-100 text-red-700">
+                🏃 Snelste Vinger
+              </span>
+              <span className="text-sm text-gray-400 font-display">
+                Vraag {svState.questionIndex + 1} van {svState.totalQuestions}
+              </span>
+              {svState.category && (
+                <span className="px-2.5 py-0.5 rounded-full text-xs font-display font-semibold bg-red-50 text-red-600 border border-red-200">
+                  {svState.category}
+                </span>
+              )}
+            </div>
+          </motion.div>
+
+          <SnelsteVingerGame state={svState} />
+        </div>
+      </div>
+    );
   }
 
   const handleSubmitGroup = (words: string[]) => {
@@ -315,15 +366,24 @@ export default function Game() {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-3 relative"
         >
-          {state.player?.isHost && (
-            <button
-              onClick={handleBackToLobby}
-              className="absolute left-0 top-0 flex items-center gap-1 px-3 py-1.5 rounded-lg
-                         bg-gray-100 hover:bg-gray-200 text-gray-600 font-display font-bold text-xs transition-colors"
-            >
-              ← Lobby
-            </button>
-          )}
+          <div className="absolute left-0 top-0 flex items-center gap-1">
+            {state.player?.isHost && (
+              <button
+                onClick={handleBackToLobby}
+                className="flex items-center gap-1 px-3 py-1.5 rounded-lg
+                           bg-gray-100 hover:bg-gray-200 text-gray-600 font-display font-bold text-xs transition-colors"
+              >
+                ← Lobby
+              </button>
+            )}
+          </div>
+          <button
+            onClick={() => setMuted(toggleMute())}
+            className="absolute right-0 top-0 px-2.5 py-1 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 font-display font-bold text-xs transition-colors"
+            title={muted ? "Geluid aan" : "Geluid uit"}
+          >
+            {muted ? "🔇" : "🔊"}
+          </button>
           <div className="flex items-center justify-center gap-2 sm:gap-3 mb-2 flex-wrap">
             <span
               className={`px-3 py-1 rounded-full text-sm font-display font-bold

@@ -231,7 +231,7 @@ export function useSocketEvents() {
     });
 
     socket.on('snelstevinger:game-end', ({ scores }) => {
-      dispatch({ type: 'SNELSTEVINGER_GAME_END', state: { questionIndex: 0, totalQuestions: 0, question: '', category: '', timeRemainingMs: 0, answered: false, buzzedWrong: false, winnerId: null, winnerName: null, correctAnswer: null, scores, phase: 'finished' } });
+      dispatch({ type: 'SNELSTEVINGER_GAME_END', state: { questionIndex: 0, totalQuestions: 0, question: '', category: '', timeRemainingMs: 0, totalTimeMs: 0, answered: false, buzzedWrong: false, winnerId: null, winnerName: null, correctAnswer: null, scores, phase: 'finished' } });
     });
 
     return () => {

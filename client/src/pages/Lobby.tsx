@@ -194,7 +194,7 @@ export default function Lobby() {
                   ? "🎭 Wie Ben Ik?"
                   : state.room.gameCategory === "snelste-vinger"
                     ? "🏃 Snelste Vinger"
-                    : "🔮 Komt snel..."}
+                    : "🔮 Meer spellen worden..."}
             </span>
             <button
               onClick={() => setShowInfo(true)}

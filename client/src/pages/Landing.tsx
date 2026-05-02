@@ -46,7 +46,7 @@ const GAME_CATEGORIES: {
   {
     id: "drawing",
     icon: "🔮",
-    title: "Komt snel...",
+    title: "Meer spellen worden...",
     subtitle: "Binnenkort beschikbaar!",
     color: "text-gray-400",
     bg: "bg-gray-50 border-gray-200 cursor-not-allowed opacity-60",

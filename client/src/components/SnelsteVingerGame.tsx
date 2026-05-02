@@ -16,6 +16,29 @@ export default function SnelsteVingerGame({ state }: Props) {
   const inputRef = useRef<HTMLInputElement>(null);
   const resultTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  // ─── Smooth client-side timer ────────────────────────
+  const [displayMs, setDisplayMs] = useState(state.timeRemainingMs);
+  const lastServerMs = useRef(state.timeRemainingMs);
+  const lastSyncTime = useRef(Date.now());
+
+  // Sync when server sends a new value (new question)
+  useEffect(() => {
+    lastServerMs.current = state.timeRemainingMs;
+    lastSyncTime.current = Date.now();
+    setDisplayMs(state.timeRemainingMs);
+  }, [state.questionIndex, state.timeRemainingMs]);
+
+  // Tick down smoothly
+  useEffect(() => {
+    if (state.phase !== "question" || displayMs <= 0) return;
+    const interval = setInterval(() => {
+      const elapsed = Date.now() - lastSyncTime.current;
+      const remaining = Math.max(0, lastServerMs.current - elapsed);
+      setDisplayMs(remaining);
+    }, 50);
+    return () => clearInterval(interval);
+  }, [state.phase, displayMs > 0]);
+
   // Focus input on new question
   useEffect(() => {
     if (state.phase === "question" && inputRef.current) {
@@ -49,53 +72,63 @@ export default function SnelsteVingerGame({ state }: Props) {
     }
   };
 
-  const progressPct = state.timeRemainingMs / (15 * 1000); // approximate
-  const timerColor =
-    progressPct > 0.5
-      ? "bg-green-500"
-      : progressPct > 0.25
-        ? "bg-yellow-500"
-        : "bg-red-500";
+  // Timer calculations
+  const totalMs = state.totalTimeMs || 15000;
+  const fraction = Math.max(0, Math.min(1, displayMs / totalMs));
+  const seconds = Math.ceil(displayMs / 1000);
+  const isLow = seconds <= 10;
+  const isCritical = seconds <= 5;
 
   return (
-    <div className="h-screen flex flex-col bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white overflow-hidden">
-      {/* Top bar: progress + scores */}
-      <div className="flex-shrink-0 px-4 pt-4 pb-2">
-        <div className="flex items-center justify-between mb-2">
-          <span className="text-xs font-display font-bold text-red-400 uppercase tracking-wider">
-            Vraag {state.questionIndex + 1}/{state.totalQuestions}
-          </span>
-          <span className="text-xs font-display text-gray-400 px-2 py-0.5 bg-gray-700/50 rounded-full">
-            {state.category}
-          </span>
-        </div>
-
-        {/* Timer bar */}
-        {state.phase === "question" && (
-          <div className="w-full h-2 rounded-full bg-gray-700 overflow-hidden">
+    <div className="flex flex-col flex-1 min-h-0">
+      {/* Timer bar */}
+      {state.phase === "question" && (
+        <div className="flex-shrink-0 mb-4">
+          <div className="flex items-center justify-between mb-1">
+            <span className="text-xs font-display font-bold text-gray-500">
+              ⏱️ Tijd
+            </span>
+            <span
+              className={`font-display font-black text-lg tabular-nums ${
+                isCritical
+                  ? "text-red-500 animate-pulse"
+                  : isLow
+                    ? "text-orange-500"
+                    : "text-gray-700"
+              }`}
+            >
+              {Math.floor(seconds / 60)}:{String(seconds % 60).padStart(2, "0")}
+            </span>
+          </div>
+          <div className="h-3 bg-gray-100 rounded-full overflow-hidden">
             <motion.div
-              className={`h-full rounded-full ${timerColor}`}
-              initial={{ width: "100%" }}
-              animate={{ width: `${Math.max(0, progressPct * 100)}%` }}
-              transition={{ duration: 0.3 }}
+              className={`h-full rounded-full transition-colors duration-500 ${
+                isCritical
+                  ? "bg-red-500"
+                  : isLow
+                    ? "bg-orange-400"
+                    : "bg-red-400"
+              }`}
+              style={{ width: `${fraction * 100}%` }}
+              transition={{ duration: 0.1 }}
             />
           </div>
-        )}
-      </div>
+        </div>
+      )}
 
       {/* Main content */}
-      <div className="flex-1 flex flex-col items-center justify-center px-4 min-h-0">
+      <div className="flex-1 flex flex-col items-center justify-center min-h-0">
         <AnimatePresence mode="wait">
-          {/* Question */}
           <motion.div
             key={`q-${state.questionIndex}-${state.phase}`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="text-center max-w-2xl w-full"
+            className="text-center max-w-2xl w-full px-4"
           >
-            <h2 className="font-display font-black text-2xl sm:text-3xl md:text-4xl leading-tight mb-6">
+            {/* Question text */}
+            <h2 className="font-display font-black text-2xl sm:text-3xl md:text-4xl leading-tight text-gray-800 mb-6">
               {state.question}
             </h2>
 
@@ -107,19 +140,18 @@ export default function SnelsteVingerGame({ state }: Props) {
                   animate={{ scale: 1, opacity: 1 }}
                   className="mb-4"
                 >
-                  <p className="text-lg font-display text-gray-400 mb-1">
-                    Antwoord:
+                  <p className="text-sm font-display font-semibold text-gray-400 mb-1 uppercase tracking-wide">
+                    Antwoord
                   </p>
-                  <p className="font-display font-black text-3xl text-red-400">
+                  <p className="font-display font-black text-3xl text-red-600">
                     {state.correctAnswer}
                   </p>
-                  {state.winnerName && (
-                    <p className="mt-3 font-display text-green-400 font-bold">
+                  {state.winnerName ? (
+                    <p className="mt-3 font-display text-green-600 font-bold text-lg">
                       🏆 {state.winnerName} was het snelst!
                     </p>
-                  )}
-                  {!state.winnerName && (
-                    <p className="mt-3 font-display text-red-400 font-bold">
+                  ) : (
+                    <p className="mt-3 font-display text-gray-500 font-bold">
                       ⏱️ Tijd voorbij — niemand had het goed!
                     </p>
                   )}
@@ -133,7 +165,7 @@ export default function SnelsteVingerGame({ state }: Props) {
                 animate={{ scale: 1, opacity: 1 }}
                 className="space-y-2"
               >
-                <p className="text-2xl font-display font-black text-red-400">
+                <p className="text-2xl font-display font-black text-red-600">
                   🎉 Spel Afgelopen!
                 </p>
               </motion.div>
@@ -146,7 +178,7 @@ export default function SnelsteVingerGame({ state }: Props) {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="w-full max-w-md mt-8"
+            className="w-full max-w-md mt-8 px-4"
           >
             {/* Result flash */}
             <AnimatePresence>
@@ -157,7 +189,7 @@ export default function SnelsteVingerGame({ state }: Props) {
                   exit={{ opacity: 0 }}
                   className="text-center mb-3"
                 >
-                  <span className="font-display font-bold text-red-400 text-sm">
+                  <span className="font-display font-bold text-red-500 text-sm">
                     ❌ Fout! Probeer opnieuw
                   </span>
                 </motion.div>
@@ -173,17 +205,18 @@ export default function SnelsteVingerGame({ state }: Props) {
                 onKeyDown={handleKeyDown}
                 placeholder="Typ je antwoord..."
                 maxLength={200}
-                className="flex-1 px-4 py-3 rounded-xl bg-gray-700/80 border-2 border-gray-600 
-                           text-white font-display text-lg outline-none focus:border-red-400 
-                           placeholder:text-gray-500 transition-all"
+                className="flex-1 px-4 py-3 rounded-xl border-2 border-gray-200 
+                           text-gray-800 font-display text-lg outline-none 
+                           focus:border-red-400 focus:ring-2 focus:ring-red-100
+                           placeholder:text-gray-400 transition-all"
               />
               <button
                 onClick={handleBuzz}
                 disabled={!input.trim()}
-                className="px-6 py-3 rounded-xl bg-red-500 hover:bg-red-400 text-gray-900 
+                className="px-6 py-3 rounded-xl bg-red-500 hover:bg-red-600 text-white 
                            font-display font-black text-lg transition-all 
                            disabled:opacity-40 disabled:cursor-not-allowed
-                           active:scale-95"
+                           active:scale-95 shadow-md"
               >
                 BUZZ!
               </button>
@@ -194,7 +227,7 @@ export default function SnelsteVingerGame({ state }: Props) {
         {/* Already answered correctly */}
         {state.phase === "question" && state.answered && (
           <div className="mt-8 text-center">
-            <span className="font-display font-bold text-green-400 text-lg">
+            <span className="font-display font-bold text-green-600 text-lg">
               ✓ Goed geantwoord!
             </span>
           </div>
@@ -202,25 +235,25 @@ export default function SnelsteVingerGame({ state }: Props) {
       </div>
 
       {/* Bottom scoreboard */}
-      <div className="flex-shrink-0 px-4 pb-4 pt-2">
-        <div className="bg-gray-800/80 backdrop-blur-sm rounded-xl border border-gray-700 p-3">
-          <div className="flex gap-3 overflow-x-auto">
+      <div className="flex-shrink-0 pt-2 pb-1">
+        <div className="bg-gray-50 rounded-xl border border-gray-200 p-3">
+          <div className="flex gap-3 overflow-x-auto justify-center">
             {state.scores.map((s, i) => (
               <div
                 key={s.playerId}
                 className={`flex items-center gap-2 flex-shrink-0 px-3 py-1.5 rounded-lg ${
                   s.playerId === state.winnerId
-                    ? "bg-red-500/20 border border-red-500/50"
-                    : "bg-gray-700/50"
+                    ? "bg-red-50 border border-red-200"
+                    : "bg-white border border-gray-100"
                 }`}
               >
                 <span className="text-sm">
                   {i === 0 ? "🥇" : i === 1 ? "🥈" : i === 2 ? "🥉" : ""}
                 </span>
-                <span className="text-xs font-display text-gray-300 truncate max-w-[80px]">
+                <span className="text-xs font-display text-gray-600 truncate max-w-[80px]">
                   {s.nickname}
                 </span>
-                <span className="text-xs font-display font-bold text-red-400">
+                <span className="text-xs font-display font-bold text-red-600">
                   {s.score}
                 </span>
                 {s.streak >= 2 && <span className="text-xs">🔥{s.streak}</span>}
