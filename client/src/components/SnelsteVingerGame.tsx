@@ -5,9 +5,10 @@ import { useSocket } from "../context/SocketContext";
 
 interface Props {
   state: SnelsteVingerClientState;
+  isSpectator?: boolean;
 }
 
-export default function SnelsteVingerGame({ state }: Props) {
+export default function SnelsteVingerGame({ state, isSpectator }: Props) {
   const socket = useSocket();
   const [input, setInput] = useState("");
   const [lastResult, setLastResult] = useState<"correct" | "wrong" | null>(
@@ -174,61 +175,73 @@ export default function SnelsteVingerGame({ state }: Props) {
         </AnimatePresence>
 
         {/* Input section */}
-        {state.phase === "question" && !state.answered && !state.winnerId && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="w-full max-w-md mt-8 px-4"
-          >
-            {/* Result flash */}
-            <AnimatePresence>
-              {lastResult === "wrong" && (
-                <motion.div
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0 }}
-                  className="text-center mb-3"
-                >
-                  <span className="font-display font-bold text-red-500 text-sm">
-                    ❌ Fout! Probeer opnieuw
-                  </span>
-                </motion.div>
-              )}
-            </AnimatePresence>
+        {state.phase === "question" &&
+          !state.answered &&
+          !state.winnerId &&
+          !isSpectator && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="w-full max-w-md mt-8 px-4"
+            >
+              {/* Result flash */}
+              <AnimatePresence>
+                {lastResult === "wrong" && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
+                    className="text-center mb-3"
+                  >
+                    <span className="font-display font-bold text-red-500 text-sm">
+                      ❌ Fout! Probeer opnieuw
+                    </span>
+                  </motion.div>
+                )}
+              </AnimatePresence>
 
-            <div className="flex gap-2">
-              <input
-                ref={inputRef}
-                type="text"
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onKeyDown={handleKeyDown}
-                placeholder="Typ je antwoord..."
-                maxLength={200}
-                className="flex-1 px-4 py-3 rounded-xl border-2 border-gray-200 
+              <div className="flex gap-2">
+                <input
+                  ref={inputRef}
+                  type="text"
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  onKeyDown={handleKeyDown}
+                  placeholder="Typ je antwoord..."
+                  maxLength={200}
+                  className="flex-1 px-4 py-3 rounded-xl border-2 border-gray-200 
                            text-gray-800 font-display text-lg outline-none 
                            focus:border-red-400 focus:ring-2 focus:ring-red-100
                            placeholder:text-gray-400 transition-all"
-              />
-              <button
-                onClick={handleBuzz}
-                disabled={!input.trim()}
-                className="px-6 py-3 rounded-xl bg-red-500 hover:bg-red-600 text-white 
+                />
+                <button
+                  onClick={handleBuzz}
+                  disabled={!input.trim()}
+                  className="px-6 py-3 rounded-xl bg-red-500 hover:bg-red-600 text-white 
                            font-display font-black text-lg transition-all 
                            disabled:opacity-40 disabled:cursor-not-allowed
                            active:scale-95 shadow-md"
-              >
-                BUZZ!
-              </button>
-            </div>
-          </motion.div>
-        )}
+                >
+                  BUZZ!
+                </button>
+              </div>
+            </motion.div>
+          )}
 
         {/* Already answered correctly */}
-        {state.phase === "question" && state.answered && (
+        {state.phase === "question" && state.answered && !isSpectator && (
           <div className="mt-8 text-center">
             <span className="font-display font-bold text-green-600 text-lg">
               ✓ Goed geantwoord!
+            </span>
+          </div>
+        )}
+
+        {/* Spectator label */}
+        {isSpectator && state.phase === "question" && (
+          <div className="mt-8 text-center">
+            <span className="font-display font-bold text-gray-400 text-lg">
+              👀 Je kijkt toe
             </span>
           </div>
         )}

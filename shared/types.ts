@@ -141,7 +141,7 @@ export interface SnelsteVingerSettings {
 }
 
 export const DEFAULT_SNELSTEVINGER_SETTINGS: SnelsteVingerSettings = {
-  categoryIds: ['popcultuur', 'gaming', 'muziek', 'internet', 'series', 'wetenschap', 'random'],
+  categoryIds: ['popcultuur', 'gaming', 'muziek', 'internet', 'series', 'wetenschap', 'random', 'eten-drinken', 'aardrijkskunde', 'geschiedenis', 'nederland', 'league-of-legends', 'dwergen'],
   questionCount: 15,
   timePerQuestion: 15,
   hostPlays: true,

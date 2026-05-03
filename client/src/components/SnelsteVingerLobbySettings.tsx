@@ -136,7 +136,7 @@ export default function SnelsteVingerLobbySettings({
             </span>
           )}
         </span>
-        <div className="grid grid-cols-1 gap-2">
+        <div className="flex flex-wrap gap-1.5">
           {categories.map((cat) => {
             const selected = current.categoryIds.includes(cat.id);
             return (
@@ -144,36 +144,13 @@ export default function SnelsteVingerLobbySettings({
                 key={cat.id}
                 onClick={() => toggleCategory(cat.id)}
                 disabled={!isHost}
-                className={`p-3 rounded-xl border-2 text-left transition-all ${
+                className={`px-2.5 py-1.5 rounded-lg text-xs font-display font-bold transition-all ${
                   selected
-                    ? "border-red-400 bg-red-50"
-                    : "border-gray-200 bg-gray-50 hover:border-gray-300"
+                    ? "bg-red-100 text-red-700 border border-red-300"
+                    : "bg-gray-100 text-gray-600 hover:bg-gray-200 border border-transparent"
                 } ${!isHost ? "opacity-70 cursor-default" : ""}`}
               >
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="font-display font-bold text-sm text-gray-800">
-                      {cat.name}
-                    </p>
-                    <p className="font-display text-xs text-gray-500">
-                      {cat.description}
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs text-gray-400 font-display">
-                      {cat.questionCount}
-                    </span>
-                    <div
-                      className={`w-5 h-5 rounded-md border-2 flex items-center justify-center transition-all ${
-                        selected
-                          ? "border-red-500 bg-red-500 text-white"
-                          : "border-gray-300"
-                      }`}
-                    >
-                      {selected && <span className="text-xs font-bold">✓</span>}
-                    </div>
-                  </div>
-                </div>
+                {cat.name}
               </button>
             );
           })}
@@ -236,22 +213,50 @@ export default function SnelsteVingerLobbySettings({
           Punten
         </span>
         <div className="bg-gray-50/50 rounded-2xl border border-gray-100 p-3 space-y-3">
-          <div className="flex items-center justify-between">
-            <span className="text-sm font-display text-gray-700">
+          <div>
+            <span className="text-xs font-medium text-gray-400 uppercase tracking-wide mb-1.5 block">
               Goed antwoord
             </span>
-            <span className="text-sm font-display font-bold text-green-600">
-              +{current.pointsCorrect} pt
-            </span>
+            <div className="flex gap-1.5 flex-wrap">
+              {[50, 75, 100, 150, 200].map((pts) => (
+                <button
+                  key={pts}
+                  onClick={() => isHost && update({ pointsCorrect: pts })}
+                  disabled={!isHost}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                    current.pointsCorrect === pts
+                      ? "bg-red-500 text-white shadow-md"
+                      : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                  } ${!isHost ? "opacity-70 cursor-default" : ""}`}
+                >
+                  +{pts}
+                </button>
+              ))}
+            </div>
           </div>
-          <div className="flex items-center justify-between">
-            <span className="text-sm font-display text-gray-700">
+          <div className="border-t border-gray-100" />
+          <div>
+            <span className="text-xs font-medium text-gray-400 uppercase tracking-wide mb-1.5 block">
               Fout antwoord
             </span>
-            <span className="text-sm font-display font-bold text-red-500">
-              -{current.pointsWrongPenalty} pt
-            </span>
+            <div className="flex gap-1.5 flex-wrap">
+              {[0, 25, 50, 75, 100].map((pts) => (
+                <button
+                  key={pts}
+                  onClick={() => isHost && update({ pointsWrongPenalty: pts })}
+                  disabled={!isHost}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                    current.pointsWrongPenalty === pts
+                      ? "bg-red-500 text-white shadow-md"
+                      : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                  } ${!isHost ? "opacity-70 cursor-default" : ""}`}
+                >
+                  {pts === 0 ? "Geen" : `-${pts}`}
+                </button>
+              ))}
+            </div>
           </div>
+          <div className="border-t border-gray-100" />
           <div className="flex items-center justify-between">
             <span className="text-sm font-display text-gray-700">
               Streak bonus

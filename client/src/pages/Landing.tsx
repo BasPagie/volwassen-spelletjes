@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSocket } from "../context/SocketContext";
 import { useSocketEvents } from "../hooks/useSocketEvents";
@@ -58,7 +59,9 @@ export default function Landing() {
   useSocketEvents();
 
   const socket = useSocket();
+  const navigate = useNavigate();
   const [step, setStep] = useState<"pick" | "create">("pick");
+  const [joinCode, setJoinCode] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<GameCategory | null>(
     null,
   );
@@ -138,7 +141,7 @@ export default function Landing() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.35 }}
-            className="w-full max-w-3xl"
+            className="w-full max-w-3xl flex flex-col items-center"
           >
             <p className="text-center text-sm font-display font-semibold text-gray-500 mb-3 uppercase tracking-wide">
               Kies een spel
@@ -163,6 +166,50 @@ export default function Landing() {
                 </button>
               ))}
             </div>
+
+            {/* Join by code */}
+            <div className="mt-6 w-full max-w-xs">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="flex-1 h-px bg-gray-200" />
+                <span className="text-xs font-display font-semibold text-gray-400 uppercase tracking-wide">
+                  Of join een spel
+                </span>
+                <div className="flex-1 h-px bg-gray-200" />
+              </div>
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  value={joinCode}
+                  onChange={(e) =>
+                    setJoinCode(
+                      e.target.value
+                        .toUpperCase()
+                        .replace(/[^A-Z]/g, "")
+                        .slice(0, 4),
+                    )
+                  }
+                  placeholder="ABCD"
+                  maxLength={4}
+                  className="flex-1 px-4 py-2.5 rounded-xl border-2 border-gray-200 outline-none transition-all text-center text-lg font-display font-bold tracking-[0.3em] uppercase
+                  focus:border-pink-400 focus:ring-2 focus:ring-pink-100"
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" && joinCode.length === 4) {
+                      navigate(`/join/${joinCode}`);
+                    }
+                  }}
+                />
+                <button
+                  onClick={() =>
+                    joinCode.length === 4 && navigate(`/join/${joinCode}`)
+                  }
+                  disabled={joinCode.length !== 4}
+                  className="px-5 py-2.5 rounded-xl bg-gray-800 text-white font-display font-bold text-sm
+                  hover:bg-gray-700 transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+                >
+                  Join
+                </button>
+              </div>
+            </div>
           </motion.div>
         ) : (
           /* Step 2: Create Game Card */
@@ -171,12 +218,14 @@ export default function Landing() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.35 }}
+            transition={{ duration: 0.25 }}
             className="card w-full max-w-md"
           >
             <div className="relative flex items-center justify-center mb-5">
               <button
-                onClick={() => setStep("pick")}
+                onClick={() => {
+                  setStep("pick");
+                }}
                 className={`absolute left-0 flex items-center gap-1.5 text-sm font-display font-semibold text-gray-500 transition-colors px-3 py-1.5 rounded-lg border border-gray-200 ${theme.badgeHover}`}
               >
                 ← Terug
@@ -248,16 +297,6 @@ export default function Landing() {
           </motion.div>
         )}
       </AnimatePresence>
-
-      {/* Footer info */}
-      <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.8 }}
-        className="mt-6 text-sm text-gray-400 text-center font-display"
-      >
-        Maak een spel aan en deel de link met vrienden!
-      </motion.p>
     </div>
   );
 }

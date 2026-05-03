@@ -242,6 +242,9 @@ export default function Game() {
     }
 
     const svState = state.snelsteVingerState;
+    const isSpectator = !!(
+      state.player?.isHost && !state.room?.snelsteVingerSettings?.hostPlays
+    );
     const handleBackToLobbySV = () => socket?.emit("play-again");
 
     return (
@@ -295,7 +298,7 @@ export default function Game() {
             </div>
           </motion.div>
 
-          <SnelsteVingerGame state={svState} />
+          <SnelsteVingerGame state={svState} isSpectator={isSpectator} />
         </div>
         <HelpModal
           instructionKey="snelste-vinger"

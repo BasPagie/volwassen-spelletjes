@@ -59,6 +59,8 @@ function isAnswerCorrect(guess: string, acceptedAnswers: string[]): boolean {
     const normalizedAccepted = normalize(accepted);
     // Exact match
     if (normalizedGuess === normalizedAccepted) return true;
+    // Numbers (years, counts, etc.) must match exactly — no fuzzy tolerance
+    if (/^\d+$/.test(normalizedAccepted)) continue;
     // Levenshtein tolerance: allow distance ≤ 2 for strings of length ≥ 4
     if (normalizedAccepted.length >= 4 && normalizedGuess.length >= 4) {
       const maxDist = normalizedAccepted.length <= 6 ? 1 : 2;

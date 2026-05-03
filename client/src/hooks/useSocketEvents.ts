@@ -10,10 +10,12 @@ function nextToastId() { return `toast-${++toastId}`; }
 
 export function useSocketEvents() {
   const socket = useSocket();
-  const { dispatch } = useGame();
+  const { state: gameState, dispatch } = useGame();
   const navigate = useNavigate();
   const navigateRef = useRef(navigate);
   navigateRef.current = navigate;
+  const isSpectatorRef = useRef(false);
+  isSpectatorRef.current = !!(gameState.player?.isHost && gameState.room?.gameCategory === 'snelste-vinger' && !gameState.room?.snelsteVingerSettings?.hostPlays);
 
   useEffect(() => {
     if (!socket) return;
@@ -223,6 +225,7 @@ export function useSocketEvents() {
     });
 
     socket.on('snelstevinger:buzz-result', ({ correct }) => {
+      if (isSpectatorRef.current) return;
       playSound(correct ? 'correct' : 'wrong');
       if (!correct) {
         dispatch({ type: 'ADD_TOAST', toast: { id: nextToastId(), message: '❌ Fout! Probeer opnieuw', type: 'error' } });
@@ -230,14 +233,18 @@ export function useSocketEvents() {
     });
 
     socket.on('snelstevinger:question-won', ({ winnerName, correctAnswer, scores }) => {
-      playSound('correct');
-      dispatch({ type: 'ADD_TOAST', toast: { id: nextToastId(), message: `🏆 ${winnerName} had het goed: ${correctAnswer}`, type: 'success' } });
+      if (!isSpectatorRef.current) {
+        playSound('correct');
+        dispatch({ type: 'ADD_TOAST', toast: { id: nextToastId(), message: `🏆 ${winnerName} had het goed: ${correctAnswer}`, type: 'success' } });
+      }
       dispatch({ type: 'UPDATE_SNELSTEVINGER_STATE', patch: { winnerId: scores[0]?.playerId ?? null, winnerName, correctAnswer, scores, phase: 'reveal' } });
     });
 
     socket.on('snelstevinger:question-timeout', ({ correctAnswer, scores }) => {
-      playSound('wrong');
-      dispatch({ type: 'ADD_TOAST', toast: { id: nextToastId(), message: `⏱️ Tijd voorbij! Antwoord: ${correctAnswer}`, type: 'warning' } });
+      if (!isSpectatorRef.current) {
+        playSound('wrong');
+        dispatch({ type: 'ADD_TOAST', toast: { id: nextToastId(), message: `⏱️ Tijd voorbij! Antwoord: ${correctAnswer}`, type: 'warning' } });
+      }
       dispatch({ type: 'UPDATE_SNELSTEVINGER_STATE', patch: { winnerId: null, winnerName: null, correctAnswer, scores, phase: 'reveal' } });
     });
 

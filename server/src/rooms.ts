@@ -350,15 +350,15 @@ export function kickPlayer(roomId: string, playerId: string): { socketId?: strin
 }
 
 function generateRoomId(): string {
-  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; // no I/O/0/1 to avoid confusion
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ'; // no I/O to avoid confusion
   const MAX_RETRIES = 10;
   for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
     let code = '';
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < 4; i++) {
       code += chars[randomInt(chars.length)];
     }
     if (!rooms.has(code)) return code;
   }
-  // Fallback: UUID-based code (should never happen in practice)
-  return Array.from({ length: 6 }, () => chars[randomInt(chars.length)]).join('');
+  // Fallback (should never happen in practice)
+  return Array.from({ length: 4 }, () => chars[randomInt(chars.length)]).join('');
 }
