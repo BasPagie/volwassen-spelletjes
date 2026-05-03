@@ -91,7 +91,7 @@ export interface WhatAmISettings {
 }
 
 export const DEFAULT_WHATAMI_SETTINGS: WhatAmISettings = {
-  packIds: ['popculture', 'muziek', 'memes-internet', 'fictiepersonages', 'nederland-nu'],
+  packIds: ['popculture', 'muziek', 'memes-internet', 'film', 'series', 'games', 'superhelden', 'sport', 'geschiedenis', 'cartoon', 'anime', 'nederland-nu'],
   customCharacters: [],
   timeLimitSeconds: 600,
   hostPlays: true,

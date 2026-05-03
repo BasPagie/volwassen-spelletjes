@@ -37,7 +37,7 @@
       {
         "name": "Robert Downey Jr.",
         "category": "Acteur",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Robert_Downey_Jr._2014_Comic-Con.jpg/330px-Robert_Downey_Jr._2014_Comic-Con.jpg"
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Robert_Downey_Jr._-_2019_Disney_Legends_Awards_Ceremony_-_D23_EXPO_2019_%28cropped%29.jpg/330px-Robert_Downey_Jr._-_2019_Disney_Legends_Awards_Ceremony_-_D23_EXPO_2019_%28cropped%29.jpg"
       },
       {
         "name": "Adam Sandler",
@@ -52,7 +52,7 @@
       {
         "name": "Dwayne Johnson",
         "category": "Acteur",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Dwayne_Johnson-1764_%28cropped%29.jpg/330px-Dwayne_Johnson-1764_%28cropped%29.jpg"
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Dwayne_Johnson-1764_%28cropped_over_the_top%29.jpg/330px-Dwayne_Johnson-1764_%28cropped_over_the_top%29.jpg"
       },
       {
         "name": "Jim Carrey",
@@ -234,12 +234,12 @@
       {
         "name": "Doja Cat",
         "category": "Zangeres / Rapper",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Doja_Cat_x_Amazon1.1_%28cropped%29.jpg/330px-Doja_Cat_x_Amazon1.1_%28cropped%29.jpg"
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/DojaCatO2140624_%2887_of_105%29_%2853792876988%29_%28cropped%29.jpg/330px-DojaCatO2140624_%2887_of_105%29_%2853792876988%29_%28cropped%29.jpg"
       },
       {
         "name": "Bad Bunny",
         "category": "Reggaeton",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Bad_Bunny_2019_by_Glenn_Francis_%28cropped%29.jpg/330px-Bad_Bunny_2019_by_Glenn_Francis_%28cropped%29.jpg"
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Bad_Bunny_Performs_%28cropped%29.jpg/330px-Bad_Bunny_Performs_%28cropped%29.jpg"
       },
       {
         "name": "Freddie Mercury",
@@ -266,7 +266,7 @@
       {
         "name": "MrBeast",
         "category": "YouTuber",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/MrBeast_in_2026_%28cropped%29_2.png/330px-MrBeast_in_2026_%28cropped%29_2.png"
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/MrBeast_2023_%28cropped%29.jpg/330px-MrBeast_2023_%28cropped%29.jpg"
       },
       {
         "name": "PewDiePie",
@@ -306,7 +306,7 @@
       {
         "name": "Nicolas Cage",
         "category": "Acteur / Meme",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Festival_de_cinema_de_Sitges_2018_%2830240292207%29_%28cropped%29.jpg/330px-Festival_de_cinema_de_Sitges_2018_%2830240292207%29_%28cropped%29.jpg"
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Nicolas_Cage_2014_%28cropped%29.jpg"
       },
       {
         "name": "Danny DeVito",
@@ -326,7 +326,7 @@
       {
         "name": "Bob Ross",
         "category": "TV / Meme",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/7/70/Bob_at_Easel.jpg"
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Signature_of_Bob_Ross.svg/330px-Signature_of_Bob_Ross.svg.png"
       },
       {
         "name": "Marques Brownlee",
@@ -341,12 +341,12 @@
       {
         "name": "David Attenborough",
         "category": "Natuur / TV",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3d/B%C3%A6rekraftsprisen_2018_%28cropped%29.jpg"
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/LI_Awards_2019_270_N762_%28colour_corrected%29_%28cropped%29.jpg/330px-LI_Awards_2019_270_N762_%28colour_corrected%29_%28cropped%29.jpg"
       },
       {
         "name": "Joe Rogan",
         "category": "Podcast",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Joe_Rogan.png/330px-Joe_Rogan.png"
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/2026_Joe_Rogan_at_the_White_House_%28cropped%29.jpg/330px-2026_Joe_Rogan_at_the_White_House_%28cropped%29.jpg"
       },
       {
         "name": "Henry Cavill",
@@ -376,64 +376,278 @@
       {
         "name": "Rowan Atkinson",
         "category": "Mr. Bean / Meme",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Atkinson_Rowan_crop.jpg"
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Rowan_Atkinson%2C_2011.jpg/330px-Rowan_Atkinson%2C_2011.jpg"
       }
     ]
   },
   {
-    "id": "fictiepersonages",
-    "name": "📺 Fictie & Series",
-    "description": "Iconische personages uit films en series die je kent",
+    "id": "film",
+    "name": "🎬 Filmpersonages",
+    "description": "Iconische personages uit films die iedereen kent",
     "characters": [
       {
         "name": "Shrek",
         "category": "Animatiefilm",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/4/4d/Shrek_%28character%29.png"
+        "imageUrl": "https://image.tmdb.org/t/p/w500/iB64vpL3dIObOtMZgX3RqdVdQDc.jpg"
       },
       {
         "name": "Harry Potter",
-        "category": "Film / Boek",
-        "imageUrl": "https://static.wikia.nocookie.net/neoencyclopedia/images/4/44/HarryPotter5poster.jpg/revision/latest?cb=20121121021021"
+        "category": "Harry Potter",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/wuMc08IPKEatf9rnMNXvIDxqP4W.jpg"
       },
       {
         "name": "Darth Vader",
         "category": "Star Wars",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Darth_Vader_-_2007_Disney_Weekends.jpg/330px-Darth_Vader_-_2007_Disney_Weekends.jpg"
-      },
-      {
-        "name": "SpongeBob",
-        "category": "Tekenfilm",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7a/SpongeBob_SquarePants_character.png"
-      },
-      {
-        "name": "Walter White",
-        "category": "Breaking Bad",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/0/03/Walter_White_S5B.png"
-      },
-      {
-        "name": "The Joker",
-        "category": "DC Comics",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/5/5f/Batman_Three_Jokers.jpg"
+        "imageUrl": "https://image.tmdb.org/t/p/w500/6FfCtAuVAW8XJjZ7eWeLibRLWTw.jpg"
       },
       {
         "name": "Gandalf",
         "category": "Lord of the Rings",
-        "imageUrl": "https://static.wikia.nocookie.net/lotr/images/e/e7/Gandalf_the_Grey.jpg/revision/latest/scale-to-width-down/732?cb=20121110131754"
+        "imageUrl": "https://image.tmdb.org/t/p/w500/6oom5QYQ2yQTMJIbnvbkBL9cHo6.jpg"
       },
       {
-        "name": "Mario",
-        "category": "Games",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/5/5c/Mario_by_Shigehisa_Nakaue.png"
+        "name": "Captain Jack Sparrow",
+        "category": "Pirates of the Caribbean",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/kvDwL2gTf6yxujbsWbsGQB3Z9Wa.jpg"
       },
       {
-        "name": "Batman",
-        "category": "DC Comics",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/c/c7/Batman_Infobox.jpg"
+        "name": "Elsa",
+        "category": "Frozen",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/itAKcobTYGpYT8Phwjd8c9hleTo.jpg"
+      },
+      {
+        "name": "Dracula",
+        "category": "Horror",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/jSxCIZXudp5q8wQO8VERGX8hRAl.jpg"
+      },
+      {
+        "name": "Indiana Jones",
+        "category": "Indiana Jones",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/ceG9VzoRAVGwivFU403Wc3AHRys.jpg"
+      },
+      {
+        "name": "Forrest Gump",
+        "category": "Drama",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/Cw4hIUIAmSYfK9QfaUW5igp9La.jpg"
+      },
+      {
+        "name": "The Terminator",
+        "category": "Sci-Fi",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/qvktm0BHcnmDpul4Hz01GIazWPr.jpg"
+      },
+      {
+        "name": "Willy Wonka",
+        "category": "Fantasy",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/iKP6wg3c6COUe8gYutoGG7qcPnO.jpg"
+      },
+      {
+        "name": "Gollum",
+        "category": "Lord of the Rings",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/5VTN0pR8gcqV3EPUHHfMGnJYN9L.jpg"
+      },
+      {
+        "name": "Yoda",
+        "category": "Star Wars",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/nNAeTmF4CtdSgMDplXTDPOpYzsX.jpg"
+      },
+      {
+        "name": "Baby Yoda",
+        "category": "Star Wars",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/sWgBv7LV2PRoQgkxwlibdGXKz1S.jpg"
+      },
+      {
+        "name": "James Bond",
+        "category": "Actie",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/lMrxYKKhd4lqRzwUHAy5gcx9PSO.jpg"
+      },
+      {
+        "name": "John Wick",
+        "category": "Actie",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/wXqWR7dHncNRbxoEGybEy7QTe9h.jpg"
+      },
+      {
+        "name": "Katniss Everdeen",
+        "category": "Hunger Games",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/yXCbOiVDCxO71zI7cuwBRXdftq8.jpg"
+      },
+      {
+        "name": "Jack Torrance",
+        "category": "Horror",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/uAR0AWqhQL1hQa69UDEbb2rE5Wx.jpg"
+      },
+      {
+        "name": "Donkey",
+        "category": "Shrek",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/iB64vpL3dIObOtMZgX3RqdVdQDc.jpg"
+      },
+      {
+        "name": "Woody",
+        "category": "Toy Story",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/uXDfjJbdP4ijW5hWSBrPrlKpxab.jpg"
+      },
+      {
+        "name": "Buzz Lightyear",
+        "category": "Toy Story",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/uXDfjJbdP4ijW5hWSBrPrlKpxab.jpg"
+      },
+      {
+        "name": "Nemo",
+        "category": "Finding Nemo",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/eHuGQ10FUzK1mdOY69wF5pGgEf5.jpg"
+      },
+      {
+        "name": "Simba",
+        "category": "Lion King",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/sKCr78MXSLixwmZ8DyJLrpMsd15.jpg"
+      },
+      {
+        "name": "Tyler Durden",
+        "category": "Fight Club",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/jSziioSwPVrOy9Yow3XhWIBDjq1.jpg"
+      }
+    ]
+  },
+  {
+    "id": "series",
+    "name": "📺 Seriepersonages",
+    "description": "Bekende personages uit populaire TV-series",
+    "characters": [
+      {
+        "name": "Walter White",
+        "category": "Breaking Bad",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/ztkUQFLlC19CCMYHW9o1zWhJRNq.jpg"
       },
       {
         "name": "Homer Simpson",
         "category": "The Simpsons",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/0/02/Homer_Simpson_2006.png"
+        "imageUrl": "https://image.tmdb.org/t/p/w500/uWpG7GqfKGQqX4YMAo3nv5OrglV.jpg"
+      },
+      {
+        "name": "SpongeBob",
+        "category": "SpongeBob SquarePants",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/5h0EU2lqBb03dp5vtRuUHJwqzem.jpg"
+      },
+      {
+        "name": "Sheldon Cooper",
+        "category": "Big Bang Theory",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/an3uTx1P0XgHPylgfPV6W7yxKAo.jpg"
+      },
+      {
+        "name": "Michael Scott",
+        "category": "The Office",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/7DJKHzAi83BmQrWLrYYOqcoKfhR.jpg"
+      },
+      {
+        "name": "Eleven",
+        "category": "Stranger Things",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/uOOtwVbSr4QDjAGIifLDwpb2Pdl.jpg"
+      },
+      {
+        "name": "The Mandalorian",
+        "category": "Star Wars",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/sWgBv7LV2PRoQgkxwlibdGXKz1S.jpg"
+      },
+      {
+        "name": "Daenerys Targaryen",
+        "category": "Game of Thrones",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/1XS1oqL89opfnbLl8WnZY1O1uJx.jpg"
+      },
+      {
+        "name": "Squidward",
+        "category": "SpongeBob SquarePants",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/5h0EU2lqBb03dp5vtRuUHJwqzem.jpg"
+      },
+      {
+        "name": "Tyrion Lannister",
+        "category": "Game of Thrones",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/1XS1oqL89opfnbLl8WnZY1O1uJx.jpg"
+      },
+      {
+        "name": "El Profesor",
+        "category": "La Casa de Papel",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/reEMJA1uzscCbkpeRJeTT2bjqUp.jpg"
+      },
+      {
+        "name": "Jon Snow",
+        "category": "Game of Thrones",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/1XS1oqL89opfnbLl8WnZY1O1uJx.jpg"
+      },
+      {
+        "name": "Jesse Pinkman",
+        "category": "Breaking Bad",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/ztkUQFLlC19CCMYHW9o1zWhJRNq.jpg"
+      },
+      {
+        "name": "Ragnar Lothbrok",
+        "category": "Vikings",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/bQLrHIRNEkE3PdIWQrZHynQZazu.jpg"
+      },
+      {
+        "name": "Joey Tribbiani",
+        "category": "Friends",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/2koX1xLkpTQM4IZebYvKysFW1Nh.jpg"
+      },
+      {
+        "name": "Dexter Morgan",
+        "category": "Dexter",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/q8dWfc4JwQuv3HayIZeO84jAXED.jpg"
+      },
+      {
+        "name": "Tommy Shelby",
+        "category": "Peaky Blinders",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/vUUqzWa2LnHIVqkaKVlVGkVcZIW.jpg"
+      },
+      {
+        "name": "Saul Goodman",
+        "category": "Better Call Saul",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/zjg4jpK1Wp2kiRvtt5ND0kznako.jpg"
+      },
+      {
+        "name": "Patrick Star",
+        "category": "SpongeBob SquarePants",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/5h0EU2lqBb03dp5vtRuUHJwqzem.jpg"
+      },
+      {
+        "name": "Geralt of Rivia",
+        "category": "The Witcher",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/AoGsDM02UVt0npBA8OvpDcZbaMi.jpg"
+      },
+      {
+        "name": "Dwight Schrute",
+        "category": "The Office",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/7DJKHzAi83BmQrWLrYYOqcoKfhR.jpg"
+      },
+      {
+        "name": "Barney Stinson",
+        "category": "How I Met Your Mother",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/b34jPzmB0wZy7EjUZoleXOl2RRI.jpg"
+      },
+      {
+        "name": "Gustavo Fring",
+        "category": "Breaking Bad",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/ztkUQFLlC19CCMYHW9o1zWhJRNq.jpg"
+      },
+      {
+        "name": "Pablo Escobar",
+        "category": "Narcos",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/rTmal9fDbwh5F0waol2hq35U4ah.jpg"
+      }
+    ]
+  },
+  {
+    "id": "games",
+    "name": "🎮 Gamepersonages",
+    "description": "Legendarische personages uit de gamewereld",
+    "characters": [
+      {
+        "name": "Mario",
+        "category": "Nintendo",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/5/5c/Mario_by_Shigehisa_Nakaue.png"
+      },
+      {
+        "name": "Link",
+        "category": "Zelda",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/3/3c/Link_%28Tears_of_the_Kingdom%29.png"
       },
       {
         "name": "Pikachu",
@@ -441,69 +655,744 @@
         "imageUrl": "https://upload.wikimedia.org/wikipedia/en/a/a6/Pok%C3%A9mon_Pikachu_art.png"
       },
       {
-        "name": "Gollum",
-        "category": "Lord of the Rings",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Gollum_s_journey_commences_by_Frederic_Bennett_%28detail%29.jpg"
-      },
-      {
         "name": "Sonic the Hedgehog",
-        "category": "Games",
-        "imageUrl": "https://cdn.sega.co.uk/mhc-sega/public/styles/1280/public/content/media/images/raster/s_sonicworld_home_hero_sonic_1280x1280-785ed3fc.png.webp?itok=qUOTEkDt"
-      },
-      {
-        "name": "Wolverine",
-        "category": "Marvel",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/d/d3/Wolverine_%28circa_2024%29.jpg"
-      },
-      {
-        "name": "Elsa",
-        "category": "Frozen",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/5/5e/Elsa_from_Disney%27s_Frozen.png"
-      },
-      {
-        "name": "Link",
-        "category": "Zelda",
-        "imageUrl": "https://i.redd.it/all-which-link-is-your-favorite-v0-9ibbxcquxkib1.jpg?width=479&format=pjpg&auto=webp&s=8d48d811c35647122e2a618f855cdb54e887391a"
-      },
-      {
-        "name": "Dracula",
-        "category": "Horror",
-        "imageUrl": "https://images.squarespace-cdn.com/content/v1/5cead773c5ca7e000154123e/1635731165048-NQ8FZIT0T0DNVH14KAKE/Dracula+-+Bela+Lugosi+1931.jpg?format=1000w"
-      },
-      {
-        "name": "Superman",
-        "category": "DC Comics",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/3/35/Supermanflying.png"
-      },
-      {
-        "name": "Geralt of Rivia",
-        "category": "The Witcher",
-        "imageUrl": "https://i.redd.it/pjnxt2p3j6p31.jpg"
-      },
-      {
-        "name": "Baby Yoda",
-        "category": "Star Wars",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/a/a0/Grogu_%28Star_Wars%29.jpg"
+        "category": "SEGA",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/3/3b/Sonic_the_Hedgehog_%28Modern%29.png"
       },
       {
         "name": "Crash Bandicoot",
-        "category": "Games",
+        "category": "PlayStation",
         "imageUrl": "https://upload.wikimedia.org/wikipedia/en/a/a3/IAT_Crash_Bandicoot.png"
       },
       {
         "name": "Pac-Man",
-        "category": "Games",
+        "category": "Arcade",
         "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Pac-Man_ingame_and_2D_alternative_design.png/330px-Pac-Man_ingame_and_2D_alternative_design.png"
       },
       {
-        "name": "Yoda",
-        "category": "Star Wars",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/9/9b/Yoda_Empire_Strikes_Back.png"
+        "name": "Kratos",
+        "category": "God of War",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/c/ce/Kratos_%28God_of_War_2018%29.jpg"
       },
       {
-        "name": "Captain Jack Sparrow",
-        "category": "Pirates of the Caribbean",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Johnny_Depp_as_Captain_Jack_Sparrow_in_Queensland%2C_Australia.jpg/330px-Johnny_Depp_as_Captain_Jack_Sparrow_in_Queensland%2C_Australia.jpg"
+        "name": "Master Chief",
+        "category": "Halo",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/6/6b/Master_Chief_in_Halo_Infinite.png"
+      },
+      {
+        "name": "Lara Croft",
+        "category": "Tomb Raider",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/6/69/Lara_Croft.png"
+      },
+      {
+        "name": "Steve",
+        "category": "Minecraft",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/f/fe/Minecraft_Steve.png"
+      },
+      {
+        "name": "Kirby",
+        "category": "Nintendo",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/0/0e/Kirby_Wii.png"
+      },
+      {
+        "name": "Cloud Strife",
+        "category": "Final Fantasy",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/1/1a/Cloud_Strife.png"
+      },
+      {
+        "name": "Donkey Kong",
+        "category": "Nintendo",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/6/6c/Donkey_Kong_character.png"
+      },
+      {
+        "name": "Bowser",
+        "category": "Mario",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/9/9f/Bowser_character.png"
+      },
+      {
+        "name": "Ezio Auditore",
+        "category": "Assassin's Creed",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/2/27/Ezio_Auditore_da_Firenze.png"
+      },
+      {
+        "name": "Joel Miller",
+        "category": "The Last of Us",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/e/e9/Joel_Miller_appearance.png"
+      },
+      {
+        "name": "Arthur Morgan",
+        "category": "Red Dead Redemption",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/b/b5/Arthur_Morgan.jpg"
+      },
+      {
+        "name": "Mega Man",
+        "category": "Capcom",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/a/a7/Mega_Man_1_box_artwork.jpg"
+      },
+      {
+        "name": "Yoshi",
+        "category": "Mario",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/d/db/Yoshi_%28character%29.png"
+      },
+      {
+        "name": "Toad",
+        "category": "Mario",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/d/d1/Toad_3D_Land.png"
+      },
+      {
+        "name": "Luigi",
+        "category": "Mario",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/7/73/Luigi_NSMBUDX.png"
+      },
+      {
+        "name": "Princess Peach",
+        "category": "Mario",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/1/16/Princess_Peach_Stock_Art.png"
+      },
+      {
+        "name": "Creeper",
+        "category": "Minecraft",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/f/f4/Creeper_%28Minecraft%29.png"
+      },
+      {
+        "name": "Samus Aran",
+        "category": "Metroid",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/d/d5/Samus_Aran.png"
+      }
+    ]
+  },
+  {
+    "id": "superhelden",
+    "name": "🦸 Superhelden & Schurken",
+    "description": "De bekendste helden en slechteriken uit Marvel en DC",
+    "characters": [
+      {
+        "name": "Batman",
+        "category": "DC",
+        "imageUrl": "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/lg/69-batman.jpg"
+      },
+      {
+        "name": "Superman",
+        "category": "DC",
+        "imageUrl": "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/lg/644-superman.jpg"
+      },
+      {
+        "name": "Wolverine",
+        "category": "Marvel",
+        "imageUrl": "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/lg/717-wolverine.jpg"
+      },
+      {
+        "name": "The Joker",
+        "category": "DC",
+        "imageUrl": "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/lg/370-joker.jpg"
+      },
+      {
+        "name": "Spider-Man",
+        "category": "Marvel",
+        "imageUrl": "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/lg/620-spider-man.jpg"
+      },
+      {
+        "name": "Thanos",
+        "category": "Marvel",
+        "imageUrl": "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/lg/655-thanos.jpg"
+      },
+      {
+        "name": "Deadpool",
+        "category": "Marvel",
+        "imageUrl": "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/lg/213-deadpool.jpg"
+      },
+      {
+        "name": "Catwoman",
+        "category": "DC",
+        "imageUrl": "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/lg/165-catwoman.jpg"
+      },
+      {
+        "name": "Harley Quinn",
+        "category": "DC",
+        "imageUrl": "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/lg/309-harley-quinn.jpg"
+      },
+      {
+        "name": "Magneto",
+        "category": "Marvel",
+        "imageUrl": "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/lg/423-magneto.jpg"
+      },
+      {
+        "name": "Iron Man",
+        "category": "Marvel",
+        "imageUrl": "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/lg/346-iron-man.jpg"
+      },
+      {
+        "name": "Captain America",
+        "category": "Marvel",
+        "imageUrl": "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/lg/149-captain-america.jpg"
+      },
+      {
+        "name": "Thor",
+        "category": "Marvel",
+        "imageUrl": "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/lg/659-thor.jpg"
+      },
+      {
+        "name": "Hulk",
+        "category": "Marvel",
+        "imageUrl": "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/lg/332-hulk.jpg"
+      },
+      {
+        "name": "Black Widow",
+        "category": "Marvel",
+        "imageUrl": "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/lg/107-black-widow.jpg"
+      },
+      {
+        "name": "Loki",
+        "category": "Marvel",
+        "imageUrl": "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/lg/414-loki.jpg"
+      },
+      {
+        "name": "Wonder Woman",
+        "category": "DC",
+        "imageUrl": "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/lg/720-wonder-woman.jpg"
+      },
+      {
+        "name": "Green Goblin",
+        "category": "Marvel",
+        "imageUrl": "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/lg/299-green-goblin.jpg"
+      },
+      {
+        "name": "Venom",
+        "category": "Marvel",
+        "imageUrl": "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/lg/687-venom.jpg"
+      },
+      {
+        "name": "Doctor Strange",
+        "category": "Marvel",
+        "imageUrl": "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/lg/226-doctor-strange.jpg"
+      },
+      {
+        "name": "Black Panther",
+        "category": "Marvel",
+        "imageUrl": "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/lg/106-black-panther.jpg"
+      },
+      {
+        "name": "The Flash",
+        "category": "DC",
+        "imageUrl": "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/lg/263-flash.jpg"
+      },
+      {
+        "name": "Aquaman",
+        "category": "DC",
+        "imageUrl": "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/lg/38-aquaman.jpg"
+      },
+      {
+        "name": "Groot",
+        "category": "Marvel",
+        "imageUrl": "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/lg/303-groot.jpg"
+      }
+    ]
+  },
+  {
+    "id": "sport",
+    "name": "⚽ Sportlegendes",
+    "description": "De grootste sporters aller tijden",
+    "characters": [
+      {
+        "name": "Lionel Messi",
+        "category": "Voetbal",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Lionel_Messi_White_House_2026_%283x4_cropped%29.jpg/330px-Lionel_Messi_White_House_2026_%283x4_cropped%29.jpg"
+      },
+      {
+        "name": "Cristiano Ronaldo",
+        "category": "Voetbal",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/President_Donald_Trump_meets_with_Cristiano_Ronaldo_in_the_Oval_Office_%2854933344262%29_%28cropped_and_rotated%29.jpg/330px-President_Donald_Trump_meets_with_Cristiano_Ronaldo_in_the_Oval_Office_%2854933344262%29_%28cropped_and_rotated%29.jpg"
+      },
+      {
+        "name": "Michael Jordan",
+        "category": "Basketbal",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Michael_Jordan_in_2014.jpg/330px-Michael_Jordan_in_2014.jpg"
+      },
+      {
+        "name": "Usain Bolt",
+        "category": "Atletiek",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Usain_Bolt_smiling_Berlin_2009.JPG/330px-Usain_Bolt_smiling_Berlin_2009.JPG"
+      },
+      {
+        "name": "Serena Williams",
+        "category": "Tennis",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Serena_Williams_at_the_2025_International_Tennis_Hall_of_Fame_Induction_Ceremony_Press_Conference_%28cropped%29.jpg/330px-Serena_Williams_at_the_2025_International_Tennis_Hall_of_Fame_Induction_Ceremony_Press_Conference_%28cropped%29.jpg"
+      },
+      {
+        "name": "Tiger Woods",
+        "category": "Golf",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/President_Donald_Trump_hosts_a_reception_honoring_Black_History_Month_%2854341713089%29_%28cropped%29.jpg/330px-President_Donald_Trump_hosts_a_reception_honoring_Black_History_Month_%2854341713089%29_%28cropped%29.jpg"
+      },
+      {
+        "name": "Muhammad Ali",
+        "category": "Boksen",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Muhammad_Ali_NYWTS.jpg/330px-Muhammad_Ali_NYWTS.jpg"
+      },
+      {
+        "name": "Lewis Hamilton",
+        "category": "F1",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Prime_Minister_Keir_Starmer_meets_Sir_Lewis_Hamilton_%2854566928382%29_%28cropped%29.jpg/330px-Prime_Minister_Keir_Starmer_meets_Sir_Lewis_Hamilton_%2854566928382%29_%28cropped%29.jpg"
+      },
+      {
+        "name": "Kobe Bryant",
+        "category": "Basketbal",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Kobe_Bryant_Dec_2014.jpg/330px-Kobe_Bryant_Dec_2014.jpg"
+      },
+      {
+        "name": "Mike Tyson",
+        "category": "Boksen",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Mike_Tyson_Photo_Op_GalaxyCon_Austin_2023.jpg/330px-Mike_Tyson_Photo_Op_GalaxyCon_Austin_2023.jpg"
+      },
+      {
+        "name": "Neymar",
+        "category": "Voetbal",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Neymar_Jr._with_Al_Hilal%2C_3_October_2023_-_03_%28cropped%29.jpg/330px-Neymar_Jr._with_Al_Hilal%2C_3_October_2023_-_03_%28cropped%29.jpg"
+      },
+      {
+        "name": "LeBron James",
+        "category": "Basketbal",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/LeBron_James_%2851959977144%29_%28cropped2%29.jpg/330px-LeBron_James_%2851959977144%29_%28cropped2%29.jpg"
+      },
+      {
+        "name": "Roger Federer",
+        "category": "Tennis",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Roger_Federer_2015_%28cropped%29.jpg/330px-Roger_Federer_2015_%28cropped%29.jpg"
+      },
+      {
+        "name": "Conor McGregor",
+        "category": "MMA",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Conor_McGregor_2025.jpeg/330px-Conor_McGregor_2025.jpeg"
+      },
+      {
+        "name": "Pelé",
+        "category": "Voetbal",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Pele_con_brasil_%28cropped%29.jpg/330px-Pele_con_brasil_%28cropped%29.jpg"
+      },
+      {
+        "name": "Michael Phelps",
+        "category": "Zwemmen",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Michael_Phelps_Rio_Olympics_2016.jpg/330px-Michael_Phelps_Rio_Olympics_2016.jpg"
+      },
+      {
+        "name": "Wayne Gretzky",
+        "category": "IJshockey",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Andrew_Scheer_with_Wayne_Gretzky_%2848055697168%29_%28cropped%29.jpg/330px-Andrew_Scheer_with_Wayne_Gretzky_%2848055697168%29_%28cropped%29.jpg"
+      },
+      {
+        "name": "Tom Brady",
+        "category": "American Football",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/25th_Laureus_World_Sports_Awards_-_Red_Carpet_-_Tom_Brady_-_240422_191334_%28cropped%29_%28cropped%29.jpg/330px-25th_Laureus_World_Sports_Awards_-_Red_Carpet_-_Tom_Brady_-_240422_191334_%28cropped%29_%28cropped%29.jpg"
+      },
+      {
+        "name": "Zinedine Zidane",
+        "category": "Voetbal",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Zinedine_Zidane_by_Tasnim_03.jpg/330px-Zinedine_Zidane_by_Tasnim_03.jpg"
+      },
+      {
+        "name": "Diego Maradona",
+        "category": "Voetbal",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Argentina_celebrando_copa_%28cropped%29.jpg/330px-Argentina_celebrando_copa_%28cropped%29.jpg"
+      },
+      {
+        "name": "Simone Biles",
+        "category": "Turnen",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Simone_Biles_National_Team_2024.jpg/330px-Simone_Biles_National_Team_2024.jpg"
+      },
+      {
+        "name": "Rafael Nadal",
+        "category": "Tennis",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Rafael_Nadal_en_2024_%28cropped%29.jpg/330px-Rafael_Nadal_en_2024_%28cropped%29.jpg"
+      },
+      {
+        "name": "Virgil van Dijk",
+        "category": "Voetbal",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/20160604_AUT_NED_8876_%28cropped%29.jpg/330px-20160604_AUT_NED_8876_%28cropped%29.jpg"
+      },
+      {
+        "name": "Johan Cruijff",
+        "category": "Voetbal",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Johan_Cruijff_%281974%29.jpg/330px-Johan_Cruijff_%281974%29.jpg"
+      }
+    ]
+  },
+  {
+    "id": "geschiedenis",
+    "name": "📖 Historische Figuren",
+    "description": "Beroemde mensen uit de geschiedenis",
+    "characters": [
+      {
+        "name": "Cleopatra",
+        "category": "Oudheid",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Kleopatra-VII.-Altes-Museum-Berlin1.jpg/330px-Kleopatra-VII.-Altes-Museum-Berlin1.jpg"
+      },
+      {
+        "name": "Napoleon Bonaparte",
+        "category": "Militair",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Jacques-Louis_David_-_The_Emperor_Napoleon_in_His_Study_at_the_Tuileries_-_Google_Art_Project.jpg/330px-Jacques-Louis_David_-_The_Emperor_Napoleon_in_His_Study_at_the_Tuileries_-_Google_Art_Project.jpg"
+      },
+      {
+        "name": "Albert Einstein",
+        "category": "Wetenschap",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Albert_Einstein_Head_cleaned.jpg/330px-Albert_Einstein_Head_cleaned.jpg"
+      },
+      {
+        "name": "Julius Caesar",
+        "category": "Oudheid",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Retrato_de_Julio_C%C3%A9sar_%2826724093101%29_%28cropped%29.jpg/330px-Retrato_de_Julio_C%C3%A9sar_%2826724093101%29_%28cropped%29.jpg"
+      },
+      {
+        "name": "Marie Curie",
+        "category": "Wetenschap",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Marie_Curie_c._1920s.jpg/330px-Marie_Curie_c._1920s.jpg"
+      },
+      {
+        "name": "Leonardo da Vinci",
+        "category": "Kunst / Uitvinder",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Francesco_Melzi_-_Portrait_of_Leonardo.png/330px-Francesco_Melzi_-_Portrait_of_Leonardo.png"
+      },
+      {
+        "name": "Nikola Tesla",
+        "category": "Uitvinder",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Tesla_circa_1890.jpeg/330px-Tesla_circa_1890.jpeg"
+      },
+      {
+        "name": "Queen Elizabeth II",
+        "category": "Royalty",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Queen_Elizabeth_II_official_portrait_for_1959_tour_%28retouched%29_%28cropped%29_%283-to-4_aspect_ratio%29.jpg/330px-Queen_Elizabeth_II_official_portrait_for_1959_tour_%28retouched%29_%28cropped%29_%283-to-4_aspect_ratio%29.jpg"
+      },
+      {
+        "name": "Genghis Khan",
+        "category": "Militair",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/YuanEmperorAlbumGenghisPortrait.jpg/330px-YuanEmperorAlbumGenghisPortrait.jpg"
+      },
+      {
+        "name": "Ludwig van Beethoven",
+        "category": "Muziek",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Joseph_Karl_Stieler%27s_Beethoven_mit_dem_Manuskript_der_Missa_solemnis.jpg/330px-Joseph_Karl_Stieler%27s_Beethoven_mit_dem_Manuskript_der_Missa_solemnis.jpg"
+      },
+      {
+        "name": "Abraham Lincoln",
+        "category": "Politiek",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Abraham_Lincoln_1863_Portrait_%283x4_cropped%29.jpg/330px-Abraham_Lincoln_1863_Portrait_%283x4_cropped%29.jpg"
+      },
+      {
+        "name": "Martin Luther King Jr.",
+        "category": "Activist",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Martin_Luther_King%2C_Jr..jpg/330px-Martin_Luther_King%2C_Jr..jpg"
+      },
+      {
+        "name": "Nelson Mandela",
+        "category": "Politiek",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Nelson_Mandela_1994.jpg/330px-Nelson_Mandela_1994.jpg"
+      },
+      {
+        "name": "Mahatma Gandhi",
+        "category": "Activist",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Mahatma-Gandhi%2C_studio%2C_1931.jpg/330px-Mahatma-Gandhi%2C_studio%2C_1931.jpg"
+      },
+      {
+        "name": "Anne Frank",
+        "category": "WOII",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Anne_Frank_passport_photo%2C_May_1942_%28cropped%29.jpg/330px-Anne_Frank_passport_photo%2C_May_1942_%28cropped%29.jpg"
+      },
+      {
+        "name": "Vincent van Gogh",
+        "category": "Kunst",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Vincent_van_Gogh_-_Self-Portrait_-_Google_Art_Project_%28454045%29.jpg/330px-Vincent_van_Gogh_-_Self-Portrait_-_Google_Art_Project_%28454045%29.jpg"
+      },
+      {
+        "name": "William Shakespeare",
+        "category": "Schrijver",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/William_Shakespeare_by_John_Taylor%2C_edited.jpg/330px-William_Shakespeare_by_John_Taylor%2C_edited.jpg"
+      },
+      {
+        "name": "Charles Darwin",
+        "category": "Wetenschap",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Charles_Darwin_seated_crop.jpg/330px-Charles_Darwin_seated_crop.jpg"
+      },
+      {
+        "name": "Isaac Newton",
+        "category": "Wetenschap",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Portrait_of_Sir_Isaac_Newton%2C_1689_%28brightened%29.jpg/330px-Portrait_of_Sir_Isaac_Newton%2C_1689_%28brightened%29.jpg"
+      },
+      {
+        "name": "Mozart",
+        "category": "Muziek",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/The_Mozart_Family_-_Wolfgang_Amadeus_Mozart_headshot.jpg/330px-The_Mozart_Family_-_Wolfgang_Amadeus_Mozart_headshot.jpg"
+      },
+      {
+        "name": "Frida Kahlo",
+        "category": "Kunst",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Frida_Kahlo%2C_by_Guillermo_Kahlo.jpg/330px-Frida_Kahlo%2C_by_Guillermo_Kahlo.jpg"
+      },
+      {
+        "name": "Alexander de Grote",
+        "category": "Militair",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Alexander_Mosaic_detail_of_Alexander_the_Great_%283x4_cropped%29.jpg/330px-Alexander_Mosaic_detail_of_Alexander_the_Great_%283x4_cropped%29.jpg"
+      },
+      {
+        "name": "Socrates",
+        "category": "Filosofie",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Socrates_Louvre.jpg/330px-Socrates_Louvre.jpg"
+      },
+      {
+        "name": "Tutankhamun",
+        "category": "Oudheid",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/CairoEgMuseumTaaMaskMostlyPhotographed.jpg/330px-CairoEgMuseumTaaMaskMostlyPhotographed.jpg"
+      }
+    ]
+  },
+  {
+    "id": "cartoon",
+    "name": "🧸 Cartoons",
+    "description": "Bekende personages uit cartoons en animatieseries",
+    "characters": [
+      {
+        "name": "Bugs Bunny",
+        "category": "Looney Tunes",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/2pDQfZMJq95hckoaez9ou93Hmqy.jpg"
+      },
+      {
+        "name": "Scooby-Doo",
+        "category": "Scooby-Doo",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/lTzUSCtXR77CmGmEHcaxpxu2b4h.jpg"
+      },
+      {
+        "name": "Tom",
+        "category": "Tom & Jerry",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/41EWXLXTZO4MLb2BL28mWZuydyq.jpg"
+      },
+      {
+        "name": "Mickey Mouse",
+        "category": "Disney",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/gHtEhlAZHxMawOiPq7JoKwkmETQ.jpg"
+      },
+      {
+        "name": "Finn",
+        "category": "Adventure Time",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/qk3eQ8jW4opJ48gFWYUXWaMT4l.jpg"
+      },
+      {
+        "name": "Dexter",
+        "category": "Dexter's Laboratory",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/inJJn8lUPWdvdy2h259UnoHWVqC.jpg"
+      },
+      {
+        "name": "Shaggy",
+        "category": "Scooby-Doo",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/lTzUSCtXR77CmGmEHcaxpxu2b4h.jpg"
+      },
+      {
+        "name": "Donald Duck",
+        "category": "Disney",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/3klapeIKLp9IBy4uHo7szTeMTdQ.jpg"
+      },
+      {
+        "name": "Goofy",
+        "category": "Disney",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/bycmMhO3iIoEDzP768sUjq2RV4T.jpg"
+      },
+      {
+        "name": "Bart Simpson",
+        "category": "The Simpsons",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/uWpG7GqfKGQqX4YMAo3nv5OrglV.jpg"
+      },
+      {
+        "name": "Peter Griffin",
+        "category": "Family Guy",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/3PFsEuAiyLkWsP4GG6dIV37Q6gu.jpg"
+      },
+      {
+        "name": "Rick Sanchez",
+        "category": "Rick and Morty",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/WGRQ8FpjkDTzivQJ43t94bOuY0.jpg"
+      },
+      {
+        "name": "Eric Cartman",
+        "category": "South Park",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/1CGwZCFX2qerXaXQJJUB3qUvxq7.jpg"
+      },
+      {
+        "name": "Blossom",
+        "category": "Powerpuff Girls",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/468mmhMd21pY4Yx0S0woqeEcxtL.jpg"
+      },
+      {
+        "name": "Aang",
+        "category": "Avatar: The Last Airbender",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/9RQhVb3r3mCMqYVhLoCu4EvuipP.jpg"
+      },
+      {
+        "name": "Johnny Bravo",
+        "category": "Johnny Bravo",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/obbdeoOk8XSXzJrWGiBbaeMMSMl.jpg"
+      },
+      {
+        "name": "Stewie Griffin",
+        "category": "Family Guy",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/3PFsEuAiyLkWsP4GG6dIV37Q6gu.jpg"
+      },
+      {
+        "name": "Morty Smith",
+        "category": "Rick and Morty",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/WGRQ8FpjkDTzivQJ43t94bOuY0.jpg"
+      },
+      {
+        "name": "Fred Flintstone",
+        "category": "The Flintstones",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/30P6ifagQ3fguTsI33KMmDLTAx6.jpg"
+      },
+      {
+        "name": "Daffy Duck",
+        "category": "Looney Tunes",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/2pDQfZMJq95hckoaez9ou93Hmqy.jpg"
+      },
+      {
+        "name": "Timmy Turner",
+        "category": "Fairly OddParents",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/3ryMj7tIvVtiXyI2tLvHYTjOjq4.jpg"
+      },
+      {
+        "name": "Ben Tennyson",
+        "category": "Ben 10",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/a4H0UR7aUkGZlT6Q9r9grBrjJWR.jpg"
+      },
+      {
+        "name": "Phineas Flynn",
+        "category": "Phineas and Ferb",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/g6TidT7be954rrzPPBTIXkSmfXj.jpg"
+      },
+      {
+        "name": "Danny Phantom",
+        "category": "Danny Phantom",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/pBUOFBmZLaIxzjDjQP7d3QZrd4w.jpg"
+      }
+    ]
+  },
+  {
+    "id": "anime",
+    "name": "⛩️ Anime",
+    "description": "Bekende personages uit anime series en films",
+    "characters": [
+      {
+        "name": "Goku",
+        "category": "Dragon Ball",
+        "imageUrl": "https://myanimelist.net/images/characters/15/72546.jpg"
+      },
+      {
+        "name": "Naruto Uzumaki",
+        "category": "Naruto",
+        "imageUrl": "https://myanimelist.net/images/characters/2/284121.jpg"
+      },
+      {
+        "name": "Luffy",
+        "category": "One Piece",
+        "imageUrl": "https://myanimelist.net/images/characters/9/310307.jpg"
+      },
+      {
+        "name": "Vegeta",
+        "category": "Dragon Ball",
+        "imageUrl": "https://myanimelist.net/images/characters/14/86185.jpg"
+      },
+      {
+        "name": "Light Yagami",
+        "category": "Death Note",
+        "imageUrl": "https://myanimelist.net/images/characters/6/63870.jpg"
+      },
+      {
+        "name": "Eren Jaeger",
+        "category": "Attack on Titan",
+        "imageUrl": "https://cdn.myanimelist.net/images/characters/10/216895.jpg"
+      },
+      {
+        "name": "Sailor Moon",
+        "category": "Sailor Moon",
+        "imageUrl": "https://cdn.myanimelist.net/images/characters/4/312776.jpg"
+      },
+      {
+        "name": "Ash Ketchum",
+        "category": "Pokémon",
+        "imageUrl": "https://cdn.myanimelist.net/images/characters/10/100701.jpg"
+      },
+      {
+        "name": "Totoro",
+        "category": "Studio Ghibli",
+        "imageUrl": "https://cdn.myanimelist.net/images/characters/16/81225.jpg"
+      },
+      {
+        "name": "Spike Spiegel",
+        "category": "Cowboy Bebop",
+        "imageUrl": "https://myanimelist.net/images/characters/11/516853.jpg"
+      },
+      {
+        "name": "Levi Ackerman",
+        "category": "Attack on Titan",
+        "imageUrl": "https://myanimelist.net/images/characters/2/241413.jpg"
+      },
+      {
+        "name": "Itachi Uchiha",
+        "category": "Naruto",
+        "imageUrl": "https://cdn.myanimelist.net/images/characters/9/284122.jpg"
+      },
+      {
+        "name": "Saitama",
+        "category": "One Punch Man",
+        "imageUrl": "https://myanimelist.net/images/characters/11/294388.jpg"
+      },
+      {
+        "name": "Gon Freecss",
+        "category": "Hunter x Hunter",
+        "imageUrl": "https://myanimelist.net/images/characters/11/174517.jpg"
+      },
+      {
+        "name": "Tanjiro Kamado",
+        "category": "Demon Slayer",
+        "imageUrl": "https://cdn.myanimelist.net/images/characters/6/386735.jpg"
+      },
+      {
+        "name": "Roronoa Zoro",
+        "category": "One Piece",
+        "imageUrl": "https://myanimelist.net/images/characters/3/100534.jpg"
+      },
+      {
+        "name": "Sasuke Uchiha",
+        "category": "Naruto",
+        "imageUrl": "https://myanimelist.net/images/characters/9/131317.jpg"
+      },
+      {
+        "name": "Edward Elric",
+        "category": "Fullmetal Alchemist",
+        "imageUrl": "https://myanimelist.net/images/characters/9/72533.jpg"
+      },
+      {
+        "name": "Ichigo Kurosaki",
+        "category": "Bleach",
+        "imageUrl": "https://myanimelist.net/images/characters/3/512788.jpg"
+      },
+      {
+        "name": "Lelouch Lamperouge",
+        "category": "Code Geass",
+        "imageUrl": "https://myanimelist.net/images/characters/8/406163.jpg"
+      },
+      {
+        "name": "Kakashi Hatake",
+        "category": "Naruto",
+        "imageUrl": "https://myanimelist.net/images/characters/7/284129.jpg"
+      },
+      {
+        "name": "Mikasa Ackerman",
+        "category": "Attack on Titan",
+        "imageUrl": "https://cdn.myanimelist.net/images/characters/9/215563.jpg"
+      },
+      {
+        "name": "Gojo Satoru",
+        "category": "Jujutsu Kaisen",
+        "imageUrl": "https://cdn.myanimelist.net/images/characters/15/422168.jpg"
+      },
+      {
+        "name": "Frieza",
+        "category": "Dragon Ball",
+        "imageUrl": "https://cdn.myanimelist.net/images/characters/7/359258.jpg"
       }
     ]
   },
@@ -605,7 +1494,7 @@
       {
         "name": "Mark Rutte",
         "category": "Politiek",
-        "imageUrl": "https://www.debatinstituut.nl/wp-content/uploads/2021/02/Mark-Rutte.jpg"
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Mark_Rutte%2C_23.03.23_%28cropped%29.jpg/330px-Mark_Rutte%2C_23.03.23_%28cropped%29.jpg"
       },
       {
         "name": "Willem-Alexander",
@@ -620,17 +1509,17 @@
       {
         "name": "Geert Wilders",
         "category": "Politiek",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Cumbre_de_Madrid_8_de_Febrero_-_54314677909.jpg/330px-Cumbre_de_Madrid_8_de_Febrero_-_54314677909.jpg"
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Geert_Wilders_in_2026_%28cropped%29.jpg/330px-Geert_Wilders_in_2026_%28cropped%29.jpg"
       },
       {
         "name": "Doutzen Kroes",
         "category": "Model",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Doutzen_Kroes_2012_Shankbone.JPG/330px-Doutzen_Kroes_2012_Shankbone.JPG"
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Doutzen_Kroes_2012_Shankbone_3_%28cropped%29.JPG/330px-Doutzen_Kroes_2012_Shankbone_3_%28cropped%29.JPG"
       },
       {
         "name": "Sylvie Meis",
         "category": "TV / Model",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Deutscher_Fernsehpreis_2012_-_Sylvie_van_der_Vaart_2.jpg/330px-Deutscher_Fernsehpreis_2012_-_Sylvie_van_der_Vaart_2.jpg"
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Sylvie_van_der_Vaart_2012.jpg/330px-Sylvie_van_der_Vaart_2012.jpg"
       }
     ]
   }
