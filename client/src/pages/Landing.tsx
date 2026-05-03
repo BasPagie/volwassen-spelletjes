@@ -45,12 +45,12 @@ const GAME_CATEGORIES: {
   },
   {
     id: "drawing",
-    icon: "🔮",
-    title: "Meer spellen worden...",
-    subtitle: "Binnenkort beschikbaar!",
-    color: "text-gray-400",
-    bg: "bg-gray-50 border-gray-200 cursor-not-allowed opacity-60",
-    available: false,
+    icon: "✏️",
+    title: "Tekenwedstrijd",
+    subtitle: "Teken & raad, wie raadt het snelst?",
+    color: "text-teal-500",
+    bg: "bg-teal-50 border-teal-300 hover:bg-teal-100",
+    available: true,
   },
 ];
 

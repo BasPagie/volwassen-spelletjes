@@ -17,6 +17,8 @@ import type {
   WhatAmISettings,
   SnelsteVingerClientState,
   SnelsteVingerSettings,
+  DrawingClientState,
+  DrawingSettings,
   RoundType,
   GameCategory,
 } from "shared/types";
@@ -55,6 +57,8 @@ export interface GameState {
   whatAmIState: WhatAmIClientGameState | null;
   // Snelste Vinger
   snelsteVingerState: SnelsteVingerClientState | null;
+  // Tekenwedstrijd
+  drawingState: DrawingClientState | null;
   // Briefing
   briefing: {
     briefingKey: string;
@@ -83,6 +87,7 @@ const initialState: GameState = {
   toasts: [],
   whatAmIState: null,
   snelsteVingerState: null,
+  drawingState: null,
   briefing: null,
 };
 
@@ -153,6 +158,10 @@ export type GameAction =
     }
   | { type: "SNELSTEVINGER_GAME_END"; state: SnelsteVingerClientState }
   | { type: "SNELSTEVINGER_SETTINGS_UPDATED"; settings: SnelsteVingerSettings }
+  // ─── Tekenwedstrijd ─────────────────────────────────
+  | { type: "DRAWING_SETTINGS_UPDATED"; settings: DrawingSettings }
+  | { type: "SET_DRAWING_STATE"; state: DrawingClientState }
+  | { type: "DRAWING_GAME_END"; scores: DrawingClientState["scores"] }
   // ─── Briefing ─────────────────────────────────────
   | {
       type: "SET_BRIEFING";
@@ -463,6 +472,41 @@ function gameReducer(state: GameState, action: GameAction): GameState {
         ...state,
         room: { ...state.room, snelsteVingerSettings: action.settings },
       };
+
+    case "DRAWING_SETTINGS_UPDATED":
+      if (!state.room) return state;
+      return {
+        ...state,
+        room: { ...state.room, drawingSettings: action.settings },
+      };
+
+    case "SET_DRAWING_STATE":
+      return {
+        ...state,
+        drawingState: action.state,
+        phase: action.state.phase === "finished" ? "finished" : "playing",
+        countdown: null,
+      };
+
+    case "DRAWING_GAME_END": {
+      const finalResults: FinalResults = {
+        players: action.scores.map((s, i) => ({
+          playerId: s.playerId,
+          nickname: s.nickname,
+          avatarUrl: s.avatarUrl,
+          totalScore: s.score,
+          roundScores: [s.score],
+          rank: i + 1,
+        })),
+        roundResults: [],
+      };
+      return {
+        ...state,
+        drawingState: null,
+        phase: "finished",
+        finalResults,
+      };
+    }
 
     case "SET_BRIEFING":
       return {

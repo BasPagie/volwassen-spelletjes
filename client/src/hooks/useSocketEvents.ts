@@ -245,6 +245,20 @@ export function useSocketEvents() {
       dispatch({ type: 'SNELSTEVINGER_GAME_END', state: { questionIndex: 0, totalQuestions: 0, question: '', category: '', timeRemainingMs: 0, totalTimeMs: 0, answered: false, buzzedWrong: false, winnerId: null, winnerName: null, correctAnswer: null, scores, phase: 'finished' } });
     });
 
+    // ─── Tekenwedstrijd ─────────────────────────────────
+    socket.on('drawing:settings-updated', (settings) => {
+      dispatch({ type: 'DRAWING_SETTINGS_UPDATED', settings });
+    });
+
+    socket.on('drawing:state-update', (state) => {
+      dispatch({ type: 'CLEAR_BRIEFING' });
+      dispatch({ type: 'SET_DRAWING_STATE', state });
+    });
+
+    socket.on('drawing:game-end', ({ scores }) => {
+      dispatch({ type: 'DRAWING_GAME_END', scores });
+    });
+
     return () => {
       socket.off('room-created');
       socket.off('room-joined');
@@ -283,6 +297,9 @@ export function useSocketEvents() {
       socket.off('snelstevinger:question-won');
       socket.off('snelstevinger:question-timeout');
       socket.off('snelstevinger:game-end');
+      socket.off('drawing:settings-updated');
+      socket.off('drawing:state-update');
+      socket.off('drawing:game-end');
       socket.off('briefing-start');
       socket.off('briefing-ready-count');
     };

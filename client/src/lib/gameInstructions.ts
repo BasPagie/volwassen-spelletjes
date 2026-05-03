@@ -89,6 +89,18 @@ const CATEGORY_INSTRUCTIONS: Partial<Record<GameCategory, GameInstruction>> = {
       { emoji: "⏱️", text: "Elke vraag heeft een tijdslimiet — wees snel!" },
     ],
   },
+  "drawing": {
+    icon: "✏️",
+    title: "Tekenwedstrijd",
+    color: "teal",
+    summary: "Eén speler tekent, de rest raadt!",
+    steps: [
+      { emoji: "✏️", text: "De tekenaar kiest een woord en tekent het — zonder letters of cijfers!" },
+      { emoji: "💬", text: "Typ je antwoord — hoe sneller je raadt, hoe meer punten" },
+      { emoji: "💡", text: "Na verloop van tijd verschijnen hints (letters van het woord)" },
+      { emoji: "🔄", text: "Iedereen komt aan de beurt om te tekenen" },
+    ],
+  },
 };
 
 export function getInstruction(key: RoundType | GameCategory): GameInstruction | null {

@@ -255,6 +255,13 @@ export function updateSnelsteVingerSettings(roomId: string, settings: import('..
   return true;
 }
 
+export function updateDrawingSettings(roomId: string, settings: import('../../shared/types.js').DrawingSettings): boolean {
+  const room = rooms.get(roomId);
+  if (!room || room.status !== 'lobby') return false;
+  room.drawingSettings = settings;
+  return true;
+}
+
 export function getPlayerInRoom(roomId: string, playerId: string): Player | undefined {
   const room = rooms.get(roomId);
   return room?.players.find((p) => p.id === playerId);

@@ -58,6 +58,7 @@ import {
   scheduleWhatAmIBotGuesses,
   skipTurn,
   giveUp,
+  recordQuestion,
 } from './whatAmIEngine.js';
 import { DEFAULT_WHATAMI_SETTINGS } from '../../shared/types.js';
 import { DEFAULT_SNELSTEVINGER_SETTINGS } from '../../shared/types.js';
@@ -83,6 +84,28 @@ import {
   clearRevealTimer,
 } from './snelsteVingerEngine.js';
 import { updateSnelsteVingerSettings } from './rooms.js';
+import { updateDrawingSettings } from './rooms.js';
+import { DEFAULT_DRAWING_SETTINGS } from '../../shared/types.js';
+import {
+  startDrawingGame,
+  getDrawingInstance,
+  cleanupDrawingGame,
+  getWordChoicesForDrawer,
+  selectWord,
+  addStroke,
+  clearCanvas as clearDrawingCanvas,
+  undoStroke,
+  processGuess as processDrawingGuess,
+  allGuessersCorrect,
+  endTurn,
+  advanceTurn,
+  startHintTimer,
+  buildDrawerState,
+  buildGuesserState,
+  getFinalScores,
+  getDrawerId,
+  getStrokes,
+} from './drawingEngine.js';
 
 type IOServer = Server<ClientToServerEvents, ServerToClientEvents>;
 type IOSocket = Socket<ClientToServerEvents, ServerToClientEvents>;
@@ -803,6 +826,7 @@ export function registerSocketHandlers(io: IOServer, socket: IOSocket): void {
       gameMode: settings.gameMode ?? 'free-for-all',
       turnSeconds: settings.turnSeconds ?? 60,
       questionsPerTurn: settings.questionsPerTurn ?? 0,
+      questionsBeforeGuess: settings.questionsBeforeGuess ?? 0,
     };
 
     updateWhatAmISettings(mapping.roomId, safeSettings);
@@ -935,6 +959,20 @@ export function registerSocketHandlers(io: IOServer, socket: IOSocket): void {
     // Check if all players have guessed
     if (checkAllGuessedAndFinish(io, mapping.roomId, settings)) {
       console.log(`[WieBenik] All guessed: ${mapping.roomId}`);
+    }
+  });
+
+  // ─── Wie Ben Ik? — Asked Question ─────────────────────
+  socket.on('whatami:asked-question', () => {
+    const mapping = getSocketMapping(socket.id);
+    if (!mapping) return;
+
+    const room = getRoom(mapping.roomId);
+    if (!room || room.gameCategory !== 'what-am-i' || room.status !== 'playing') return;
+
+    if (recordQuestion(mapping.roomId, mapping.playerId)) {
+      const settings = room.whatAmISettings ?? DEFAULT_WHATAMI_SETTINGS;
+      broadcastWhatAmIState(io, mapping.roomId, settings);
     }
   });
 
@@ -1106,6 +1144,200 @@ export function registerSocketHandlers(io: IOServer, socket: IOSocket): void {
     }
   });
 
+  // ─── Tekenwedstrijd Events ─────────────────────────────
+  socket.on('drawing:update-settings', (settings) => {
+    const mapping = getSocketMapping(socket.id);
+    if (!mapping) return;
+    if (!isHost(mapping.roomId, mapping.playerId)) return;
+    const ok = updateDrawingSettings(mapping.roomId, settings);
+    if (ok) {
+      io.to(mapping.roomId).emit('drawing:settings-updated', settings);
+    }
+  });
+
+  socket.on('drawing:start-game', () => {
+    const mapping = getSocketMapping(socket.id);
+    if (!mapping) return;
+    if (!isHost(mapping.roomId, mapping.playerId)) return;
+
+    const room = getRoom(mapping.roomId);
+    if (!room || room.gameCategory !== 'drawing') return;
+    if (room.status !== 'lobby') return;
+
+    const settings = room.drawingSettings ?? DEFAULT_DRAWING_SETTINGS;
+    const roomId = room.roomId;
+
+    // Pre-validate
+    const activePlayers = room.players.filter((p) => (p.connected || p.isBot) && !(p.isHost && !settings.hostPlays));
+    if (activePlayers.length < 2) {
+      socket.emit('error', { message: 'Minimaal 2 spelers nodig voor de tekenwedstrijd.' });
+      return;
+    }
+
+    if ((settings.categoryIds ?? []).length === 0 && (settings.customWords ?? []).length === 0) {
+      socket.emit('error', { message: 'Selecteer minimaal één categorie of voeg eigen woorden toe.' });
+      return;
+    }
+
+    io.to(roomId).emit('game-started');
+
+    const active = settings.hostPlays
+      ? room.players.filter((p) => p.connected || p.isBot)
+      : room.players.filter((p) => (p.connected || p.isBot) && !p.isHost);
+
+    startBriefing(io, roomId, 'drawing', undefined, 'drawing', active, () => {
+      startCountdownThenRun(io, roomId, () => {
+        const currentRoom = getRoom(roomId);
+        if (!currentRoom) return;
+
+        const result = startDrawingGame(currentRoom, settings);
+        if ('error' in result) {
+          io.to(roomId).emit('error', { message: result.error });
+          return;
+        }
+
+        currentRoom.status = 'playing';
+        startDrawingTurn(io, roomId);
+      });
+    });
+
+    console.log(`[Drawing] Started: ${roomId}`);
+  });
+
+  socket.on('drawing:pick-word', ({ word }) => {
+    if (typeof word !== 'string' || word.length === 0 || word.length > 100) return;
+    const mapping = getSocketMapping(socket.id);
+    if (!mapping) return;
+
+    const drawerId = getDrawerId(mapping.roomId);
+    if (mapping.playerId !== drawerId) return;
+
+    const ok = selectWord(mapping.roomId, word);
+    if (!ok) return;
+
+    // Start drawing phase
+    startDrawingTimer(io, mapping.roomId);
+    broadcastDrawingState(io, mapping.roomId);
+  });
+
+  socket.on('drawing:stroke', ({ stroke }) => {
+    const mapping = getSocketMapping(socket.id);
+    if (!mapping) return;
+
+    const drawerId = getDrawerId(mapping.roomId);
+    if (mapping.playerId !== drawerId) return;
+
+    const ok = addStroke(mapping.roomId, stroke);
+    if (!ok) return;
+
+    // Relay stroke to all others in the room (not back to drawer)
+    socket.to(mapping.roomId).emit('drawing:stroke', { stroke });
+  });
+
+  socket.on('drawing:fill', ({ color, x, y }) => {
+    const mapping = getSocketMapping(socket.id);
+    if (!mapping) return;
+
+    const drawerId = getDrawerId(mapping.roomId);
+    if (mapping.playerId !== drawerId) return;
+
+    if (typeof color !== 'string' || typeof x !== 'number' || typeof y !== 'number') return;
+
+    // Relay fill to all others in the room
+    socket.to(mapping.roomId).emit('drawing:fill', { color, x, y });
+  });
+
+  socket.on('drawing:clear-canvas', () => {
+    const mapping = getSocketMapping(socket.id);
+    if (!mapping) return;
+
+    const drawerId = getDrawerId(mapping.roomId);
+    if (mapping.playerId !== drawerId) return;
+
+    const ok = clearDrawingCanvas(mapping.roomId);
+    if (!ok) return;
+
+    socket.to(mapping.roomId).emit('drawing:clear-canvas');
+  });
+
+  socket.on('drawing:undo', () => {
+    const mapping = getSocketMapping(socket.id);
+    if (!mapping) return;
+
+    const drawerId = getDrawerId(mapping.roomId);
+    if (mapping.playerId !== drawerId) return;
+
+    const ok = undoStroke(mapping.roomId);
+    if (!ok) return;
+
+    // Send full strokes buffer to re-render (simpler than tracking undo on client)
+    const strokes = getStrokes(mapping.roomId);
+    const room = getRoom(mapping.roomId);
+    if (!room) return;
+    for (const player of room.players) {
+      if (player.id === mapping.playerId) continue;
+      const sid = getSocketIdForPlayer(mapping.roomId, player.id);
+      if (!sid) continue;
+      // Clear and re-send all strokes
+      io.to(sid).emit('drawing:clear-canvas');
+      for (const s of strokes) {
+        io.to(sid).emit('drawing:stroke', { stroke: s });
+      }
+    }
+  });
+
+  socket.on('drawing:guess', ({ guess }) => {
+    if (isRateLimited(socket.id)) return;
+    if (typeof guess !== 'string' || guess.length === 0 || guess.length > 200) return;
+
+    const mapping = getSocketMapping(socket.id);
+    if (!mapping) return;
+
+    const room = getRoom(mapping.roomId);
+    if (!room || room.gameCategory !== 'drawing' || room.status !== 'playing') return;
+
+    const result = processDrawingGuess(mapping.roomId, mapping.playerId, guess);
+
+    if (result.isDrawer || result.alreadyGuessed) return;
+
+    if (result.containsWord) {
+      // Don't reveal the word — silently reject
+      socket.emit('drawing:guess-result', { correct: false });
+      return;
+    }
+
+    const inst = getDrawingInstance(mapping.roomId);
+    const playerName = inst?.playerInfo.get(mapping.playerId)?.nickname ?? '';
+
+    // Broadcast guess to all players (so everyone sees who guessed what)
+    if (!result.correct) {
+      io.to(mapping.roomId).emit('drawing:guess-broadcast', {
+        playerName,
+        guess,
+        isClose: result.isClose,
+      });
+    }
+
+    socket.emit('drawing:guess-result', { correct: result.correct });
+
+    if (result.correct && result.position != null && result.score != null) {
+      io.to(mapping.roomId).emit('drawing:player-guessed', {
+        playerId: mapping.playerId,
+        playerName,
+        position: result.position,
+        score: result.score,
+      });
+
+      // Update clients with new state (correctGuessers, scores)
+      broadcastDrawingState(io, mapping.roomId);
+
+      // Check if all guessers got it
+      if (allGuessersCorrect(mapping.roomId)) {
+        handleDrawingTurnEnd(io, mapping.roomId);
+      }
+    }
+  });
+
   // ─── Disconnect ──────────────────────────────────────
   socket.on('disconnect', () => {
     console.log(`[Socket] Disconnected: ${socket.id}`);
@@ -1127,6 +1359,7 @@ function handleLeave(io: IOServer, socket: IOSocket): void {
     cleanupGame(result.roomId);
     cleanupWhatAmIGame(result.roomId);
     cleanupSnelsteVingerGame(result.roomId);
+    cleanupDrawingGame(result.roomId);
     roomRoundResults.delete(result.roomId);
     const countdown = roomCountdowns.get(result.roomId);
     if (countdown) {
@@ -1178,6 +1411,7 @@ function handleDisconnect(io: IOServer, socket: IOSocket): void {
       cleanupGame(roomId);
       cleanupWhatAmIGame(roomId);
       cleanupSnelsteVingerGame(roomId);
+      cleanupDrawingGame(roomId);
       roomRoundResults.delete(roomId);
       const countdown = roomCountdowns.get(roomId);
       if (countdown) {
@@ -1407,4 +1641,134 @@ function handleSnelsteVingerAdvance(io: IOServer, roomId: string): void {
     // Next question
     startSnelsteVingerQuestion(io, roomId);
   }
+}
+
+// ─── Tekenwedstrijd Helpers ────────────────────────────
+function broadcastDrawingState(io: IOServer, roomId: string): void {
+  const room = getRoom(roomId);
+  if (!room) return;
+  const drawerId = getDrawerId(roomId);
+  const drawerState = buildDrawerState(roomId);
+  const guesserState = buildGuesserState(roomId);
+  if (!drawerState || !guesserState) return;
+
+  for (const player of room.players) {
+    const sid = getSocketIdForPlayer(roomId, player.id);
+    if (!sid) continue;
+    if (player.id === drawerId) {
+      io.to(sid).emit('drawing:state-update', drawerState);
+    } else {
+      io.to(sid).emit('drawing:state-update', guesserState);
+    }
+  }
+}
+
+function startDrawingTurn(io: IOServer, roomId: string): void {
+  const choices = getWordChoicesForDrawer(roomId);
+  if (choices.length === 0) {
+    // No more words available — end the game
+    finishDrawingGame(io, roomId);
+    return;
+  }
+
+  // Send word choices to drawer
+  const drawerId = getDrawerId(roomId);
+  if (!drawerId) return;
+  const sid = getSocketIdForPlayer(roomId, drawerId);
+  if (sid) {
+    io.to(sid).emit('drawing:word-choices', { choices });
+  }
+
+  // Broadcast state (phase = picking)
+  broadcastDrawingState(io, roomId);
+}
+
+function startDrawingTimer(io: IOServer, roomId: string): void {
+  const inst = getDrawingInstance(roomId);
+  if (!inst) return;
+
+  const settings = inst.settings;
+  const totalMs = settings.drawTimeSeconds * 1000;
+
+  // Countdown timer — check every second
+  inst.turnTimer = setInterval(() => {
+    const remaining = Date.now() - inst.turnStartTime;
+    if (remaining >= totalMs) {
+      // Time's up!
+      handleDrawingTurnEnd(io, roomId);
+    }
+  }, 1000);
+
+  // Start hint reveal timer
+  startHintTimer(roomId, (hint) => {
+    // Broadcast updated hint to guessers
+    const guesserState = buildGuesserState(roomId);
+    if (!guesserState) return;
+    const room = getRoom(roomId);
+    if (!room) return;
+    const drawerId = getDrawerId(roomId);
+    for (const player of room.players) {
+      if (player.id === drawerId) continue;
+      const sid = getSocketIdForPlayer(roomId, player.id);
+      if (sid) {
+        io.to(sid).emit('drawing:state-update', { ...guesserState, hint });
+      }
+    }
+  });
+}
+
+function handleDrawingTurnEnd(io: IOServer, roomId: string): void {
+  const result = endTurn(roomId);
+  if (!result) return;
+
+  // Broadcast turn-end with reveal
+  const inst = getDrawingInstance(roomId);
+  if (!inst) return;
+
+  const scores = getFinalScores(roomId) || [];
+  io.to(roomId).emit('drawing:turn-end', { word: result.word, scores });
+
+  // Broadcast reveal state
+  broadcastDrawingState(io, roomId);
+
+  // After 5 seconds, advance to next turn
+  inst.revealTimer = setTimeout(() => {
+    const advancement = advanceTurn(roomId);
+    if (advancement === 'game-over') {
+      finishDrawingGame(io, roomId);
+    } else {
+      startDrawingTurn(io, roomId);
+    }
+  }, 5000);
+}
+
+function finishDrawingGame(io: IOServer, roomId: string): void {
+  const scores = getFinalScores(roomId) || [];
+  io.to(roomId).emit('drawing:game-end', { scores });
+
+  // Update room player scores
+  const room = getRoom(roomId);
+  if (room) {
+    for (const s of scores) {
+      const player = room.players.find((p) => p.id === s.playerId);
+      if (player) player.score = s.score;
+    }
+    room.status = 'finished';
+
+    // Build and emit final results
+    const finalResults = {
+      players: scores.map((s, i) => ({
+        playerId: s.playerId,
+        nickname: s.nickname,
+        avatarUrl: s.avatarUrl,
+        totalScore: s.score,
+        roundScores: [s.score],
+        rank: i + 1,
+      })),
+      roundResults: [],
+    };
+    io.to(roomId).emit('game-end', finalResults);
+  }
+
+  cleanupDrawingGame(roomId);
 }

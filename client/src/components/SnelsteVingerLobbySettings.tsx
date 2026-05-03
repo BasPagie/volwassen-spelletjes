@@ -47,6 +47,83 @@ export default function SnelsteVingerLobbySettings({
     .filter((c) => current.categoryIds.includes(c.id))
     .reduce((sum, c) => sum + c.questionCount, 0);
 
+  // ─── Non-host read-only view ─────────────────────────
+  if (!isHost) {
+    const selectedCats = categories.filter((c) =>
+      current.categoryIds.includes(c.id),
+    );
+    return (
+      <div className="space-y-4">
+        <h3 className="font-display font-bold text-lg text-gray-700">
+          Spelinstellingen
+        </h3>
+        <div className="bg-gray-50 rounded-xl p-4 space-y-3 text-sm text-gray-600">
+          <div>
+            <span className="text-xs font-medium text-gray-400 uppercase tracking-wide">
+              Categorieën
+            </span>
+            <div className="flex flex-wrap gap-1.5 mt-1">
+              {selectedCats.map((cat) => (
+                <span
+                  key={cat.id}
+                  className="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-medium bg-red-50 text-red-700"
+                >
+                  {cat.name}
+                </span>
+              ))}
+              {selectedCats.length === 0 && (
+                <span className="text-xs text-gray-400 italic">
+                  Geen geselecteerd
+                </span>
+              )}
+            </div>
+          </div>
+          <div className="flex flex-wrap gap-4">
+            <div>
+              <span className="text-xs font-medium text-gray-400 uppercase tracking-wide">
+                Vragen
+              </span>
+              <p className="font-medium mt-0.5">{current.questionCount}</p>
+            </div>
+            <div>
+              <span className="text-xs font-medium text-gray-400 uppercase tracking-wide">
+                Tijd/vraag
+              </span>
+              <p className="font-medium mt-0.5">{current.timePerQuestion}s</p>
+            </div>
+            <div>
+              <span className="text-xs font-medium text-gray-400 uppercase tracking-wide">
+                Punten
+              </span>
+              <p className="font-medium mt-0.5">
+                +{current.pointsCorrect} / -{current.pointsWrongPenalty}
+              </p>
+            </div>
+            <div>
+              <span className="text-xs font-medium text-gray-400 uppercase tracking-wide">
+                Streak
+              </span>
+              <p className="font-medium mt-0.5">
+                {current.streakBonus ? "🔥 Aan" : "Uit"}
+              </p>
+            </div>
+            <div>
+              <span className="text-xs font-medium text-gray-400 uppercase tracking-wide">
+                Host
+              </span>
+              <p className="font-medium mt-0.5">
+                {current.hostPlays ? "🎮 Speelt mee" : "👀 Kijkt toe"}
+              </p>
+            </div>
+          </div>
+        </div>
+        <p className="text-xs text-gray-400 italic">
+          Alleen de host kan instellingen wijzigen.
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-5">
       {/* Category picker */}

@@ -13,6 +13,7 @@ interface WhatAmIPlayerTracker {
   cooldownUntil: number | null;
   score: number;
   finishTimeMs: number | null;
+  questionsAsked: number;
 }
 
 interface WhatAmIGameInstance {
@@ -34,6 +35,7 @@ interface WhatAmIGameInstance {
   questionsAskedThisTurn: number;  // counter for current turn
   turnStartTime: number | null;    // epoch ms when current turn started
   turnTimer: ReturnType<typeof setTimeout> | null;
+  questionsBeforeGuess: number;    // 0 = no limit
 }
 
 const activeGames = new Map<string, WhatAmIGameInstance>();
@@ -106,7 +108,7 @@ export function startWhatAmIGame(
   onExpire: (roomId: string) => void,
   onTurnAdvance?: (roomId: string) => void,
 ): WhatAmIGameInstance | { error: string } {
-  const { packIds, customCharacters, timeLimitSeconds, hostPlays, gameMode, turnSeconds, questionsPerTurn } = settings as any;
+  const { packIds, customCharacters, timeLimitSeconds, hostPlays, gameMode, turnSeconds, questionsPerTurn, questionsBeforeGuess } = settings as any;
 
   // Pool characters from all selected packs + always merge custom characters
   let packName = '';
@@ -156,6 +158,7 @@ export function startWhatAmIGame(
       cooldownUntil: null,
       score: 0,
       finishTimeMs: null,
+      questionsAsked: 0,
     });
   });
 
@@ -180,6 +183,7 @@ export function startWhatAmIGame(
     questionsAskedThisTurn: 0,
     turnStartTime: null,
     turnTimer: null,
+    questionsBeforeGuess: questionsBeforeGuess ?? 0,
   };
 
   if (instance.gameMode === 'free-for-all') {
@@ -311,6 +315,11 @@ export function processGuess(
   if (!tracker) return null;
   if (tracker.guessedCorrectly) return null;
 
+  // Block guessing if not enough questions asked
+  if (instance.questionsBeforeGuess > 0 && tracker.questionsAsked < instance.questionsBeforeGuess) {
+    return null;
+  }
+
   // Turn-based: only the active player can guess
   if (instance.gameMode === 'turns') {
     const currentTurnId = instance.turnOrder[instance.currentTurnIndex];
@@ -362,6 +371,15 @@ export function processGuess(
   }
 }
 
+export function recordQuestion(roomId: string, playerId: string): boolean {
+  const instance = activeGames.get(roomId);
+  if (!instance || instance.finished) return false;
+  const tracker = instance.trackers.get(playerId);
+  if (!tracker || tracker.guessedCorrectly || tracker.gaveUp) return false;
+  tracker.questionsAsked++;
+  return true;
+}
+
 export function buildPlayerView(instance: WhatAmIGameInstance, playerId: string): WhatAmIClientGameState {
   const elapsed = Date.now() - instance.startTime;
   const timeRemainingMs = instance.timeLimitSeconds !== null
@@ -378,6 +396,7 @@ export function buildPlayerView(instance: WhatAmIGameInstance, playerId: string)
     wrongGuesses: t.wrongGuesses,
     cooldownUntil: t.cooldownUntil,
     score: t.score,
+    questionsAsked: t.questionsAsked,
   }));
 
   const state: WhatAmIClientGameState = {
@@ -388,6 +407,7 @@ export function buildPlayerView(instance: WhatAmIGameInstance, playerId: string)
     startTime: instance.startTime,
     timeRemainingMs,
     players,
+    questionsBeforeGuess: instance.questionsBeforeGuess,
   };
 
   if (instance.gameMode === 'turns') {
@@ -417,6 +437,7 @@ export function buildModeratorView(instance: WhatAmIGameInstance): WhatAmIClient
     wrongGuesses: t.wrongGuesses,
     cooldownUntil: t.cooldownUntil,
     score: t.score,
+    questionsAsked: t.questionsAsked,
   }));
 
   const state: WhatAmIClientGameState = {
@@ -427,6 +448,7 @@ export function buildModeratorView(instance: WhatAmIGameInstance): WhatAmIClient
     startTime: instance.startTime,
     timeRemainingMs,
     players,
+    questionsBeforeGuess: instance.questionsBeforeGuess,
   };
 
   if (instance.gameMode === 'turns') {

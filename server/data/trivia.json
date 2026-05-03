@@ -85,7 +85,7 @@
     "name": "Internet & Memes",
     "description": "Virale momenten, YouTube, TikTok en Reddit-lore",
     "questions": [
-      { "question": "Hoe heet de meme met een hond in een brandend huis die zegt 'This is fine'?", "answer": "This is Fine", "acceptedAnswers": ["this is fine", "this is fine dog"] },
+      { "question": "Hoe heet de meme met een hond in een brandend huis?", "answer": "This is Fine", "acceptedAnswers": ["this is fine", "this is fine dog"] },
       { "question": "In welk jaar bereikte Gangnam Style als eerste video 1 miljard views op YouTube?", "answer": "2012", "acceptedAnswers": ["2012"] },
       { "question": "Hoe heet de foto-meme met een man die naar een andere vrouw kijkt?", "answer": "Distracted Boyfriend", "acceptedAnswers": ["distracted boyfriend", "man looking at other woman"] },
       { "question": "Welke subreddit staat bekend om beleggings-memes en GameStop?", "answer": "WallStreetBets", "acceptedAnswers": ["wallstreetbets", "wall street bets", "wsb"] },

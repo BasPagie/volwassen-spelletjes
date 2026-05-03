@@ -176,7 +176,7 @@ export default function Join() {
                 : gameCategory === "snelste-vinger"
                   ? "🏃 Snelste Vinger"
                   : gameCategory === "drawing"
-                    ? "🔮 Meer spellen worden..."
+                    ? "✏️ Tekenspel"
                     : "🧠 Woordspellen"}{" "}
               — Kamer: {roomId}
             </span>

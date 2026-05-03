@@ -8,7 +8,7 @@ import { useSocketEvents } from "../hooks/useSocketEvents";
 import PlayerList from "../components/PlayerList";
 import GameSettingsPanel from "../components/GameSettingsPanel";
 import WhatAmILobbySettings from "../components/WhatAmILobbySettings";
-import DrawingGameStub from "../components/DrawingGameStub";
+import DrawingLobbySettings from "../components/DrawingLobbySettings";
 import SnelsteVingerLobbySettings from "../components/SnelsteVingerLobbySettings";
 import { getCategoryTheme } from "../lib/categoryThemes";
 import { isMuted, toggleMute } from "../hooks/useSoundEffect";
@@ -17,6 +17,7 @@ import type {
   GameSettings,
   WhatAmISettings,
   SnelsteVingerSettings,
+  DrawingSettings,
 } from "shared/types";
 
 export default function Lobby() {
@@ -33,9 +34,13 @@ export default function Lobby() {
       ? "whatami-rules-seen"
       : state.room?.gameCategory === "snelste-vinger"
         ? "snelstevinger-rules-seen"
-        : "woord-rules-seen";
+        : state.room?.gameCategory === "drawing"
+          ? "drawing-rules-seen"
+          : "woord-rules-seen";
   const isFirstVisit = !localStorage.getItem(rulesKey);
-  const [showInfo, setShowInfo] = useState(isFirstVisit);
+  const [showInfo, setShowInfo] = useState(
+    state.room?.gameCategory === "drawing" ? false : isFirstVisit,
+  );
   const [waitExpired, setWaitExpired] = useState(false);
 
   const session = getSession();
@@ -53,7 +58,12 @@ export default function Lobby() {
 
   // Navigate to game when game starts
   useEffect(() => {
-    if ((state.phase === "playing" || state.phase === "countdown") && roomId) {
+    if (
+      (state.phase === "playing" ||
+        state.phase === "countdown" ||
+        state.phase === "briefing") &&
+      roomId
+    ) {
       navigate(`/game/${roomId}`);
     }
   }, [state.phase, roomId, navigate]);
@@ -96,12 +106,20 @@ export default function Lobby() {
     socket.emit("snelstevinger:update-settings", settings);
   };
 
+  const handleDrawingSettingsChange = (settings: DrawingSettings) => {
+    if (!socket) return;
+    dispatch({ type: "DRAWING_SETTINGS_UPDATED", settings }); // Optimistic
+    socket.emit("drawing:update-settings", settings);
+  };
+
   const handleStartGame = () => {
     if (!socket) return;
     if (state.room?.gameCategory === "what-am-i") {
       socket.emit("whatami:start-game");
     } else if (state.room?.gameCategory === "snelste-vinger") {
       socket.emit("snelstevinger:start-game");
+    } else if (state.room?.gameCategory === "drawing") {
+      socket.emit("drawing:start-game");
     } else {
       socket.emit("start-game");
     }
@@ -196,7 +214,7 @@ export default function Lobby() {
                   ? "🎭 Wie Ben Ik?"
                   : state.room.gameCategory === "snelste-vinger"
                     ? "🏃 Snelste Vinger"
-                    : "🔮 Meer spellen worden..."}
+                    : "✏️ Tekenspel"}
             </span>
             <button
               onClick={() => setShowInfo(true)}
@@ -324,9 +342,13 @@ export default function Lobby() {
                 onChange={handleSnelsteVingerSettingsChange}
                 isHost={isPlayerHost}
               />
-            ) : (
-              <DrawingGameStub />
-            )}
+            ) : state.room.gameCategory === "drawing" ? (
+              <DrawingLobbySettings
+                settings={state.room.drawingSettings}
+                onChange={handleDrawingSettingsChange}
+                isHost={isPlayerHost}
+              />
+            ) : null}
           </motion.div>
         </div>
 
@@ -503,6 +525,55 @@ export default function Lobby() {
                       <p>
                         Na alle vragen wint de speler met de meeste punten.
                         Typfoutjes worden geaccepteerd.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ) : state.room?.gameCategory === "drawing" ? (
+                <div className="space-y-3 text-sm text-gray-600 leading-relaxed">
+                  <div className="rounded-xl p-4 bg-teal-50">
+                    <p className="font-display font-bold text-teal-700 mb-2">
+                      ✏️ Tekenwedstrijd
+                    </p>
+                    <p>
+                      Eén speler tekent een woord, de rest probeert zo snel
+                      mogelijk te raden wat het is!
+                    </p>
+                  </div>
+                  <div className="border-t border-gray-100 pt-3 space-y-2">
+                    <div className="flex gap-2 items-start">
+                      <span className="text-lg">✏️</span>
+                      <p>
+                        De tekenaar kiest een woord en tekent het op het canvas
+                        — <strong>geen letters of cijfers</strong> tekenen!
+                      </p>
+                    </div>
+                    <div className="flex gap-2 items-start">
+                      <span className="text-lg">💬</span>
+                      <p>
+                        De rest typt hun antwoord in. Hoe sneller je raadt, hoe
+                        meer punten je krijgt.
+                      </p>
+                    </div>
+                    <div className="flex gap-2 items-start">
+                      <span className="text-lg">💡</span>
+                      <p>
+                        Na verloop van tijd verschijnen hints: letters van het
+                        woord worden zichtbaar.
+                      </p>
+                    </div>
+                    <div className="flex gap-2 items-start">
+                      <span className="text-lg">🔄</span>
+                      <p>
+                        Iedereen komt aan de beurt om te tekenen. Per ronde
+                        tekent elke speler één keer.
+                      </p>
+                    </div>
+                    <div className="flex gap-2 items-start">
+                      <span className="text-lg">🏆</span>
+                      <p>
+                        De tekenaar scoort ook punten als anderen het woord
+                        raden. Win-win!
                       </p>
                     </div>
                   </div>

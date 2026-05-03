@@ -9,6 +9,7 @@ const BG_COLORS: Record<string, string> = {
   amber: "bg-amber-50",
   green: "bg-green-50",
   red: "bg-red-50",
+  teal: "bg-teal-50",
 };
 
 const TEXT_COLORS: Record<string, string> = {
@@ -17,6 +18,7 @@ const TEXT_COLORS: Record<string, string> = {
   amber: "text-amber-700",
   green: "text-green-700",
   red: "text-red-700",
+  teal: "text-teal-700",
 };
 
 const BTN_COLORS: Record<string, string> = {
@@ -25,6 +27,7 @@ const BTN_COLORS: Record<string, string> = {
   amber: "bg-amber-500 hover:bg-amber-600",
   green: "bg-green-500 hover:bg-green-600",
   red: "bg-red-500 hover:bg-red-600",
+  teal: "bg-teal-500 hover:bg-teal-600",
 };
 
 const GRADIENT_BG: Record<string, string> = {
@@ -33,6 +36,7 @@ const GRADIENT_BG: Record<string, string> = {
   amber: "from-amber-500 to-amber-700",
   green: "from-green-600 to-green-800",
   red: "from-red-600 to-red-800",
+  teal: "from-teal-600 to-teal-800",
 };
 
 interface Props {

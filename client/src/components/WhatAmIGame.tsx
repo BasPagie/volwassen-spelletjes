@@ -68,11 +68,11 @@ export default function WhatAmIGame({
   // Fire confetti on correct guess
   const prevGuessed = useRef(false);
   useEffect(() => {
-    if (myState?.guessedCorrectly && !prevGuessed.current) {
+    if (myState?.guessedCorrectly && !myState?.gaveUp && !prevGuessed.current) {
       confetti({ particleCount: 120, spread: 70, origin: { y: 0.65 } });
     }
     prevGuessed.current = !!myState?.guessedCorrectly;
-  }, [myState?.guessedCorrectly]);
+  }, [myState?.guessedCorrectly, myState?.gaveUp]);
 
   // Time remaining (free-for-all)
   const [timeLeft, setTimeLeft] = useState<number | null>(
@@ -278,61 +278,90 @@ export default function WhatAmIGame({
           !isFinished &&
           (!isTurnBased || isMyTurn) && (
             <div className="bg-white rounded-2xl border-2 border-purple-200 p-3 sm:p-4 mb-4">
-              <p className="font-display font-bold text-sm text-gray-600 mb-2 sm:mb-3">
-                Wie ben jij? Typ je antwoord hieronder:
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <input
-                  ref={inputRef}
-                  type="text"
-                  value={guess}
-                  onChange={(e) => setGuess(e.target.value)}
-                  onKeyDown={(e) => e.key === "Enter" && handleSubmitGuess()}
-                  placeholder={
-                    cooldownLeft > 0
-                      ? `Cooldown: nog ${cooldownLeft}s...`
-                      : "Voer de naam in van jouw karakter..."
-                  }
-                  disabled={cooldownLeft > 0}
-                  maxLength={100}
-                  className="flex-1 min-w-0 basis-full sm:basis-0 px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl border-2 border-gray-200 focus:border-purple-400 
-                           focus:ring-2 focus:ring-purple-100 outline-none transition-all font-display text-sm sm:text-base
-                           disabled:bg-gray-100 disabled:text-gray-400"
+              {/* Question tracker */}
+              {gameState.questionsBeforeGuess > 0 && (
+                <QuestionTracker
+                  questionsAsked={myState?.questionsAsked ?? 0}
+                  questionsRequired={gameState.questionsBeforeGuess}
                 />
-                <button
-                  onClick={handleSubmitGuess}
-                  disabled={!guess.trim() || cooldownLeft > 0}
-                  className="px-4 sm:px-5 py-2.5 sm:py-3 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-display 
-                           font-bold transition-all disabled:opacity-40 disabled:cursor-not-allowed text-sm sm:text-base"
-                >
-                  {cooldownLeft > 0 ? `⏱ ${cooldownLeft}s` : "Raden!"}
-                </button>
-                {isTurnBased && (
-                  <button
-                    onClick={onSkipTurn}
-                    className="px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl border-2 border-gray-300 hover:border-gray-400 text-gray-600 
-                             hover:text-gray-800 font-display font-bold transition-all text-xs sm:text-sm"
-                  >
-                    Pas ⏭
-                  </button>
-                )}
-                <button
-                  onClick={onGiveUp}
-                  className="px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl border-2 border-red-200 hover:border-red-400 text-red-500 
-                           hover:text-red-700 font-display font-bold transition-all text-xs sm:text-sm"
-                >
-                  🏳️ Geen idee
-                </button>
-              </div>
-              {cooldownLeft > 0 && (
-                <motion.p
-                  initial={{ opacity: 0, y: -4 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-red-500 text-sm font-display mt-2"
-                >
-                  ❌ Fout geraden — wacht {cooldownLeft} seconden voordat je
-                  opnieuw mag raden.
-                </motion.p>
+              )}
+
+              {/* Guess input - only if enough questions asked */}
+              {gameState.questionsBeforeGuess === 0 ||
+              (myState?.questionsAsked ?? 0) >=
+                gameState.questionsBeforeGuess ? (
+                <>
+                  <p className="font-display font-bold text-sm text-gray-600 mb-2 sm:mb-3">
+                    Wie ben jij? Typ je antwoord hieronder:
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    <input
+                      ref={inputRef}
+                      type="text"
+                      value={guess}
+                      onChange={(e) => setGuess(e.target.value)}
+                      onKeyDown={(e) =>
+                        e.key === "Enter" && handleSubmitGuess()
+                      }
+                      placeholder={
+                        cooldownLeft > 0
+                          ? `Cooldown: nog ${cooldownLeft}s...`
+                          : "Voer de naam in van jouw karakter..."
+                      }
+                      disabled={cooldownLeft > 0}
+                      maxLength={100}
+                      className="flex-1 min-w-0 basis-full sm:basis-0 px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl border-2 border-gray-200 focus:border-purple-400 
+                               focus:ring-2 focus:ring-purple-100 outline-none transition-all font-display text-sm sm:text-base
+                               disabled:bg-gray-100 disabled:text-gray-400"
+                    />
+                    <button
+                      onClick={handleSubmitGuess}
+                      disabled={!guess.trim() || cooldownLeft > 0}
+                      className="px-4 sm:px-5 py-2.5 sm:py-3 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-display 
+                               font-bold transition-all disabled:opacity-40 disabled:cursor-not-allowed text-sm sm:text-base"
+                    >
+                      {cooldownLeft > 0 ? `⏱ ${cooldownLeft}s` : "Raden!"}
+                    </button>
+                    {isTurnBased && (
+                      <button
+                        onClick={onSkipTurn}
+                        className="px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl border-2 border-gray-300 hover:border-gray-400 text-gray-600 
+                                 hover:text-gray-800 font-display font-bold transition-all text-xs sm:text-sm"
+                      >
+                        Pas ⏭
+                      </button>
+                    )}
+                    <button
+                      onClick={onGiveUp}
+                      className="px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl border-2 border-red-200 hover:border-red-400 text-red-500 
+                               hover:text-red-700 font-display font-bold transition-all text-xs sm:text-sm"
+                    >
+                      🏳️ Geen idee
+                    </button>
+                  </div>
+                  {cooldownLeft > 0 && (
+                    <motion.p
+                      initial={{ opacity: 0, y: -4 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="text-red-500 text-sm font-display mt-2"
+                    >
+                      ❌ Fout geraden — wacht {cooldownLeft} seconden voordat je
+                      opnieuw mag raden.
+                    </motion.p>
+                  )}
+                </>
+              ) : (
+                <p className="font-display text-sm text-gray-400 text-center mt-2">
+                  Stel nog{" "}
+                  {gameState.questionsBeforeGuess -
+                    (myState?.questionsAsked ?? 0)}{" "}
+                  {gameState.questionsBeforeGuess -
+                    (myState?.questionsAsked ?? 0) ===
+                  1
+                    ? "vraag"
+                    : "vragen"}{" "}
+                  voordat je mag raden.
+                </p>
               )}
             </div>
           )}
@@ -491,6 +520,65 @@ function ModeratorPanel() {
           {sent ? "✓" : "💡"}
         </button>
       </div>
+    </div>
+  );
+}
+
+function QuestionTracker({
+  questionsAsked,
+  questionsRequired,
+}: {
+  questionsAsked: number;
+  questionsRequired: number;
+}) {
+  const socket = useSocket();
+  const done = questionsAsked >= questionsRequired;
+
+  const handleAskQuestion = () => {
+    if (!socket || done) return;
+    socket.emit("whatami:asked-question");
+  };
+
+  return (
+    <div className="mb-3">
+      <div className="flex items-center gap-2 mb-2">
+        <span className="font-display font-bold text-sm text-gray-600">
+          Vragen gesteld:
+        </span>
+        <div className="flex gap-1.5">
+          {Array.from({ length: questionsRequired }).map((_, i) => (
+            <motion.div
+              key={i}
+              initial={i === questionsAsked - 1 ? { scale: 0.5 } : false}
+              animate={{ scale: 1 }}
+              className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold transition-colors ${
+                i < questionsAsked
+                  ? "bg-green-500 text-white"
+                  : "bg-gray-200 text-gray-400"
+              }`}
+            >
+              {i < questionsAsked ? "✓" : i + 1}
+            </motion.div>
+          ))}
+        </div>
+        {done && (
+          <motion.span
+            initial={{ opacity: 0, x: -8 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="text-green-600 font-display font-bold text-xs"
+          >
+            Je mag raden!
+          </motion.span>
+        )}
+      </div>
+      {!done && (
+        <button
+          onClick={handleAskQuestion}
+          className="px-4 py-2 rounded-xl bg-blue-500 hover:bg-blue-600 text-white font-display font-bold text-sm transition-all"
+        >
+          ✋ Vraag gesteld ({questionsAsked}/{questionsRequired})
+        </button>
+      )}
     </div>
   );
 }

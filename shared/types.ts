@@ -59,6 +59,7 @@ export interface GameRoom {
   gameCategory: GameCategory;
   whatAmISettings?: WhatAmISettings;
   snelsteVingerSettings?: SnelsteVingerSettings;
+  drawingSettings?: DrawingSettings;
 }
 
 // ─── Wie Ben Ik? (What Am I?) ──────────────────────────
@@ -86,6 +87,7 @@ export interface WhatAmISettings {
   gameMode: WhatAmIGameMode;       // free-for-all or turn-based
   turnSeconds: number;             // seconds per turn in turn-based mode
   questionsPerTurn: number;        // how many guesses per round (1, 2, or 3)
+  questionsBeforeGuess: number;    // 0 = no limit, otherwise must ask this many questions before guessing
 }
 
 export const DEFAULT_WHATAMI_SETTINGS: WhatAmISettings = {
@@ -96,6 +98,7 @@ export const DEFAULT_WHATAMI_SETTINGS: WhatAmISettings = {
   gameMode: 'free-for-all',
   turnSeconds: 60,
   questionsPerTurn: 1,
+  questionsBeforeGuess: 0,
 };
 
 export interface WhatAmIPlayerState {
@@ -108,6 +111,7 @@ export interface WhatAmIPlayerState {
   wrongGuesses: number;
   cooldownUntil: number | null;   // epoch ms, null = not in cooldown
   score: number;
+  questionsAsked: number;         // self-tracked questions asked before guessing
 }
 
 export interface WhatAmIClientGameState {
@@ -118,6 +122,7 @@ export interface WhatAmIClientGameState {
   startTime: number;              // epoch ms
   timeRemainingMs: number | null;
   players: WhatAmIPlayerState[];
+  questionsBeforeGuess: number;   // 0 = no limit
   // Turn-based fields (only set when gameMode === 'turns')
   currentTurnPlayerId?: string;   // whose turn it is
   turnTimeRemainingMs?: number | null;   // ms left in current turn
@@ -169,6 +174,68 @@ export interface SnelsteVingerClientState {
   correctAnswer: string | null;   // revealed after question ends
   scores: SnelsteVingerPlayerScore[];
   phase: 'question' | 'reveal' | 'finished';
+}
+
+// ─── Tekenwedstrijd (Drawing / Pictionary) ─────────────
+export interface DrawingSettings {
+  rounds: number;                  // how many rounds (each round = every player draws once)
+  drawTimeSeconds: number;         // seconds per turn to draw
+  categoryIds: string[];           // selected word categories
+  customWords: string[];           // host-added custom words
+  hostPlays: boolean;
+}
+
+export const DEFAULT_DRAWING_SETTINGS: DrawingSettings = {
+  rounds: 2,
+  drawTimeSeconds: 60,
+  categoryIds: ['dieren', 'eten', 'voorwerpen', 'acties', 'films', 'gaming-popculture', 'spicy'],
+  customWords: [],
+  hostPlays: true,
+};
+
+export interface DrawingPoint {
+  x: number;  // 0-1 normalized
+  y: number;  // 0-1 normalized
+}
+
+export interface DrawingStroke {
+  points: DrawingPoint[];
+  color: string;
+  width: number;  // px (on a 600px-wide canvas reference)
+}
+
+export interface DrawingPlayerScore {
+  playerId: string;
+  nickname: string;
+  avatarUrl: string;
+  score: number;
+  roundScore: number;
+  streak: number;
+}
+
+export interface DrawingWordChoice {
+  word: string;
+  difficulty: 'easy' | 'medium' | 'hard';
+}
+
+export interface DrawingClientState {
+  phase: 'picking' | 'drawing' | 'reveal' | 'finished';
+  drawerId: string;
+  drawerName: string;
+  currentRound: number;
+  totalRounds: number;
+  turnInRound: number;
+  totalTurnsInRound: number;
+  word: string | null;             // shown to drawer only, null for guessers
+  wordLength: number;
+  hint: string;                    // e.g. "_ l _ _ a _ t" — progressive reveal
+  timeRemainingMs: number;
+  totalTimeMs: number;
+  scores: DrawingPlayerScore[];
+  correctGuessers: string[];       // playerIds who guessed correctly this turn
+  guessersRemaining: number;       // how many still need to guess
+  revealWord?: string;             // shown to all during reveal phase
+  wordChoices?: DrawingWordChoice[]; // sent to drawer during picking phase
 }
 
 // ─── Puzzles ───────────────────────────────────────────
@@ -340,6 +407,7 @@ export interface ClientToServerEvents {
   'whatami:update-settings': (settings: WhatAmISettings) => void;
   'whatami:start-game': () => void;
   'whatami:guess': (data: { guess: string }) => void;
+  'whatami:asked-question': () => void;
   'whatami:skip-turn': () => void;
   'whatami:give-up': () => void;
   'whatami:request-state': () => void;
@@ -348,6 +416,15 @@ export interface ClientToServerEvents {
   'snelstevinger:update-settings': (settings: SnelsteVingerSettings) => void;
   'snelstevinger:start-game': () => void;
   'snelstevinger:buzz': (data: { answer: string }) => void;
+  // ─── Tekenwedstrijd ────────────────────────────────
+  'drawing:update-settings': (settings: DrawingSettings) => void;
+  'drawing:start-game': () => void;
+  'drawing:pick-word': (data: { word: string }) => void;
+  'drawing:stroke': (data: { stroke: DrawingStroke }) => void;
+  'drawing:fill': (data: { color: string; x: number; y: number }) => void;
+  'drawing:clear-canvas': () => void;
+  'drawing:undo': () => void;
+  'drawing:guess': (data: { guess: string }) => void;
   // ─── Briefing ──────────────────────────────────────
   'player-ready': () => void;
 }
@@ -393,6 +470,19 @@ export interface ServerToClientEvents {
   'snelstevinger:question-won': (data: { winnerId: string; winnerName: string; correctAnswer: string; scores: SnelsteVingerPlayerScore[] }) => void;
   'snelstevinger:question-timeout': (data: { correctAnswer: string; scores: SnelsteVingerPlayerScore[] }) => void;
   'snelstevinger:game-end': (data: { scores: SnelsteVingerPlayerScore[] }) => void;
+  // ─── Tekenwedstrijd ────────────────────────────────
+  'drawing:settings-updated': (settings: DrawingSettings) => void;
+  'drawing:state-update': (data: DrawingClientState) => void;
+  'drawing:word-choices': (data: { choices: DrawingWordChoice[] }) => void;
+  'drawing:stroke': (data: { stroke: DrawingStroke }) => void;
+  'drawing:fill': (data: { color: string; x: number; y: number }) => void;
+  'drawing:clear-canvas': () => void;
+  'drawing:undo': () => void;
+  'drawing:guess-result': (data: { correct: boolean; word?: string }) => void;
+  'drawing:guess-broadcast': (data: { playerName: string; guess: string; isClose: boolean }) => void;
+  'drawing:player-guessed': (data: { playerId: string; playerName: string; position: number; score: number }) => void;
+  'drawing:turn-end': (data: { word: string; scores: DrawingPlayerScore[] }) => void;
+  'drawing:game-end': (data: { scores: DrawingPlayerScore[] }) => void;
   // ─── Briefing ──────────────────────────────────────
   'briefing-start': (data: { briefingKey: string; roundType?: RoundType; gameCategory: GameCategory }) => void;
   'briefing-ready-count': (data: { ready: number; total: number }) => void;

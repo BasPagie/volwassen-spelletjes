@@ -66,7 +66,7 @@ const PACK_META = [
   },
   {
     id: "nederland-nu",
-    name: "🇳🇱 Nederland Nu",
+    name: "🧡 Nederland Nu",
     description: "Bekende Nederlanders die onze generatie kent",
     characterCount: 24,
   },
@@ -395,6 +395,108 @@ export default function WhatAmILobbySettings({
     .reduce((sum, l) => sum + l.characters.length, 0);
   const manualCustomChars = current.customCharacters.length - savedListChars;
   const totalChars = totalPackChars + current.customCharacters.length;
+
+  // ─── Non-host read-only view ─────────────────────────
+  if (!isHost) {
+    const selectedPacks = PACK_META.filter((p) =>
+      current.packIds.includes(p.id),
+    );
+    return (
+      <div className="space-y-4">
+        <h3 className="font-display font-bold text-lg text-gray-700">
+          🎭 Wie Ben Ik? Instellingen
+        </h3>
+        <div className="bg-gray-50 rounded-xl p-4 space-y-3 text-sm text-gray-600">
+          <div>
+            <span className="text-xs font-medium text-gray-400 uppercase tracking-wide">
+              Pakketten
+            </span>
+            <div className="flex flex-wrap gap-1.5 mt-1">
+              {selectedPacks.map((pack) => (
+                <span
+                  key={pack.id}
+                  className="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-medium bg-purple-50 text-purple-700"
+                >
+                  {pack.name}
+                </span>
+              ))}
+              {current.customCharacters.length > 0 && (
+                <span className="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-medium bg-amber-50 text-amber-700">
+                  ✏️ Eigen ({current.customCharacters.length})
+                </span>
+              )}
+            </div>
+            <p className="text-xs text-gray-400 mt-1">
+              {totalChars} karakters totaal
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-4">
+            <div>
+              <span className="text-xs font-medium text-gray-400 uppercase tracking-wide">
+                Modus
+              </span>
+              <p className="font-medium mt-0.5">
+                {current.gameMode === "turns"
+                  ? "🔄 Beurten"
+                  : "⚡ Free-for-all"}
+              </p>
+            </div>
+            {current.gameMode === "turns" && (
+              <>
+                <div>
+                  <span className="text-xs font-medium text-gray-400 uppercase tracking-wide">
+                    Tijd/beurt
+                  </span>
+                  <p className="font-medium mt-0.5">{current.turnSeconds}s</p>
+                </div>
+                <div>
+                  <span className="text-xs font-medium text-gray-400 uppercase tracking-wide">
+                    Gokken/beurt
+                  </span>
+                  <p className="font-medium mt-0.5">
+                    {current.questionsPerTurn}
+                  </p>
+                </div>
+              </>
+            )}
+            {current.gameMode === "free-for-all" && (
+              <div>
+                <span className="text-xs font-medium text-gray-400 uppercase tracking-wide">
+                  Tijdslimiet
+                </span>
+                <p className="font-medium mt-0.5">
+                  {current.timeLimitSeconds
+                    ? `${Math.round(current.timeLimitSeconds / 60)} min`
+                    : "♾️ Geen"}
+                </p>
+              </div>
+            )}
+            {current.questionsBeforeGuess > 0 && (
+              <div>
+                <span className="text-xs font-medium text-gray-400 uppercase tracking-wide">
+                  Vragen voor gok
+                </span>
+                <p className="font-medium mt-0.5">
+                  {current.questionsBeforeGuess}
+                </p>
+              </div>
+            )}
+            <div>
+              <span className="text-xs font-medium text-gray-400 uppercase tracking-wide">
+                Host
+              </span>
+              <p className="font-medium mt-0.5">
+                {current.hostPlays ? "🎮 Speelt mee" : "👀 Kijkt toe"}
+              </p>
+            </div>
+          </div>
+        </div>
+        <p className="text-xs text-gray-400 italic">
+          Alleen de host kan instellingen wijzigen.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6">
@@ -946,6 +1048,36 @@ export default function WhatAmILobbySettings({
           </div>
         </div>
       )}
+
+      {/* ── SECTION: Questions before guessing ── */}
+      <div>
+        <span className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">
+          Vragen voor je mag raden
+        </span>
+        <div className="bg-gray-50/50 rounded-2xl border border-gray-100 p-3">
+          <p className="text-xs text-gray-400 mb-2">
+            Spelers moeten eerst dit aantal vragen stellen voordat ze mogen
+            gokken (op eer-systeem).
+          </p>
+          <div className="flex gap-1.5 flex-wrap">
+            {[0, 1, 2, 3, 5].map((n) => (
+              <button
+                key={n}
+                onClick={() => isHost && update({ questionsBeforeGuess: n })}
+                disabled={!isHost}
+                className={`py-1.5 px-3 rounded-lg text-xs font-bold transition-all
+                  ${
+                    current.questionsBeforeGuess === n
+                      ? "bg-purple-500 text-white shadow-md"
+                      : "bg-gray-100 text-gray-500 hover:bg-gray-200"
+                  } ${!isHost ? "opacity-70 cursor-default" : ""}`}
+              >
+                {n === 0 ? "Uit" : `${n} vragen`}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
 
       {/* ── SECTION: Host ──────────────────────── */}
       <div>

@@ -11,7 +11,7 @@ import PuzzelrondeGame from "../components/PuzzelrondeGame";
 import OpenDeurGame from "../components/OpenDeurGame";
 import LingoGame from "../components/LingoGame";
 import WhatAmIGame from "../components/WhatAmIGame";
-import DrawingGameStub from "../components/DrawingGameStub";
+import DrawingGame from "../components/DrawingGame";
 import SnelsteVingerGame from "../components/SnelsteVingerGame";
 import TimerBar from "../components/TimerBar";
 import ProgressSidebar from "../components/ProgressSidebar";
@@ -61,6 +61,39 @@ const ROUND_META: Record<
 
 const ROUND_INTRO_DURATION = 2500;
 
+function GameSkeletonWithBack({
+  variant,
+  roomId,
+}: {
+  variant: "game" | "whatami";
+  roomId?: string;
+}) {
+  const [showBack, setShowBack] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowBack(true), 5000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <div className="relative h-screen">
+      <SkeletonLoader variant={variant} />
+      {showBack && roomId && (
+        <div className="absolute left-0 top-0 px-2 sm:px-4 py-2 sm:py-3">
+          <button
+            onClick={() => navigate(`/lobby/${roomId}`)}
+            className="flex items-center gap-1 px-3 py-1.5 rounded-lg
+                       bg-gray-100 hover:bg-gray-200 text-gray-600 font-display font-bold text-xs transition-colors"
+          >
+            ← Lobby
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function Game() {
   useSocketEvents();
 
@@ -105,6 +138,14 @@ export default function Game() {
     }
   }, [state.phase, roomId, navigate]);
 
+  // Redirect to home if no session for this room
+  useEffect(() => {
+    const session = getSession();
+    if (!state.room && !session?.roomId) {
+      navigate("/");
+    }
+  }, [state.room, navigate]);
+
   // ─── Briefing (pre-round instructions for new players) ──
   if (state.phase === "briefing" && state.briefing) {
     return (
@@ -125,6 +166,7 @@ export default function Game() {
     (!state.roundState &&
       !state.whatAmIState &&
       !state.snelsteVingerState &&
+      !state.drawingState &&
       state.countdown !== null)
   ) {
     return (
@@ -166,7 +208,7 @@ export default function Game() {
   // ─── Wie Ben Ik? branch ─────────────────────────────
   if (state.room?.gameCategory === "what-am-i") {
     if (!state.whatAmIState) {
-      return <SkeletonLoader variant="whatami" />;
+      return <GameSkeletonWithBack variant="whatami" roomId={roomId} />;
     }
     return (
       <WhatAmIGame
@@ -185,13 +227,18 @@ export default function Game() {
 
   // ─── Drawing branch ──────────────────────────────────
   if (state.room?.gameCategory === "drawing") {
-    return <DrawingGameStub />;
+    if (!state.drawingState) {
+      return <GameSkeletonWithBack variant="game" roomId={roomId} />;
+    }
+    return (
+      <DrawingGame state={state.drawingState} playerId={state.player!.id} />
+    );
   }
 
   // ─── Snelste Vinger branch ────────────────────────────
   if (state.room?.gameCategory === "snelste-vinger") {
     if (!state.snelsteVingerState) {
-      return <SkeletonLoader variant="game" />;
+      return <GameSkeletonWithBack variant="game" roomId={roomId} />;
     }
 
     const svState = state.snelsteVingerState;
@@ -358,13 +405,7 @@ export default function Game() {
   }
 
   if (!state.roundState || !state.room) {
-    const session = getSession();
-    if (!session || session.roomId !== roomId) {
-      navigate("/");
-      return null;
-    }
-
-    return <SkeletonLoader variant="game" />;
+    return <GameSkeletonWithBack variant="game" roomId={roomId} />;
   }
 
   const roundConfig = state.room.settings.rounds[state.room.currentRoundIndex];
