@@ -252,7 +252,7 @@ export interface MuziekSettings {
 }
 
 export const DEFAULT_MUZIEK_SETTINGS: MuziekSettings = {
-  categoryIds: ['pop', 'hiphop', 'dutch', '80s-90s', '2000s', '2010s-nu', 'classics'],
+  categoryIds: ['pop', 'memes', 'anime', 'gaming', 'edm', 'dutch', '80s-90s', '2000s', '2010s-nu', 'classics'],
   questionCount: 15,
   clipDuration: 15,
   guessMode: 'both',

@@ -115,7 +115,7 @@ export async function refreshPreviewUrls(songs: SongEntry[]): Promise<void> {
     const batch = songs.slice(i, i + BATCH_SIZE);
     await Promise.all(
       batch.map(async (song) => {
-        if (!song.deezerId) return;
+        if (!song.deezerId) return; // iTunes songs don't need refresh
         const freshUrl = await fetchFreshPreviewUrl(song.deezerId);
         if (freshUrl) {
           song.previewUrl = freshUrl;

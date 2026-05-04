@@ -30,27 +30,93 @@ const SONGS = [
   { title: "Heat Waves", artist: "Glass Animals", category: "pop" },
   { title: "Peaches", artist: "Justin Bieber", category: "pop" },
 
-  // ─── Hip-Hop & Rap ────────────────────────────────────
-  { title: "SICKO MODE", artist: "Travis Scott", category: "hiphop" },
-  { title: "God's Plan", artist: "Drake", category: "hiphop" },
-  { title: "HUMBLE.", artist: "Kendrick Lamar", category: "hiphop" },
-  { title: "Lose Yourself", artist: "Eminem", category: "hiphop" },
-  { title: "In Da Club", artist: "50 Cent", category: "hiphop" },
-  { title: "Hotline Bling", artist: "Drake", category: "hiphop" },
-  { title: "Old Town Road", artist: "Lil Nas X", category: "hiphop" },
-  { title: "MONTERO", artist: "Lil Nas X", category: "hiphop" },
-  { title: "Starboy", artist: "The Weeknd", category: "hiphop" },
-  { title: "Rockstar", artist: "Post Malone", category: "hiphop" },
-  { title: "Congratulations", artist: "Post Malone", category: "hiphop" },
-  { title: "Mo Bamba", artist: "Sheck Wes", category: "hiphop" },
-  { title: "Mask Off", artist: "Future", category: "hiphop" },
-  { title: "XO Tour Llif3", artist: "Lil Uzi Vert", category: "hiphop" },
-  { title: "Money Trees", artist: "Kendrick Lamar", category: "hiphop" },
-  { title: "Not Like Us", artist: "Kendrick Lamar", category: "hiphop" },
-  { title: "Family Ties", artist: "Baby Keem", category: "hiphop" },
-  { title: "WAP", artist: "Cardi B", category: "hiphop" },
-  { title: "Bodak Yellow", artist: "Cardi B", category: "hiphop" },
-  { title: "Industry Baby", artist: "Lil Nas X", category: "hiphop" },
+  // ─── Memes & Guilty Pleasures ─────────────────────────
+  { title: "WAP", artist: "Cardi B", category: "memes" },
+  { title: "Old Town Road", artist: "Lil Nas X", category: "memes" },
+  { title: "MONTERO", artist: "Lil Nas X", category: "memes" },
+  { title: "Industry Baby", artist: "Lil Nas X", category: "memes" },
+  { title: "Never Gonna Give You Up", artist: "Rick Astley", category: "memes" },
+  { title: "Gangnam Style", artist: "PSY", category: "memes" },
+  { title: "What Does The Fox Say", artist: "Ylvis", category: "memes" },
+  { title: "Baby Shark", artist: "Pinkfong", category: "memes" },
+  { title: "Dragostea Din Tei", artist: "O-Zone", category: "memes" },
+  { title: "Sandstorm", artist: "Darude", category: "memes" },
+  { title: "Caramelldansen", artist: "Caramell", category: "memes" },
+  { title: "All Star", artist: "Smash Mouth", category: "memes" },
+  { title: "Tequila", artist: "The Champs", category: "memes" },
+  { title: "Crazy Frog", artist: "Axel F", category: "memes" },
+  { title: "Gummy Bear Song", artist: "Gummibär", category: "memes" },
+  { title: "Witch Doctor", artist: "Cartoons", category: "memes" },
+  { title: "Who Let The Dogs Out", artist: "Baha Men", category: "memes" },
+  { title: "Cotton Eye Joe", artist: "Rednex", category: "memes" },
+  { title: "Barbie Girl", artist: "Aqua", category: "memes" },
+  { title: "Friday", artist: "Rebecca Black", category: "memes" },
+
+  // ─── Anime Openings ───────────────────────────────────
+  { title: "Unravel", artist: "TK from Ling Tosite Sigure", category: "anime" },
+  { title: "Gurenge", artist: "LiSA", category: "anime" },
+  { title: "Cruel Angel's Thesis", artist: "Yoko Takahashi", category: "anime" },
+  { title: "Blue Bird", artist: "Ikimono-gakari", category: "anime" },
+  { title: "Guren no Yumiya", artist: "Linked Horizon", category: "anime" },
+  { title: "The Rumbling", artist: "SiM", category: "anime" },
+  { title: "Again", artist: "YUI", category: "anime" },
+  { title: "Silhouette", artist: "KANA-BOON", category: "anime" },
+  { title: "Crossing Field", artist: "LiSA", category: "anime" },
+  { title: "We Are!", artist: "Hiroshi Kitadani", category: "anime" },
+  { title: "Cha-La Head-Cha-La", artist: "Hironobu Kageyama", category: "anime" },
+  { title: "Colors", artist: "FLOW", category: "anime" },
+  { title: "Tank!", artist: "Seatbelts", category: "anime" },
+  { title: "Shinzou wo Sasageyo!", artist: "Linked Horizon", category: "anime" },
+  { title: "Gotta Catch 'Em All", artist: "Jason Paige", category: "anime" },
+  { title: "SPECIALZ", artist: "King Gnu", category: "anime" },
+  { title: "Kaikai Kitan", artist: "Eve", category: "anime" },
+  { title: "Kick Back", artist: "Kenshi Yonezu", category: "anime" },
+  { title: "Idol", artist: "YOASOBI", category: "anime" },
+  { title: "Renai Circulation", artist: "Kana Hanazawa", category: "anime" },
+
+  // ─── Video Game Music ─────────────────────────────────
+  { title: "Megalovania", artist: "Toby Fox", category: "gaming" },
+  { title: "Sweden", artist: "C418", category: "gaming" },
+  { title: "Jump Up Super Star", artist: "Nintendo", category: "gaming" },
+  { title: "Dragonborn", artist: "Jeremy Soule", category: "gaming" },
+  { title: "One-Winged Angel", artist: "Nobuo Uematsu", category: "gaming" },
+  { title: "Still Alive", artist: "Jonathan Coulton", category: "gaming" },
+  { title: "Want You Gone", artist: "Jonathan Coulton", category: "gaming" },
+  { title: "Baba Yetu", artist: "Christopher Tin", category: "gaming" },
+  { title: "Simple and Clean", artist: "Hikaru Utada", category: "gaming" },
+  { title: "Ezio's Family", artist: "Jesper Kyd", category: "gaming" },
+  { title: "The Only Thing They Fear Is You", artist: "Mick Gordon", category: "gaming" },
+  { title: "Dearly Beloved", artist: "Yoko Shimomura", category: "gaming" },
+  { title: "Live and Learn", artist: "Crush 40", category: "gaming" },
+  { title: "Song of Storms", artist: "Koji Kondo", category: "gaming" },
+  { title: "His Theme", artist: "Toby Fox", category: "gaming" },
+  { title: "Last Surprise", artist: "Lyn", category: "gaming" },
+  { title: "Weight of the World", artist: "Keiichi Okabe", category: "gaming" },
+  { title: "Halo Theme", artist: "Martin O'Donnell", category: "gaming" },
+  { title: "Build Our Machine", artist: "DAGames", category: "gaming" },
+  { title: "It's a me Mario", artist: "Super Mario Bros", category: "gaming" },
+
+  // ─── EDM & Dance ──────────────────────────────────────
+  { title: "Clarity", artist: "Zedd", category: "edm" },
+  { title: "Faded", artist: "Alan Walker", category: "edm" },
+  { title: "Animals", artist: "Martin Garrix", category: "edm" },
+  { title: "Tremor", artist: "Dimitri Vegas", category: "edm" },
+  { title: "Turn Down for What", artist: "DJ Snake", category: "edm" },
+  { title: "Lean On", artist: "Major Lazer", category: "edm" },
+  { title: "Where Are Ü Now", artist: "Jack Ü", category: "edm" },
+  { title: "Scary Monsters and Nice Sprites", artist: "Skrillex", category: "edm" },
+  { title: "Bangarang", artist: "Skrillex", category: "edm" },
+  { title: "Satisfaction", artist: "Benny Benassi", category: "edm" },
+  { title: "Ghosts 'n' Stuff", artist: "deadmau5", category: "edm" },
+  { title: "Strobe", artist: "deadmau5", category: "edm" },
+  { title: "In My Mind", artist: "Dynoro", category: "edm" },
+  { title: "Summer", artist: "Calvin Harris", category: "edm" },
+  { title: "Don't You Worry Child", artist: "Swedish House Mafia", category: "edm" },
+  { title: "Greyhound", artist: "Swedish House Mafia", category: "edm" },
+  { title: "Tsunami", artist: "DVBBS", category: "edm" },
+  { title: "Epic", artist: "Sandro Silva", category: "edm" },
+  { title: "Ping Pong", artist: "Armin van Buuren", category: "edm" },
+  { title: "Kernkraft 400", artist: "Zombie Nation", category: "edm" },
 
   // ─── Dutch Hits ───────────────────────────────────────
   { title: "Energie", artist: "Ronnie Flex", category: "dutch" },
@@ -128,7 +194,6 @@ const SONGS = [
   { title: "Happier", artist: "Marshmello", category: "2010s-nu" },
   { title: "Radioactive", artist: "Imagine Dragons", category: "2010s-nu" },
   { title: "Counting Stars", artist: "OneRepublic", category: "2010s-nu" },
-  { title: "Lean On", artist: "Major Lazer", category: "2010s-nu" },
   { title: "Sorry", artist: "Justin Bieber", category: "2010s-nu" },
   { title: "Closer", artist: "The Chainsmokers", category: "2010s-nu" },
   { title: "Sunflower", artist: "Post Malone", category: "2010s-nu" },
@@ -139,6 +204,7 @@ const SONGS = [
   { title: "Levels", artist: "Avicii", category: "2010s-nu" },
   { title: "Titanium", artist: "David Guetta", category: "2010s-nu" },
   { title: "This Is What You Came For", artist: "Calvin Harris", category: "2010s-nu" },
+  { title: "Starboy", artist: "The Weeknd", category: "2010s-nu" },
 
   // ─── Classics & Rock ──────────────────────────────────
   { title: "Bohemian Rhapsody", artist: "Queen", category: "classics" },
@@ -166,7 +232,10 @@ const SONGS = [
 // ─── Category Metadata ──────────────────────────────────
 const CATEGORIES = {
   pop: { name: "Pop Hits", description: "De grootste pophits" },
-  hiphop: { name: "Hip-Hop & Rap", description: "Beats en bars" },
+  memes: { name: "Memes & Guilty Pleasures", description: "Viral hits en guilty pleasures" },
+  anime: { name: "Anime Openings", description: "De bekendste anime intros" },
+  gaming: { name: "Video Game Music", description: "Iconische game soundtracks" },
+  edm: { name: "EDM & Dance", description: "Drops en dancefloor bangers" },
   dutch: { name: "Nederlandse Hits", description: "Van Hazes tot Goldband" },
   "80s-90s": { name: "80s & 90s", description: "Retro bangers" },
   "2000s": { name: "2000s", description: "Millennium classics" },
@@ -206,6 +275,34 @@ async function searchDeezer(title, artist) {
     deezerTitle: best.title,
     deezerArtist: best.artist?.name || artist,
   };
+}
+
+// ─── iTunes Fallback ────────────────────────────────────
+async function searchItunes(title, artist) {
+  const query = encodeURIComponent(`${artist} ${title}`);
+  const url = `https://itunes.apple.com/search?term=${query}&media=music&limit=5&country=NL`;
+  try {
+    const res = await fetch(url);
+    if (!res.ok) return null;
+    const data = await res.json();
+    if (!data.results || data.results.length === 0) return null;
+
+    const titleLower = title.toLowerCase();
+    let best = data.results.find(
+      (t) =>
+        t.trackName?.toLowerCase().includes(titleLower) ||
+        titleLower.includes(t.trackName?.toLowerCase() || "")
+    );
+    if (!best) best = data.results[0];
+    if (!best.previewUrl) return null;
+
+    return {
+      previewUrl: best.previewUrl,
+      coverUrl: best.artworkUrl100?.replace("100x100", "250x250") || null,
+    };
+  } catch {
+    return null;
+  }
 }
 
 function buildAcceptedAnswers(title, artist) {
@@ -250,8 +347,24 @@ async function main() {
         coverUrl: result.coverUrl,
       });
     } else {
-      notFound++;
-      console.log("✗ No preview");
+      // Try iTunes as fallback
+      await sleep(DELAY_MS);
+      const itunesResult = await searchItunes(song.title, song.artist);
+      if (itunesResult) {
+        found++;
+        console.log("✓ (iTunes)");
+        results[song.category].push({
+          title: song.title,
+          artist: song.artist,
+          acceptedAnswers: buildAcceptedAnswers(song.title, song.artist),
+          deezerId: 0,
+          previewUrl: itunesResult.previewUrl,
+          coverUrl: itunesResult.coverUrl,
+        });
+      } else {
+        notFound++;
+        console.log("✗ No preview");
+      }
     }
 
     await sleep(DELAY_MS);
