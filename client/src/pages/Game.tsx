@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSocket } from "../context/SocketContext";
@@ -310,40 +310,52 @@ export default function Game() {
     );
   }
 
-  const handleSubmitGroup = (words: string[]) => {
-    if (!socket) return;
-    socket.emit("submit-group", { words });
-  };
+  const handleSubmitGroup = useCallback(
+    (words: string[]) => {
+      if (!socket) return;
+      socket.emit("submit-group", { words });
+    },
+    [socket],
+  );
 
-  const handleSubmitAnswer = (answer: string) => {
-    if (!socket) return;
-    socket.emit("submit-answer", { answer });
-  };
+  const handleSubmitAnswer = useCallback(
+    (answer: string) => {
+      if (!socket) return;
+      socket.emit("submit-answer", { answer });
+    },
+    [socket],
+  );
 
-  const handleSubmitOpenDeurAnswer = (answer: string) => {
-    if (!socket) return;
-    socket.emit("submit-opendeur-answer", { answer });
-  };
+  const handleSubmitOpenDeurAnswer = useCallback(
+    (answer: string) => {
+      if (!socket) return;
+      socket.emit("submit-opendeur-answer", { answer });
+    },
+    [socket],
+  );
 
-  const handleSkipQuestion = () => {
+  const handleSkipQuestion = useCallback(() => {
     if (!socket) return;
     socket.emit("skip-question");
-  };
+  }, [socket]);
 
-  const handleSubmitLingoGuess = (guess: string) => {
-    if (!socket) return;
-    socket.emit("submit-lingo-guess", { guess });
-  };
+  const handleSubmitLingoGuess = useCallback(
+    (guess: string) => {
+      if (!socket) return;
+      socket.emit("submit-lingo-guess", { guess });
+    },
+    [socket],
+  );
 
-  const handleNextRound = () => {
+  const handleNextRound = useCallback(() => {
     if (!socket) return;
     socket.emit("next-round");
-  };
+  }, [socket]);
 
-  const handleBackToLobby = () => {
+  const handleBackToLobby = useCallback(() => {
     if (!socket) return;
     socket.emit("play-again");
-  };
+  }, [socket]);
 
   // Show round intro splash (Kahoot-style)
   if (showRoundIntro && introRoundType) {

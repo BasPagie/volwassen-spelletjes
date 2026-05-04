@@ -165,7 +165,7 @@ function startBriefing(
 
   // Auto-ready bots (they can't click the button)
   for (const p of activePlayers) {
-    if ('isBot' in p && (p as any).isBot) {
+    if (p.isBot) {
       handlePlayerReady(io, roomId, p.id);
     }
   }
@@ -804,8 +804,8 @@ export function registerSocketHandlers(io: IOServer, socket: IOSocket): void {
 
     // Validate packIds against loaded packs
     const loadedPackIds = getPackMeta().map((p) => p.id);
-    const safePackIds = Array.isArray((settings as any).packIds)
-      ? (settings as any).packIds.filter((id: unknown) => typeof id === 'string' && loadedPackIds.includes(id as string))
+    const safePackIds = Array.isArray(settings.packIds)
+      ? settings.packIds.filter((id: unknown) => typeof id === 'string' && loadedPackIds.includes(id as string))
       : [];
 
     // Sanitize custom characters

@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useVisualViewport } from "../hooks/useVisualViewport";
 import type {
@@ -100,12 +100,8 @@ export default function LingoGame({
   }, [displayState.currentWordIndex]);
 
   // Build letter status map for keyboard coloring
-  const letterStatuses = useCallback((): Map<string, LingoLetterFeedback> => {
+  const letterStatuses = useMemo((): Map<string, LingoLetterFeedback> => {
     const map = new Map<string, LingoLetterFeedback>();
-    // Process completed words
-    for (const word of displayState.completedWords) {
-      // We don't have the guesses for completed words in roundState, only current word
-    }
     // Process current word guesses
     for (const guess of displayState.guesses) {
       for (let i = 0; i < guess.word.length; i++) {
@@ -123,7 +119,7 @@ export default function LingoGame({
       }
     }
     return map;
-  }, [displayState.guesses, displayState.completedWords]);
+  }, [displayState.guesses]);
 
   const handleSubmit = () => {
     const guess = currentInput.toUpperCase().trim();
@@ -189,7 +185,7 @@ export default function LingoGame({
     inputRef.current?.focus();
   };
 
-  const statuses = letterStatuses();
+  const statuses = letterStatuses;
   const maxGuesses = displayState.maxGuessesPerWord;
   const guesses = displayState.guesses;
 

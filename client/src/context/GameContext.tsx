@@ -2,6 +2,7 @@ import {
   createContext,
   useContext,
   useReducer,
+  useMemo,
   type ReactNode,
   type Dispatch,
 } from "react";
@@ -183,6 +184,18 @@ function gameReducer(state: GameState, action: GameAction): GameState {
 
     case "PLAYER_JOINED":
       if (!state.room) return state;
+      // Deduplicate: if player already exists (reconnect), update instead of append
+      if (state.room.players.some((p) => p.id === action.player.id)) {
+        return {
+          ...state,
+          room: {
+            ...state.room,
+            players: state.room.players.map((p) =>
+              p.id === action.player.id ? action.player : p,
+            ),
+          },
+        };
+      }
       return {
         ...state,
         room: {
@@ -557,12 +570,9 @@ const GameContext = createContext<{
 
 export function GameProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(gameReducer, initialState);
+  const value = useMemo(() => ({ state, dispatch }), [state]);
 
-  return (
-    <GameContext.Provider value={{ state, dispatch }}>
-      {children}
-    </GameContext.Provider>
-  );
+  return <GameContext.Provider value={value}>{children}</GameContext.Provider>;
 }
 
 export function useGame() {

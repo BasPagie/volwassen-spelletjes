@@ -19,7 +19,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 const io = new Server<ClientToServerEvents, ServerToClientEvents>(server, {
   cors: isProduction
-    ? { origin: true }  // Allow same-origin in production
+    ? { origin: CORS_ORIGINS.length > 0 ? CORS_ORIGINS : false, methods: ['GET', 'POST'] }
     : { origin: CORS_ORIGINS, methods: ['GET', 'POST'] },
 });
 
@@ -61,5 +61,7 @@ const PORT = process.env.PORT || 3001;
 server.listen(Number(PORT), '0.0.0.0', () => {
   console.log(`🎮 Server running on port ${PORT}`);
   // Resolve Wikipedia images in background (non-blocking)
-  resolvePackImages();
+  resolvePackImages().catch((err) => {
+    console.error('[resolvePackImages] Failed:', err);
+  });
 });

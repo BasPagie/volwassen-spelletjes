@@ -9,6 +9,7 @@
     "rootDir": "..",
     "resolveJsonModule": true,
     "declaration": true,
+    "sourceMap": true,
     "paths": {
       "shared/*": ["../shared/*"]
     }

@@ -412,6 +412,7 @@ export interface ClientToServerEvents {
   'whatami:skip-turn': () => void;
   'whatami:give-up': () => void;
   'whatami:force-end': () => void;
+  'whatami:reroll': (data: { targetPlayerId: string }) => void;
   'whatami:request-state': () => void;
   'host:give-hint': (data: { hint: string }) => void;
   // ─── Snelste Vinger ────────────────────────────────
@@ -464,6 +465,7 @@ export interface ServerToClientEvents {
   'whatami:guess-result': (data: { correct: boolean; cooldownUntil?: number; characterName?: string }) => void;
   'whatami:player-guessed': (data: { playerId: string; placement: number; score: number }) => void;
   'whatami:game-end': (data: WhatAmIClientGameState) => void;
+  'whatami:reroll-result': (data: { success: boolean; error?: string }) => void;
   'hint-given': (data: { hint: string }) => void;
   // ─── Snelste Vinger ────────────────────────────────
   'snelstevinger:settings-updated': (settings: SnelsteVingerSettings) => void;

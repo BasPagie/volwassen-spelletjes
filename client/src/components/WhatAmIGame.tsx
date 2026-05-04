@@ -57,6 +57,8 @@ export default function WhatAmIGame({
 
   // Auto-navigate to results after delay when game ends
   const [resultsCountdown, setResultsCountdown] = useState(5);
+  const onGoToResultsRef = useRef(onGoToResults);
+  onGoToResultsRef.current = onGoToResults;
   useEffect(() => {
     if (!isFinished) return;
     setResultsCountdown(5);
@@ -64,7 +66,7 @@ export default function WhatAmIGame({
       setResultsCountdown((prev) => {
         if (prev <= 1) {
           clearInterval(interval);
-          onGoToResults();
+          onGoToResultsRef.current();
           return 0;
         }
         return prev - 1;
