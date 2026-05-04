@@ -12,6 +12,7 @@ interface Song {
   deezerId: number;
   previewUrl: string;
   coverUrl: string | null;
+  startOffset?: number;
 }
 
 interface SongCategory {
@@ -59,6 +60,20 @@ export function getAllSongCategories(): { id: string; name: string; description:
   }));
 }
 
+export function getAllSongsGrouped() {
+  return getCategories().map((c) => ({
+    id: c.id,
+    name: c.name,
+    description: c.description,
+    songs: c.songs.map((s) => ({
+      title: s.title,
+      artist: s.artist,
+      coverUrl: s.coverUrl,
+      previewUrl: s.previewUrl,
+    })),
+  }));
+}
+
 export interface SongEntry {
   title: string;
   artist: string;
@@ -67,6 +82,7 @@ export interface SongEntry {
   previewUrl: string;
   coverUrl: string | null;
   category: string;
+  startOffset?: number;
 }
 
 export function getSongsByCategories(categoryIds: string[], count: number): SongEntry[] {

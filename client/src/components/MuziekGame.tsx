@@ -21,7 +21,7 @@ export default function MuziekGame({ state, isSpectator }: Props) {
     null,
   );
   const [audioError, setAudioError] = useState(false);
-  const [volume, setVolume] = useState(0.8);
+  const [volume, setVolume] = useState(0.4);
   const inputRef = useRef<HTMLInputElement>(null);
   const howlRef = useRef<Howl | null>(null);
   const resultTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -124,17 +124,10 @@ export default function MuziekGame({ state, isSpectator }: Props) {
   }, [lastResult]);
 
   const handleBuzz = useCallback(() => {
-    if (
-      !socket ||
-      !input.trim() ||
-      state.answered ||
-      state.buzzedWrong ||
-      state.winnerId
-    )
-      return;
+    if (!socket || !input.trim() || state.answered || state.winnerId) return;
     socket.emit("muziek:buzz", { answer: input.trim() });
     setInput("");
-  }, [socket, input, state.answered, state.buzzedWrong, state.winnerId]);
+  }, [socket, input, state.answered, state.winnerId]);
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter") {
@@ -280,11 +273,7 @@ export default function MuziekGame({ state, isSpectator }: Props) {
       {/* Input area */}
       {!isRevealing && !isSpectator && (
         <div className="flex-shrink-0 mt-4">
-          {state.buzzedWrong ? (
-            <p className="text-center text-red-500 font-display font-bold text-sm">
-              ❌ Fout! Je kunt dit nummer niet meer raden.
-            </p>
-          ) : state.answered ? (
+          {state.answered ? (
             <p className="text-center text-green-500 font-display font-bold text-sm">
               ✅ Correct!
             </p>

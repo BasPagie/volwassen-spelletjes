@@ -6,6 +6,7 @@ import Lobby from "./pages/Lobby";
 import Game from "./pages/Game";
 import Results from "./pages/Results";
 import TestCharacters from "./pages/TestCharacters";
+import TestSongs from "./pages/TestSongs";
 import ErrorBoundary from "./components/ErrorBoundary";
 import ToastContainer from "./components/ToastContainer";
 import PageTransition from "./components/PageTransition";
@@ -28,6 +29,14 @@ function AnimatedRoutes() {
           element={
             <PageTransition>
               <TestCharacters />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/test/songs"
+          element={
+            <PageTransition>
+              <TestSongs />
             </PageTransition>
           }
         />

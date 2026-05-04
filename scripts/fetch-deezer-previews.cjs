@@ -44,7 +44,7 @@ const SONGS = [
   { title: "Caramelldansen", artist: "Caramell", category: "memes" },
   { title: "All Star", artist: "Smash Mouth", category: "memes" },
   { title: "Tequila", artist: "The Champs", category: "memes" },
-  { title: "Crazy Frog", artist: "Axel F", category: "memes" },
+  { title: "Axel F", artist: "Crazy Frog", category: "memes", deezerId: 387670601 },
   { title: "Gummy Bear Song", artist: "Gummibär", category: "memes" },
   { title: "Witch Doctor", artist: "Cartoons", category: "memes" },
   { title: "Who Let The Dogs Out", artist: "Baha Men", category: "memes" },
@@ -67,17 +67,17 @@ const SONGS = [
   { title: "Colors", artist: "FLOW", category: "anime" },
   { title: "Tank!", artist: "Seatbelts", category: "anime" },
   { title: "Shinzou wo Sasageyo!", artist: "Linked Horizon", category: "anime" },
-  { title: "Gotta Catch 'Em All", artist: "Jason Paige", category: "anime" },
+  { title: "Gotta Catch 'Em All", artist: "Jason Paige", category: "anime", deezerId: 433396562 },
   { title: "SPECIALZ", artist: "King Gnu", category: "anime" },
   { title: "Kaikai Kitan", artist: "Eve", category: "anime" },
   { title: "Kick Back", artist: "Kenshi Yonezu", category: "anime" },
-  { title: "Idol", artist: "YOASOBI", category: "anime" },
+  { title: "Idol", artist: "YOASOBI", category: "anime", deezerId: 2210493097 },
   { title: "Renai Circulation", artist: "Kana Hanazawa", category: "anime" },
 
   // ─── Video Game Music ─────────────────────────────────
   { title: "Megalovania", artist: "Toby Fox", category: "gaming" },
   { title: "Sweden", artist: "C418", category: "gaming" },
-  { title: "Jump Up Super Star", artist: "Nintendo", category: "gaming" },
+  { title: "Jump Up, Super Star!", artist: "Nintendo", category: "gaming", previewUrl: "https://lambda.vgmtreasurechest.com/soundtracks/super-mario-odyssey-original-soundtrack/tvygjaci/2-12.%20Jump%20Up%2C%20Super%20Star%21%20-%20New%20Donk%20City%20Festival.mp3", coverUrl: "https://i1.sndcdn.com/artworks-000249363267-betlv6-t500x500.jpg", startOffset: 30 },
   { title: "Dragonborn", artist: "Jeremy Soule", category: "gaming" },
   { title: "One-Winged Angel", artist: "Nobuo Uematsu", category: "gaming" },
   { title: "Still Alive", artist: "Jonathan Coulton", category: "gaming" },
@@ -88,13 +88,13 @@ const SONGS = [
   { title: "The Only Thing They Fear Is You", artist: "Mick Gordon", category: "gaming" },
   { title: "Dearly Beloved", artist: "Yoko Shimomura", category: "gaming" },
   { title: "Live and Learn", artist: "Crush 40", category: "gaming" },
-  { title: "Song of Storms", artist: "Koji Kondo", category: "gaming" },
+  { title: "Silver For Monsters", artist: "Percival Schuttenbach", category: "gaming", deezerId: 448311922 },
   { title: "His Theme", artist: "Toby Fox", category: "gaming" },
   { title: "Last Surprise", artist: "Lyn", category: "gaming" },
   { title: "Weight of the World", artist: "Keiichi Okabe", category: "gaming" },
   { title: "Halo Theme", artist: "Martin O'Donnell", category: "gaming" },
-  { title: "Build Our Machine", artist: "DAGames", category: "gaming" },
-  { title: "It's a me Mario", artist: "Super Mario Bros", category: "gaming" },
+  { title: "Snake Eater", artist: "Cynthia Harrell", category: "gaming" },
+  { title: "Life Will Change", artist: "Lyn", category: "gaming" },
 
   // ─── EDM & Dance ──────────────────────────────────────
   { title: "Clarity", artist: "Zedd", category: "edm" },
@@ -127,7 +127,7 @@ const SONGS = [
   { title: "Ze Huilt Maar Ze Lacht", artist: "André Hazes", category: "dutch" },
   { title: "Leef", artist: "André Hazes Jr", category: "dutch" },
   { title: "Drank & Drugs", artist: "Lil Kleine", category: "dutch" },
-  { title: "Later Als Ik Groot Ben", artist: "Kinderen voor Kinderen", category: "dutch" },
+  { title: "Hallo Wereld", artist: "Kinderen Voor Kinderen", category: "dutch", deezerId: 1095873782 },
   { title: "Het Is Een Nacht", artist: "Guus Meeuwis", category: "dutch" },
   { title: "Avond", artist: "Boudewijn de Groot", category: "dutch" },
   { title: "Blauwe Dag", artist: "Suzan & Freek", category: "dutch" },
@@ -333,7 +333,42 @@ async function main() {
       `[${i + 1}/${SONGS.length}] ${song.artist} - ${song.title}... `
     );
 
-    const result = await searchDeezer(song.title, song.artist);
+    let result = null;
+
+    // If a hardcoded previewUrl is set, use it directly
+    if (song.previewUrl) {
+      found++;
+      console.log("✓ (hardcoded)");
+      const entry = {
+        title: song.title,
+        artist: song.artist,
+        acceptedAnswers: buildAcceptedAnswers(song.title, song.artist),
+        deezerId: 0,
+        previewUrl: song.previewUrl,
+        coverUrl: song.coverUrl || null,
+      };
+      if (song.startOffset) entry.startOffset = song.startOffset;
+      results[song.category].push(entry);
+      await sleep(DELAY_MS);
+      continue;
+    }
+
+    // If a forced deezerId is set, fetch that track directly
+    if (song.deezerId) {
+      const res = await fetch(`https://api.deezer.com/track/${song.deezerId}`);
+      if (res.ok) {
+        const t = await res.json();
+        if (t.preview) {
+          result = {
+            deezerId: t.id,
+            previewUrl: t.preview,
+            coverUrl: t.album?.cover_medium || t.album?.cover || null,
+          };
+        }
+      }
+    } else {
+      result = await searchDeezer(song.title, song.artist);
+    }
 
     if (result) {
       found++;

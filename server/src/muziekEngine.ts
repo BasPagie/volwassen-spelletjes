@@ -152,9 +152,6 @@ export function processMuziekBuzz(
   const song = instance.songs[instance.currentSongIndex];
   if (!song) return null;
 
-  // Already buzzed wrong this song
-  if (instance.buzzedWrongThisSong.has(playerId)) return null;
-
   const correct = isAnswerCorrect(answer, song, instance.settings.guessMode);
   const playerScore = instance.scores.get(playerId);
   if (!playerScore) return null;
@@ -225,7 +222,7 @@ export function buildMuziekClientState(instance: MuziekInstance, playerId: strin
   // Random offset within the 30s preview (leave room for clipDuration)
   const maxOffset = Math.max(0, 30 - instance.settings.clipDuration);
   // Use song index as seed for consistent offset across clients
-  const clipStartOffset = (instance.currentSongIndex * 7) % Math.max(1, maxOffset);
+  const clipStartOffset = song?.startOffset ?? ((instance.currentSongIndex * 7) % Math.max(1, maxOffset));
 
   return {
     songIndex: instance.currentSongIndex,
