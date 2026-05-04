@@ -137,7 +137,7 @@ function startBriefing(
   briefingKey: string,
   roundType: RoundType | undefined,
   gameCategory: GameCategory,
-  activePlayers: { id: string }[],
+  activePlayers: { id: string; isBot?: boolean }[],
   startFn: () => void,
 ): void {
   // Clean up any leftover briefing
