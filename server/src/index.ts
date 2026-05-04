@@ -1,7 +1,11 @@
 import express from 'express';
 import http from 'http';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import { Server } from 'socket.io';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 import { registerSocketHandlers } from './socketHandlers.js';
 import { resolvePackImages, getAllPacks } from './characterStore.js';
 import { getAllTriviaCategories } from './triviaStore.js';

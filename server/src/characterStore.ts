@@ -1,6 +1,10 @@
 import { readFileSync, existsSync } from 'fs';
-import { join } from 'path';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
 import type { WhatAmICharacter, WhatAmICharacterPack } from '../../shared/types.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 // ─── Load packs from JSON file ─────────────────────────
 interface RawPack {
