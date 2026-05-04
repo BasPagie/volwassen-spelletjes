@@ -13,6 +13,7 @@ import LingoGame from "../components/LingoGame";
 import WhatAmIGame from "../components/WhatAmIGame";
 import DrawingGame from "../components/DrawingGame";
 import SnelsteVingerGame from "../components/SnelsteVingerGame";
+import MuziekGame from "../components/MuziekGame";
 import TimerBar from "../components/TimerBar";
 import ProgressSidebar from "../components/ProgressSidebar";
 import { isMuted, toggleMute } from "../hooks/useSoundEffect";
@@ -303,6 +304,75 @@ export default function Game() {
         </div>
         <HelpModal
           instructionKey="snelste-vinger"
+          open={showHelp}
+          onClose={() => setShowHelp(false)}
+        />
+      </div>
+    );
+  }
+
+  // ─── Muziek branch ────────────────────────────────────
+  if (state.room?.gameCategory === "muziek") {
+    if (!state.muziekState) {
+      return <GameSkeletonWithBack variant="game" roomId={roomId} />;
+    }
+
+    const mState = state.muziekState;
+    const isSpectator = !!(
+      state.player?.isHost && state.room?.muziekSettings?.hostPlays === false
+    );
+    const handleBackToLobbyM = () => socket?.emit("play-again");
+
+    return (
+      <div className="h-screen flex flex-col overflow-hidden px-2 sm:px-4 py-2 sm:py-3">
+        <div className="max-w-5xl mx-auto w-full flex flex-col flex-1 min-h-0">
+          {/* Header */}
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center mb-3 relative"
+          >
+            <div className="absolute left-0 top-0 flex items-center gap-1">
+              {state.player?.isHost && (
+                <button
+                  onClick={handleBackToLobbyM}
+                  className="flex items-center gap-1 px-3 py-1.5 rounded-lg
+                             bg-gray-100 hover:bg-gray-200 text-gray-600 font-display font-bold text-xs transition-colors"
+                >
+                  ← Lobby
+                </button>
+              )}
+            </div>
+            <div className="absolute right-0 top-0 flex items-center gap-1">
+              <button
+                onClick={() => setShowHelp(true)}
+                className="px-2.5 py-1 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 font-display font-bold text-xs transition-colors"
+                title="Speluitleg"
+              >
+                ❓
+              </button>
+              <button
+                onClick={() => setMuted(toggleMute())}
+                className="px-2.5 py-1 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 font-display font-bold text-xs transition-colors"
+                title={muted ? "Geluid aan" : "Geluid uit"}
+              >
+                {muted ? "🔇" : "🔊"}
+              </button>
+            </div>
+            <div className="flex items-center justify-center gap-2 sm:gap-3 mb-2 flex-wrap">
+              <span className="px-3 py-1 rounded-full text-sm font-display font-bold bg-purple-100 text-purple-700">
+                🎵 Raad het Nummer
+              </span>
+              <span className="text-sm text-gray-400 font-display">
+                Nummer {mState.songIndex + 1} van {mState.totalSongs}
+              </span>
+            </div>
+          </motion.div>
+
+          <MuziekGame state={mState} isSpectator={isSpectator} />
+        </div>
+        <HelpModal
+          instructionKey="muziek"
           open={showHelp}
           onClose={() => setShowHelp(false)}
         />

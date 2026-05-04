@@ -18,12 +18,12 @@ const GAME_CATEGORIES: {
   available: boolean;
 }[] = [
   {
-    id: "woord",
-    icon: "🧠",
-    title: "Woordspellen",
-    subtitle: "Connections, Lingo, Puzzelronde & meer",
-    color: "text-brand-700",
-    bg: "bg-brand-50 border-brand-300 hover:bg-brand-100",
+    id: "muziek",
+    icon: "🎵",
+    title: "Raad het Nummer",
+    subtitle: "Luister naar een clip en raad het nummer!",
+    color: "text-purple-700",
+    bg: "bg-purple-50 border-purple-300 hover:bg-purple-100",
     available: true,
   },
   {
@@ -31,8 +31,8 @@ const GAME_CATEGORIES: {
     icon: "🎭",
     title: "Wie Ben Ik?",
     subtitle: "Raad je eigen karakter met ja/nee vragen",
-    color: "text-purple-700",
-    bg: "bg-purple-50 border-purple-300 hover:bg-purple-100",
+    color: "text-brand-700",
+    bg: "bg-brand-50 border-brand-300 hover:bg-brand-100",
     available: true,
   },
   {
@@ -104,7 +104,7 @@ export default function Landing() {
   };
 
   const selectedCat = GAME_CATEGORIES.find((c) => c.id === selectedCategory);
-  const theme = getCategoryTheme(selectedCategory ?? "woord");
+  const theme = getCategoryTheme(selectedCategory ?? "muziek");
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 py-8 overflow-y-auto">
@@ -156,7 +156,7 @@ export default function Landing() {
                 >
                   <div className="text-4xl mb-3">{cat.icon}</div>
                   <div
-                    className={`font-display font-black text-lg ${cat.color}`}
+                    className={`font-display font-black text-base leading-tight ${cat.color}`}
                   >
                     {cat.title}
                   </div>

@@ -10,6 +10,7 @@ import GameSettingsPanel from "../components/GameSettingsPanel";
 import WhatAmILobbySettings from "../components/WhatAmILobbySettings";
 import DrawingLobbySettings from "../components/DrawingLobbySettings";
 import SnelsteVingerLobbySettings from "../components/SnelsteVingerLobbySettings";
+import MuziekLobbySettings from "../components/MuziekLobbySettings";
 import { getCategoryTheme } from "../lib/categoryThemes";
 import { markSeen } from "../lib/gameInstructions";
 import { isMuted, toggleMute } from "../hooks/useSoundEffect";
@@ -19,6 +20,7 @@ import type {
   WhatAmISettings,
   SnelsteVingerSettings,
   DrawingSettings,
+  MuziekSettings,
 } from "shared/types";
 
 export default function Lobby() {
@@ -37,7 +39,7 @@ export default function Lobby() {
         ? "snelstevinger-rules-seen"
         : state.room?.gameCategory === "drawing"
           ? "drawing-rules-seen"
-          : "woord-rules-seen";
+          : "muziek-rules-seen";
   const isFirstVisit = !localStorage.getItem(rulesKey);
   const [showInfo, setShowInfo] = useState(false);
   const [waitExpired, setWaitExpired] = useState(false);
@@ -111,6 +113,12 @@ export default function Lobby() {
     socket.emit("drawing:update-settings", settings);
   };
 
+  const handleMuziekSettingsChange = (settings: MuziekSettings) => {
+    if (!socket) return;
+    dispatch({ type: "MUZIEK_SETTINGS_UPDATED", settings }); // Optimistic
+    socket.emit("muziek:update-settings", settings);
+  };
+
   const handleStartGame = () => {
     if (!socket) return;
     if (state.room?.gameCategory === "what-am-i") {
@@ -119,6 +127,8 @@ export default function Lobby() {
       socket.emit("snelstevinger:start-game");
     } else if (state.room?.gameCategory === "drawing") {
       socket.emit("drawing:start-game");
+    } else if (state.room?.gameCategory === "muziek") {
+      socket.emit("muziek:start-game");
     } else {
       socket.emit("start-game");
     }
@@ -207,8 +217,8 @@ export default function Lobby() {
             <span
               className={`px-2 py-0.5 rounded-full text-xs font-display font-bold ${theme.badge}`}
             >
-              {state.room.gameCategory === "woord"
-                ? "🧠 Woordspellen"
+              {state.room.gameCategory === "muziek"
+                ? "🎵 Raad het Nummer"
                 : state.room.gameCategory === "what-am-i"
                   ? "🎭 Wie Ben Ik?"
                   : state.room.gameCategory === "snelste-vinger"
@@ -323,10 +333,10 @@ export default function Lobby() {
             transition={{ delay: 0.3 }}
             className="card"
           >
-            {state.room.gameCategory === "woord" ? (
-              <GameSettingsPanel
-                settings={state.room.settings}
-                onChange={handleSettingsChange}
+            {state.room.gameCategory === "muziek" ? (
+              <MuziekLobbySettings
+                settings={state.room.muziekSettings}
+                onChange={handleMuziekSettingsChange}
                 isHost={isPlayerHost}
               />
             ) : state.room.gameCategory === "what-am-i" ? (
@@ -655,11 +665,8 @@ export default function Lobby() {
                   localStorage.setItem(rulesKey, "1");
                   // Mark briefing(s) as seen so mandatory briefing is skipped
                   const cat = state.room?.gameCategory;
-                  if (cat === "woord") {
-                    markSeen("connections");
-                    markSeen("puzzelronde");
-                    markSeen("opendeur");
-                    markSeen("lingo");
+                  if (cat === "muziek") {
+                    markSeen("muziek");
                   } else if (cat === "what-am-i") {
                     markSeen("what-am-i");
                   } else if (cat === "snelste-vinger") {

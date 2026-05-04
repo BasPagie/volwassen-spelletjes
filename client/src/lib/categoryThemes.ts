@@ -14,17 +14,7 @@ export interface CategoryTheme {
 }
 
 const themes: Record<GameCategory, CategoryTheme> = {
-  woord: {
-    gradient: "from-pink-500 via-rose-400 to-amber-400",
-    badge: "bg-brand-100 text-brand-700",
-    badgeHover: "bg-brand-100 hover:bg-brand-200 text-brand-600",
-    accent: "bg-brand-500",
-    accentHover: "bg-brand-500 hover:bg-brand-600",
-    accentText: "text-brand-700",
-    accentBg: "bg-brand-50",
-    colorKey: "brand",
-  },
-  "what-am-i": {
+  muziek: {
     gradient: "from-purple-500 to-fuchsia-500",
     badge: "bg-purple-100 text-purple-700",
     badgeHover: "bg-purple-100 hover:bg-purple-200 text-purple-600",
@@ -33,6 +23,16 @@ const themes: Record<GameCategory, CategoryTheme> = {
     accentText: "text-purple-700",
     accentBg: "bg-purple-50",
     colorKey: "purple",
+  },
+  "what-am-i": {
+    gradient: "from-pink-500 via-rose-400 to-amber-400",
+    badge: "bg-brand-100 text-brand-700",
+    badgeHover: "bg-brand-100 hover:bg-brand-200 text-brand-600",
+    accent: "bg-brand-500",
+    accentHover: "bg-brand-500 hover:bg-brand-600",
+    accentText: "text-brand-700",
+    accentBg: "bg-brand-50",
+    colorKey: "brand",
   },
   "snelste-vinger": {
     gradient: "from-red-500 to-rose-500",
@@ -57,5 +57,5 @@ const themes: Record<GameCategory, CategoryTheme> = {
 };
 
 export function getCategoryTheme(category: GameCategory): CategoryTheme {
-  return themes[category] ?? themes.woord;
+  return themes[category] ?? themes.muziek;
 }

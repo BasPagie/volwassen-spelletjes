@@ -20,6 +20,8 @@ import type {
   SnelsteVingerSettings,
   DrawingClientState,
   DrawingSettings,
+  MuziekClientState,
+  MuziekSettings,
   RoundType,
   GameCategory,
 } from "shared/types";
@@ -60,6 +62,8 @@ export interface GameState {
   snelsteVingerState: SnelsteVingerClientState | null;
   // Tekenwedstrijd
   drawingState: DrawingClientState | null;
+  // Muziek
+  muziekState: MuziekClientState | null;
   // Briefing
   briefing: {
     briefingKey: string;
@@ -89,6 +93,7 @@ const initialState: GameState = {
   whatAmIState: null,
   snelsteVingerState: null,
   drawingState: null,
+  muziekState: null,
   briefing: null,
 };
 
@@ -160,6 +165,11 @@ export type GameAction =
     }
   | { type: "SNELSTEVINGER_GAME_END"; state: SnelsteVingerClientState }
   | { type: "SNELSTEVINGER_SETTINGS_UPDATED"; settings: SnelsteVingerSettings }
+  // ─── Muziek ──────────────────────────────────────────
+  | { type: "SET_MUZIEK_STATE"; state: MuziekClientState }
+  | { type: "UPDATE_MUZIEK_STATE"; patch: Partial<MuziekClientState> }
+  | { type: "MUZIEK_GAME_END"; scores: MuziekClientState["scores"] }
+  | { type: "MUZIEK_SETTINGS_UPDATED"; settings: MuziekSettings }
   // ─── Tekenwedstrijd ─────────────────────────────────
   | { type: "DRAWING_SETTINGS_UPDATED"; settings: DrawingSettings }
   | { type: "SET_DRAWING_STATE"; state: DrawingClientState }
@@ -489,6 +499,51 @@ function gameReducer(state: GameState, action: GameAction): GameState {
       return {
         ...state,
         room: { ...state.room, snelsteVingerSettings: action.settings },
+      };
+
+    case "SET_MUZIEK_STATE":
+      return {
+        ...state,
+        muziekState: action.state,
+        phase: "playing",
+        countdown: null,
+      };
+
+    case "UPDATE_MUZIEK_STATE":
+      if (!state.muziekState) return state;
+      return {
+        ...state,
+        muziekState: { ...state.muziekState, ...action.patch },
+      };
+
+    case "MUZIEK_GAME_END": {
+      const mScores = action.scores;
+      const finalResults: FinalResults = {
+        players: mScores.map((s, idx) => ({
+          playerId: s.playerId,
+          nickname: s.nickname,
+          avatarUrl: s.avatarUrl,
+          totalScore: s.score,
+          roundScores: [s.score],
+          rank: idx + 1,
+        })),
+        roundResults: [],
+      };
+      return {
+        ...state,
+        muziekState: state.muziekState
+          ? { ...state.muziekState, phase: "finished" }
+          : null,
+        phase: "finished",
+        finalResults,
+      };
+    }
+
+    case "MUZIEK_SETTINGS_UPDATED":
+      if (!state.room) return state;
+      return {
+        ...state,
+        room: { ...state.room, muziekSettings: action.settings },
       };
 
     case "DRAWING_SETTINGS_UPDATED":

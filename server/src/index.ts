@@ -6,6 +6,7 @@ import { registerSocketHandlers } from './socketHandlers.js';
 import { resolvePackImages, getAllPacks } from './characterStore.js';
 import { getAllTriviaCategories } from './triviaStore.js';
 import { getAllDrawingCategories } from './drawingWordStore.js';
+import { getAllSongCategories } from './songStore.js';
 import type { ClientToServerEvents, ServerToClientEvents } from '../../shared/types.js';
 
 const app = express();
@@ -45,6 +46,10 @@ app.get('/api/trivia-categories', (_req, res) => {
 
 app.get('/api/drawing-categories', (_req, res) => {
   res.json(getAllDrawingCategories());
+});
+
+app.get('/api/song-categories', (_req, res) => {
+  res.json(getAllSongCategories());
 });
 
 // SPA fallback — let React Router handle all non-API, non-static routes

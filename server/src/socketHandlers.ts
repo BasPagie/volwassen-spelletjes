@@ -107,6 +107,18 @@ import {
   getDrawerId,
   getStrokes,
 } from './drawingEngine.js';
+import { updateMuziekSettings } from './rooms.js';
+import { DEFAULT_MUZIEK_SETTINGS } from '../../shared/types.js';
+import {
+  startMuziekGame,
+  getMuziekInstance,
+  processMuziekBuzz,
+  advanceToNextSong,
+  getMuziekScores,
+  buildMuziekClientState,
+  cleanupMuziekGame,
+} from './muziekEngine.js';
+import { getAllSongCategories } from './songStore.js';
 
 type IOServer = Server<ClientToServerEvents, ServerToClientEvents>;
 type IOSocket = Socket<ClientToServerEvents, ServerToClientEvents>;
@@ -197,7 +209,7 @@ function cleanupBriefing(roomId: string): void {
 }
 
 /** Run a 3-2-1-GO countdown, then call `fn`. */
-function startCountdownThenRun(io: IOServer, roomId: string, fn: () => void): void {
+function startCountdownThenRun(io: IOServer, roomId: string, fn: () => void | Promise<void>): void {
   let count = 3;
   io.to(roomId).emit('countdown', { count });
   count--;
@@ -258,8 +270,8 @@ export function registerSocketHandlers(io: IOServer, socket: IOSocket): void {
       socket.emit('error', { message: 'Ongeldige naam of avatar.' });
       return;
     }
-    const validCategories = ['woord', 'what-am-i', 'drawing', 'snelste-vinger'];
-    const safeCategory = validCategories.includes(gameCategory) ? gameCategory : 'woord';
+    const validCategories = ['muziek', 'what-am-i', 'drawing', 'snelste-vinger'];
+    const safeCategory = validCategories.includes(gameCategory) ? gameCategory : 'muziek';
     const result = createRoom(socket.id, safeName, avatarUrl, safeCategory as import('../../shared/types.js').GameCategory);
     socket.join(result.room.roomId);
     socket.emit('room-created', { room: result.room, player: result.player });
@@ -374,7 +386,7 @@ export function registerSocketHandlers(io: IOServer, socket: IOSocket): void {
     const roomId = room.roomId;
     const roundConfig = room.settings.rounds[room.currentRoundIndex];
     const active = activePlayers.filter((p) => p.connected || p.isBot);
-    startBriefing(io, roomId, roundConfig.type, roundConfig.type, 'woord', active, () => {
+    startBriefing(io, roomId, roundConfig.type, roundConfig.type, room.gameCategory, active, () => {
       startCountdownThenRun(io, roomId, () => {
         startNewRound(io, roomId);
       });
@@ -599,7 +611,7 @@ export function registerSocketHandlers(io: IOServer, socket: IOSocket): void {
         const active = room.players.filter(
           (p) => (p.connected || p.isBot) && !(p.isHost && !room.settings.hostPlays)
         );
-        startBriefing(io, room.roomId, roundConfig.type, roundConfig.type, 'woord', active, () => {
+        startBriefing(io, room.roomId, roundConfig.type, roundConfig.type, room.gameCategory, active, () => {
           startCountdownThenRun(io, room.roomId, () => {
             startNewRound(io, room.roomId);
           });
@@ -628,6 +640,7 @@ export function registerSocketHandlers(io: IOServer, socket: IOSocket): void {
     }
     roomRoundResults.delete(room.roomId);
     cleanupBriefing(room.roomId);
+    cleanupMuziekGame(room.roomId);
 
     // Notify each player individually with their own player object
     for (const player of room.players) {
@@ -1380,6 +1393,137 @@ export function registerSocketHandlers(io: IOServer, socket: IOSocket): void {
     }
   });
 
+  // ─── Muziek — Update Settings ────────────────────────
+  socket.on('muziek:update-settings', (settings) => {
+    const mapping = getSocketMapping(socket.id);
+    if (!mapping) return;
+    if (!isHost(mapping.roomId, mapping.playerId)) return;
+
+    const room = getRoom(mapping.roomId);
+    if (!room || room.gameCategory !== 'muziek') return;
+
+    if (updateMuziekSettings(mapping.roomId, settings)) {
+      io.to(mapping.roomId).emit('muziek:settings-updated', settings);
+    }
+  });
+
+  // ─── Muziek — Start Game ─────────────────────────────
+  socket.on('muziek:start-game', () => {
+    const mapping = getSocketMapping(socket.id);
+    if (!mapping) return;
+    if (!isHost(mapping.roomId, mapping.playerId)) {
+      socket.emit('error', { message: 'Alleen de host kan het spel starten.' });
+      return;
+    }
+
+    const room = getRoom(mapping.roomId);
+    if (!room || room.gameCategory !== 'muziek') return;
+    if (room.status !== 'lobby') return;
+
+    const settings = room.muziekSettings ?? DEFAULT_MUZIEK_SETTINGS;
+    const roomId = room.roomId;
+
+    // Pre-validate
+    const players = settings.hostPlays
+      ? room.players.filter((p) => p.connected || p.isBot)
+      : room.players.filter((p) => (p.connected || p.isBot) && !p.isHost);
+
+    if (players.length < 2) {
+      socket.emit('error', { message: 'Er zijn minimaal 2 spelers nodig.' });
+      return;
+    }
+
+    if ((settings.categoryIds ?? []).length === 0) {
+      socket.emit('error', { message: 'Selecteer minimaal één muziekcategorie.' });
+      return;
+    }
+
+    io.to(roomId).emit('game-started');
+
+    const active = settings.hostPlays
+      ? room.players.filter((p) => p.connected || p.isBot)
+      : room.players.filter((p) => (p.connected || p.isBot) && !p.isHost);
+
+    startBriefing(io, roomId, 'muziek', undefined, 'muziek', active, () => {
+      startCountdownThenRun(io, roomId, async () => {
+        const currentRoom = getRoom(roomId);
+        if (!currentRoom) return;
+
+        const playerList = active.map((p) => ({
+          id: p.id,
+          nickname: p.nickname,
+          avatarUrl: p.avatarUrl,
+        }));
+
+        const instance = await startMuziekGame(roomId, settings, playerList, (inst) => {
+          // Song ended (timeout or correct answer)
+          const song = inst.songs[inst.currentSongIndex];
+          const scores = getMuziekScores(inst);
+
+          if (inst.answeredCorrectThisSong) {
+            const winnerName = inst.players.find(p => p.id === inst.answeredCorrectThisSong)?.nickname ?? '';
+            io.to(roomId).emit('muziek:song-won', {
+              winnerId: inst.answeredCorrectThisSong,
+              winnerName,
+              correctTitle: song?.title ?? '',
+              correctArtist: song?.artist ?? '',
+              coverUrl: song?.coverUrl ?? null,
+              scores,
+            });
+          } else {
+            io.to(roomId).emit('muziek:song-timeout', {
+              correctTitle: song?.title ?? '',
+              correctArtist: song?.artist ?? '',
+              coverUrl: song?.coverUrl ?? null,
+              scores,
+            });
+          }
+
+          // Auto-advance after 4s reveal
+          setTimeout(() => {
+            const hasNext = advanceToNextSong(roomId);
+            if (!hasNext) {
+              // Game over
+              const finalScores = getMuziekScores(inst);
+              io.to(roomId).emit('muziek:game-end', { scores: finalScores });
+              cleanupMuziekGame(roomId);
+              const r = getRoom(roomId);
+              if (r) r.status = 'finished';
+            } else {
+              // Send next song to all players
+              broadcastMuziekSong(io, roomId);
+            }
+          }, 4000);
+        });
+
+        currentRoom.status = 'playing';
+        broadcastMuziekSong(io, roomId);
+      });
+    });
+
+    console.log(`[Muziek] Started: ${roomId}`);
+  });
+
+  // ─── Muziek — Buzz ───────────────────────────────────
+  socket.on('muziek:buzz', ({ answer }) => {
+    if (isRateLimited(socket.id)) return;
+    if (typeof answer !== 'string' || answer.length === 0 || answer.length > 200) return;
+
+    const mapping = getSocketMapping(socket.id);
+    if (!mapping) return;
+
+    const room = getRoom(mapping.roomId);
+    if (!room || room.gameCategory !== 'muziek' || room.status !== 'playing') return;
+
+    const instance = getMuziekInstance(mapping.roomId);
+    if (!instance) return;
+
+    const result = processMuziekBuzz(mapping.roomId, mapping.playerId, answer);
+    if (!result) return;
+
+    socket.emit('muziek:buzz-result', { correct: result.correct, penalty: result.penalty });
+  });
+
   // ─── Disconnect ──────────────────────────────────────
   socket.on('disconnect', () => {
     console.log(`[Socket] Disconnected: ${socket.id}`);
@@ -1389,6 +1533,20 @@ export function registerSocketHandlers(io: IOServer, socket: IOSocket): void {
 }
 
 // ─── Helpers ───────────────────────────────────────────
+
+function broadcastMuziekSong(io: IOServer, roomId: string): void {
+  const instance = getMuziekInstance(roomId);
+  if (!instance) return;
+  const room = getRoom(roomId);
+  if (!room) return;
+
+  for (const player of room.players) {
+    const sid = getSocketIdForPlayer(roomId, player.id);
+    if (!sid) continue;
+    const state = buildMuziekClientState(instance, player.id, false);
+    io.to(sid).emit('muziek:song', state);
+  }
+}
 
 function handleLeave(io: IOServer, socket: IOSocket): void {
   const result = leaveRoom(socket.id);
@@ -1402,6 +1560,7 @@ function handleLeave(io: IOServer, socket: IOSocket): void {
     cleanupWhatAmIGame(result.roomId);
     cleanupSnelsteVingerGame(result.roomId);
     cleanupDrawingGame(result.roomId);
+    cleanupMuziekGame(result.roomId);
     roomRoundResults.delete(result.roomId);
     const countdown = roomCountdowns.get(result.roomId);
     if (countdown) {

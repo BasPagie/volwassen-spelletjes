@@ -1,5 +1,5 @@
 // ─── Game Category ─────────────────────────────────────
-export type GameCategory = 'woord' | 'what-am-i' | 'drawing' | 'snelste-vinger';
+export type GameCategory = 'muziek' | 'what-am-i' | 'drawing' | 'snelste-vinger';
 
 // ─── Player ────────────────────────────────────────────
 export interface Player {
@@ -60,6 +60,7 @@ export interface GameRoom {
   whatAmISettings?: WhatAmISettings;
   snelsteVingerSettings?: SnelsteVingerSettings;
   drawingSettings?: DrawingSettings;
+  muziekSettings?: MuziekSettings;
 }
 
 // ─── Wie Ben Ik? (What Am I?) ──────────────────────────
@@ -236,6 +237,59 @@ export interface DrawingClientState {
   guessersRemaining: number;       // how many still need to guess
   revealWord?: string;             // shown to all during reveal phase
   wordChoices?: DrawingWordChoice[]; // sent to drawer during picking phase
+}
+
+// ─── Muziek (Raad het Nummer) ──────────────────────────
+export interface MuziekSettings {
+  categoryIds: string[];           // selected song categories
+  questionCount: number;           // how many songs per game
+  clipDuration: number;            // seconds of audio to play (5, 10, 15)
+  guessMode: 'title' | 'artist' | 'both'; // what counts as correct
+  hostPlays: boolean;
+  pointsCorrect: number;
+  pointsWrongPenalty: number;
+  streakBonus: boolean;
+}
+
+export const DEFAULT_MUZIEK_SETTINGS: MuziekSettings = {
+  categoryIds: ['pop', 'hiphop', 'dutch', '80s-90s', '2000s', '2010s-nu', 'classics'],
+  questionCount: 15,
+  clipDuration: 15,
+  guessMode: 'both',
+  hostPlays: true,
+  pointsCorrect: 100,
+  pointsWrongPenalty: 25,
+  streakBonus: true,
+};
+
+export interface MuziekPlayerScore {
+  playerId: string;
+  nickname: string;
+  avatarUrl: string;
+  score: number;
+  streak: number;
+  correctCount: number;
+  wrongCount: number;
+}
+
+export interface MuziekClientState {
+  songIndex: number;
+  totalSongs: number;
+  previewUrl: string;
+  clipDuration: number;            // seconds
+  clipStartOffset: number;         // where in the 30s preview to start (seconds)
+  category: string;
+  timeRemainingMs: number;
+  totalTimeMs: number;
+  answered: boolean;
+  buzzedWrong: boolean;
+  winnerId: string | null;
+  winnerName: string | null;
+  correctTitle: string | null;     // revealed after song ends
+  correctArtist: string | null;    // revealed after song ends
+  coverUrl: string | null;         // revealed after song ends
+  scores: MuziekPlayerScore[];
+  phase: 'listening' | 'reveal' | 'finished';
 }
 
 // ─── Puzzles ───────────────────────────────────────────
@@ -428,6 +482,10 @@ export interface ClientToServerEvents {
   'drawing:clear-canvas': () => void;
   'drawing:undo': () => void;
   'drawing:guess': (data: { guess: string }) => void;
+  // ─── Muziek ────────────────────────────────────────
+  'muziek:update-settings': (settings: MuziekSettings) => void;
+  'muziek:start-game': () => void;
+  'muziek:buzz': (data: { answer: string }) => void;
   // ─── Briefing ──────────────────────────────────────
   'player-ready': () => void;
 }
@@ -487,6 +545,13 @@ export interface ServerToClientEvents {
   'drawing:player-guessed': (data: { playerId: string; playerName: string; position: number; score: number }) => void;
   'drawing:turn-end': (data: { word: string; scores: DrawingPlayerScore[] }) => void;
   'drawing:game-end': (data: { scores: DrawingPlayerScore[] }) => void;
+  // ─── Muziek ────────────────────────────────────────
+  'muziek:settings-updated': (settings: MuziekSettings) => void;
+  'muziek:song': (data: MuziekClientState) => void;
+  'muziek:buzz-result': (data: { correct: boolean; penalty?: number }) => void;
+  'muziek:song-won': (data: { winnerId: string; winnerName: string; correctTitle: string; correctArtist: string; coverUrl: string | null; scores: MuziekPlayerScore[] }) => void;
+  'muziek:song-timeout': (data: { correctTitle: string; correctArtist: string; coverUrl: string | null; scores: MuziekPlayerScore[] }) => void;
+  'muziek:game-end': (data: { scores: MuziekPlayerScore[] }) => void;
   // ─── Briefing ──────────────────────────────────────
   'briefing-start': (data: { briefingKey: string; roundType?: RoundType; gameCategory: GameCategory }) => void;
   'briefing-ready-count': (data: { ready: number; total: number }) => void;

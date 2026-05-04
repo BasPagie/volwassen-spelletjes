@@ -40,7 +40,9 @@ export default function Join() {
     "checking" | "joinable" | "started" | "not-found"
   >("checking");
   const [gameCategory, setGameCategory] = useState<string | null>(null);
-  const joinTheme = getCategoryTheme((gameCategory ?? "woord") as GameCategory);
+  const joinTheme = getCategoryTheme(
+    (gameCategory ?? "muziek") as GameCategory,
+  );
 
   // Check if room exists on mount
   useEffect(() => {

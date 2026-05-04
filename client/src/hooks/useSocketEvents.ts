@@ -266,6 +266,44 @@ export function useSocketEvents() {
       dispatch({ type: 'DRAWING_GAME_END', scores });
     });
 
+    // ─── Muziek ─────────────────────────────────────────
+    socket.on('muziek:settings-updated', (settings) => {
+      dispatch({ type: 'MUZIEK_SETTINGS_UPDATED', settings });
+    });
+
+    socket.on('muziek:song', (state) => {
+      dispatch({ type: 'CLEAR_BRIEFING' });
+      dispatch({ type: 'SET_MUZIEK_STATE', state });
+    });
+
+    socket.on('muziek:buzz-result', ({ correct }) => {
+      if (isSpectatorRef.current) return;
+      playSound(correct ? 'correct' : 'wrong');
+      if (!correct) {
+        dispatch({ type: 'ADD_TOAST', toast: { id: nextToastId(), message: '❌ Fout! Je kunt dit nummer niet meer raden.', type: 'error' } });
+      }
+    });
+
+    socket.on('muziek:song-won', ({ winnerName, correctTitle, correctArtist, coverUrl, scores }) => {
+      if (!isSpectatorRef.current) {
+        playSound('correct');
+        dispatch({ type: 'ADD_TOAST', toast: { id: nextToastId(), message: `🏆 ${winnerName} raadde het!`, type: 'success' } });
+      }
+      dispatch({ type: 'UPDATE_MUZIEK_STATE', patch: { winnerId: scores[0]?.playerId ?? null, winnerName, correctTitle, correctArtist, coverUrl, scores, phase: 'reveal' } });
+    });
+
+    socket.on('muziek:song-timeout', ({ correctTitle, correctArtist, coverUrl, scores }) => {
+      if (!isSpectatorRef.current) {
+        playSound('wrong');
+        dispatch({ type: 'ADD_TOAST', toast: { id: nextToastId(), message: `⏱️ Tijd voorbij! Het was: ${correctTitle}`, type: 'warning' } });
+      }
+      dispatch({ type: 'UPDATE_MUZIEK_STATE', patch: { winnerId: null, winnerName: null, correctTitle, correctArtist, coverUrl, scores, phase: 'reveal' } });
+    });
+
+    socket.on('muziek:game-end', ({ scores }) => {
+      dispatch({ type: 'MUZIEK_GAME_END', scores });
+    });
+
     return () => {
       socket.off('room-created');
       socket.off('room-joined');
@@ -307,6 +345,12 @@ export function useSocketEvents() {
       socket.off('drawing:settings-updated');
       socket.off('drawing:state-update');
       socket.off('drawing:game-end');
+      socket.off('muziek:settings-updated');
+      socket.off('muziek:song');
+      socket.off('muziek:buzz-result');
+      socket.off('muziek:song-won');
+      socket.off('muziek:song-timeout');
+      socket.off('muziek:game-end');
       socket.off('briefing-start');
       socket.off('briefing-ready-count');
     };

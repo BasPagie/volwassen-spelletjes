@@ -101,6 +101,18 @@ const CATEGORY_INSTRUCTIONS: Partial<Record<GameCategory, GameInstruction>> = {
       { emoji: "🔄", text: "Iedereen komt aan de beurt om te tekenen" },
     ],
   },
+  "muziek": {
+    icon: "🎵",
+    title: "Raad het Nummer",
+    color: "purple",
+    summary: "Luister naar een clip en raad het nummer!",
+    steps: [
+      { emoji: "🎧", text: "Je hoort een kort fragment van een nummer" },
+      { emoji: "⌨️", text: "Typ de titel of artiest en druk op Raad!" },
+      { emoji: "❌", text: "Fout? Je kunt dat nummer niet meer raden" },
+      { emoji: "🔥", text: "Meerdere nummers achter elkaar goed = streak bonus" },
+    ],
+  },
 };
 
 export function getInstruction(key: RoundType | GameCategory): GameInstruction | null {

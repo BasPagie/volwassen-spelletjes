@@ -22,7 +22,7 @@ const socketToRoom = new Map<string, { roomId: string; playerId: string }>();
 // Track pending disconnects (playerId → timeout) for grace period
 const disconnectTimers = new Map<string, ReturnType<typeof setTimeout>>();
 
-export function createRoom(socketId: string, nickname: string, avatarUrl: string, gameCategory: GameCategory = 'woord'): { room: GameRoom; player: Player } {
+export function createRoom(socketId: string, nickname: string, avatarUrl: string, gameCategory: GameCategory = 'muziek'): { room: GameRoom; player: Player } {
   const roomId = generateRoomId();
   const playerId = uuidv4();
 
@@ -259,6 +259,13 @@ export function updateDrawingSettings(roomId: string, settings: import('../../sh
   const room = rooms.get(roomId);
   if (!room || room.status !== 'lobby') return false;
   room.drawingSettings = settings;
+  return true;
+}
+
+export function updateMuziekSettings(roomId: string, settings: import('../../shared/types.js').MuziekSettings): boolean {
+  const room = rooms.get(roomId);
+  if (!room || room.status !== 'lobby') return false;
+  room.muziekSettings = settings;
   return true;
 }
 
