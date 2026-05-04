@@ -2,6 +2,7 @@
   "name": "server",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "cross-env DEV_MODE=true tsx watch src/index.ts",
     "build": "tsc",
