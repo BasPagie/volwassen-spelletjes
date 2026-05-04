@@ -1054,6 +1054,26 @@ export function registerSocketHandlers(io: IOServer, socket: IOSocket): void {
     socket.emit('whatami:state-update', state);
   });
 
+  // ─── Wie Ben Ik? — Force End (host only) ─────────────
+  socket.on('whatami:force-end', () => {
+    const mapping = getSocketMapping(socket.id);
+    if (!mapping) return;
+    if (!isHost(mapping.roomId, mapping.playerId)) return;
+
+    const room = getRoom(mapping.roomId);
+    if (!room || room.gameCategory !== 'what-am-i' || room.status !== 'playing') return;
+
+    const inst = getWhatAmIInstance(mapping.roomId);
+    if (!inst || inst.finished) return;
+
+    const finished = finishGame(mapping.roomId);
+    if (!finished) return;
+
+    const settings = room.whatAmISettings ?? DEFAULT_WHATAMI_SETTINGS;
+    broadcastWhatAmIGameEnd(io, mapping.roomId, finished, settings);
+    console.log(`[WieBenik] Force-ended by host: ${mapping.roomId}`);
+  });
+
   // ─── Snelste Vinger — Update Settings ────────────────
   socket.on('snelstevinger:update-settings', (settings) => {
     const mapping = getSocketMapping(socket.id);
@@ -1445,6 +1465,21 @@ function handleDisconnect(io: IOServer, socket: IOSocket): void {
         playerId,
         newHostId: removeResult.newHostId,
       });
+
+      // If a What Am I game is running, mark the disconnected player as gave-up
+      // so the game can still end for remaining players
+      const whatAmIInst = getWhatAmIInstance(roomId);
+      if (whatAmIInst && !whatAmIInst.finished) {
+        const tracker = whatAmIInst.trackers.get(playerId);
+        if (tracker && !tracker.guessedCorrectly) {
+          tracker.guessedCorrectly = true;
+          tracker.gaveUp = true;
+          tracker.score = 0;
+          tracker.finishTimeMs = Date.now();
+        }
+        const settings = currentRoom.whatAmISettings ?? DEFAULT_WHATAMI_SETTINGS;
+        checkAllGuessedAndFinish(io, roomId, settings);
+      }
     }
 
     console.log(`[Room] Player ${playerId} permanently removed from ${roomId} (timeout)`);

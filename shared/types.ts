@@ -411,6 +411,7 @@ export interface ClientToServerEvents {
   'whatami:asked-question': () => void;
   'whatami:skip-turn': () => void;
   'whatami:give-up': () => void;
+  'whatami:force-end': () => void;
   'whatami:request-state': () => void;
   'host:give-hint': (data: { hint: string }) => void;
   // ─── Snelste Vinger ────────────────────────────────

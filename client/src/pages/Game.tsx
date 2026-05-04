@@ -100,7 +100,7 @@ export default function Game() {
   const { roomId } = useParams<{ roomId: string }>();
   const navigate = useNavigate();
   const socket = useSocket();
-  const { state } = useGame();
+  const { state, dispatch } = useGame();
   const [showRoundIntro, setShowRoundIntro] = useState(false);
   const [introRoundType, setIntroRoundType] = useState<RoundType | null>(null);
   const [introRoundNumber, setIntroRoundNumber] = useState(0);
@@ -221,6 +221,7 @@ export default function Game() {
         onSkipTurn={() => socket?.emit("whatami:skip-turn")}
         onGiveUp={() => socket?.emit("whatami:give-up")}
         onPlayAgain={() => socket?.emit("play-again")}
+        onGoToResults={() => dispatch({ type: "WHATAMI_GO_TO_RESULTS" })}
       />
     );
   }

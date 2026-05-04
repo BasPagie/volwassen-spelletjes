@@ -190,7 +190,7 @@ export default function Landing() {
                   }
                   placeholder="ABCD"
                   maxLength={4}
-                  className="flex-1 px-4 py-2.5 rounded-xl border-2 border-gray-200 outline-none transition-all text-center text-lg font-display font-bold tracking-[0.3em] uppercase
+                  className="min-w-0 flex-1 px-4 py-2.5 rounded-xl border-2 border-gray-200 outline-none transition-all text-center text-lg font-display font-bold tracking-[0.3em] uppercase
                   focus:border-pink-400 focus:ring-2 focus:ring-pink-100"
                   onKeyDown={(e) => {
                     if (e.key === "Enter" && joinCode.length === 4) {

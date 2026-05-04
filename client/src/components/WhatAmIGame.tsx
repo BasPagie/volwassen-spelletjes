@@ -17,6 +17,7 @@ interface Props {
   onSkipTurn: () => void;
   onGiveUp: () => void;
   onPlayAgain: () => void;
+  onGoToResults: () => void;
 }
 
 export default function WhatAmIGame({
@@ -29,6 +30,7 @@ export default function WhatAmIGame({
   onSkipTurn,
   onGiveUp,
   onPlayAgain,
+  onGoToResults,
 }: Props) {
   const socket = useSocket();
   const [guess, setGuess] = useState("");
@@ -52,6 +54,24 @@ export default function WhatAmIGame({
   const handleReroll = (targetPlayerId: string) => {
     socket?.emit("whatami:reroll", { targetPlayerId });
   };
+
+  // Auto-navigate to results after delay when game ends
+  const [resultsCountdown, setResultsCountdown] = useState(5);
+  useEffect(() => {
+    if (!isFinished) return;
+    setResultsCountdown(5);
+    const interval = setInterval(() => {
+      setResultsCountdown((prev) => {
+        if (prev <= 1) {
+          clearInterval(interval);
+          onGoToResults();
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [isFinished]);
 
   // Cooldown
   const [cooldownLeft, setCooldownLeft] = useState(0);
@@ -392,6 +412,18 @@ export default function WhatAmIGame({
           </motion.div>
         )}
 
+        {/* Host: force-end button */}
+        {currentPlayerIsHost && !isFinished && (
+          <div className="flex justify-end mb-2">
+            <button
+              onClick={() => socket?.emit("whatami:force-end")}
+              className="text-xs font-display font-bold text-gray-400 hover:text-red-500 transition-colors px-3 py-1.5 rounded-lg hover:bg-red-50"
+            >
+              ⏹ Spel stoppen
+            </button>
+          </div>
+        )}
+
         {/* Moderator host banner + hint */}
         {isModeratorHost && !isFinished && <ModeratorPanel />}
 
@@ -404,77 +436,18 @@ export default function WhatAmIGame({
               className="bg-white rounded-2xl border-2 border-purple-200 p-6 text-center"
             >
               <div className="text-5xl mb-3">🏆</div>
-              <h2 className="font-display font-black text-3xl text-gray-800 mb-6">
+              <h2 className="font-display font-black text-2xl text-gray-800 mb-2">
                 Einde van het spel!
               </h2>
-
-              <div className="space-y-3 mb-6 text-left">
-                {[...gameState.players]
-                  .sort((a, b) => (b.score ?? 0) - (a.score ?? 0))
-                  .map((ps, idx) => {
-                    const player = players.find((p) => p.id === ps.playerId);
-                    return (
-                      <div
-                        key={ps.playerId}
-                        className={`flex items-center gap-3 p-3 rounded-xl ${
-                          idx === 0
-                            ? "bg-yellow-50 border border-yellow-300"
-                            : "bg-gray-50"
-                        }`}
-                      >
-                        <span className="font-display font-black text-2xl w-8 text-center">
-                          {idx === 0
-                            ? "🥇"
-                            : idx === 1
-                              ? "🥈"
-                              : idx === 2
-                                ? "🥉"
-                                : `#${idx + 1}`}
-                        </span>
-                        <span className="text-xl">
-                          {player?.avatarUrl &&
-                          (player.avatarUrl.startsWith("data:") ||
-                            player.avatarUrl.startsWith("http")) ? (
-                            <img
-                              src={player.avatarUrl}
-                              alt=""
-                              className="w-6 h-6 rounded-full object-cover inline"
-                            />
-                          ) : (
-                            <>{player?.avatarUrl ?? "👤"}</>
-                          )}
-                        </span>
-                        <div className="flex-1">
-                          <p className="font-display font-bold text-gray-800">
-                            {player?.nickname ?? "Speler"}
-                          </p>
-                          {ps.assignedCharacter && (
-                            <p className="text-xs text-gray-500 font-display">
-                              Was: {ps.assignedCharacter.name}
-                            </p>
-                          )}
-                        </div>
-                        <div className="text-right">
-                          <p className="font-display font-black text-gray-800">
-                            {ps.guessedCorrectly ? `${ps.score} pts` : "0 pts"}
-                          </p>
-                          {ps.guessedCorrectly && ps.placement && (
-                            <p className="text-xs text-gray-400 font-display">
-                              #{ps.placement}
-                            </p>
-                          )}
-                        </div>
-                      </div>
-                    );
-                  })}
-              </div>
-
+              <p className="text-sm text-gray-500 font-display">
+                Resultaten over {resultsCountdown}s...
+              </p>
               {currentPlayerIsHost && (
                 <button
-                  onClick={onPlayAgain}
-                  className="btn-primary text-lg px-8 py-3"
+                  onClick={onGoToResults}
+                  className="btn-primary mt-4 px-6 py-2"
                 >
-                  🔄 Terug naar Lobby
+                  🏆 Naar resultaten
                 </button>
               )}
             </motion.div>

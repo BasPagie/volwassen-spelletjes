@@ -261,7 +261,8 @@ function advanceTurn(
   });
 
   if (activePlayers.length === 0) {
-    // Everyone has guessed — game over
+    // Everyone has guessed — trigger game-end check via onTurnAdvance
+    if (onTurnAdvance) onTurnAdvance(instance.roomId);
     return;
   }
 

@@ -149,6 +149,7 @@ export type GameAction =
       score: number;
     }
   | { type: "WHATAMI_GAME_END"; state: WhatAmIClientGameState }
+  | { type: "WHATAMI_GO_TO_RESULTS" }
   | { type: "WHATAMI_SETTINGS_UPDATED"; settings: WhatAmISettings }
   // ─── Snelste Vinger ───────────────────────────────
   | { type: "SET_SNELSTEVINGER_STATE"; state: SnelsteVingerClientState }
@@ -416,13 +417,16 @@ function gameReducer(state: GameState, action: GameAction): GameState {
         }),
         roundResults: [],
       };
+      // Don't set phase:"finished" yet — let players see the reveal screen first
       return {
         ...state,
         whatAmIState: { ...action.state, status: "finished" },
-        phase: "finished",
         finalResults,
       };
     }
+
+    case "WHATAMI_GO_TO_RESULTS":
+      return { ...state, phase: "finished" };
 
     case "WHATAMI_SETTINGS_UPDATED":
       if (!state.room) return state;

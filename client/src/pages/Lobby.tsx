@@ -11,6 +11,7 @@ import WhatAmILobbySettings from "../components/WhatAmILobbySettings";
 import DrawingLobbySettings from "../components/DrawingLobbySettings";
 import SnelsteVingerLobbySettings from "../components/SnelsteVingerLobbySettings";
 import { getCategoryTheme } from "../lib/categoryThemes";
+import { markSeen } from "../lib/gameInstructions";
 import { isMuted, toggleMute } from "../hooks/useSoundEffect";
 import SkeletonLoader from "../components/SkeletonLoader";
 import type {
@@ -38,9 +39,7 @@ export default function Lobby() {
           ? "drawing-rules-seen"
           : "woord-rules-seen";
   const isFirstVisit = !localStorage.getItem(rulesKey);
-  const [showInfo, setShowInfo] = useState(
-    state.room?.gameCategory === "drawing" ? false : isFirstVisit,
-  );
+  const [showInfo, setShowInfo] = useState(false);
   const [waitExpired, setWaitExpired] = useState(false);
 
   const session = getSession();
@@ -654,8 +653,22 @@ export default function Lobby() {
                 onClick={() => {
                   setShowInfo(false);
                   localStorage.setItem(rulesKey, "1");
+                  // Mark briefing(s) as seen so mandatory briefing is skipped
+                  const cat = state.room?.gameCategory;
+                  if (cat === "woord") {
+                    markSeen("connections");
+                    markSeen("puzzelronde");
+                    markSeen("opendeur");
+                    markSeen("lingo");
+                  } else if (cat === "what-am-i") {
+                    markSeen("what-am-i");
+                  } else if (cat === "snelste-vinger") {
+                    markSeen("snelste-vinger");
+                  } else if (cat === "drawing") {
+                    markSeen("drawing");
+                  }
                 }}
-                className="btn-primary w-full mt-4"
+                className={`${theme.accentHover} text-white font-display font-bold py-2.5 px-6 rounded-2xl text-base shadow-lg hover:shadow-xl transform hover:scale-105 active:scale-95 transition-all duration-200 w-full mt-4`}
               >
                 Begrepen! 👍
               </button>
