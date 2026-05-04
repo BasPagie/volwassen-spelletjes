@@ -91,7 +91,7 @@ export interface WhatAmISettings {
 }
 
 export const DEFAULT_WHATAMI_SETTINGS: WhatAmISettings = {
-  packIds: ['popculture', 'muziek', 'memes-internet', 'film', 'series', 'games', 'superhelden', 'sport', 'geschiedenis', 'cartoon', 'anime', 'nederland-nu'],
+  packIds: ['popculture', 'muziek', 'memes-internet', 'film', 'series', 'games', 'superhelden', 'mythologie', 'geschiedenis', 'cartoon', 'disney', 'anime', 'nederland-nu', 'league-of-legends'],
   customCharacters: [],
   timeLimitSeconds: 600,
   hostPlays: true,
@@ -379,6 +379,7 @@ export interface FinalResults {
     totalScore: number;
     roundScores: number[];
     rank: number;
+    characterName?: string;
   }[];
   roundResults: RoundResult[];
 }

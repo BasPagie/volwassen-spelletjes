@@ -22,6 +22,7 @@ interface WhatAmIGameInstance {
   startTime: number;
   timeLimitSeconds: number | null;
   trackers: Map<string, WhatAmIPlayerTracker>;
+  characterPool: WhatAmICharacter[];  // full pool for re-rolls
   timer: ReturnType<typeof setInterval> | null;
   finished: boolean;
   placementCounter: number;
@@ -168,6 +169,7 @@ export function startWhatAmIGame(
     roomId: room.roomId,
     packName,
     startTime,
+    characterPool: characters,
     timeLimitSeconds,
     trackers,
     timer: null,
@@ -388,8 +390,8 @@ export function buildPlayerView(instance: WhatAmIGameInstance, playerId: string)
 
   const players: WhatAmIPlayerState[] = Array.from(instance.trackers.values()).map((t) => ({
     playerId: t.playerId,
-    // Hide this player's own character unless they gave up or guessed correctly
-    assignedCharacter: t.playerId === playerId && !t.gaveUp && !t.guessedCorrectly ? null : t.assignedCharacter,
+    // Hide this player's own character unless they gave up, guessed correctly, or game is finished
+    assignedCharacter: t.playerId === playerId && !t.gaveUp && !t.guessedCorrectly && !instance.finished ? null : t.assignedCharacter,
     guessedCorrectly: t.guessedCorrectly,
     gaveUp: t.gaveUp,
     placement: t.placement,
@@ -547,6 +549,41 @@ export function scheduleWhatAmIBotGuesses(
       onBotGuessed(roomId, bot.id, placement, score);
     }, delay);
   }
+}
+
+/** Re-roll a player's character — called by another player who sees it's too hard */
+export function rerollCharacter(
+  roomId: string,
+  targetPlayerId: string,
+  requesterId: string,
+): { success: boolean; error?: string } {
+  const instance = activeGames.get(roomId);
+  if (!instance || instance.finished) return { success: false, error: 'Game niet actief.' };
+
+  // Requester cannot reroll themselves
+  if (requesterId === targetPlayerId) return { success: false, error: 'Je kunt niet je eigen karakter opnieuw rollen.' };
+
+  const tracker = instance.trackers.get(targetPlayerId);
+  if (!tracker) return { success: false, error: 'Speler niet gevonden.' };
+  if (tracker.guessedCorrectly || tracker.gaveUp) return { success: false, error: 'Speler is al klaar.' };
+
+  // Get currently assigned character names to avoid duplicates
+  const assignedNames = new Set(
+    Array.from(instance.trackers.values()).map((t) => t.assignedCharacter.name.toLowerCase())
+  );
+
+  // Find a replacement from the pool that isn't already in use
+  const available = instance.characterPool.filter(
+    (c) => !assignedNames.has(c.name.toLowerCase())
+  );
+
+  if (available.length === 0) return { success: false, error: 'Geen karakters meer beschikbaar om te wisselen.' };
+
+  // Pick a random replacement
+  const replacement = available[Math.floor(Math.random() * available.length)];
+  tracker.assignedCharacter = replacement;
+
+  return { success: true };
 }
 
 export function getPackMeta() {

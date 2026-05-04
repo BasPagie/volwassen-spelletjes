@@ -39,38 +39,12 @@ async function fetchWikipediaImage(
   }
 }
 
-const PACK_META = [
-  {
-    id: "popculture",
-    name: "🎬 Popcultuur",
-    description: "Acteurs en beroemdheden die iedereen kent",
-    characterCount: 24,
-  },
-  {
-    id: "muziek",
-    name: "🎵 Muziek",
-    description: "Artiesten die je op elk festival hoort",
-    characterCount: 24,
-  },
-  {
-    id: "memes-internet",
-    name: "🌐 Memes & Internet",
-    description: "Virale persoonlijkheden en internetfenomenen",
-    characterCount: 24,
-  },
-  {
-    id: "fictiepersonages",
-    name: "📺 Fictie & Series",
-    description: "Iconische personages uit films en series",
-    characterCount: 24,
-  },
-  {
-    id: "nederland-nu",
-    name: "🧡 Nederland Nu",
-    description: "Bekende Nederlanders die onze generatie kent",
-    characterCount: 24,
-  },
-];
+const PACK_META_FALLBACK: {
+  id: string;
+  name: string;
+  description: string;
+  characterCount: number;
+}[] = [];
 
 interface Props {
   settings?: WhatAmISettings;
@@ -87,6 +61,7 @@ export default function WhatAmILobbySettings({
 }: Props) {
   const current: WhatAmISettings = settings ?? DEFAULT_WHATAMI_SETTINGS;
 
+  const [PACK_META, setPackMeta] = useState(PACK_META_FALLBACK);
   const [newCharName, setNewCharName] = useState("");
   const [newCharImage, setNewCharImage] = useState("");
   const [newCharCategory, setNewCharCategory] = useState("");
@@ -190,6 +165,34 @@ export default function WhatAmILobbySettings({
     } catch {
       /* ignore corrupt data */
     }
+  }, []);
+
+  // Fetch pack metadata from server
+  useEffect(() => {
+    fetch("/api/packs")
+      .then((r) => r.json())
+      .then(
+        (
+          data: {
+            id: string;
+            name: string;
+            description: string;
+            characters: unknown[];
+          }[],
+        ) => {
+          setPackMeta(
+            data.map((p) => ({
+              id: p.id,
+              name: p.name,
+              description: p.description,
+              characterCount: p.characters.length,
+            })),
+          );
+        },
+      )
+      .catch(() => {
+        /* fallback to empty */
+      });
   }, []);
 
   const saveListToStorage = (name: string, chars: WhatAmICharacter[]) => {
@@ -512,8 +515,8 @@ export default function WhatAmILobbySettings({
             {totalChars} karakters totaal
           </span>
         </span>
-        <div className="bg-gray-50/50 rounded-2xl border border-gray-100 p-3">
-          <div className="flex flex-wrap gap-2">
+        <div className="bg-gray-50/50 rounded-2xl border border-gray-100 p-3 max-h-56 overflow-y-auto">
+          <div className="flex flex-wrap gap-1.5">
             {PACK_META.map((pack) => {
               const selected = current.packIds.includes(pack.id);
               return (
@@ -522,15 +525,15 @@ export default function WhatAmILobbySettings({
                   onClick={() => togglePack(pack.id)}
                   disabled={!isHost}
                   title={`${pack.description} · ${pack.characterCount} karakters`}
-                  className={`inline-flex items-center gap-1.5 px-3 py-2 rounded-full border-2 font-display font-bold text-sm transition-all
+                  className={`inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg border font-display font-semibold text-xs transition-all
                     ${
                       selected
-                        ? "border-purple-400 bg-purple-100 text-purple-700"
-                        : "border-gray-200 bg-white text-gray-600 hover:border-gray-300 hover:bg-gray-50"
+                        ? "border-purple-400 bg-purple-50 text-purple-700 shadow-sm"
+                        : "border-gray-200 bg-white text-gray-500 hover:border-gray-300 hover:bg-gray-50"
                     } ${!isHost ? "opacity-70 cursor-default" : "cursor-pointer"}`}
                 >
                   <span>{pack.name}</span>
-                  <span className="text-xs opacity-60">
+                  <span className="text-[10px] opacity-50">
                     {pack.characterCount}
                   </span>
                 </button>
@@ -542,28 +545,28 @@ export default function WhatAmILobbySettings({
               return (
                 <div
                   key={`saved-${list.name}`}
-                  className={`inline-flex items-center gap-1 rounded-full border-2 font-display font-bold text-sm transition-all
+                  className={`inline-flex items-center gap-1 rounded-lg border font-display font-semibold text-xs transition-all
                     ${
                       isSelected
-                        ? "border-amber-400 bg-amber-100 text-amber-700"
-                        : "border-gray-200 bg-white text-gray-600 hover:border-gray-300 hover:bg-gray-50"
+                        ? "border-amber-400 bg-amber-50 text-amber-700 shadow-sm"
+                        : "border-gray-200 bg-white text-gray-500 hover:border-gray-300 hover:bg-gray-50"
                     }`}
                 >
                   <button
                     onClick={() => toggleSavedList(list.name)}
                     disabled={!isHost}
-                    className={`px-3 py-2 transition-all ${!isHost ? "opacity-70 cursor-default" : "cursor-pointer"}`}
+                    className={`px-2.5 py-1.5 transition-all ${!isHost ? "opacity-70 cursor-default" : "cursor-pointer"}`}
                     title={`${list.characters.map((c) => c.name).join(", ")}`}
                   >
                     💾 {list.name}
-                    <span className="text-xs opacity-60 ml-1">
+                    <span className="text-[10px] opacity-50 ml-1">
                       {list.characters.length}
                     </span>
                   </button>
                   {isHost && (
                     <button
                       onClick={() => deleteSavedList(list.name)}
-                      className="pr-2.5 text-gray-400 hover:text-red-500 font-bold text-sm leading-none"
+                      className="pr-2 text-gray-400 hover:text-red-500 font-bold text-xs leading-none"
                       title="Verwijder opgeslagen lijst"
                     >
                       ×
@@ -1092,7 +1095,7 @@ export default function WhatAmILobbySettings({
               className={`flex-1 py-2 px-3 rounded-xl text-sm font-medium transition-all
                 ${
                   current.hostPlays
-                    ? "bg-green-500 text-white shadow-md"
+                    ? "bg-purple-500 text-white shadow-md"
                     : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                 } ${!isHost ? "opacity-70 cursor-default" : ""}`}
             >
@@ -1104,7 +1107,7 @@ export default function WhatAmILobbySettings({
               className={`flex-1 py-2 px-3 rounded-xl text-sm font-medium transition-all
                 ${
                   !current.hostPlays
-                    ? "bg-orange-500 text-white shadow-md"
+                    ? "bg-purple-500 text-white shadow-md"
                     : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                 } ${!isHost ? "opacity-70 cursor-default" : ""}`}
             >

@@ -411,6 +411,7 @@ function gameReducer(state: GameState, action: GameAction): GameState {
             totalScore: p.score,
             roundScores: [p.score],
             rank: idx + 1,
+            characterName: p.assignedCharacter?.name,
           };
         }),
         roundResults: [],

@@ -59,6 +59,7 @@ import {
   skipTurn,
   giveUp,
   recordQuestion,
+  rerollCharacter,
 } from './whatAmIEngine.js';
 import { DEFAULT_WHATAMI_SETTINGS } from '../../shared/types.js';
 import { DEFAULT_SNELSTEVINGER_SETTINGS } from '../../shared/types.js';
@@ -1010,6 +1011,27 @@ export function registerSocketHandlers(io: IOServer, socket: IOSocket): void {
     // Broadcast updated state
     broadcastWhatAmIState(io, mapping.roomId, settings);
     checkAllGuessedAndFinish(io, mapping.roomId, settings);
+  });
+
+  // ─── Wie Ben Ik? — Reroll Character ──────────────────
+  socket.on('whatami:reroll', (data: { targetPlayerId: string }) => {
+    const mapping = getSocketMapping(socket.id);
+    if (!mapping) return;
+
+    const room = getRoom(mapping.roomId);
+    if (!room || room.gameCategory !== 'what-am-i' || room.status !== 'playing') return;
+
+    const result = rerollCharacter(mapping.roomId, data.targetPlayerId, mapping.playerId);
+    if (!result.success) {
+      socket.emit('whatami:reroll-result', { success: false, error: result.error });
+      return;
+    }
+
+    socket.emit('whatami:reroll-result', { success: true });
+
+    // Broadcast updated state so everyone sees the new character (except the target)
+    const settings = room.whatAmISettings ?? DEFAULT_WHATAMI_SETTINGS;
+    broadcastWhatAmIState(io, mapping.roomId, settings);
   });
 
   // ─── Wie Ben Ik? — Request State (reconnect) ─────────

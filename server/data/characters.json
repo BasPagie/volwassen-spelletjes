@@ -1,8 +1,8 @@
 [
   {
     "id": "popculture",
-    "name": "🎬 Popcultuur",
-    "description": "Acteurs, zangers en beroemdheden die iedereen kent",
+    "name": "🎬 Acteurs & Actrices",
+    "description": "Bekende acteurs en actrices die iedereen kent",
     "characters": [
       {
         "name": "Will Smith",
@@ -115,9 +115,9 @@
         "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/TomHanksPrincEdw031223_%2811_of_41%29_%28cropped%29.jpg/330px-TomHanksPrincEdw031223_%2811_of_41%29_%28cropped%29.jpg"
       },
       {
-        "name": "Florence Pugh",
+        "name": "Julia Roberts",
         "category": "Actrice",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Florence_Pugh_at_the_2024_Toronto_International_Film_Festival_13_%28cropped_2_%E2%80%93_color_adjusted%29.jpg/330px-Florence_Pugh_at_the_2024_Toronto_International_Film_Festival_13_%28cropped_2_%E2%80%93_color_adjusted%29.jpg"
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Julia_Roberts_2025.jpg/330px-Julia_Roberts_2025.jpg"
       },
       {
         "name": "Pedro Pascal",
@@ -212,14 +212,14 @@
         "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/BrunoMars24KMagicWorldTourLive_%28cropped%29.jpg/330px-BrunoMars24KMagicWorldTourLive_%28cropped%29.jpg"
       },
       {
-        "name": "Frank Ocean",
-        "category": "Zanger",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Frank_Ocean_2022_Blonded.jpg/330px-Frank_Ocean_2022_Blonded.jpg"
+        "name": "Michael Jackson",
+        "category": "Zanger / King of Pop",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Michael_Jackson_in_1988.jpg/330px-Michael_Jackson_in_1988.jpg"
       },
       {
-        "name": "Olivia Rodrigo",
-        "category": "Zangeres",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Glasto2025-546_%28cropped%29_%282%29.jpg/330px-Glasto2025-546_%28cropped%29_%282%29.jpg"
+        "name": "Elvis Presley",
+        "category": "Zanger / King of Rock",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Elvis_Presley_promoting_Jailhouse_Rock.jpg/330px-Elvis_Presley_promoting_Jailhouse_Rock.jpg"
       },
       {
         "name": "Travis Scott",
@@ -227,14 +227,14 @@
         "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/2025-0120_Cole_Gahagan_Michael_Rubin_Travis_Scott_%28cropped%29.jpg/330px-2025-0120_Cole_Gahagan_Michael_Rubin_Travis_Scott_%28cropped%29.jpg"
       },
       {
-        "name": "SZA",
-        "category": "Zangeres",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/KendrickSZASPurs230725-19_-_54683179509_%28cropped%29_%28cropped%29.jpg/330px-KendrickSZASPurs230725-19_-_54683179509_%28cropped%29_%28cropped%29.jpg"
+        "name": "Bob Marley",
+        "category": "Zanger / Reggae",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Bob_Marley_1976_press_photo.jpg/330px-Bob_Marley_1976_press_photo.jpg"
       },
       {
-        "name": "Doja Cat",
-        "category": "Zangeres / Rapper",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/DojaCatO2140624_%2887_of_105%29_%2853792876988%29_%28cropped%29.jpg/330px-DojaCatO2140624_%2887_of_105%29_%2853792876988%29_%28cropped%29.jpg"
+        "name": "Whitney Houston",
+        "category": "Zangeres",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Whitney_Houston_by_Richard_Avedon_%28cropped%29.jpg/330px-Whitney_Houston_by_Richard_Avedon_%28cropped%29.jpg"
       },
       {
         "name": "Bad Bunny",
@@ -326,7 +326,7 @@
       {
         "name": "Bob Ross",
         "category": "TV / Meme",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Signature_of_Bob_Ross.svg/330px-Signature_of_Bob_Ross.svg.png"
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/7/70/Bob_at_Easel.jpg"
       },
       {
         "name": "Marques Brownlee",
@@ -359,9 +359,9 @@
         "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Will_Ferrell_at_the_2024_Toronto_International_Film_Festival_5_%28cropped%29.jpg/330px-Will_Ferrell_at_the_2024_Toronto_International_Film_Festival_5_%28cropped%29.jpg"
       },
       {
-        "name": "Keanu Reeves",
-        "category": "Acteur / Meme",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Keanu_Reeves_at_TIFF_2025_02_%28Cropped%29.jpg/330px-Keanu_Reeves_at_TIFF_2025_02_%28Cropped%29.jpg"
+        "name": "John Cena",
+        "category": "Wrestler / Meme",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/John_Cena_by_Gage_Skidmore.jpg/330px-John_Cena_by_Gage_Skidmore.jpg"
       },
       {
         "name": "Arnold Schwarzenegger",
@@ -388,122 +388,122 @@
       {
         "name": "Shrek",
         "category": "Animatiefilm",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/iB64vpL3dIObOtMZgX3RqdVdQDc.jpg"
+        "imageUrl": "https://static.wikia.nocookie.net/shrek/images/9/9b/GoodShrekImage.png/revision/latest/scale-to-width-down/400?cb=20201220080410"
       },
       {
         "name": "Harry Potter",
         "category": "Harry Potter",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/wuMc08IPKEatf9rnMNXvIDxqP4W.jpg"
+        "imageUrl": "https://static.wikia.nocookie.net/harrypotter/images/c/ce/Harry_Potter_DHF1.jpg/revision/latest/scale-to-width-down/400?cb=20140603201724"
       },
       {
         "name": "Darth Vader",
         "category": "Star Wars",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/6FfCtAuVAW8XJjZ7eWeLibRLWTw.jpg"
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Darth_Vader_-_2007_Disney_Weekends.jpg/330px-Darth_Vader_-_2007_Disney_Weekends.jpg"
       },
       {
         "name": "Gandalf",
         "category": "Lord of the Rings",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/6oom5QYQ2yQTMJIbnvbkBL9cHo6.jpg"
+        "imageUrl": "https://static.wikia.nocookie.net/lotr/images/4/47/Gandalf_by_Damiani.png/revision/latest/scale-to-width-down/400?cb=20230617183640"
       },
       {
         "name": "Captain Jack Sparrow",
         "category": "Pirates of the Caribbean",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/kvDwL2gTf6yxujbsWbsGQB3Z9Wa.jpg"
+        "imageUrl": "https://static.wikia.nocookie.net/pirates/images/e/ea/DMTNT_Jack_Sparrow_cropped.png/revision/latest/scale-to-width-down/400?cb=20251003064720"
       },
       {
-        "name": "Elsa",
-        "category": "Frozen",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/itAKcobTYGpYT8Phwjd8c9hleTo.jpg"
+        "name": "Rocky Balboa",
+        "category": "Rocky",
+        "imageUrl": "https://static.wikia.nocookie.net/rocky/images/2/2a/Sylvester-Stallone-Rocky-II-Color-8x10-Photo.webp/revision/latest/scale-to-width-down/400?cb=20230312042355"
       },
       {
         "name": "Dracula",
         "category": "Horror",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/jSxCIZXudp5q8wQO8VERGX8hRAl.jpg"
+        "imageUrl": "https://static.wikia.nocookie.net/villains/images/5/51/Dracula_by_sebastien_ecosse_petit.webp/revision/latest/scale-to-width-down/400?cb=20250411054817"
       },
       {
         "name": "Indiana Jones",
         "category": "Indiana Jones",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/ceG9VzoRAVGwivFU403Wc3AHRys.jpg"
+        "imageUrl": "https://static.wikia.nocookie.net/indianajones/images/1/1d/Indiana_Jones_5_Profile.png/revision/latest/scale-to-width-down/400?cb=20230603033210"
       },
       {
         "name": "Forrest Gump",
         "category": "Drama",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/Cw4hIUIAmSYfK9QfaUW5igp9La.jpg"
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/6/67/Forrest_Gump_poster.jpg"
       },
       {
         "name": "The Terminator",
         "category": "Sci-Fi",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/qvktm0BHcnmDpul4Hz01GIazWPr.jpg"
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/b/b9/Terminator-2-judgement-day.jpg"
       },
       {
         "name": "Willy Wonka",
         "category": "Fantasy",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/iKP6wg3c6COUe8gYutoGG7qcPnO.jpg"
+        "imageUrl": "https://static.wikia.nocookie.net/wonka/images/4/4f/334.jpg/revision/latest?cb=20251004151814"
       },
       {
         "name": "Gollum",
         "category": "Lord of the Rings",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/5VTN0pR8gcqV3EPUHHfMGnJYN9L.jpg"
+        "imageUrl": "https://static.wikia.nocookie.net/lotr/images/7/7d/Gollum%2C_R_V.jpg/revision/latest/scale-to-width-down/400?cb=20230621011547"
       },
       {
         "name": "Yoda",
         "category": "Star Wars",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/nNAeTmF4CtdSgMDplXTDPOpYzsX.jpg"
+        "imageUrl": "https://static.wikia.nocookie.net/starwars/images/d/d6/Yoda_SWSB.png/revision/latest/scale-to-width-down/400?cb=20150206140125"
       },
       {
-        "name": "Baby Yoda",
-        "category": "Star Wars",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/sWgBv7LV2PRoQgkxwlibdGXKz1S.jpg"
+        "name": "Vito Corleone",
+        "category": "The Godfather",
+        "imageUrl": "https://static.wikia.nocookie.net/godfather/images/4/40/Don_Vito_Corleone.jpg/revision/latest/scale-to-width-down/400?cb=20130324224405"
       },
       {
         "name": "James Bond",
         "category": "Actie",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/lMrxYKKhd4lqRzwUHAy5gcx9PSO.jpg"
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/c/c5/Fleming007impression.jpg"
       },
       {
         "name": "John Wick",
         "category": "Actie",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/wXqWR7dHncNRbxoEGybEy7QTe9h.jpg"
+        "imageUrl": "https://static.wikia.nocookie.net/john-wick8561/images/a/a1/John_Wick.webp/revision/latest/scale-to-width-down/400?cb=20230809124750"
       },
       {
         "name": "Katniss Everdeen",
         "category": "Hunger Games",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/yXCbOiVDCxO71zI7cuwBRXdftq8.jpg"
+        "imageUrl": "https://static.wikia.nocookie.net/thehungergames/images/d/da/KatnissD13Portrait.jpg/revision/latest/scale-to-width-down/400?cb=20190306042858"
       },
       {
         "name": "Jack Torrance",
         "category": "Horror",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/uAR0AWqhQL1hQa69UDEbb2rE5Wx.jpg"
+        "imageUrl": "https://static.wikia.nocookie.net/stephenking/images/5/5c/Folio-Society-JackTorrance-The-Shining.png/revision/latest/scale-to-width-down/400?cb=20260503120926"
       },
       {
-        "name": "Donkey",
-        "category": "Shrek",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/iB64vpL3dIObOtMZgX3RqdVdQDc.jpg"
+        "name": "Hannibal Lecter",
+        "category": "Silence of the Lambs",
+        "imageUrl": "https://static.wikia.nocookie.net/hannibal/images/2/23/Voonakeste-vaikimine-73591313.jpg/revision/latest/scale-to-width-down/400?cb=20210507145148"
       },
       {
-        "name": "Woody",
-        "category": "Toy Story",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/uXDfjJbdP4ijW5hWSBrPrlKpxab.jpg"
+        "name": "Jason Bourne",
+        "category": "The Bourne Identity",
+        "imageUrl": "https://static.wikia.nocookie.net/bourne/images/4/4d/Jason_Bourne_%28Jason_Bourne%29.jpg/revision/latest/scale-to-width-down/400?cb=20240125060539"
       },
       {
-        "name": "Buzz Lightyear",
-        "category": "Toy Story",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/uXDfjJbdP4ijW5hWSBrPrlKpxab.jpg"
+        "name": "Ethan Hunt",
+        "category": "Mission: Impossible",
+        "imageUrl": "https://static.wikia.nocookie.net/missionimpossible/images/3/33/M18poster1.jpg/revision/latest/scale-to-width-down/400?cb=20250712132137"
       },
       {
-        "name": "Nemo",
-        "category": "Finding Nemo",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/eHuGQ10FUzK1mdOY69wF5pGgEf5.jpg"
+        "name": "Neo",
+        "category": "The Matrix",
+        "imageUrl": "https://static.wikia.nocookie.net/matrix/images/3/32/Neo.jpg/revision/latest/scale-to-width-down/400?cb=20250617223852"
       },
       {
-        "name": "Simba",
-        "category": "Lion King",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/sKCr78MXSLixwmZ8DyJLrpMsd15.jpg"
+        "name": "Luke Skywalker",
+        "category": "Star Wars",
+        "imageUrl": "https://static0.srcdn.com/wordpress/wp-content/uploads/2025/07/luke-skywalker-wielding-a-lightsaber-in-the-original-star-wars.jpg?w=1600&h=900&fit=crop"
       },
       {
         "name": "Tyler Durden",
         "category": "Fight Club",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/jSziioSwPVrOy9Yow3XhWIBDjq1.jpg"
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/4/4a/The_Narrator_%28Edward_Norton%2C_left%29_and_Tyler_Durden_%28Brad_Pitt%2C_right%29_from_Fight_Club_%281999%29.jpg"
       }
     ]
   },
@@ -515,122 +515,122 @@
       {
         "name": "Walter White",
         "category": "Breaking Bad",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/ztkUQFLlC19CCMYHW9o1zWhJRNq.jpg"
+        "imageUrl": "https://static.wikia.nocookie.net/breakingbad/images/e/e7/BB-S5B-Walt-590.jpg/revision/latest/scale-to-width-down/400?cb=20250728222301"
       },
       {
-        "name": "Homer Simpson",
-        "category": "The Simpsons",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/uWpG7GqfKGQqX4YMAo3nv5OrglV.jpg"
+        "name": "Lucifer Morningstar",
+        "category": "Lucifer",
+        "imageUrl": "https://static.wikia.nocookie.net/lucifer/images/0/09/Lucifer_portrait.png/revision/latest/scale-to-width-down/400?cb=20211006235903"
       },
       {
-        "name": "SpongeBob",
-        "category": "SpongeBob SquarePants",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/5h0EU2lqBb03dp5vtRuUHJwqzem.jpg"
+        "name": "Homelander",
+        "category": "The Boys",
+        "imageUrl": "https://static.wikia.nocookie.net/amazons-the-boys/images/d/d4/The_Homelander_S5.png/revision/latest/scale-to-width-down/400?cb=20260408014531"
       },
       {
         "name": "Sheldon Cooper",
         "category": "Big Bang Theory",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/an3uTx1P0XgHPylgfPV6W7yxKAo.jpg"
+        "imageUrl": "https://static.wikia.nocookie.net/bigbangtheory/images/d/d7/Memoir_05.jpg/revision/latest/scale-to-width-down/400?cb=20240517050712"
       },
       {
         "name": "Michael Scott",
         "category": "The Office",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/7DJKHzAi83BmQrWLrYYOqcoKfhR.jpg"
+        "imageUrl": "https://static.wikia.nocookie.net/theoffice/images/b/be/Character_-_MichaelScott.PNG/revision/latest/scale-to-width-down/400?cb=20200413224550"
       },
       {
         "name": "Eleven",
         "category": "Stranger Things",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/uOOtwVbSr4QDjAGIifLDwpb2Pdl.jpg"
+        "imageUrl": "https://static.wikia.nocookie.net/strangerthings8338/images/e/e2/Eleven_-_Sorcerer.png/revision/latest/scale-to-width-down/400?cb=20260313155200"
       },
       {
         "name": "The Mandalorian",
         "category": "Star Wars",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/sWgBv7LV2PRoQgkxwlibdGXKz1S.jpg"
+        "imageUrl": "https://static.wikia.nocookie.net/starwars/images/4/46/DinDjarinArmor-CGSWG.png/revision/latest/scale-to-width-down/400?cb=20241206044557"
       },
       {
         "name": "Daenerys Targaryen",
         "category": "Game of Thrones",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/1XS1oqL89opfnbLl8WnZY1O1uJx.jpg"
+        "imageUrl": "https://static.wikia.nocookie.net/gameofthrones/images/4/4f/Daenerys_Season_8.jpg/revision/latest/scale-to-width-down/400?cb=20190415212013"
       },
       {
-        "name": "Squidward",
-        "category": "SpongeBob SquarePants",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/5h0EU2lqBb03dp5vtRuUHJwqzem.jpg"
+        "name": "Wednesday Addams",
+        "category": "Wednesday",
+        "imageUrl": "https://i.scdn.co/image/ab6761610000e5eb083ae7d20e0776dbd5753d1d"
       },
       {
         "name": "Tyrion Lannister",
         "category": "Game of Thrones",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/1XS1oqL89opfnbLl8WnZY1O1uJx.jpg"
+        "imageUrl": "https://static.wikia.nocookie.net/gameofthrones/images/9/95/HandoftheKingTyrionLannister.PNG/revision/latest/scale-to-width-down/400?cb=20190520175204"
       },
       {
         "name": "El Profesor",
         "category": "La Casa de Papel",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/reEMJA1uzscCbkpeRJeTT2bjqUp.jpg"
+        "imageUrl": "https://static.wikia.nocookie.net/money-heist/images/3/3c/The_Professor_-_part_5_volume_2_poster.jpg/revision/latest/scale-to-width-down/400?cb=20211110141651"
       },
       {
         "name": "Jon Snow",
         "category": "Game of Thrones",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/1XS1oqL89opfnbLl8WnZY1O1uJx.jpg"
+        "imageUrl": "https://static.wikia.nocookie.net/gameofthrones/images/d/d0/JonSnow8x06.PNG/revision/latest/scale-to-width-down/400?cb=20190714094440"
       },
       {
         "name": "Jesse Pinkman",
         "category": "Breaking Bad",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/ztkUQFLlC19CCMYHW9o1zWhJRNq.jpg"
+        "imageUrl": "https://static.wikia.nocookie.net/breakingbad/images/c/ca/Jesse_Season_5B.jpg/revision/latest/scale-to-width-down/400?cb=20220611094739"
       },
       {
-        "name": "Ragnar Lothbrok",
-        "category": "Vikings",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/bQLrHIRNEkE3PdIWQrZHynQZazu.jpg"
+        "name": "Dr. House",
+        "category": "House",
+        "imageUrl": "https://static.wikia.nocookie.net/house/images/9/9a/GregoryHouseProfile.png/revision/latest/scale-to-width-down/400?cb=20251119013348"
       },
       {
         "name": "Joey Tribbiani",
         "category": "Friends",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/2koX1xLkpTQM4IZebYvKysFW1Nh.jpg"
+        "imageUrl": "https://static.wikia.nocookie.net/friends/images/4/43/10joey.png/revision/latest/scale-to-width-down/400?cb=20241104084824"
       },
       {
         "name": "Dexter Morgan",
         "category": "Dexter",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/q8dWfc4JwQuv3HayIZeO84jAXED.jpg"
+        "imageUrl": "https://static.wikia.nocookie.net/dexter/images/0/06/Season_7_Photo_Promo.jpg/revision/latest/scale-to-width-down/400?cb=20240714125943"
       },
       {
         "name": "Tommy Shelby",
         "category": "Peaky Blinders",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/vUUqzWa2LnHIVqkaKVlVGkVcZIW.jpg"
+        "imageUrl": "https://static.wikia.nocookie.net/peaky-blinders/images/2/2a/Thomas_The_Immortal_Man_.jpg/revision/latest/scale-to-width-down/400?cb=20260321092109"
       },
       {
         "name": "Saul Goodman",
         "category": "Better Call Saul",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/zjg4jpK1Wp2kiRvtt5ND0kznako.jpg"
+        "imageUrl": "https://static.wikia.nocookie.net/breakingbad/images/8/8e/BCS_S6_Portrait_Jimmy.jpg/revision/latest?cb=20220802210840"
       },
       {
-        "name": "Patrick Star",
-        "category": "SpongeBob SquarePants",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/5h0EU2lqBb03dp5vtRuUHJwqzem.jpg"
+        "name": "Rick Grimes",
+        "category": "The Walking Dead",
+        "imageUrl": "https://static.wikia.nocookie.net/walkingdead/images/5/58/Season_one_rick_grimes_towl_%282%29.png/revision/latest/scale-to-width-down/400?cb=20240421154052"
       },
       {
         "name": "Geralt of Rivia",
         "category": "The Witcher",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/AoGsDM02UVt0npBA8OvpDcZbaMi.jpg"
+        "imageUrl": "https://static.wikia.nocookie.net/witcher/images/5/51/Netflix_geralt_shirt.jpg/revision/latest/scale-to-width-down/400?cb=20191228182240"
       },
       {
         "name": "Dwight Schrute",
         "category": "The Office",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/7DJKHzAi83BmQrWLrYYOqcoKfhR.jpg"
+        "imageUrl": "https://static.wikia.nocookie.net/theoffice/images/c/c5/Dwight_.jpg/revision/latest/scale-to-width-down/400?cb=20170701082424"
       },
       {
         "name": "Barney Stinson",
         "category": "How I Met Your Mother",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/b34jPzmB0wZy7EjUZoleXOl2RRI.jpg"
+        "imageUrl": "https://static.wikia.nocookie.net/himym/images/8/83/Rc0JG.jpg/revision/latest/scale-to-width-down/400?cb=20130113174854"
       },
       {
         "name": "Gustavo Fring",
         "category": "Breaking Bad",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/ztkUQFLlC19CCMYHW9o1zWhJRNq.jpg"
+        "imageUrl": "https://static.wikia.nocookie.net/breakingbad/images/5/5e/Gus_Fring_2002.jpg/revision/latest/scale-to-width-down/400?cb=20210608130942"
       },
       {
-        "name": "Pablo Escobar",
-        "category": "Narcos",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/rTmal9fDbwh5F0waol2hq35U4ah.jpg"
+        "name": "Ted Lasso",
+        "category": "Ted Lasso",
+        "imageUrl": "https://static.wikia.nocookie.net/ted-lasso/images/0/06/TL.jpg/revision/latest/scale-to-width-down/400?cb=20220608064407"
       }
     ]
   },
@@ -642,122 +642,182 @@
       {
         "name": "Mario",
         "category": "Nintendo",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/5/5c/Mario_by_Shigehisa_Nakaue.png"
+        "imageUrl": "https://www.smashbros.com/assets_v2/img/fighter/mario/main.png"
       },
       {
         "name": "Link",
         "category": "Zelda",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/3/3c/Link_%28Tears_of_the_Kingdom%29.png"
+        "imageUrl": "https://www.smashbros.com/assets_v2/img/fighter/link/main.png"
       },
       {
         "name": "Pikachu",
         "category": "Pokémon",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/a/a6/Pok%C3%A9mon_Pikachu_art.png"
+        "imageUrl": "https://www.smashbros.com/assets_v2/img/fighter/pikachu/main.png"
       },
       {
         "name": "Sonic the Hedgehog",
         "category": "SEGA",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/3/3b/Sonic_the_Hedgehog_%28Modern%29.png"
+        "imageUrl": "https://www.smashbros.com/assets_v2/img/fighter/sonic/main.png"
       },
       {
         "name": "Crash Bandicoot",
         "category": "PlayStation",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/a/a3/IAT_Crash_Bandicoot.png"
+        "imageUrl": "https://media.rawg.io/media/games/bc1/bc141ec3f4ca8d1d14f0ab4e4f9e654d.jpg"
       },
       {
         "name": "Pac-Man",
         "category": "Arcade",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Pac-Man_ingame_and_2D_alternative_design.png/330px-Pac-Man_ingame_and_2D_alternative_design.png"
+        "imageUrl": "https://www.smashbros.com/assets_v2/img/fighter/pac_man/main.png"
       },
       {
         "name": "Kratos",
         "category": "God of War",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/c/ce/Kratos_%28God_of_War_2018%29.jpg"
+        "imageUrl": "https://media.rawg.io/media/games/4be/4be6a6ad0364751a96229c56bf69be59.jpg"
       },
       {
         "name": "Master Chief",
         "category": "Halo",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/6/6b/Master_Chief_in_Halo_Infinite.png"
+        "imageUrl": "https://media.rawg.io/media/games/abf/abffd94ed6fe34027c720bee593c06d2.jpg"
       },
       {
         "name": "Lara Croft",
         "category": "Tomb Raider",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/6/69/Lara_Croft.png"
+        "imageUrl": "https://cdn.akamai.steamstatic.com/steam/apps/2478970/library_600x900.jpg"
       },
       {
         "name": "Steve",
         "category": "Minecraft",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/f/fe/Minecraft_Steve.png"
+        "imageUrl": "https://www.smashbros.com/assets_v2/img/fighter/steve/main.png"
       },
       {
         "name": "Kirby",
         "category": "Nintendo",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/0/0e/Kirby_Wii.png"
+        "imageUrl": "https://www.smashbros.com/assets_v2/img/fighter/kirby/main.png"
       },
       {
         "name": "Cloud Strife",
         "category": "Final Fantasy",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/1/1a/Cloud_Strife.png"
+        "imageUrl": "https://www.smashbros.com/assets_v2/img/fighter/cloud/main.png"
       },
       {
         "name": "Donkey Kong",
         "category": "Nintendo",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/6/6c/Donkey_Kong_character.png"
+        "imageUrl": "https://www.smashbros.com/assets_v2/img/fighter/donkey_kong/main.png"
       },
       {
         "name": "Bowser",
         "category": "Mario",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/9/9f/Bowser_character.png"
+        "imageUrl": "https://www.smashbros.com/assets_v2/img/fighter/bowser/main.png"
       },
       {
         "name": "Ezio Auditore",
         "category": "Assassin's Creed",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/2/27/Ezio_Auditore_da_Firenze.png"
+        "imageUrl": "https://media.rawg.io/media/games/1be/1bed7fae69d1004c09dfe1101d5a3a94.jpg"
       },
       {
         "name": "Joel Miller",
         "category": "The Last of Us",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/e/e9/Joel_Miller_appearance.png"
+        "imageUrl": "https://media.rawg.io/media/games/a5a/a5a7fb8d9cb8063a8b42ee002b410db6.jpg"
       },
       {
         "name": "Arthur Morgan",
         "category": "Red Dead Redemption",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/b/b5/Arthur_Morgan.jpg"
+        "imageUrl": "https://media.rawg.io/media/games/511/5118aff5091cb3efec399c808f8c598f.jpg"
       },
       {
         "name": "Mega Man",
         "category": "Capcom",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/a/a7/Mega_Man_1_box_artwork.jpg"
+        "imageUrl": "https://www.smashbros.com/assets_v2/img/fighter/mega_man/main.png"
       },
       {
         "name": "Yoshi",
         "category": "Mario",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/d/db/Yoshi_%28character%29.png"
+        "imageUrl": "https://www.smashbros.com/assets_v2/img/fighter/yoshi/main.png"
       },
       {
         "name": "Toad",
         "category": "Mario",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/d/d1/Toad_3D_Land.png"
+        "imageUrl": "https://media.rawg.io/media/games/56f/56f074a9deb83de61434c5498ab86b27.jpeg"
       },
       {
         "name": "Luigi",
         "category": "Mario",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/7/73/Luigi_NSMBUDX.png"
+        "imageUrl": "https://www.smashbros.com/assets_v2/img/fighter/luigi/main.png"
       },
       {
         "name": "Princess Peach",
         "category": "Mario",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/1/16/Princess_Peach_Stock_Art.png"
+        "imageUrl": "https://www.smashbros.com/assets_v2/img/fighter/peach/main.png"
       },
       {
         "name": "Creeper",
         "category": "Minecraft",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/f/f4/Creeper_%28Minecraft%29.png"
+        "imageUrl": "https://minecraft.wiki/images/Creeper_JE3_BE1.png"
       },
       {
         "name": "Samus Aran",
         "category": "Metroid",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/d/d5/Samus_Aran.png"
+        "imageUrl": "https://www.smashbros.com/assets_v2/img/fighter/samus/main.png"
+      },
+      {
+        "name": "Bayonetta",
+        "category": "Bayonetta",
+        "imageUrl": "https://www.smashbros.com/assets_v2/img/fighter/bayonetta/main.png"
+      },
+      {
+        "name": "Captain Falcon",
+        "category": "F-Zero",
+        "imageUrl": "https://www.smashbros.com/assets_v2/img/fighter/captain_falcon/main.png"
+      },
+      {
+        "name": "Fox McCloud",
+        "category": "Star Fox",
+        "imageUrl": "https://www.smashbros.com/assets_v2/img/fighter/fox/main.png"
+      },
+      {
+        "name": "Zelda",
+        "category": "Zelda",
+        "imageUrl": "https://www.smashbros.com/assets_v2/img/fighter/zelda/main.png"
+      },
+      {
+        "name": "Ganondorf",
+        "category": "Zelda",
+        "imageUrl": "https://www.smashbros.com/assets_v2/img/fighter/ganondorf/main.png"
+      },
+      {
+        "name": "Joker",
+        "category": "Persona",
+        "imageUrl": "https://www.smashbros.com/assets_v2/img/fighter/joker/main.png"
+      },
+      {
+        "name": "Snake",
+        "category": "Metal Gear",
+        "imageUrl": "https://www.smashbros.com/assets_v2/img/fighter/snake/main.png"
+      },
+      {
+        "name": "Wario",
+        "category": "WarioWare",
+        "imageUrl": "https://www.smashbros.com/assets_v2/img/fighter/wario/main.png"
+      },
+      {
+        "name": "Inkling",
+        "category": "Splatoon",
+        "imageUrl": "https://www.smashbros.com/assets_v2/img/fighter/inkling/main.png"
+      },
+      {
+        "name": "Ness",
+        "category": "EarthBound",
+        "imageUrl": "https://www.smashbros.com/assets_v2/img/fighter/ness/main.png"
+      },
+      {
+        "name": "Pit",
+        "category": "Kid Icarus",
+        "imageUrl": "https://www.smashbros.com/assets_v2/img/fighter/pit/main.png"
+      },
+      {
+        "name": "Little Mac",
+        "category": "Punch-Out!!",
+        "imageUrl": "https://www.smashbros.com/assets_v2/img/fighter/little_mac/main.png"
       }
     ]
   },
@@ -889,129 +949,129 @@
     ]
   },
   {
-    "id": "sport",
-    "name": "⚽ Sportlegendes",
-    "description": "De grootste sporters aller tijden",
+    "id": "mythologie",
+    "name": "🔱 Mythologie & Legendes",
+    "description": "Goden, helden en wezens uit de mythologie",
     "characters": [
       {
-        "name": "Lionel Messi",
-        "category": "Voetbal",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Lionel_Messi_White_House_2026_%283x4_cropped%29.jpg/330px-Lionel_Messi_White_House_2026_%283x4_cropped%29.jpg"
+        "name": "Zeus",
+        "category": "Grieks",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Zeus_Otricoli_Pio-Clementino_Inv257.jpg/330px-Zeus_Otricoli_Pio-Clementino_Inv257.jpg"
       },
       {
-        "name": "Cristiano Ronaldo",
-        "category": "Voetbal",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/President_Donald_Trump_meets_with_Cristiano_Ronaldo_in_the_Oval_Office_%2854933344262%29_%28cropped_and_rotated%29.jpg/330px-President_Donald_Trump_meets_with_Cristiano_Ronaldo_in_the_Oval_Office_%2854933344262%29_%28cropped_and_rotated%29.jpg"
+        "name": "Poseidon",
+        "category": "Grieks",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Statue_of_Poseidon_NAMA_235_%28DerHexer%29%2C_part_2.JPG/330px-Statue_of_Poseidon_NAMA_235_%28DerHexer%29%2C_part_2.JPG"
       },
       {
-        "name": "Michael Jordan",
-        "category": "Basketbal",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Michael_Jordan_in_2014.jpg/330px-Michael_Jordan_in_2014.jpg"
+        "name": "Athena",
+        "category": "Grieks",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Mattei_Athena_Louvre_Ma530_n2.jpg/330px-Mattei_Athena_Louvre_Ma530_n2.jpg"
       },
       {
-        "name": "Usain Bolt",
-        "category": "Atletiek",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Usain_Bolt_smiling_Berlin_2009.JPG/330px-Usain_Bolt_smiling_Berlin_2009.JPG"
+        "name": "Hades",
+        "category": "Grieks",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Persephone_Hades_BM_Vase_E82_%28cropped%29.jpg/330px-Persephone_Hades_BM_Vase_E82_%28cropped%29.jpg"
       },
       {
-        "name": "Serena Williams",
-        "category": "Tennis",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Serena_Williams_at_the_2025_International_Tennis_Hall_of_Fame_Induction_Ceremony_Press_Conference_%28cropped%29.jpg/330px-Serena_Williams_at_the_2025_International_Tennis_Hall_of_Fame_Induction_Ceremony_Press_Conference_%28cropped%29.jpg"
+        "name": "Aphrodite",
+        "category": "Grieks",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Cnidus_Aphrodite_Altemps_Inv8619.jpg/330px-Cnidus_Aphrodite_Altemps_Inv8619.jpg"
       },
       {
-        "name": "Tiger Woods",
-        "category": "Golf",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/President_Donald_Trump_hosts_a_reception_honoring_Black_History_Month_%2854341713089%29_%28cropped%29.jpg/330px-President_Donald_Trump_hosts_a_reception_honoring_Black_History_Month_%2854341713089%29_%28cropped%29.jpg"
+        "name": "Ares",
+        "category": "Grieks",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Ares_Canope_Villa_Adriana_b.jpg/330px-Ares_Canope_Villa_Adriana_b.jpg"
       },
       {
-        "name": "Muhammad Ali",
-        "category": "Boksen",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Muhammad_Ali_NYWTS.jpg/330px-Muhammad_Ali_NYWTS.jpg"
+        "name": "Apollo",
+        "category": "Grieks",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Italy-3104_-_Apollo_%285378415112%29.jpg/330px-Italy-3104_-_Apollo_%285378415112%29.jpg"
       },
       {
-        "name": "Lewis Hamilton",
-        "category": "F1",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Prime_Minister_Keir_Starmer_meets_Sir_Lewis_Hamilton_%2854566928382%29_%28cropped%29.jpg/330px-Prime_Minister_Keir_Starmer_meets_Sir_Lewis_Hamilton_%2854566928382%29_%28cropped%29.jpg"
+        "name": "Artemis",
+        "category": "Grieks",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Diane_de_Versailles_-_Mus%C3%A9e_du_Louvre_AGER_Ma_589.jpg/330px-Diane_de_Versailles_-_Mus%C3%A9e_du_Louvre_AGER_Ma_589.jpg"
       },
       {
-        "name": "Kobe Bryant",
-        "category": "Basketbal",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Kobe_Bryant_Dec_2014.jpg/330px-Kobe_Bryant_Dec_2014.jpg"
+        "name": "Hermes",
+        "category": "Grieks",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Hermes_Ingenui_Pio-Clementino_Inv544.jpg/330px-Hermes_Ingenui_Pio-Clementino_Inv544.jpg"
       },
       {
-        "name": "Mike Tyson",
-        "category": "Boksen",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Mike_Tyson_Photo_Op_GalaxyCon_Austin_2023.jpg/330px-Mike_Tyson_Photo_Op_GalaxyCon_Austin_2023.jpg"
+        "name": "Persephone",
+        "category": "Grieks",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/AMI_-_Isis-Persephone.jpg/330px-AMI_-_Isis-Persephone.jpg"
       },
       {
-        "name": "Neymar",
-        "category": "Voetbal",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Neymar_Jr._with_Al_Hilal%2C_3_October_2023_-_03_%28cropped%29.jpg/330px-Neymar_Jr._with_Al_Hilal%2C_3_October_2023_-_03_%28cropped%29.jpg"
+        "name": "Hercules",
+        "category": "Grieks / Romeins",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Hercules_combatant_Achelous_%288655488835%29.jpg/330px-Hercules_combatant_Achelous_%288655488835%29.jpg"
       },
       {
-        "name": "LeBron James",
-        "category": "Basketbal",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/LeBron_James_%2851959977144%29_%28cropped2%29.jpg/330px-LeBron_James_%2851959977144%29_%28cropped2%29.jpg"
+        "name": "Achilles",
+        "category": "Grieks",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Achilles_fighting_against_Memnon_Leiden_Rijksmuseum_voor_Oudheden.jpg/330px-Achilles_fighting_against_Memnon_Leiden_Rijksmuseum_voor_Oudheden.jpg"
       },
       {
-        "name": "Roger Federer",
-        "category": "Tennis",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Roger_Federer_2015_%28cropped%29.jpg/330px-Roger_Federer_2015_%28cropped%29.jpg"
+        "name": "Odysseus",
+        "category": "Grieks",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Head_Odysseus_MAR_Sperlonga.jpg/330px-Head_Odysseus_MAR_Sperlonga.jpg"
       },
       {
-        "name": "Conor McGregor",
-        "category": "MMA",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Conor_McGregor_2025.jpeg/330px-Conor_McGregor_2025.jpeg"
+        "name": "Perseus",
+        "category": "Grieks",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Perseo_con_la_testa_di_medusa%2C_originale_di_et%C3%A0_flavia_o_traianea%2C_dalle_terme_presso_porta_laurentina%2C_01.JPG/330px-Perseo_con_la_testa_di_medusa%2C_originale_di_et%C3%A0_flavia_o_traianea%2C_dalle_terme_presso_porta_laurentina%2C_01.JPG"
       },
       {
-        "name": "Pelé",
-        "category": "Voetbal",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Pele_con_brasil_%28cropped%29.jpg/330px-Pele_con_brasil_%28cropped%29.jpg"
+        "name": "Medusa",
+        "category": "Grieks",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Gorgona_pushkin.jpg/330px-Gorgona_pushkin.jpg"
       },
       {
-        "name": "Michael Phelps",
-        "category": "Zwemmen",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Michael_Phelps_Rio_Olympics_2016.jpg/330px-Michael_Phelps_Rio_Olympics_2016.jpg"
+        "name": "Minotaurus",
+        "category": "Grieks",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Tondo_Minotaur_London_E4_MAN.jpg/330px-Tondo_Minotaur_London_E4_MAN.jpg"
       },
       {
-        "name": "Wayne Gretzky",
-        "category": "IJshockey",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Andrew_Scheer_with_Wayne_Gretzky_%2848055697168%29_%28cropped%29.jpg/330px-Andrew_Scheer_with_Wayne_Gretzky_%2848055697168%29_%28cropped%29.jpg"
+        "name": "Cerberus",
+        "category": "Grieks",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Herakles_Kerberos_Eurystheus_Louvre_E701.jpg/330px-Herakles_Kerberos_Eurystheus_Louvre_E701.jpg"
       },
       {
-        "name": "Tom Brady",
-        "category": "American Football",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/25th_Laureus_World_Sports_Awards_-_Red_Carpet_-_Tom_Brady_-_240422_191334_%28cropped%29_%28cropped%29.jpg/330px-25th_Laureus_World_Sports_Awards_-_Red_Carpet_-_Tom_Brady_-_240422_191334_%28cropped%29_%28cropped%29.jpg"
+        "name": "Cycloop",
+        "category": "Grieks",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Head_of_a_Cyclops_Colosseum.jpg/330px-Head_of_a_Cyclops_Colosseum.jpg"
       },
       {
-        "name": "Zinedine Zidane",
-        "category": "Voetbal",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Zinedine_Zidane_by_Tasnim_03.jpg/330px-Zinedine_Zidane_by_Tasnim_03.jpg"
+        "name": "Pegasus",
+        "category": "Grieks",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Lakonian_Black-Figure_Kylix%3B_detached_fragments.jpg/330px-Lakonian_Black-Figure_Kylix%3B_detached_fragments.jpg"
       },
       {
-        "name": "Diego Maradona",
-        "category": "Voetbal",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Argentina_celebrando_copa_%28cropped%29.jpg/330px-Argentina_celebrando_copa_%28cropped%29.jpg"
+        "name": "Thor",
+        "category": "Noors",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/M%C3%A5rten_Eskil_Winge_-_Tor%27s_Fight_with_the_Giants_-_Google_Art_Project.jpg/330px-M%C3%A5rten_Eskil_Winge_-_Tor%27s_Fight_with_the_Giants_-_Google_Art_Project.jpg"
       },
       {
-        "name": "Simone Biles",
-        "category": "Turnen",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Simone_Biles_National_Team_2024.jpg/330px-Simone_Biles_National_Team_2024.jpg"
+        "name": "Odin",
+        "category": "Noors",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Georg_von_Rosen_-_Oden_som_vandringsman%2C_1886_%28Odin%2C_the_Wanderer%29.jpg/330px-Georg_von_Rosen_-_Oden_som_vandringsman%2C_1886_%28Odin%2C_the_Wanderer%29.jpg"
       },
       {
-        "name": "Rafael Nadal",
-        "category": "Tennis",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Rafael_Nadal_en_2024_%28cropped%29.jpg/330px-Rafael_Nadal_en_2024_%28cropped%29.jpg"
+        "name": "Loki",
+        "category": "Noors",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Processed_SAM_loki.jpg/330px-Processed_SAM_loki.jpg"
       },
       {
-        "name": "Virgil van Dijk",
-        "category": "Voetbal",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/20160604_AUT_NED_8876_%28cropped%29.jpg/330px-20160604_AUT_NED_8876_%28cropped%29.jpg"
+        "name": "Freyja",
+        "category": "Noors",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Freyja_and_the_Necklace_by_James_Doyle_Penrose%2C_1890.jpg/330px-Freyja_and_the_Necklace_by_James_Doyle_Penrose%2C_1890.jpg"
       },
       {
-        "name": "Johan Cruijff",
-        "category": "Voetbal",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Johan_Cruijff_%281974%29.jpg/330px-Johan_Cruijff_%281974%29.jpg"
+        "name": "Anubis",
+        "category": "Egyptisch",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Anubis_standing.svg/330px-Anubis_standing.svg.png"
       }
     ]
   },
@@ -1091,9 +1151,9 @@
         "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Mahatma-Gandhi%2C_studio%2C_1931.jpg/330px-Mahatma-Gandhi%2C_studio%2C_1931.jpg"
       },
       {
-        "name": "Anne Frank",
-        "category": "WOII",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Anne_Frank_passport_photo%2C_May_1942_%28cropped%29.jpg/330px-Anne_Frank_passport_photo%2C_May_1942_%28cropped%29.jpg"
+        "name": "Che Guevara",
+        "category": "Revolutionair",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Che_Guevara_-_Guerrillero_Heroico_by_Alberto_Korda.jpg/330px-Che_Guevara_-_Guerrillero_Heroico_by_Alberto_Korda.jpg"
       },
       {
         "name": "Vincent van Gogh",
@@ -1139,6 +1199,66 @@
         "name": "Tutankhamun",
         "category": "Oudheid",
         "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/CairoEgMuseumTaaMaskMostlyPhotographed.jpg/330px-CairoEgMuseumTaaMaskMostlyPhotographed.jpg"
+      },
+      {
+        "name": "Winston Churchill",
+        "category": "Politiek",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Sir_Winston_Churchill_-_19086236948_%28restored%29.jpg/330px-Sir_Winston_Churchill_-_19086236948_%28restored%29.jpg"
+      },
+      {
+        "name": "John F. Kennedy",
+        "category": "Politiek",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/John_F._Kennedy%2C_White_House_color_photo_portrait.jpg/330px-John_F._Kennedy%2C_White_House_color_photo_portrait.jpg"
+      },
+      {
+        "name": "Marilyn Monroe",
+        "category": "Icoon",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Monroecirca1953.jpg/330px-Monroecirca1953.jpg"
+      },
+      {
+        "name": "Pablo Picasso",
+        "category": "Kunst",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Pablo_picasso_1.jpg/330px-Pablo_picasso_1.jpg"
+      },
+      {
+        "name": "Princess Diana",
+        "category": "Royalty",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Diana%2C_Princess_of_Wales_1997_%282%29.jpg/330px-Diana%2C_Princess_of_Wales_1997_%282%29.jpg"
+      },
+      {
+        "name": "Jeanne d'Arc",
+        "category": "Militair",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Joan_of_Arc_miniature_graded.jpg/330px-Joan_of_Arc_miniature_graded.jpg"
+      },
+      {
+        "name": "Charlie Chaplin",
+        "category": "Film",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Charlie_Chaplin_portrait_Getty_1739411952.jpg/330px-Charlie_Chaplin_portrait_Getty_1739411952.jpg"
+      },
+      {
+        "name": "Nero",
+        "category": "Oudheid",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Nero_Glyptothek_Munich_321.jpg/330px-Nero_Glyptothek_Munich_321.jpg"
+      },
+      {
+        "name": "Henry VIII",
+        "category": "Royalty",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/After_Hans_Holbein_the_Younger_-_Portrait_of_Henry_VIII_-_Google_Art_Project.jpg/330px-After_Hans_Holbein_the_Younger_-_Portrait_of_Henry_VIII_-_Google_Art_Project.jpg"
+      },
+      {
+        "name": "Stephen Hawking",
+        "category": "Wetenschap",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/eb/Stephen_Hawking.StarChild.jpg"
+      },
+      {
+        "name": "Audrey Hepburn",
+        "category": "Film",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/AudreyKHepburn.jpg/330px-AudreyKHepburn.jpg"
+      },
+      {
+        "name": "Walt Disney",
+        "category": "Film / Animatie",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Walt_Disney_1946_%28cropped2%29.JPG/330px-Walt_Disney_1946_%28cropped2%29.JPG"
       }
     ]
   },
@@ -1150,122 +1270,314 @@
       {
         "name": "Bugs Bunny",
         "category": "Looney Tunes",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/2pDQfZMJq95hckoaez9ou93Hmqy.jpg"
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/thumb/1/17/Bugs_Bunny.svg/500px-Bugs_Bunny.svg.png"
       },
       {
         "name": "Scooby-Doo",
         "category": "Scooby-Doo",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/lTzUSCtXR77CmGmEHcaxpxu2b4h.jpg"
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/5/53/Scooby-Doo.png"
       },
       {
         "name": "Tom",
         "category": "Tom & Jerry",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/41EWXLXTZO4MLb2BL28mWZuydyq.jpg"
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/f/f6/Tom_Tom_and_Jerry.png"
       },
       {
-        "name": "Mickey Mouse",
-        "category": "Disney",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/gHtEhlAZHxMawOiPq7JoKwkmETQ.jpg"
+        "name": "SpongeBob SquarePants",
+        "category": "SpongeBob",
+        "imageUrl": "https://static.wikia.nocookie.net/spongebob/images/d/d7/SpongeBob_stock_art.png/revision/latest/scale-to-width-down/350"
       },
       {
         "name": "Finn",
         "category": "Adventure Time",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/qk3eQ8jW4opJ48gFWYUXWaMT4l.jpg"
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Finn_the_Human_character.svg/500px-Finn_the_Human_character.svg.png"
       },
       {
         "name": "Dexter",
         "category": "Dexter's Laboratory",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/inJJn8lUPWdvdy2h259UnoHWVqC.jpg"
+        "imageUrl": "https://static.wikia.nocookie.net/dexterslab/images/f/f9/DexterS1-2.png/revision/latest/scale-to-width-down/350"
       },
       {
         "name": "Shaggy",
         "category": "Scooby-Doo",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/lTzUSCtXR77CmGmEHcaxpxu2b4h.jpg"
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/8/87/ShaggyRogers.png"
       },
       {
-        "name": "Donald Duck",
-        "category": "Disney",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/3klapeIKLp9IBy4uHo7szTeMTdQ.jpg"
+        "name": "Patrick Star",
+        "category": "SpongeBob",
+        "imageUrl": "https://static.wikia.nocookie.net/spongebob/images/c/cc/Patrick_stock_art_%28oil_pianted%29.png/revision/latest/scale-to-width-down/350"
       },
       {
-        "name": "Goofy",
-        "category": "Disney",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/bycmMhO3iIoEDzP768sUjq2RV4T.jpg"
+        "name": "Homer Simpson",
+        "category": "The Simpsons",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/0/02/Homer_Simpson_2006.png"
       },
       {
         "name": "Bart Simpson",
         "category": "The Simpsons",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/uWpG7GqfKGQqX4YMAo3nv5OrglV.jpg"
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/a/aa/Bart_Simpson_200px.png"
       },
       {
         "name": "Peter Griffin",
         "category": "Family Guy",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/3PFsEuAiyLkWsP4GG6dIV37Q6gu.jpg"
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/c/c2/Peter_Griffin.png"
       },
       {
         "name": "Rick Sanchez",
         "category": "Rick and Morty",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/WGRQ8FpjkDTzivQJ43t94bOuY0.jpg"
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/a/a6/Rick_Sanchez.png"
       },
       {
-        "name": "Eric Cartman",
-        "category": "South Park",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/1CGwZCFX2qerXaXQJJUB3qUvxq7.jpg"
+        "name": "Toph",
+        "category": "Avatar: The Last Airbender",
+        "imageUrl": "https://static.wikia.nocookie.net/avatar/images/4/46/Toph_Beifong.png/revision/latest/scale-to-width-down/350"
       },
       {
         "name": "Blossom",
         "category": "Powerpuff Girls",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/468mmhMd21pY4Yx0S0woqeEcxtL.jpg"
+        "imageUrl": "https://static.wikia.nocookie.net/powerpuff/images/2/23/Blossom-pic.png/revision/latest/scale-to-width-down/350"
       },
       {
         "name": "Aang",
         "category": "Avatar: The Last Airbender",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/9RQhVb3r3mCMqYVhLoCu4EvuipP.jpg"
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/8/86/Avatar_Aang.png"
       },
       {
         "name": "Johnny Bravo",
         "category": "Johnny Bravo",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/obbdeoOk8XSXzJrWGiBbaeMMSMl.jpg"
+        "imageUrl": "https://static.wikia.nocookie.net/johnnybravo/images/b/b4/Johnny_Bravo_%28character%29.png/revision/latest/scale-to-width-down/350"
       },
       {
         "name": "Stewie Griffin",
         "category": "Family Guy",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/3PFsEuAiyLkWsP4GG6dIV37Q6gu.jpg"
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/0/02/Stewie_Griffin.png"
       },
       {
         "name": "Morty Smith",
         "category": "Rick and Morty",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/WGRQ8FpjkDTzivQJ43t94bOuY0.jpg"
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/c/c3/Morty_Smith.png"
       },
       {
         "name": "Fred Flintstone",
         "category": "The Flintstones",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/30P6ifagQ3fguTsI33KMmDLTAx6.jpg"
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/a/ad/Fred_Flintstone.png"
       },
       {
         "name": "Daffy Duck",
         "category": "Looney Tunes",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/2pDQfZMJq95hckoaez9ou93Hmqy.jpg"
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f4/Daffy_Duck.svg/500px-Daffy_Duck.svg.png"
       },
       {
         "name": "Timmy Turner",
         "category": "Fairly OddParents",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/3ryMj7tIvVtiXyI2tLvHYTjOjq4.jpg"
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Timmy_Turner.png/500px-Timmy_Turner.png"
       },
       {
-        "name": "Ben Tennyson",
-        "category": "Ben 10",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/a4H0UR7aUkGZlT6Q9r9grBrjJWR.jpg"
+        "name": "Katara",
+        "category": "Avatar: The Last Airbender",
+        "imageUrl": "https://static.wikia.nocookie.net/avatar/images/7/7a/Katara_smiles_at_coronation.png/revision/latest/scale-to-width-down/350"
       },
       {
         "name": "Phineas Flynn",
         "category": "Phineas and Ferb",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/g6TidT7be954rrzPPBTIXkSmfXj.jpg"
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/5/52/Phineas_Flynn.png"
       },
       {
         "name": "Danny Phantom",
         "category": "Danny Phantom",
-        "imageUrl": "https://image.tmdb.org/t/p/w500/pBUOFBmZLaIxzjDjQP7d3QZrd4w.jpg"
+        "imageUrl": "https://static.wikia.nocookie.net/dpwikia/images/1/1f/Render-_Danny_Fenton_1.png/revision/latest/scale-to-width-down/350"
+      }
+    ]
+  },
+  {
+    "id": "disney",
+    "name": "🏰 Disney",
+    "description": "Iconische personages uit Disney films en series",
+    "characters": [
+      {
+        "name": "Mickey Mouse",
+        "category": "Mickey & Friends",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/2/2e/Disney_Mickey_Mouse.png"
+      },
+      {
+        "name": "Donald Duck",
+        "category": "Mickey & Friends",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/a/ab/Donald_Duck_Disney_1.png"
+      },
+      {
+        "name": "Goofy",
+        "category": "Mickey & Friends",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/e/e5/Goofy.png"
+      },
+      {
+        "name": "Minnie Mouse",
+        "category": "Mickey & Friends",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/6/67/Minnie_Mouse.png/revision/latest/scale-to-width-down/1200?cb=20251231222653"
+      },
+      {
+        "name": "Simba",
+        "category": "The Lion King",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/3/37/Profile_-_Simba.jpeg"
+      },
+      {
+        "name": "Elsa",
+        "category": "Frozen",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/9/95/Profile_-_Elsa.jpeg"
+      },
+      {
+        "name": "Anna",
+        "category": "Frozen",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/0/0f/Profile_-_Anna.jpeg"
+      },
+      {
+        "name": "Olaf",
+        "category": "Frozen",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/5/53/Profile_-_Olaf.jpeg"
+      },
+      {
+        "name": "Woody",
+        "category": "Toy Story",
+        "imageUrl": "https://kh.wiki.gallery/images/2/2e/Woody_KHIII.png"
+      },
+      {
+        "name": "Buzz Lightyear",
+        "category": "Toy Story",
+        "imageUrl": "https://kh.wiki.gallery/images/thumb/b/b1/Buzz_Lightyear_KHIII.png/315px-Buzz_Lightyear_KHIII.png"
+      },
+      {
+        "name": "Tiana",
+        "category": "The Princess and the Frog",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/f/fa/Profile_-_Tiana.jpeg"
+      },
+      {
+        "name": "Stitch",
+        "category": "Lilo & Stitch",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/b/b7/Profile_-_Stitch.jpg"
+      },
+      {
+        "name": "Aladdin",
+        "category": "Aladdin",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/b/bb/Profile_-_Aladdin.png"
+      },
+      {
+        "name": "Ariel",
+        "category": "The Little Mermaid",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/8/8a/Profile_-_Ariel.jpg"
+      },
+      {
+        "name": "Rapunzel",
+        "category": "Tangled",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/a/ae/Profile_-_Rapunzel.jpeg"
+      },
+      {
+        "name": "Moana",
+        "category": "Moana",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/7/7d/Profile_-_Moana.png"
+      },
+      {
+        "name": "Mulan",
+        "category": "Mulan",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/0/04/Profile_-_Mulan.jpeg"
+      },
+      {
+        "name": "Cinderella",
+        "category": "Cinderella",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/e/e5/Profile_-_Cinderella.jpeg/revision/latest/scale-to-width-down/350"
+      },
+      {
+        "name": "Snow White",
+        "category": "Snow White",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/3/33/Profile_-_Snow_White.jpeg"
+      },
+      {
+        "name": "Belle",
+        "category": "Beauty and the Beast",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/1/1b/Profile_-_Belle.jpeg/revision/latest/scale-to-width-down/350"
+      },
+      {
+        "name": "Jasmine",
+        "category": "Aladdin",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/c/cd/Profile_-_Jasmine.jpeg/revision/latest/scale-to-width-down/350"
+      },
+      {
+        "name": "Nemo",
+        "category": "Finding Nemo",
+        "imageUrl": "https://static.wikia.nocookie.net/pixar/images/a/aa/Nemo-FN.png/revision/latest?cb=20160710221104"
+      },
+      {
+        "name": "Scar",
+        "category": "The Lion King",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/6/66/Profile_-_Scar.jpeg"
+      },
+      {
+        "name": "Mowgli",
+        "category": "The Jungle Book",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/3/3a/Profile_-_Mowgli.jpeg"
+      },
+      {
+        "name": "Mike Wazowski",
+        "category": "Monsters Inc.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/6/6a/Mike_Wazowski.png"
+      },
+      {
+        "name": "Jafar",
+        "category": "Aladdin",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/6/60/Profile_-_Jafar.jpeg"
+      },
+      {
+        "name": "Maui",
+        "category": "Moana",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/6/6f/Profile_-_Maui.jpeg"
+      },
+      {
+        "name": "Peter Pan",
+        "category": "Peter Pan",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/5/5e/Profile_-_Peter_Pan.jpeg"
+      },
+      {
+        "name": "Tinker Bell",
+        "category": "Peter Pan",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/7/76/Profile_-_Tinker_Bell.jpeg"
+      },
+      {
+        "name": "Bambi",
+        "category": "Bambi",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/c/ce/Profile_-_Bambi.png"
+      },
+      {
+        "name": "Pinocchio",
+        "category": "Pinocchio",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/9/9b/Profile_-_Pinocchio.jpeg"
+      },
+      {
+        "name": "Dumbo",
+        "category": "Dumbo",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/e/e2/Profile_-_Dumbo.jpg"
+      },
+      {
+        "name": "Maleficent",
+        "category": "Sleeping Beauty",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/0/05/Profile_-_Maleficent.jpeg"
+      },
+      {
+        "name": "Cruella de Vil",
+        "category": "101 Dalmatians",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/9/92/Profile_-_Cruella.png"
+      },
+      {
+        "name": "Baloo",
+        "category": "The Jungle Book",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/3/31/Profile_-_Baloo.jpeg"
+      },
+      {
+        "name": "Pocahontas",
+        "category": "Pocahontas",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/7/7b/Profile_-_Pocahontas.jpeg"
+      },
+      {
+        "name": "Hercules",
+        "category": "Hercules",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/7/70/Profile_-_Hercules.jpeg"
       }
     ]
   },
@@ -1393,13 +1705,73 @@
         "name": "Frieza",
         "category": "Dragon Ball",
         "imageUrl": "https://cdn.myanimelist.net/images/characters/7/359258.jpg"
+      },
+      {
+        "name": "Jotaro Kujo",
+        "category": "JoJo's Bizarre Adventure",
+        "imageUrl": "https://cdn.myanimelist.net/images/characters/9/312302.jpg"
+      },
+      {
+        "name": "Dio Brando",
+        "category": "JoJo's Bizarre Adventure",
+        "imageUrl": "https://cdn.myanimelist.net/images/characters/8/330539.jpg"
+      },
+      {
+        "name": "Giorno Giovanna",
+        "category": "JoJo's Bizarre Adventure",
+        "imageUrl": "https://cdn.myanimelist.net/images/characters/16/571466.jpg"
+      },
+      {
+        "name": "Joseph Joestar",
+        "category": "JoJo's Bizarre Adventure",
+        "imageUrl": "https://cdn.myanimelist.net/images/characters/7/316615.jpg"
+      },
+      {
+        "name": "Killua Zoldyck",
+        "category": "Hunter x Hunter",
+        "imageUrl": "https://cdn.myanimelist.net/images/characters/2/327920.jpg"
+      },
+      {
+        "name": "Anya Forger",
+        "category": "Spy x Family",
+        "imageUrl": "https://cdn.myanimelist.net/images/characters/4/457933.jpg"
+      },
+      {
+        "name": "Sanji",
+        "category": "One Piece",
+        "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvtTXsHn6yRQVJFX8I9PmsIc7ZpMwiEljHaA&s"
+      },
+      {
+        "name": "Todoroki Shoto",
+        "category": "My Hero Academia",
+        "imageUrl": "https://cdn.myanimelist.net/images/characters/12/332527.jpg"
+      },
+      {
+        "name": "All Might",
+        "category": "My Hero Academia",
+        "imageUrl": "https://cdn.myanimelist.net/images/characters/14/310613.jpg"
+      },
+      {
+        "name": "L",
+        "category": "Death Note",
+        "imageUrl": "https://cdn.myanimelist.net/images/characters/10/249647.jpg"
+      },
+      {
+        "name": "Nami",
+        "category": "One Piece",
+        "imageUrl": "https://cdn.myanimelist.net/images/characters/6/59914.jpg"
+      },
+      {
+        "name": "Izuku Midoriya",
+        "category": "My Hero Academia",
+        "imageUrl": "https://cdn.myanimelist.net/images/characters/7/299404.jpg"
       }
     ]
   },
   {
     "id": "nederland-nu",
-    "name": "🧡 Nederland Nu",
-    "description": "Bekende Nederlanders die onze generatie kent",
+    "name": "🧡 Bekende Nederlanders",
+    "description": "Iconische en bekende Nederlanders",
     "characters": [
       {
         "name": "Lil Kleine",
@@ -1427,24 +1799,24 @@
         "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Matthijs-van-Nieuwkerk.jpg/330px-Matthijs-van-Nieuwkerk.jpg"
       },
       {
-        "name": "Tiësto",
-        "category": "DJ",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Tiesto_LIV_Las_Vegas.png"
+        "name": "André Hazes",
+        "category": "Zanger",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Opnamen_in_Flint_in_Amersfoort_van_programma_over_zanger_Andre_Hazes_dat_de_TROS%2C_Bestanddeelnr_931-9549.jpg/330px-Opnamen_in_Flint_in_Amersfoort_van_programma_over_zanger_Andre_Hazes_dat_de_TROS%2C_Bestanddeelnr_931-9549.jpg"
       },
       {
-        "name": "Martin Garrix",
-        "category": "DJ",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Martin_Garrix_%40_Web_Summit_2017.jpg/330px-Martin_Garrix_%40_Web_Summit_2017.jpg"
+        "name": "Frans Bauer",
+        "category": "Zanger",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Fransbauer.jpg/330px-Fransbauer.jpg"
       },
       {
-        "name": "Giel Beelen",
-        "category": "Radio",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Giel_Beelen_during_Serious_Request_2012.jpg/330px-Giel_Beelen_during_Serious_Request_2012.jpg"
+        "name": "Rembrandt van Rijn",
+        "category": "Schilder",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Rembrandt_van_Rijn_-_Self-Portrait_-_Google_Art_Project.jpg/330px-Rembrandt_van_Rijn_-_Self-Portrait_-_Google_Art_Project.jpg"
       },
       {
-        "name": "Boef",
-        "category": "Rapper",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Boef_2018.jpg/330px-Boef_2018.jpg"
+        "name": "Ali B",
+        "category": "Rapper / TV",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Ali_B_%282018%29.jpg/330px-Ali_B_%282018%29.jpg"
       },
       {
         "name": "Marco Borsato",
@@ -1462,9 +1834,9 @@
         "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Thierry_Baudet_%282025%29_%287%29_%28cropped%29.jpg/330px-Thierry_Baudet_%282025%29_%287%29_%28cropped%29.jpg"
       },
       {
-        "name": "Famke Louise",
-        "category": "Zangeres",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Famke_Louise_bij_DWDD_in_2018_%28cropped%29.jpg/330px-Famke_Louise_bij_DWDD_in_2018_%28cropped%29.jpg"
+        "name": "Ruud Gullit",
+        "category": "Voetbal / TV",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/25th_Laureus_World_Sports_Awards_-_Ruud_Gullit_-_240422_131911_%28cropped%29.jpg/330px-25th_Laureus_World_Sports_Awards_-_Ruud_Gullit_-_240422_131911_%28cropped%29.jpg"
       },
       {
         "name": "Pieter Omtzigt",
@@ -1482,14 +1854,14 @@
         "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Jesse_Klaver_2020_%286%29_%28cropped%29.jpg/330px-Jesse_Klaver_2020_%286%29_%28cropped%29.jpg"
       },
       {
-        "name": "André Kuipers",
-        "category": "Astronaut",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/ESA_astronaut_Andr%C3%A9_Kuipers.jpg/330px-ESA_astronaut_Andr%C3%A9_Kuipers.jpg"
+        "name": "André van Duin",
+        "category": "Komiek / TV",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Andr%C3%A9_van_Duin_%282018%29.jpg/330px-Andr%C3%A9_van_Duin_%282018%29.jpg"
       },
       {
-        "name": "Jort Kelder",
-        "category": "TV / Ondernemer",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Jort_Kelder_%282021%29_%28cropped%29.jpg/330px-Jort_Kelder_%282021%29_%28cropped%29.jpg"
+        "name": "Carice van Houten",
+        "category": "Actrice",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Carice_van_Houten_at_the_2026_Berlin_International_Film_Festival-60396.jpg/330px-Carice_van_Houten_at_the_2026_Berlin_International_Film_Festival-60396.jpg"
       },
       {
         "name": "Mark Rutte",
@@ -1517,9 +1889,256 @@
         "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Doutzen_Kroes_2012_Shankbone_3_%28cropped%29.JPG/330px-Doutzen_Kroes_2012_Shankbone_3_%28cropped%29.JPG"
       },
       {
-        "name": "Sylvie Meis",
-        "category": "TV / Model",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Sylvie_van_der_Vaart_2012.jpg/330px-Sylvie_van_der_Vaart_2012.jpg"
+        "name": "Anne Frank",
+        "category": "WOII",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Anne_Frank_passport_photo%2C_May_1942_%28cropped%29.jpg/330px-Anne_Frank_passport_photo%2C_May_1942_%28cropped%29.jpg"
+      },
+      {
+        "name": "Johan Cruijff",
+        "category": "Voetbal",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Johan_Cruijff_%281974%29.jpg/330px-Johan_Cruijff_%281974%29.jpg"
+      },
+      {
+        "name": "Rutger Hauer",
+        "category": "Acteur",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Rutger_Hauer_%282018%29.jpg/330px-Rutger_Hauer_%282018%29.jpg"
+      },
+      {
+        "name": "Paul de Leeuw",
+        "category": "TV / Komiek",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Paul_de_Leeuw_%282018%29.jpg/330px-Paul_de_Leeuw_%282018%29.jpg"
+      },
+      {
+        "name": "Linda de Mol",
+        "category": "TV",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/6/60/LindaDeMol2018.jpg"
+      },
+      {
+        "name": "Willem van Oranje",
+        "category": "Vader des Vaderlands",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/William_I%2C_Prince_of_Orange_by_Adriaen_Thomasz._Key_Rijksmuseum_Amsterdam_SK-A-3148.jpg/330px-William_I%2C_Prince_of_Orange_by_Adriaen_Thomasz._Key_Rijksmuseum_Amsterdam_SK-A-3148.jpg"
+      },
+      {
+        "name": "Beatrix",
+        "category": "Koningin",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Prinses_Beatrix.jpg/330px-Prinses_Beatrix.jpg"
+      },
+      {
+        "name": "Pim Fortuyn",
+        "category": "Politiek",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a7/Pim_Fortuyn_-_May_4.jpg"
+      },
+      {
+        "name": "Herman Brood",
+        "category": "Muzikant",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Herman_Brood_1979.png"
+      },
+      {
+        "name": "Enzo Knol",
+        "category": "YouTuber",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Enzo_Knol_-_Koningsdag_2015_Assen_01.jpg/330px-Enzo_Knol_-_Koningsdag_2015_Assen_01.jpg"
+      },
+      {
+        "name": "Wilhelmina",
+        "category": "Koningin in WOII",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Wilhelmina_of_the_Netherlands_in_1936.jpg/330px-Wilhelmina_of_the_Netherlands_in_1936.jpg"
+      },
+      {
+        "name": "Michiel de Ruyter",
+        "category": "Admiraal",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Bol%2C_Michiel_de_Ruyter.jpg/330px-Bol%2C_Michiel_de_Ruyter.jpg"
+      },
+      {
+        "name": "Johannes Vermeer",
+        "category": "Schilder",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Cropped_version_of_Jan_Vermeer_van_Delft_002.jpg/330px-Cropped_version_of_Jan_Vermeer_van_Delft_002.jpg"
+      }
+    ]
+  },
+  {
+    "id": "league-of-legends",
+    "name": "🎮 League of Legends",
+    "description": "Champions uit de populairste MOBA ter wereld",
+    "characters": [
+      {
+        "name": "Ahri",
+        "category": "Mage",
+        "imageUrl": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Ahri_0.jpg"
+      },
+      {
+        "name": "Yasuo",
+        "category": "Fighter",
+        "imageUrl": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Yasuo_0.jpg"
+      },
+      {
+        "name": "Lux",
+        "category": "Mage",
+        "imageUrl": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Lux_0.jpg"
+      },
+      {
+        "name": "Jinx",
+        "category": "Marksman",
+        "imageUrl": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Jinx_0.jpg"
+      },
+      {
+        "name": "Lee Sin",
+        "category": "Fighter",
+        "imageUrl": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/LeeSin_0.jpg"
+      },
+      {
+        "name": "Thresh",
+        "category": "Support",
+        "imageUrl": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Thresh_0.jpg"
+      },
+      {
+        "name": "Teemo",
+        "category": "Marksman",
+        "imageUrl": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Teemo_0.jpg"
+      },
+      {
+        "name": "Darius",
+        "category": "Fighter",
+        "imageUrl": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Darius_0.jpg"
+      },
+      {
+        "name": "Zed",
+        "category": "Assassin",
+        "imageUrl": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Zed_0.jpg"
+      },
+      {
+        "name": "Miss Fortune",
+        "category": "Marksman",
+        "imageUrl": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/MissFortune_0.jpg"
+      },
+      {
+        "name": "Ezreal",
+        "category": "Marksman",
+        "imageUrl": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Ezreal_0.jpg"
+      },
+      {
+        "name": "Vayne",
+        "category": "Marksman",
+        "imageUrl": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Vayne_0.jpg"
+      },
+      {
+        "name": "Katarina",
+        "category": "Assassin",
+        "imageUrl": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Katarina_0.jpg"
+      },
+      {
+        "name": "Garen",
+        "category": "Fighter",
+        "imageUrl": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Garen_0.jpg"
+      },
+      {
+        "name": "Ashe",
+        "category": "Marksman",
+        "imageUrl": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Ashe_0.jpg"
+      },
+      {
+        "name": "Braum",
+        "category": "Support",
+        "imageUrl": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Braum_0.jpg"
+      },
+      {
+        "name": "Jhin",
+        "category": "Marksman",
+        "imageUrl": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Jhin_0.jpg"
+      },
+      {
+        "name": "Vi",
+        "category": "Fighter",
+        "imageUrl": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Vi_0.jpg"
+      },
+      {
+        "name": "Caitlyn",
+        "category": "Marksman",
+        "imageUrl": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Caitlyn_0.jpg"
+      },
+      {
+        "name": "Ekko",
+        "category": "Assassin",
+        "imageUrl": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Ekko_0.jpg"
+      },
+      {
+        "name": "Morgana",
+        "category": "Mage",
+        "imageUrl": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Morgana_0.jpg"
+      },
+      {
+        "name": "Kai'Sa",
+        "category": "Marksman",
+        "imageUrl": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Kaisa_0.jpg"
+      },
+      {
+        "name": "Yone",
+        "category": "Fighter",
+        "imageUrl": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Yone_0.jpg"
+      },
+      {
+        "name": "Sett",
+        "category": "Fighter",
+        "imageUrl": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Sett_0.jpg"
+      },
+      {
+        "name": "Akali",
+        "category": "Assassin",
+        "imageUrl": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Akali_0.jpg"
+      },
+      {
+        "name": "Lulu",
+        "category": "Support",
+        "imageUrl": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Lulu_0.jpg"
+      },
+      {
+        "name": "Viego",
+        "category": "Fighter",
+        "imageUrl": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Viego_0.jpg"
+      },
+      {
+        "name": "Sylas",
+        "category": "Mage",
+        "imageUrl": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Sylas_0.jpg"
+      },
+      {
+        "name": "Samira",
+        "category": "Marksman",
+        "imageUrl": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Samira_0.jpg"
+      },
+      {
+        "name": "Pyke",
+        "category": "Assassin",
+        "imageUrl": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Pyke_0.jpg"
+      },
+      {
+        "name": "Warwick",
+        "category": "Fighter",
+        "imageUrl": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Warwick_0.jpg"
+      },
+      {
+        "name": "Vex",
+        "category": "Mage",
+        "imageUrl": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Vex_0.jpg"
+      },
+      {
+        "name": "Kindred",
+        "category": "Marksman",
+        "imageUrl": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Kindred_0.jpg"
+      },
+      {
+        "name": "Renata Glasc",
+        "category": "Support",
+        "imageUrl": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Renata_0.jpg"
+      },
+      {
+        "name": "Aphelios",
+        "category": "Marksman",
+        "imageUrl": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Aphelios_0.jpg"
+      },
+      {
+        "name": "Aatrox",
+        "category": "Fighter",
+        "imageUrl": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Aatrox_0.jpg"
       }
     ]
   }

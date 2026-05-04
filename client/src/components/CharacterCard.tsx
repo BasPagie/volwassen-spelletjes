@@ -6,9 +6,17 @@ interface Props {
   playerState: WhatAmIPlayerState;
   player: Player | undefined;
   isOwn: boolean;
+  onReroll?: (targetPlayerId: string) => void;
+  canReroll?: boolean;
 }
 
-export default function CharacterCard({ playerState, player, isOwn }: Props) {
+export default function CharacterCard({
+  playerState,
+  player,
+  isOwn,
+  onReroll,
+  canReroll,
+}: Props) {
   const {
     assignedCharacter,
     guessedCorrectly,
@@ -19,6 +27,7 @@ export default function CharacterCard({ playerState, player, isOwn }: Props) {
   } = playerState;
 
   const [imgFailed, setImgFailed] = useState(false);
+  const [showRerollConfirm, setShowRerollConfirm] = useState(false);
 
   // Reset imgFailed when character changes
   useEffect(() => {
@@ -59,7 +68,7 @@ export default function CharacterCard({ playerState, player, isOwn }: Props) {
       }`}
     >
       {/* Character image / placeholder */}
-      <div className="relative aspect-[4/5] sm:aspect-[3/4] bg-gray-100 overflow-hidden">
+      <div className="group/card relative aspect-[4/5] sm:aspect-[3/4] bg-gray-100 overflow-hidden">
         {isOwn && !gaveUp && !guessedCorrectly ? (
           // Hide own character
           <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-b from-purple-200 to-purple-400">
@@ -124,6 +133,47 @@ export default function CharacterCard({ playerState, player, isOwn }: Props) {
           <div className="absolute top-2 right-2 bg-red-500 text-white rounded-full px-2 py-0.5 text-xs font-display font-bold">
             ⏱ {secondsLeft}s
           </div>
+        )}
+
+        {/* Reroll — appears on hover at bottom of image */}
+        {canReroll && !isOwn && !guessedCorrectly && !gaveUp && onReroll && (
+          <>
+            {!showRerollConfirm ? (
+              <button
+                onClick={() => setShowRerollConfirm(true)}
+                className="absolute bottom-0 inset-x-0 bg-black/60 text-white py-1.5 text-xs font-display font-bold flex items-center justify-center gap-1 opacity-0 group-hover/card:opacity-100 transition-opacity"
+              >
+                🔄 Te moeilijk?
+              </button>
+            ) : (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="absolute bottom-0 inset-x-0 bg-black/70 backdrop-blur-sm p-2 flex flex-col items-center gap-1.5"
+              >
+                <p className="text-xs font-display font-bold text-white text-center">
+                  Nieuw karakter geven?
+                </p>
+                <div className="flex gap-1.5">
+                  <button
+                    onClick={() => {
+                      onReroll(playerState.playerId);
+                      setShowRerollConfirm(false);
+                    }}
+                    className="bg-purple-500 hover:bg-purple-600 text-white rounded-lg px-3 py-1 text-xs font-display font-bold shadow transition-all"
+                  >
+                    Ja, wissel
+                  </button>
+                  <button
+                    onClick={() => setShowRerollConfirm(false)}
+                    className="bg-white/20 hover:bg-white/30 text-white rounded-lg px-3 py-1 text-xs font-display font-bold shadow transition-all"
+                  >
+                    Nee
+                  </button>
+                </div>
+              </motion.div>
+            )}
+          </>
         )}
       </div>
 

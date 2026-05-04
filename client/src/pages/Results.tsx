@@ -340,6 +340,11 @@ export default function Results() {
                               </span>
                             )}
                           </span>
+                          {p.characterName && (
+                            <p className="text-xs text-gray-500 mt-0.5">
+                              🎭 {p.characterName}
+                            </p>
+                          )}
                           <div className="flex gap-2 text-xs text-gray-400 mt-0.5">
                             {p.roundScores.map((score, ri) => (
                               <span key={ri}>

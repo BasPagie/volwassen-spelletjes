@@ -30,6 +30,7 @@ export default function WhatAmIGame({
   onGiveUp,
   onPlayAgain,
 }: Props) {
+  const socket = useSocket();
   const [guess, setGuess] = useState("");
   const [lastResult, setLastResult] = useState<{
     correct: boolean;
@@ -46,6 +47,11 @@ export default function WhatAmIGame({
   const currentTurnPlayer = isTurnBased
     ? players.find((p) => p.id === gameState.currentTurnPlayerId)
     : null;
+
+  // Reroll handler
+  const handleReroll = (targetPlayerId: string) => {
+    socket?.emit("whatami:reroll", { targetPlayerId });
+  };
 
   // Cooldown
   const [cooldownLeft, setCooldownLeft] = useState(0);
@@ -267,6 +273,8 @@ export default function WhatAmIGame({
                 playerState={ps}
                 player={player}
                 isOwn={isOwn}
+                onReroll={handleReroll}
+                canReroll={!isFinished}
               />
             );
           })}

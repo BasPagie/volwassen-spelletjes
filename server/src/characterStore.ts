@@ -33,7 +33,7 @@ function loadPacksFromFile(): WhatAmICharacterPack[] {
 
 let packs: WhatAmICharacterPack[] = loadPacksFromFile();
 
-const isDev = process.env.DEV_MODE === 'true';
+const isDev = process.env.DEV_MODE === 'true' || process.env.NODE_ENV !== 'production';
 
 export function getAllPacks(): WhatAmICharacterPack[] {
   if (isDev) packs = loadPacksFromFile();
