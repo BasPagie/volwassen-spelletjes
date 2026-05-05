@@ -74,27 +74,71 @@ const SONGS = [
   { title: "Idol", artist: "YOASOBI", category: "anime", deezerId: 2210493097 },
   { title: "Renai Circulation", artist: "Kana Hanazawa", category: "anime" },
 
-  // ─── Video Game Music ─────────────────────────────────
-  { title: "Megalovania", artist: "Toby Fox", category: "gaming" },
-  { title: "Sweden", artist: "C418", category: "gaming" },
-  { title: "Jump Up, Super Star!", artist: "Nintendo", category: "gaming", previewUrl: "https://lambda.vgmtreasurechest.com/soundtracks/super-mario-odyssey-original-soundtrack/tvygjaci/2-12.%20Jump%20Up%2C%20Super%20Star%21%20-%20New%20Donk%20City%20Festival.mp3", coverUrl: "https://i1.sndcdn.com/artworks-000249363267-betlv6-t500x500.jpg", startOffset: 30 },
-  { title: "Dragonborn", artist: "Jeremy Soule", category: "gaming" },
-  { title: "One-Winged Angel", artist: "Nobuo Uematsu", category: "gaming" },
-  { title: "Still Alive", artist: "Jonathan Coulton", category: "gaming" },
-  { title: "Want You Gone", artist: "Jonathan Coulton", category: "gaming" },
-  { title: "Baba Yetu", artist: "Christopher Tin", category: "gaming" },
-  { title: "Simple and Clean", artist: "Hikaru Utada", category: "gaming" },
-  { title: "Ezio's Family", artist: "Jesper Kyd", category: "gaming" },
-  { title: "The Only Thing They Fear Is You", artist: "Mick Gordon", category: "gaming" },
-  { title: "Dearly Beloved", artist: "Yoko Shimomura", category: "gaming" },
-  { title: "Live and Learn", artist: "Crush 40", category: "gaming" },
-  { title: "Silver For Monsters", artist: "Percival Schuttenbach", category: "gaming", deezerId: 448311922 },
-  { title: "His Theme", artist: "Toby Fox", category: "gaming" },
-  { title: "Last Surprise", artist: "Lyn", category: "gaming" },
-  { title: "Weight of the World", artist: "Keiichi Okabe", category: "gaming" },
-  { title: "Halo Theme", artist: "Martin O'Donnell", category: "gaming" },
-  { title: "Snake Eater", artist: "Cynthia Harrell", category: "gaming" },
-  { title: "Life Will Change", artist: "Lyn", category: "gaming" },
+  // ─── Anime OST (instrumental) ───────────────────────────
+  { title: "Giorno's Theme", artist: "Yugo Kanno", category: "anime-ost", previewUrl: "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/3a/f3/3d/3af33d22-7b3e-07ce-4127-f074c0d5b01d/mzaf_5631586400418951555.plus.aac.p.m4a", coverUrl: "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/9e/f3/0e/9ef30eac-41e4-456a-7c37-340bf3721791/cover.jpg/600x600bb.jpg" },
+  { title: "Binks' Sake", artist: "One Piece", category: "anime-ost", deezerId: 4002100951 },
+  { title: "Licht und Schatten", artist: "Hiroyuki Sawano", category: "anime-ost" },
+  { title: "You Say Run", artist: "Yuki Hayashi", category: "anime-ost" },
+  { title: "Vogel im Kafig", artist: "Hiroyuki Sawano", category: "anime-ost" },
+  { title: "Sadness and Sorrow", artist: "Toshio Masuda", category: "anime-ost" },
+  { title: "The Raising Fighting Spirit", artist: "Toshio Masuda", category: "anime-ost" },
+  { title: "Next to You", artist: "Yoshihisa Hirano", category: "anime-ost" },
+  { title: "Overtaken", artist: "Kohei Tanaka", category: "anime-ost" },
+  { title: "Call of Silence", artist: "Hiroyuki Sawano", category: "anime-ost" },
+  { title: "Dragon Ball Z - Prologue & Subtitle", artist: "Kenji Yamamoto", category: "anime-ost" },
+  { title: "On the Precipice of Defeat", artist: "Shiro Sagisu", category: "anime-ost" },
+  { title: "Fairy Tail Main Theme", artist: "Yasuharu Takanashi", category: "anime-ost" },
+  { title: "Howl's Moving Castle - Merry Go Round of Life", artist: "Joe Hisaishi", category: "anime-ost" },
+  { title: "One Summer's Day", artist: "Joe Hisaishi", category: "anime-ost" },
+  { title: "My Hero Academia - You Can Become a Hero", artist: "Yuki Hayashi", category: "anime-ost" },
+  { title: "Naruto Main Theme", artist: "Toshio Masuda", category: "anime-ost" },
+  { title: "Demon Slayer - Kamado Tanjiro no Uta", artist: "Go Shiina", category: "anime-ost" },
+  { title: "One Punch Man Theme", artist: "Makoto Miyazaki", category: "anime-ost" },
+  { title: "Tokyo Ghoul - Glassy Sky", artist: "Donna Burke", category: "anime-ost" },
+
+  // ─── Video Game Songs (vocals) ──────────────────────────
+  { title: "Jump Up, Super Star!", artist: "Nintendo", category: "game-songs", previewUrl: "https://lambda.vgmtreasurechest.com/soundtracks/super-mario-odyssey-original-soundtrack/tvygjaci/2-12.%20Jump%20Up%2C%20Super%20Star%21%20-%20New%20Donk%20City%20Festival.mp3", coverUrl: "https://i1.sndcdn.com/artworks-000249363267-betlv6-t500x500.jpg", startOffset: 30 },
+  { title: "Still Alive", artist: "Jonathan Coulton", category: "game-songs" },
+  { title: "Bury the Light", artist: "Casey Edwards", category: "game-songs", deezerId: 2705769722 },
+  { title: "Legends Never Die", artist: "Against the Current", category: "game-songs" },
+  { title: "Simple and Clean", artist: "Hikaru Utada", category: "game-songs" },
+  { title: "Rules of Nature", artist: "Jamie Christopherson", category: "game-songs", deezerId: 621146202 },
+  { title: "Live and Learn", artist: "Crush 40", category: "game-songs" },
+  { title: "Last Surprise", artist: "Lyn", category: "game-songs" },
+  { title: "Snake Eater", artist: "Cynthia Harrell", category: "game-songs" },
+  { title: "Life Will Change", artist: "Lyn", category: "game-songs" },
+  { title: "Dragonborn Comes", artist: "Malukah", category: "game-songs" },
+  { title: "Sanctuary", artist: "Hikaru Utada", category: "game-songs" },
+  { title: "Fly Me to the Moon", artist: "Bayonetta", category: "game-songs", previewUrl: "https://jetta.vgmtreasurechest.com/soundtracks/bayonetta/jeteszwg/1-08.%20Fly%20Me%20To%20The%20Moon%20%28%E2%88%9E%20Climax%20Mix%29.mp3", startOffset: 10 },
+  { title: "City Escape", artist: "Crush 40", category: "game-songs" },
+  { title: "Weight of the World", artist: "Keiichi Okabe", category: "game-songs" },
+  { title: "Baba Yetu", artist: "Christopher Tin", category: "game-songs" },
+  { title: "Devils Never Cry", artist: "Capcom", category: "game-songs" },
+  { title: "Dragonforce - Through the Fire and Flames", artist: "DragonForce", category: "game-songs" },
+  { title: "Want You Gone", artist: "Jonathan Coulton", category: "game-songs" },
+  { title: "Open Your Heart", artist: "Crush 40", category: "game-songs", deezerId: 1243877402 },
+
+  // ─── Video Game OST (instrumental) ────────────────────
+  { title: "Megalovania", artist: "Toby Fox", category: "game-ost" },
+  { title: "Sweden", artist: "C418", category: "game-ost" },
+  { title: "Dragonborn", artist: "Jeremy Soule", category: "game-ost" },
+  { title: "One-Winged Angel", artist: "Nobuo Uematsu", category: "game-ost" },
+  { title: "Ezio's Family", artist: "Jesper Kyd", category: "game-ost" },
+  { title: "Dearly Beloved", artist: "Yoko Shimomura", category: "game-ost" },
+  { title: "Silver For Monsters", artist: "Percival Schuttenbach", category: "game-ost", deezerId: 448311922 },
+  { title: "His Theme", artist: "Toby Fox", category: "game-ost" },
+  { title: "San Andreas Theme", artist: "Michael Hunter", category: "game-ost", deezerId: 2461610925 },
+  { title: "Halo Theme", artist: "Martin O'Donnell", category: "game-ost" },
+  { title: "Wet Hands", artist: "C418", category: "game-ost" },
+  { title: "Song of Storms", artist: "Koji Kondo", category: "game-ost" },
+  { title: "Main Theme", artist: "The Elder Scrolls", category: "game-ost" },
+  { title: "Pigstep", artist: "Lena Raine", category: "game-ost" },
+  { title: "BFG Division", artist: "Mick Gordon", category: "game-ost" },
+  { title: "God of War", artist: "Bear McCreary", category: "game-ost" },
+  { title: "Gusty Garden Galaxy", artist: "Mahito Yokota", category: "game-ost" },
+  { title: "Undertale", artist: "Toby Fox", category: "game-ost" },
+  { title: "Main Theme - The Witcher 3", artist: "Marcin Przybylowicz", category: "game-ost" },
+  { title: "Persona 5 - Beneath the Mask", artist: "Lyn", category: "game-ost" },
 
   // ─── EDM & Dance ──────────────────────────────────────
   { title: "Clarity", artist: "Zedd", category: "edm" },
@@ -141,26 +185,49 @@ const SONGS = [
   { title: "Ben Je Wakker", artist: "Meau", category: "dutch" },
 
   // ─── 80s & 90s ────────────────────────────────────────
-  { title: "Take On Me", artist: "a-ha", category: "80s-90s" },
-  { title: "Billie Jean", artist: "Michael Jackson", category: "80s-90s" },
-  { title: "Sweet Child O' Mine", artist: "Guns N' Roses", category: "80s-90s" },
-  { title: "Like a Prayer", artist: "Madonna", category: "80s-90s" },
-  { title: "Don't Stop Believin'", artist: "Journey", category: "80s-90s" },
-  { title: "Smells Like Teen Spirit", artist: "Nirvana", category: "80s-90s" },
-  { title: "Wannabe", artist: "Spice Girls", category: "80s-90s" },
-  { title: "Everybody", artist: "Backstreet Boys", category: "80s-90s" },
-  { title: "I Want It That Way", artist: "Backstreet Boys", category: "80s-90s" },
-  { title: "MMMBop", artist: "Hanson", category: "80s-90s" },
-  { title: "Livin' on a Prayer", artist: "Bon Jovi", category: "80s-90s" },
-  { title: "Under Pressure", artist: "Queen", category: "80s-90s" },
-  { title: "Blue (Da Ba Dee)", artist: "Eiffel 65", category: "80s-90s" },
-  { title: "Bitter Sweet Symphony", artist: "The Verve", category: "80s-90s" },
-  { title: "Jump", artist: "Van Halen", category: "80s-90s" },
-  { title: "Africa", artist: "Toto", category: "80s-90s" },
-  { title: "Girls Just Want to Have Fun", artist: "Cyndi Lauper", category: "80s-90s" },
-  { title: "Eye of the Tiger", artist: "Survivor", category: "80s-90s" },
-  { title: "No Scrubs", artist: "TLC", category: "80s-90s" },
-  { title: "Creep", artist: "Radiohead", category: "80s-90s" },
+  // ─── 80s ─────────────────────────────────────────────
+  { title: "Take On Me", artist: "a-ha", category: "80s" },
+  { title: "Billie Jean", artist: "Michael Jackson", category: "80s" },
+  { title: "Sweet Child O' Mine", artist: "Guns N' Roses", category: "80s" },
+  { title: "Like a Prayer", artist: "Madonna", category: "80s" },
+  { title: "Don't Stop Believin'", artist: "Journey", category: "80s" },
+  { title: "Livin' on a Prayer", artist: "Bon Jovi", category: "80s" },
+  { title: "Under Pressure", artist: "Queen", category: "80s" },
+  { title: "Jump", artist: "Van Halen", category: "80s" },
+  { title: "Africa", artist: "Toto", category: "80s" },
+  { title: "Girls Just Want to Have Fun", artist: "Cyndi Lauper", category: "80s" },
+  { title: "Eye of the Tiger", artist: "Survivor", category: "80s" },
+  { title: "Thriller", artist: "Michael Jackson", category: "80s" },
+  { title: "Every Breath You Take", artist: "The Police", category: "80s" },
+  { title: "Tainted Love", artist: "Soft Cell", category: "80s" },
+  { title: "Wake Me Up Before You Go-Go", artist: "Wham!", category: "80s" },
+  { title: "I Wanna Dance with Somebody", artist: "Whitney Houston", category: "80s" },
+  { title: "Come On Eileen", artist: "Dexys Midnight Runners", category: "80s" },
+  { title: "99 Luftballons", artist: "Nena", category: "80s" },
+  { title: "With or Without You", artist: "U2", category: "80s" },
+  { title: "Karma Chameleon", artist: "Culture Club", category: "80s" },
+
+  // ─── 90s ─────────────────────────────────────────────
+  { title: "Smells Like Teen Spirit", artist: "Nirvana", category: "90s" },
+  { title: "Wannabe", artist: "Spice Girls", category: "90s" },
+  { title: "Everybody", artist: "Backstreet Boys", category: "90s" },
+  { title: "I Want It That Way", artist: "Backstreet Boys", category: "90s" },
+  { title: "MMMBop", artist: "Hanson", category: "90s" },
+  { title: "Blue (Da Ba Dee)", artist: "Eiffel 65", category: "90s" },
+  { title: "Bitter Sweet Symphony", artist: "The Verve", category: "90s" },
+  { title: "No Scrubs", artist: "TLC", category: "90s" },
+  { title: "Creep", artist: "Radiohead", category: "90s" },
+  { title: "...Baby One More Time", artist: "Britney Spears", category: "90s" },
+  { title: "Gangsta's Paradise", artist: "Coolio", category: "90s" },
+  { title: "Wonderwall", artist: "Oasis", category: "90s" },
+  { title: "Zombie", artist: "The Cranberries", category: "90s" },
+  { title: "Waterfalls", artist: "TLC", category: "90s" },
+  { title: "Losing My Religion", artist: "R.E.M.", category: "90s" },
+  { title: "Ice Ice Baby", artist: "Vanilla Ice", category: "90s" },
+  { title: "Livin' La Vida Loca", artist: "Ricky Martin", category: "90s" },
+  { title: "My Heart Will Go On", artist: "Celine Dion", category: "90s" },
+  { title: "Iris", artist: "Goo Goo Dolls", category: "90s" },
+  { title: "Return of the Mack", artist: "Mark Morrison", category: "90s" },
 
   // ─── 2000s ────────────────────────────────────────────
   { title: "Crazy in Love", artist: "Beyoncé", category: "2000s" },
@@ -234,10 +301,13 @@ const CATEGORIES = {
   pop: { name: "Pop Hits", description: "De grootste pophits" },
   memes: { name: "Memes & Guilty Pleasures", description: "Viral hits en guilty pleasures" },
   anime: { name: "Anime Openings", description: "De bekendste anime intros" },
-  gaming: { name: "Video Game Music", description: "Iconische game soundtracks" },
+  "anime-ost": { name: "Anime OST", description: "Iconische anime soundtracks" },
+  "game-songs": { name: "Video Game Songs", description: "Games met zang en lyrics" },
+  "game-ost": { name: "Video Game OST", description: "Iconische instrumentale game soundtracks" },
   edm: { name: "EDM & Dance", description: "Drops en dancefloor bangers" },
   dutch: { name: "Nederlandse Hits", description: "Van Hazes tot Goldband" },
-  "80s-90s": { name: "80s & 90s", description: "Retro bangers" },
+  "80s": { name: "80s", description: "De beste hits uit de jaren 80" },
+  "90s": { name: "90s", description: "De beste hits uit de jaren 90" },
   "2000s": { name: "2000s", description: "Millennium classics" },
   "2010s-nu": { name: "2010s & Nu", description: "Moderne hits" },
   classics: { name: "Classics & Rock", description: "Tijdloze legendes" },
@@ -305,7 +375,7 @@ async function searchItunes(title, artist) {
   }
 }
 
-function buildAcceptedAnswers(title, artist) {
+function buildAcceptedAnswers(title, artist, altTitles) {
   const answers = new Set();
   answers.add(title.toLowerCase());
   answers.add(title.toLowerCase().replace(/[^a-z0-9\s]/g, ""));
@@ -313,6 +383,12 @@ function buildAcceptedAnswers(title, artist) {
   answers.add(artist.toLowerCase().replace(/[^a-z0-9\s]/g, ""));
   answers.add(`${title} ${artist}`.toLowerCase());
   answers.add(`${artist} ${title}`.toLowerCase());
+  if (altTitles) {
+    for (const alt of altTitles) {
+      answers.add(alt.toLowerCase());
+      answers.add(alt.toLowerCase().replace(/[^a-z0-9\s]/g, ""));
+    }
+  }
   return [...answers].filter((a) => a.length > 0);
 }
 
@@ -342,7 +418,7 @@ async function main() {
       const entry = {
         title: song.title,
         artist: song.artist,
-        acceptedAnswers: buildAcceptedAnswers(song.title, song.artist),
+        acceptedAnswers: buildAcceptedAnswers(song.title, song.artist, song.altTitles),
         deezerId: 0,
         previewUrl: song.previewUrl,
         coverUrl: song.coverUrl || null,
@@ -376,7 +452,7 @@ async function main() {
       results[song.category].push({
         title: song.title,
         artist: song.artist,
-        acceptedAnswers: buildAcceptedAnswers(song.title, song.artist),
+        acceptedAnswers: buildAcceptedAnswers(song.title, song.artist, song.altTitles),
         deezerId: result.deezerId,
         previewUrl: result.previewUrl,
         coverUrl: result.coverUrl,
@@ -391,7 +467,7 @@ async function main() {
         results[song.category].push({
           title: song.title,
           artist: song.artist,
-          acceptedAnswers: buildAcceptedAnswers(song.title, song.artist),
+          acceptedAnswers: buildAcceptedAnswers(song.title, song.artist, song.altTitles),
           deezerId: 0,
           previewUrl: itunesResult.previewUrl,
           coverUrl: itunesResult.coverUrl,

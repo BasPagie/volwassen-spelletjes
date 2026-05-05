@@ -280,7 +280,7 @@ export function useSocketEvents() {
       if (isSpectatorRef.current) return;
       playSound(correct ? 'correct' : 'wrong');
       if (!correct) {
-        dispatch({ type: 'ADD_TOAST', toast: { id: nextToastId(), message: '❌ Fout! Je kunt dit nummer niet meer raden.', type: 'error' } });
+        dispatch({ type: 'ADD_TOAST', toast: { id: nextToastId(), message: '❌ Fout! Probeer opnieuw', type: 'error' } });
       }
     });
 

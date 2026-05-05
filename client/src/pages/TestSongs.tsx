@@ -5,6 +5,7 @@ interface Song {
   artist: string;
   coverUrl: string | null;
   previewUrl: string;
+  startOffset?: number;
 }
 
 interface SongCategory {
@@ -38,8 +39,8 @@ export default function TestSongs() {
 
   const totalSongs = categories.reduce((s, c) => s + c.songs.length, 0);
 
-  function togglePlay(previewUrl: string) {
-    if (playing === previewUrl) {
+  function togglePlay(song: Song) {
+    if (playing === song.previewUrl) {
       audioRef.current?.pause();
       setPlaying(null);
       return;
@@ -47,12 +48,21 @@ export default function TestSongs() {
     if (audioRef.current) {
       audioRef.current.pause();
     }
-    const audio = new Audio(previewUrl);
+    const audio = new Audio(song.previewUrl);
     audio.volume = 0.3;
+    if (song.startOffset) {
+      audio.addEventListener(
+        "loadedmetadata",
+        () => {
+          audio.currentTime = song.startOffset!;
+        },
+        { once: true },
+      );
+    }
     audio.play();
     audio.onended = () => setPlaying(null);
     audioRef.current = audio;
-    setPlaying(previewUrl);
+    setPlaying(song.previewUrl);
   }
 
   if (loading) {
@@ -85,7 +95,7 @@ export default function TestSongs() {
               return (
                 <button
                   key={song.title + song.artist}
-                  onClick={() => togglePlay(song.previewUrl)}
+                  onClick={() => togglePlay(song)}
                   className={`relative flex items-center gap-3 p-3 rounded-xl border-2 text-left transition-all ${
                     isPlaying
                       ? "border-purple-500 bg-purple-50 shadow-md"

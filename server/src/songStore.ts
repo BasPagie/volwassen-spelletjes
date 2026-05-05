@@ -70,6 +70,48 @@ export function getAllSongsGrouped() {
       artist: s.artist,
       coverUrl: s.coverUrl,
       previewUrl: s.previewUrl,
+      startOffset: s.startOffset,
+      deezerId: s.deezerId,
+    })),
+  }));
+}
+
+/**
+ * Get all songs grouped by category with freshly refreshed Deezer preview URLs.
+ */
+export async function getAllSongsGroupedFresh() {
+  const cats = getCategories();
+  // Collect all songs that need refreshing
+  const allSongs: Song[] = [];
+  for (const cat of cats) {
+    for (const song of cat.songs) {
+      if (song.deezerId) allSongs.push(song);
+    }
+  }
+  // Refresh in batches of 10
+  const BATCH_SIZE = 10;
+  for (let i = 0; i < allSongs.length; i += BATCH_SIZE) {
+    const batch = allSongs.slice(i, i + BATCH_SIZE);
+    await Promise.all(
+      batch.map(async (song) => {
+        const freshUrl = await fetchFreshPreviewUrl(song.deezerId);
+        if (freshUrl) {
+          song.previewUrl = freshUrl;
+        }
+      }),
+    );
+  }
+  return cats.map((c) => ({
+    id: c.id,
+    name: c.name,
+    description: c.description,
+    songs: c.songs.map((s) => ({
+      title: s.title,
+      artist: s.artist,
+      coverUrl: s.coverUrl,
+      previewUrl: s.previewUrl,
+      startOffset: s.startOffset,
+      deezerId: s.deezerId,
     })),
   }));
 }

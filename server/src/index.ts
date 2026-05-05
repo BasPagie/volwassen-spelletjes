@@ -10,7 +10,7 @@ import { registerSocketHandlers } from './socketHandlers.js';
 import { resolvePackImages, getAllPacks } from './characterStore.js';
 import { getAllTriviaCategories } from './triviaStore.js';
 import { getAllDrawingCategories } from './drawingWordStore.js';
-import { getAllSongCategories, getAllSongsGrouped } from './songStore.js';
+import { getAllSongCategories, getAllSongsGrouped, getAllSongsGroupedFresh } from './songStore.js';
 import type { ClientToServerEvents, ServerToClientEvents } from '../../shared/types.js';
 
 const app = express();
@@ -56,8 +56,14 @@ app.get('/api/song-categories', (_req, res) => {
   res.json(getAllSongCategories());
 });
 
-app.get('/api/songs', (_req, res) => {
-  res.json(getAllSongsGrouped());
+app.get('/api/songs', async (_req, res) => {
+  try {
+    const data = await getAllSongsGroupedFresh();
+    res.json(data);
+  } catch {
+    // Fallback to stale data if refresh fails
+    res.json(getAllSongsGrouped());
+  }
 });
 
 // SPA fallback — let React Router handle all non-API, non-static routes

@@ -67,7 +67,10 @@ export default function MuziekGame({ state, isSpectator }: Props) {
       onplay: () => {
         // Seek to the clip start offset once playing
         if (state.clipStartOffset > 0) {
-          howl.seek(state.clipStartOffset);
+          // Use a small delay to ensure HTML5 audio is ready to seek
+          setTimeout(() => {
+            howl.seek(state.clipStartOffset);
+          }, 150);
         }
       },
       onloaderror: (_id: unknown, err: unknown) => {
@@ -111,6 +114,18 @@ export default function MuziekGame({ state, isSpectator }: Props) {
     setInput("");
     setLastResult(null);
   }, [state.songIndex, state.phase]);
+
+  // Listen for buzz results to show inline flash
+  useEffect(() => {
+    if (!socket) return;
+    const handler = ({ correct }: { correct: boolean }) => {
+      setLastResult(correct ? "correct" : "wrong");
+    };
+    socket.on("muziek:buzz-result", handler);
+    return () => {
+      socket.off("muziek:buzz-result", handler);
+    };
+  }, [socket]);
 
   // Clear result flash
   useEffect(() => {
@@ -311,7 +326,9 @@ export default function MuziekGame({ state, isSpectator }: Props) {
                   lastResult === "correct" ? "text-green-500" : "text-red-500"
                 }`}
               >
-                {lastResult === "correct" ? "✅ Goed!" : "❌ Fout!"}
+                {lastResult === "correct"
+                  ? "✅ Goed!"
+                  : "❌ Fout! Probeer opnieuw"}
               </motion.p>
             )}
           </AnimatePresence>
