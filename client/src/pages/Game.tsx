@@ -147,6 +147,54 @@ export default function Game() {
     }
   }, [state.room, navigate]);
 
+  // ─── Callbacks (must be before conditional returns) ──
+  const handleSubmitGroup = useCallback(
+    (words: string[]) => {
+      if (!socket) return;
+      socket.emit("submit-group", { words });
+    },
+    [socket],
+  );
+
+  const handleSubmitAnswer = useCallback(
+    (answer: string) => {
+      if (!socket) return;
+      socket.emit("submit-answer", { answer });
+    },
+    [socket],
+  );
+
+  const handleSubmitOpenDeurAnswer = useCallback(
+    (answer: string) => {
+      if (!socket) return;
+      socket.emit("submit-opendeur-answer", { answer });
+    },
+    [socket],
+  );
+
+  const handleSkipQuestion = useCallback(() => {
+    if (!socket) return;
+    socket.emit("skip-question");
+  }, [socket]);
+
+  const handleSubmitLingoGuess = useCallback(
+    (guess: string) => {
+      if (!socket) return;
+      socket.emit("submit-lingo-guess", { guess });
+    },
+    [socket],
+  );
+
+  const handleNextRound = useCallback(() => {
+    if (!socket) return;
+    socket.emit("next-round");
+  }, [socket]);
+
+  const handleBackToLobby = useCallback(() => {
+    if (!socket) return;
+    socket.emit("play-again");
+  }, [socket]);
+
   // ─── Briefing (pre-round instructions for new players) ──
   if (state.phase === "briefing" && state.briefing) {
     return (
@@ -379,53 +427,6 @@ export default function Game() {
       </div>
     );
   }
-
-  const handleSubmitGroup = useCallback(
-    (words: string[]) => {
-      if (!socket) return;
-      socket.emit("submit-group", { words });
-    },
-    [socket],
-  );
-
-  const handleSubmitAnswer = useCallback(
-    (answer: string) => {
-      if (!socket) return;
-      socket.emit("submit-answer", { answer });
-    },
-    [socket],
-  );
-
-  const handleSubmitOpenDeurAnswer = useCallback(
-    (answer: string) => {
-      if (!socket) return;
-      socket.emit("submit-opendeur-answer", { answer });
-    },
-    [socket],
-  );
-
-  const handleSkipQuestion = useCallback(() => {
-    if (!socket) return;
-    socket.emit("skip-question");
-  }, [socket]);
-
-  const handleSubmitLingoGuess = useCallback(
-    (guess: string) => {
-      if (!socket) return;
-      socket.emit("submit-lingo-guess", { guess });
-    },
-    [socket],
-  );
-
-  const handleNextRound = useCallback(() => {
-    if (!socket) return;
-    socket.emit("next-round");
-  }, [socket]);
-
-  const handleBackToLobby = useCallback(() => {
-    if (!socket) return;
-    socket.emit("play-again");
-  }, [socket]);
 
   // Show round intro splash (Kahoot-style)
   if (showRoundIntro && introRoundType) {
