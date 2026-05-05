@@ -139,10 +139,18 @@ export default function MuziekGame({ state, isSpectator }: Props) {
   }, [lastResult]);
 
   const handleBuzz = useCallback(() => {
-    if (!socket || !input.trim() || state.answered || state.winnerId) return;
+    if (!socket || !input.trim() || state.answered) return;
     socket.emit("muziek:buzz", { answer: input.trim() });
     setInput("");
-  }, [socket, input, state.answered, state.winnerId]);
+  }, [socket, input, state.answered]);
+
+  const handleOptionClick = useCallback(
+    (option: string) => {
+      if (!socket || state.answered) return;
+      socket.emit("muziek:buzz", { answer: option });
+    },
+    [socket, state.answered],
+  );
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter") {
@@ -292,7 +300,21 @@ export default function MuziekGame({ state, isSpectator }: Props) {
             <p className="text-center text-green-500 font-display font-bold text-sm">
               ✅ Correct!
             </p>
+          ) : state.options && state.options.length > 0 ? (
+            /* Meerkeuze mode: 4 option buttons */
+            <div className="grid grid-cols-2 gap-3">
+              {state.options.map((option) => (
+                <button
+                  key={option}
+                  onClick={() => handleOptionClick(option)}
+                  className="px-4 py-3 rounded-xl border-2 border-gray-200 hover:border-purple-400 hover:bg-purple-50 font-display font-semibold text-sm text-gray-800 transition-all text-left"
+                >
+                  {option}
+                </button>
+              ))}
+            </div>
           ) : (
+            /* Text input mode */
             <div className="flex gap-2">
               <input
                 ref={inputRef}

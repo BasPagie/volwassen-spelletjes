@@ -1521,7 +1521,13 @@ export function registerSocketHandlers(io: IOServer, socket: IOSocket): void {
     const result = processMuziekBuzz(mapping.roomId, mapping.playerId, answer);
     if (!result) return;
 
-    socket.emit('muziek:buzz-result', { correct: result.correct, penalty: result.penalty });
+    socket.emit('muziek:buzz-result', { correct: result.correct, penalty: result.penalty, position: result.position });
+
+    // In everyone-scores mode, broadcast updated scores when someone gets it right
+    if (result.correct && !instance.settings.snelsteRader) {
+      const scores = getMuziekScores(instance);
+      io.to(mapping.roomId).emit('muziek:scores-updated', { scores });
+    }
   });
 
   // ─── Disconnect ──────────────────────────────────────

@@ -96,10 +96,10 @@ export const DEFAULT_WHATAMI_SETTINGS: WhatAmISettings = {
   customCharacters: [],
   timeLimitSeconds: 600,
   hostPlays: true,
-  gameMode: 'free-for-all',
-  turnSeconds: 60,
+  gameMode: 'turns',
+  turnSeconds: 120,
   questionsPerTurn: 1,
-  questionsBeforeGuess: 0,
+  questionsBeforeGuess: 3,
 };
 
 export interface WhatAmIPlayerState {
@@ -249,6 +249,8 @@ export interface MuziekSettings {
   pointsCorrect: number;
   pointsWrongPenalty: number;
   streakBonus: boolean;
+  snelsteRader: boolean;           // true = first correct ends song (old behavior)
+  meerkeuze: boolean;              // true = show 4 multiple-choice options
 }
 
 export const DEFAULT_MUZIEK_SETTINGS: MuziekSettings = {
@@ -260,6 +262,8 @@ export const DEFAULT_MUZIEK_SETTINGS: MuziekSettings = {
   pointsCorrect: 100,
   pointsWrongPenalty: 25,
   streakBonus: true,
+  snelsteRader: false,
+  meerkeuze: false,
 };
 
 export interface MuziekPlayerScore {
@@ -290,6 +294,7 @@ export interface MuziekClientState {
   coverUrl: string | null;         // revealed after song ends
   scores: MuziekPlayerScore[];
   phase: 'listening' | 'reveal' | 'finished';
+  options?: string[];              // multiple-choice options (meerkeuze mode)
 }
 
 // ─── Puzzles ───────────────────────────────────────────
@@ -548,9 +553,10 @@ export interface ServerToClientEvents {
   // ─── Muziek ────────────────────────────────────────
   'muziek:settings-updated': (settings: MuziekSettings) => void;
   'muziek:song': (data: MuziekClientState) => void;
-  'muziek:buzz-result': (data: { correct: boolean; penalty?: number }) => void;
+  'muziek:buzz-result': (data: { correct: boolean; penalty?: number; position?: number }) => void;
   'muziek:song-won': (data: { winnerId: string; winnerName: string; correctTitle: string; correctArtist: string; coverUrl: string | null; scores: MuziekPlayerScore[] }) => void;
   'muziek:song-timeout': (data: { correctTitle: string; correctArtist: string; coverUrl: string | null; scores: MuziekPlayerScore[] }) => void;
+  'muziek:scores-updated': (data: { scores: MuziekPlayerScore[] }) => void;
   'muziek:game-end': (data: { scores: MuziekPlayerScore[] }) => void;
   // ─── Briefing ──────────────────────────────────────
   'briefing-start': (data: { briefingKey: string; roundType?: RoundType; gameCategory: GameCategory }) => void;

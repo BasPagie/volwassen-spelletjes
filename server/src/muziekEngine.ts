@@ -68,6 +68,8 @@ interface MuziekInstance {
   songEnding: boolean;
   buzzedWrongThisSong: Set<string>;
   answeredCorrectThisSong: string | null;
+  answeredCorrectSet: Set<string>;   // all players who answered correctly this song
+  currentOptions: string[];          // meerkeuze: 4 shuffled options (empty if not meerkeuze)
   onSongEnd: ((instance: MuziekInstance) => void) | null;
 }
 
@@ -107,8 +109,15 @@ export async function startMuziekGame(
     songEnding: false,
     buzzedWrongThisSong: new Set(),
     answeredCorrectThisSong: null,
+    answeredCorrectSet: new Set(),
+    currentOptions: [],
     onSongEnd,
   };
+
+  // Generate meerkeuze options for first song
+  if (settings.meerkeuze) {
+    instance.currentOptions = generateOptions(instance, 0);
+  }
 
   activeGames.set(roomId, instance);
   startSongTimer(instance);
@@ -139,32 +148,110 @@ function endCurrentSong(instance: MuziekInstance): void {
   instance.onSongEnd?.(instance);
 }
 
+// ─── Meerkeuze: generate 4 options ─────────────────────
+function generateOptions(instance: MuziekInstance, songIndex: number): string[] {
+  const song = instance.songs[songIndex];
+  if (!song) return [];
+
+  // Determine the correct answer based on guessMode
+  const guessMode = instance.settings.guessMode;
+  let correctAnswer: string;
+  if (guessMode === 'artist') {
+    correctAnswer = song.artist;
+  } else {
+    // 'title' or 'both' → use title as the displayed option
+    correctAnswer = song.title;
+  }
+
+  // Collect wrong options from other songs in the game
+  const wrongPool: string[] = [];
+  for (let i = 0; i < instance.songs.length; i++) {
+    if (i === songIndex) continue;
+    const other = instance.songs[i];
+    const option = guessMode === 'artist' ? other.artist : other.title;
+    // Avoid duplicates
+    if (option !== correctAnswer && !wrongPool.includes(option)) {
+      wrongPool.push(option);
+    }
+  }
+
+  // Shuffle and pick 3
+  for (let i = wrongPool.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [wrongPool[i], wrongPool[j]] = [wrongPool[j], wrongPool[i]];
+  }
+  const wrongOptions = wrongPool.slice(0, 3);
+
+  // Combine and shuffle all 4 options
+  const options = [correctAnswer, ...wrongOptions];
+  for (let i = options.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [options[i], options[j]] = [options[j], options[i]];
+  }
+
+  return options;
+}
+
 export function processMuziekBuzz(
   roomId: string,
   playerId: string,
   answer: string,
-): { correct: boolean; penalty?: number } | null {
+): { correct: boolean; penalty?: number; position?: number } | null {
   const instance = activeGames.get(roomId);
   if (!instance) return null;
   if (instance.songEnding) return null;
-  if (instance.answeredCorrectThisSong) return null;
+
+  // In snelsteRader mode: block after first correct (old behavior)
+  if (instance.settings.snelsteRader && instance.answeredCorrectThisSong) return null;
+
+  // Skip players who already answered correctly this song
+  if (instance.answeredCorrectSet.has(playerId)) return null;
 
   const song = instance.songs[instance.currentSongIndex];
   if (!song) return null;
 
-  const correct = isAnswerCorrect(answer, song, instance.settings.guessMode);
+  // In meerkeuze mode: exact match against one of the options
+  let correct: boolean;
+  if (instance.settings.meerkeuze && instance.currentOptions.length > 0) {
+    const normalizedAnswer = normalize(answer);
+    correct = instance.currentOptions.some(opt => normalize(opt) === normalizedAnswer) &&
+      isAnswerCorrect(answer, song, instance.settings.guessMode);
+  } else {
+    correct = isAnswerCorrect(answer, song, instance.settings.guessMode);
+  }
+
   const playerScore = instance.scores.get(playerId);
   if (!playerScore) return null;
 
   if (correct) {
-    instance.answeredCorrectThisSong = playerId;
-    playerScore.streak++;
-    const streakBonus = instance.settings.streakBonus ? Math.max(0, (playerScore.streak - 1) * 25) : 0;
-    playerScore.score += instance.settings.pointsCorrect + streakBonus;
-    playerScore.correctCount++;
-    // End the song immediately on correct answer
-    endCurrentSong(instance);
-    return { correct: true };
+    const position = instance.answeredCorrectSet.size + 1; // 1st, 2nd, 3rd...
+    instance.answeredCorrectSet.add(playerId);
+
+    // Set first winner for display purposes
+    if (!instance.answeredCorrectThisSong) {
+      instance.answeredCorrectThisSong = playerId;
+    }
+
+    // Calculate points based on mode
+    if (instance.settings.snelsteRader) {
+      // Old behavior: full points, end song
+      playerScore.streak++;
+      const streakBonus = instance.settings.streakBonus ? Math.max(0, (playerScore.streak - 1) * 25) : 0;
+      playerScore.score += instance.settings.pointsCorrect + streakBonus;
+      playerScore.correctCount++;
+      endCurrentSong(instance);
+    } else {
+      // Everyone scores: diminishing points based on position
+      const multiplier = position === 1 ? 1.0 : position === 2 ? 0.75 : position === 3 ? 0.5 : 0.25;
+      const basePoints = Math.floor(instance.settings.pointsCorrect * multiplier);
+      playerScore.streak++;
+      const streakBonus = instance.settings.streakBonus && position <= 2 ? Math.max(0, (playerScore.streak - 1) * 25) : 0;
+      playerScore.score += basePoints + streakBonus;
+      playerScore.correctCount++;
+      // Don't end song — let timer expire
+    }
+
+    return { correct: true, position };
   } else {
     instance.buzzedWrongThisSong.add(playerId);
     playerScore.streak = 0;
@@ -186,13 +273,14 @@ export function advanceToNextSong(roomId: string): boolean {
   // Reset for next song
   instance.buzzedWrongThisSong.clear();
   instance.answeredCorrectThisSong = null;
+  instance.answeredCorrectSet.clear();
   instance.songEnding = false;
 
-  // Reset streaks for players who didn't answer correctly
-  if (!instance.answeredCorrectThisSong) {
-    for (const [, score] of instance.scores) {
-      // streak already handled per-buzz
-    }
+  // Generate meerkeuze options for new song
+  if (instance.settings.meerkeuze) {
+    instance.currentOptions = generateOptions(instance, instance.currentSongIndex);
+  } else {
+    instance.currentOptions = [];
   }
 
   startSongTimer(instance);
@@ -233,7 +321,7 @@ export function buildMuziekClientState(instance: MuziekInstance, playerId: strin
     category: song?.category ?? '',
     timeRemainingMs: instance.timeRemainingMs,
     totalTimeMs: instance.settings.clipDuration * 1000,
-    answered: instance.answeredCorrectThisSong === playerId,
+    answered: instance.answeredCorrectSet.has(playerId),
     buzzedWrong: instance.buzzedWrongThisSong.has(playerId),
     winnerId: showAnswer ? instance.answeredCorrectThisSong : null,
     winnerName: showAnswer && instance.answeredCorrectThisSong
@@ -244,6 +332,7 @@ export function buildMuziekClientState(instance: MuziekInstance, playerId: strin
     coverUrl: showAnswer ? (song?.coverUrl ?? null) : null,
     scores,
     phase: 'listening',
+    options: instance.settings.meerkeuze ? instance.currentOptions : undefined,
   };
 }
 

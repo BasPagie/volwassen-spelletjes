@@ -200,11 +200,7 @@ export default function CharacterCard({
             {assignedCharacter.name}
           </p>
         )}
-        {!isOwn && assignedCharacter?.category && (
-          <p className="font-display text-xs text-gray-400 truncate">
-            {assignedCharacter.category}
-          </p>
-        )}
+
         {isOwn && gaveUp && assignedCharacter && (
           <>
             <p className="font-display font-black text-sm text-orange-700 truncate">

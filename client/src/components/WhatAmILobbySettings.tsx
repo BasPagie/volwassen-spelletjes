@@ -450,7 +450,11 @@ export default function WhatAmILobbySettings({
                   <span className="text-xs font-medium text-gray-400 uppercase tracking-wide">
                     Tijd/beurt
                   </span>
-                  <p className="font-medium mt-0.5">{current.turnSeconds}s</p>
+                  <p className="font-medium mt-0.5">
+                    {current.turnSeconds >= 60
+                      ? `${current.turnSeconds / 60} min`
+                      : `${current.turnSeconds}s`}
+                  </p>
                 </div>
                 <div>
                   <span className="text-xs font-medium text-gray-400 uppercase tracking-wide">
@@ -964,19 +968,26 @@ export default function WhatAmILobbySettings({
                 Tijd per beurt
               </span>
               <div className="flex gap-1.5 flex-wrap">
-                {[30, 60, 90].map((sec) => (
+                {[
+                  { v: 30, l: "30s" },
+                  { v: 60, l: "1 min" },
+                  { v: 90, l: "1½ min" },
+                  { v: 120, l: "2 min" },
+                  { v: 180, l: "3 min" },
+                  { v: 300, l: "5 min" },
+                ].map(({ v, l }) => (
                   <button
-                    key={sec}
-                    onClick={() => isHost && update({ turnSeconds: sec })}
+                    key={v}
+                    onClick={() => isHost && update({ turnSeconds: v })}
                     disabled={!isHost}
                     className={`py-1.5 px-3 rounded-lg text-xs font-bold transition-all
                       ${
-                        current.turnSeconds === sec
+                        current.turnSeconds === v
                           ? "bg-purple-500 text-white shadow-md"
                           : "bg-gray-100 text-gray-500 hover:bg-gray-200"
                       } ${!isHost ? "opacity-70 cursor-default" : ""}`}
                   >
-                    {sec}s
+                    {l}
                   </button>
                 ))}
               </div>

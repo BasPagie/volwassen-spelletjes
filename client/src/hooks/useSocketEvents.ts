@@ -300,6 +300,10 @@ export function useSocketEvents() {
       dispatch({ type: 'UPDATE_MUZIEK_STATE', patch: { winnerId: null, winnerName: null, correctTitle, correctArtist, coverUrl, scores, phase: 'reveal' } });
     });
 
+    socket.on('muziek:scores-updated', ({ scores }) => {
+      dispatch({ type: 'UPDATE_MUZIEK_STATE', patch: { scores } });
+    });
+
     socket.on('muziek:game-end', ({ scores }) => {
       dispatch({ type: 'MUZIEK_GAME_END', scores });
     });
@@ -350,6 +354,7 @@ export function useSocketEvents() {
       socket.off('muziek:buzz-result');
       socket.off('muziek:song-won');
       socket.off('muziek:song-timeout');
+      socket.off('muziek:scores-updated');
       socket.off('muziek:game-end');
       socket.off('briefing-start');
       socket.off('briefing-ready-count');

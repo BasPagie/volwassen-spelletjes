@@ -97,6 +97,18 @@ export default function MuziekLobbySettings({
                 {current.hostPlays ? "Ja" : "Nee"}
               </p>
             </div>
+            <div>
+              <span className="text-xs text-gray-400">Modus</span>
+              <p className="font-semibold">
+                {current.snelsteRader ? "Snelste wint" : "Iedereen scoort"}
+              </p>
+            </div>
+            <div>
+              <span className="text-xs text-gray-400">Meerkeuze</span>
+              <p className="font-semibold">
+                {current.meerkeuze ? "Aan" : "Uit"}
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -111,25 +123,41 @@ export default function MuziekLobbySettings({
 
       {/* Categories */}
       <div>
-        <label className="text-sm font-semibold text-gray-600 mb-2 block">
-          Categorieën ({totalSongs} nummers beschikbaar)
-        </label>
-        <div className="grid grid-cols-2 gap-2">
+        <div className="flex items-center justify-between mb-2">
+          <label className="text-sm font-semibold text-gray-600">
+            Categorieën ({totalSongs} nummers)
+          </label>
+          <button
+            onClick={() => {
+              const allIds = categories.map((c) => c.id);
+              const allSelected = allIds.every((id) =>
+                current.categoryIds.includes(id),
+              );
+              update({ categoryIds: allSelected ? [] : allIds });
+            }}
+            className="text-xs font-medium text-purple-600 hover:text-purple-800 transition-colors"
+          >
+            {categories.every((c) => current.categoryIds.includes(c.id))
+              ? "Deselecteer alles"
+              : "Selecteer alles"}
+          </button>
+        </div>
+        <div className="flex flex-wrap gap-1.5">
           {categories.map((cat) => {
             const selected = current.categoryIds.includes(cat.id);
             return (
               <button
                 key={cat.id}
                 onClick={() => toggleCategory(cat.id)}
-                className={`text-left px-3 py-2 rounded-xl border-2 transition-all text-sm ${
+                className={`inline-flex items-center px-3 py-1.5 rounded-full border transition-all text-xs font-semibold ${
                   selected
-                    ? "border-purple-400 bg-purple-50 text-purple-800"
-                    : "border-gray-200 bg-white text-gray-600 hover:border-gray-300"
+                    ? "border-purple-400 bg-purple-100 text-purple-800"
+                    : "border-gray-200 bg-white text-gray-500 hover:border-gray-300"
                 }`}
               >
-                <span className="font-semibold">{cat.name}</span>
-                <span className="text-xs text-gray-400 ml-1">
-                  ({cat.songCount})
+                {cat.name}
+                <span className="ml-1 text-[10px] opacity-60">
+                  {cat.songCount}
                 </span>
               </button>
             );
@@ -209,32 +237,69 @@ export default function MuziekLobbySettings({
         </div>
       </div>
 
-      {/* Host plays toggle */}
+      {/* Snelste Rader toggle */}
       <div>
         <span className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">
-          Host
+          Snelste Rader
         </span>
+        <p className="text-xs text-gray-400 mb-2">
+          Alleen de snelste scoort — nummer stopt bij eerste goede gok
+        </p>
         <div className="bg-gray-50/50 rounded-2xl border border-gray-100 p-3">
           <div className="flex gap-2">
             <button
-              onClick={() => update({ hostPlays: true })}
+              onClick={() => update({ snelsteRader: false })}
               className={`flex-1 py-2 px-3 rounded-xl text-sm font-medium transition-all ${
-                current.hostPlays
+                !current.snelsteRader
                   ? "bg-purple-600 text-white shadow-md"
                   : "bg-gray-100 text-gray-600 hover:bg-gray-200"
               }`}
             >
-              🎮 Speelt mee
+              👥 Iedereen scoort
             </button>
             <button
-              onClick={() => update({ hostPlays: false })}
+              onClick={() => update({ snelsteRader: true })}
               className={`flex-1 py-2 px-3 rounded-xl text-sm font-medium transition-all ${
-                !current.hostPlays
+                current.snelsteRader
                   ? "bg-purple-600 text-white shadow-md"
                   : "bg-gray-100 text-gray-600 hover:bg-gray-200"
               }`}
             >
-              👀 Kijkt toe
+              🏁 Snelste wint
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Meerkeuze toggle */}
+      <div>
+        <span className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">
+          Meerkeuze
+        </span>
+        <p className="text-xs text-gray-400 mb-2">
+          Kies uit 4 opties in plaats van zelf typen
+        </p>
+        <div className="bg-gray-50/50 rounded-2xl border border-gray-100 p-3">
+          <div className="flex gap-2">
+            <button
+              onClick={() => update({ meerkeuze: false })}
+              className={`flex-1 py-2 px-3 rounded-xl text-sm font-medium transition-all ${
+                !current.meerkeuze
+                  ? "bg-purple-600 text-white shadow-md"
+                  : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+              }`}
+            >
+              ⌨️ Typen
+            </button>
+            <button
+              onClick={() => update({ meerkeuze: true })}
+              className={`flex-1 py-2 px-3 rounded-xl text-sm font-medium transition-all ${
+                current.meerkeuze
+                  ? "bg-purple-600 text-white shadow-md"
+                  : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+              }`}
+            >
+              🔘 Meerkeuze
             </button>
           </div>
         </div>
@@ -266,6 +331,37 @@ export default function MuziekLobbySettings({
               }`}
             >
               Uit
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Host plays toggle */}
+      <div>
+        <span className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">
+          Host
+        </span>
+        <div className="bg-gray-50/50 rounded-2xl border border-gray-100 p-3">
+          <div className="flex gap-2">
+            <button
+              onClick={() => update({ hostPlays: true })}
+              className={`flex-1 py-2 px-3 rounded-xl text-sm font-medium transition-all ${
+                current.hostPlays
+                  ? "bg-purple-600 text-white shadow-md"
+                  : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+              }`}
+            >
+              🎮 Speelt mee
+            </button>
+            <button
+              onClick={() => update({ hostPlays: false })}
+              className={`flex-1 py-2 px-3 rounded-xl text-sm font-medium transition-all ${
+                !current.hostPlays
+                  ? "bg-purple-600 text-white shadow-md"
+                  : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+              }`}
+            >
+              👀 Kijkt toe
             </button>
           </div>
         </div>

@@ -228,6 +228,13 @@ function startTurn(
   instance.turnStartTime = Date.now();
   instance.questionsAskedThisTurn = 0;
 
+  // Reset the current player's questionsAsked counter for the new turn
+  const currentPlayerId = instance.turnOrder[instance.currentTurnIndex];
+  if (currentPlayerId) {
+    const tracker = instance.trackers.get(currentPlayerId);
+    if (tracker) tracker.questionsAsked = 0;
+  }
+
   // Tick every second for UI updates
   if (instance.timer) clearInterval(instance.timer);
   instance.timer = setInterval(() => {
