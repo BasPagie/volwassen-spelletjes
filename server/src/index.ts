@@ -56,13 +56,31 @@ app.get('/api/song-categories', (_req, res) => {
   res.json(getAllSongCategories());
 });
 
-app.get('/api/songs', async (_req, res) => {
+app.get('/api/songs', (_req, res) => {
+  // Return songs without refreshing — URLs will be fetched on-demand when played
+  res.json(getAllSongsGrouped());
+});
+
+app.get('/api/song-preview/:deezerId', async (req, res) => {
+  const deezerId = parseInt(req.params.deezerId, 10);
+  if (!deezerId || isNaN(deezerId)) {
+    res.status(400).json({ error: 'Invalid deezerId' });
+    return;
+  }
   try {
-    const data = await getAllSongsGroupedFresh();
-    res.json(data);
+    const response = await fetch(`https://api.deezer.com/track/${deezerId}`);
+    if (!response.ok) {
+      res.status(502).json({ error: 'Deezer API error' });
+      return;
+    }
+    const data = await response.json();
+    if (!data.preview) {
+      res.status(404).json({ error: 'No preview available' });
+      return;
+    }
+    res.json({ previewUrl: data.preview });
   } catch {
-    // Fallback to stale data if refresh fails
-    res.json(getAllSongsGrouped());
+    res.status(502).json({ error: 'Failed to fetch preview' });
   }
 });
 

@@ -294,6 +294,104 @@ const SONGS = [
   { title: "Dancing Queen", artist: "ABBA", category: "classics" },
   { title: "I Will Survive", artist: "Gloria Gaynor", category: "classics" },
   { title: "Don't Stop Me Now", artist: "Queen", category: "classics" },
+
+  // ─── Disney ────────────────────────────────────────────
+  { title: "Let It Go", artist: "Idina Menzel", category: "disney", deezerId: 73248591, altTitles: ["frozen"] },
+  { title: "A Whole New World", artist: "Peabo Bryson & Regina Belle", category: "disney", deezerId: 1030914, altTitles: ["aladdin"] },
+  { title: "Circle of Life", artist: "Elton John", category: "disney", deezerId: 540930, altTitles: ["lion king"] },
+  { title: "Under the Sea", artist: "The Little Mermaid", category: "disney", deezerId: 4068498, altTitles: ["kleine zeemeermin"] },
+  { title: "Hakuna Matata", artist: "The Lion King", category: "disney", deezerId: 540932 },
+  { title: "Once Upon a Dream", artist: "Mary Costa", category: "disney", deezerId: 13796248, altTitles: ["sleeping beauty"] },
+  { title: "We Don't Talk About Bruno", artist: "Encanto", category: "disney", deezerId: 1578198647, altTitles: ["bruno"] },
+  { title: "Into the Unknown", artist: "Frozen 2", category: "disney", deezerId: 803096442 },
+  { title: "You've Got a Friend in Me", artist: "Toy Story", category: "disney", deezerId: 2304081, altTitles: ["randy newman"] },
+  { title: "Beauty and the Beast", artist: "Celine Dion & Peabo Bryson", category: "disney", deezerId: 2942853, altTitles: ["belle en het beest"] },
+  { title: "Can You Feel the Love Tonight", artist: "Elton John", category: "disney", deezerId: 97114650, altTitles: ["lion king"] },
+  { title: "Remember Me", artist: "Anthony Gonzalez", category: "disney", deezerId: 424600092, altTitles: ["coco"] },
+  { title: "Go the Distance", artist: "Roger Bart", category: "disney", deezerId: 531228861, altTitles: ["hercules"] },
+  { title: "I'll Make a Man Out of You", artist: "Donny Osmond", category: "disney", deezerId: 1377537512, altTitles: ["mulan"] },
+  { title: "Colors of the Wind", artist: "Vanessa Williams", category: "disney", deezerId: 122832152, altTitles: ["pocahontas"] },
+  { title: "Friend Like Me", artist: "Robin Williams", category: "disney", deezerId: 120917660, altTitles: ["aladdin"] },
+  { title: "Part of Your World", artist: "Jodi Benson", category: "disney", deezerId: 145187390, altTitles: ["little mermaid", "kleine zeemeermin"] },
+  { title: "I See the Light", artist: "Mandy Moore", category: "disney", deezerId: 7599985, altTitles: ["tangled", "rapunzel"] },
+  { title: "When You Wish Upon a Star", artist: "Cliff Edwards", category: "disney", deezerId: 677778432, altTitles: ["pinocchio"] },
+  { title: "Be Our Guest", artist: "Angela Lansbury", category: "disney", deezerId: 7087380, altTitles: ["beauty and the beast"] },
+  { title: "Almost There", artist: "Anika Noni Rose", category: "disney", deezerId: 534375642, altTitles: ["princess and the frog", "prinses en de kikker"] },
+  { title: "So This Is Love", artist: "Ilene Woods", category: "disney", deezerId: 13796253, altTitles: ["cinderella", "assepoester"] },
+  { title: "Reflection", artist: "Lea Salonga", category: "disney", deezerId: 1377537502, altTitles: ["mulan"] },
+  { title: "You'll Be in My Heart", artist: "Phil Collins", category: "disney", deezerId: 561875132, altTitles: ["tarzan"] },
+  { title: "I Just Can't Wait to Be King", artist: "Jason Weaver", category: "disney", deezerId: 24307581, altTitles: ["lion king"] },
+  { title: "Do You Want to Build a Snowman?", artist: "Kristen Bell", category: "disney", deezerId: 72371923, altTitles: ["frozen"] },
+  { title: "Zero to Hero", artist: "Chorus - Hercules", category: "disney", deezerId: 531228901, altTitles: ["hercules"] },
+  { title: "Prince Ali", artist: "Robin Williams", category: "disney", deezerId: 120917664, altTitles: ["aladdin"] },
+  { title: "Bibbidi-Bobbidi-Boo", artist: "Verna Felton", category: "disney", deezerId: 1518135502, altTitles: ["cinderella", "assepoester"] },
+  { title: "Kiss the Girl", artist: "Ashley Tisdale", category: "disney", deezerId: 145187422, altTitles: ["little mermaid", "kleine zeemeermin"] },
+
+  // ─── Musical & Broadway ───────────────────────────────
+  { title: "Defying Gravity", artist: "Wicked", category: "musical", deezerId: 2124211 },
+  { title: "The Phantom of the Opera", artist: "Andrew Lloyd Webber", category: "musical", deezerId: 3582507891 },
+  { title: "Memory", artist: "Cats", category: "musical", deezerId: 3582489451 },
+  { title: "One Day More", artist: "Les Misérables", category: "musical", deezerId: 65153362, altTitles: ["les mis"] },
+  { title: "My Shot", artist: "Hamilton", category: "musical", deezerId: 107832272 },
+  { title: "Wait for It", artist: "Hamilton", category: "musical", deezerId: 107832292 },
+  { title: "Seasons of Love", artist: "Rent", category: "musical", deezerId: 3664291, altTitles: ["525600 minutes"] },
+  { title: "Mamma Mia", artist: "ABBA", category: "musical", deezerId: 884030 },
+  { title: "You're the One That I Want", artist: "Grease", category: "musical", deezerId: 9242505, altTitles: ["john travolta"] },
+  { title: "All That Jazz", artist: "Chicago", category: "musical", deezerId: 869160 },
+  { title: "Don't Cry for Me Argentina", artist: "Evita", category: "musical", deezerId: 2794568, altTitles: ["madonna"] },
+  { title: "Summer Nights", artist: "Grease", category: "musical", deezerId: 781563042 },
+  { title: "The Music of the Night", artist: "Phantom of the Opera", category: "musical", deezerId: 3582507901 },
+  { title: "Cabaret", artist: "Liza Minnelli", category: "musical", deezerId: 2512727 },
+  { title: "Do You Hear the People Sing", artist: "Les Misérables", category: "musical", deezerId: 1188160, altTitles: ["les mis"] },
+  { title: "The Greatest Show", artist: "The Greatest Showman", category: "musical", deezerId: 435175452, altTitles: ["hugh jackman"] },
+  { title: "This Is Me", artist: "The Greatest Showman", category: "musical", deezerId: 435175512, altTitles: ["keala settle"] },
+  { title: "I Dreamed a Dream", artist: "Les Misérables", category: "musical", deezerId: 1267066 },
+  { title: "Alexander Hamilton", artist: "Hamilton", category: "musical", deezerId: 107832268 },
+  { title: "Popular", artist: "Wicked", category: "musical", deezerId: 2124207 },
+
+  // ─── Indie & Alternative ──────────────────────────────
+  { title: "Do I Wanna Know?", artist: "Arctic Monkeys", category: "indie-alt", deezerId: 70322130 },
+  { title: "Mr. Brightside", artist: "The Killers", category: "indie-alt", deezerId: 953097 },
+  { title: "Somebody That I Used to Know", artist: "Gotye", category: "indie-alt", deezerId: 999163452 },
+  { title: "The Less I Know the Better", artist: "Tame Impala", category: "indie-alt", deezerId: 103052662 },
+  { title: "Creep", artist: "Radiohead", category: "indie-alt", deezerId: 138547415 },
+  { title: "Pumped Up Kicks", artist: "Foster the People", category: "indie-alt", deezerId: 15546830 },
+  { title: "Take Me Out", artist: "Franz Ferdinand", category: "indie-alt", deezerId: 4315684 },
+  { title: "Instant Crush", artist: "Daft Punk ft. Julian Casablancas", category: "indie-alt", deezerId: 67238732 },
+  { title: "Tongue Tied", artist: "Grouplove", category: "indie-alt", deezerId: 13544758 },
+  { title: "Feel Good Inc.", artist: "Gorillaz", category: "indie-alt", deezerId: 3129407 },
+  { title: "Seven Nation Army", artist: "The White Stripes", category: "indie-alt", deezerId: 1153182282 },
+  { title: "Fluorescent Adolescent", artist: "Arctic Monkeys", category: "indie-alt", deezerId: 4315382 },
+  { title: "Rebellion (Lies)", artist: "Arcade Fire", category: "indie-alt", deezerId: 374205521 },
+  { title: "Bitter Sweet Symphony", artist: "The Verve", category: "indie-alt", deezerId: 398570642 },
+  { title: "Last Nite", artist: "The Strokes", category: "indie-alt", deezerId: 958109, altTitles: ["last night"] },
+  { title: "Electric Feel", artist: "MGMT", category: "indie-alt", deezerId: 536484 },
+  { title: "Karma Police", artist: "Radiohead", category: "indie-alt", deezerId: 138539981 },
+  { title: "Are You Gonna Be My Girl", artist: "Jet", category: "indie-alt", deezerId: 62166723 },
+  { title: "Reptilia", artist: "The Strokes", category: "indie-alt", deezerId: 14880812 },
+  { title: "Float On", artist: "Modest Mouse", category: "indie-alt", deezerId: 581923 },
+
+  // ─── Metal & Rock ─────────────────────────────────────
+  { title: "Enter Sandman", artist: "Metallica", category: "metal-rock", deezerId: 857297 },
+  { title: "Back in Black", artist: "AC/DC", category: "metal-rock", deezerId: 637822 },
+  { title: "Thunderstruck", artist: "AC/DC", category: "metal-rock", deezerId: 92720102 },
+  { title: "Smells Like Teen Spirit", artist: "Nirvana", category: "metal-rock", deezerId: 466922 },
+  { title: "Killing in the Name", artist: "Rage Against the Machine", category: "metal-rock", deezerId: 62082829, altTitles: ["rage against the machine", "ratm"] },
+  { title: "Numb", artist: "Linkin Park", category: "metal-rock", deezerId: 540519 },
+  { title: "Master of Puppets", artist: "Metallica", category: "metal-rock", deezerId: 424565232 },
+  { title: "Chop Suey!", artist: "System of a Down", category: "metal-rock", deezerId: 2404306 },
+  { title: "Welcome to the Jungle", artist: "Guns N' Roses", category: "metal-rock", deezerId: 2218492 },
+  { title: "Highway to Hell", artist: "AC/DC", category: "metal-rock", deezerId: 582430 },
+  { title: "Paranoid", artist: "Black Sabbath", category: "metal-rock", deezerId: 4398592 },
+  { title: "Walk", artist: "Pantera", category: "metal-rock", deezerId: 1152833 },
+  { title: "Crazy Train", artist: "Ozzy Osbourne", category: "metal-rock", deezerId: 906920 },
+  { title: "The Trooper", artist: "Iron Maiden", category: "metal-rock", deezerId: 3183062 },
+  { title: "Raining Blood", artist: "Slayer", category: "metal-rock", deezerId: 4297129 },
+  { title: "Breaking the Law", artist: "Judas Priest", category: "metal-rock", deezerId: 6619289 },
+  { title: "Du Hast", artist: "Rammstein", category: "metal-rock", deezerId: 630595142 },
+  { title: "Bodies", artist: "Drowning Pool", category: "metal-rock", deezerId: 1269008, altTitles: ["let the bodies hit the floor"] },
+  { title: "Toxicity", artist: "System of a Down", category: "metal-rock", deezerId: 15523793 },
+  { title: "One", artist: "Metallica", category: "metal-rock", deezerId: 575867572 },
 ];
 
 // ─── Category Metadata ──────────────────────────────────
@@ -311,6 +409,10 @@ const CATEGORIES = {
   "2000s": { name: "2000s", description: "Millennium classics" },
   "2010s-nu": { name: "2010s & Nu", description: "Moderne hits" },
   classics: { name: "Classics & Rock", description: "Tijdloze legendes" },
+  disney: { name: "Disney", description: "Iconische Disney-liedjes" },
+  musical: { name: "Musical & Broadway", description: "Bekende musical- en Broadway-nummers" },
+  "indie-alt": { name: "Indie & Alternative", description: "Indie rock en alternatieve muziek" },
+  "metal-rock": { name: "Metal & Rock", description: "Heavy metal en hardrock klassiekers" },
 };
 
 // ─── Deezer Fetch Logic ─────────────────────────────────
@@ -393,7 +495,28 @@ function buildAcceptedAnswers(title, artist, altTitles) {
 }
 
 async function main() {
-  console.log(`\n🎵 Fetching Deezer previews for ${SONGS.length} songs...\n`);
+  const targetCategory = process.argv[2] || null;
+
+  if (targetCategory && !CATEGORIES[targetCategory]) {
+    console.error(`Unknown category: ${targetCategory}`);
+    console.error(`Available: ${Object.keys(CATEGORIES).join(", ")}`);
+    process.exit(1);
+  }
+
+  const songsToFetch = targetCategory
+    ? SONGS.filter((s) => s.category === targetCategory)
+    : SONGS;
+
+  console.log(
+    `\n🎵 Fetching Deezer previews for ${songsToFetch.length} songs${targetCategory ? ` (category: ${targetCategory})` : ""}...\n`
+  );
+
+  // Load existing data if doing a single category update
+  const outPath = path.join(__dirname, "..", "server", "data", "songs.json");
+  let existingData = [];
+  if (targetCategory && fs.existsSync(outPath)) {
+    existingData = JSON.parse(fs.readFileSync(outPath, "utf-8"));
+  }
 
   const results = {};
   let found = 0;
@@ -403,10 +526,10 @@ async function main() {
     results[cat] = [];
   }
 
-  for (let i = 0; i < SONGS.length; i++) {
-    const song = SONGS[i];
+  for (let i = 0; i < songsToFetch.length; i++) {
+    const song = songsToFetch[i];
     process.stdout.write(
-      `[${i + 1}/${SONGS.length}] ${song.artist} - ${song.title}... `
+      `[${i + 1}/${songsToFetch.length}] ${song.artist} - ${song.title}... `
     );
 
     let result = null;
@@ -482,19 +605,40 @@ async function main() {
   }
 
   // Build output JSON
-  const output = Object.entries(CATEGORIES).map(([id, meta]) => ({
-    id,
-    name: meta.name,
-    description: meta.description,
-    songs: results[id],
-  }));
+  let output;
+  if (targetCategory) {
+    // Merge: replace only the target category in existing data
+    const newCatEntry = {
+      id: targetCategory,
+      name: CATEGORIES[targetCategory].name,
+      description: CATEGORIES[targetCategory].description,
+      songs: results[targetCategory],
+    };
+    const idx = existingData.findIndex((c) => c.id === targetCategory);
+    if (idx >= 0) {
+      existingData[idx] = newCatEntry;
+    } else {
+      existingData.push(newCatEntry);
+    }
+    output = existingData;
+  } else {
+    output = Object.entries(CATEGORIES).map(([id, meta]) => ({
+      id,
+      name: meta.name,
+      description: meta.description,
+      songs: results[id],
+    }));
+  }
 
-  const outPath = path.join(__dirname, "..", "server", "data", "songs.json");
-  fs.writeFileSync(outPath, JSON.stringify(output, null, 2));
+  const outPath2 = outPath;
+  fs.writeFileSync(outPath2, JSON.stringify(output, null, 2));
 
   console.log(`\n✅ Done! ${found} found, ${notFound} missing`);
-  console.log(`📁 Written to: ${outPath}`);
-  output.forEach((cat) =>
+  console.log(`📁 Written to: ${outPath2}`);
+  const categoriesToShow = targetCategory
+    ? output.filter((c) => c.id === targetCategory)
+    : output;
+  categoriesToShow.forEach((cat) =>
     console.log(`   ${cat.id}: ${cat.songs.length} songs`)
   );
 }

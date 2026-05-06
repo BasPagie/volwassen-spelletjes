@@ -6,6 +6,7 @@ interface Song {
   coverUrl: string | null;
   previewUrl: string;
   startOffset?: number;
+  deezerId?: number;
 }
 
 interface SongCategory {
@@ -19,6 +20,7 @@ export default function TestSongs() {
   const [categories, setCategories] = useState<SongCategory[]>([]);
   const [loading, setLoading] = useState(true);
   const [playing, setPlaying] = useState<string | null>(null);
+  const [loadingSong, setLoadingSong] = useState<string | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
@@ -39,8 +41,9 @@ export default function TestSongs() {
 
   const totalSongs = categories.reduce((s, c) => s + c.songs.length, 0);
 
-  function togglePlay(song: Song) {
-    if (playing === song.previewUrl) {
+  async function togglePlay(song: Song) {
+    const songKey = `${song.title}-${song.artist}`;
+    if (playing === songKey) {
       audioRef.current?.pause();
       setPlaying(null);
       return;
@@ -48,7 +51,24 @@ export default function TestSongs() {
     if (audioRef.current) {
       audioRef.current.pause();
     }
-    const audio = new Audio(song.previewUrl);
+
+    // Fetch a fresh preview URL on-demand
+    let url = song.previewUrl;
+    if (song.deezerId) {
+      setLoadingSong(songKey);
+      try {
+        const res = await fetch(`/api/song-preview/${song.deezerId}`);
+        if (res.ok) {
+          const data = await res.json();
+          url = data.previewUrl;
+        }
+      } catch {
+        // Fall back to stored URL
+      }
+      setLoadingSong(null);
+    }
+
+    const audio = new Audio(url);
     audio.volume = 0.3;
     if (song.startOffset) {
       audio.addEventListener(
@@ -62,7 +82,7 @@ export default function TestSongs() {
     audio.play();
     audio.onended = () => setPlaying(null);
     audioRef.current = audio;
-    setPlaying(song.previewUrl);
+    setPlaying(songKey);
   }
 
   if (loading) {
@@ -91,15 +111,20 @@ export default function TestSongs() {
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
             {cat.songs.map((song) => {
-              const isPlaying = playing === song.previewUrl;
+              const songKey = `${song.title}-${song.artist}`;
+              const isPlaying = playing === songKey;
+              const isLoading = loadingSong === songKey;
               return (
                 <button
                   key={song.title + song.artist}
                   onClick={() => togglePlay(song)}
+                  disabled={isLoading}
                   className={`relative flex items-center gap-3 p-3 rounded-xl border-2 text-left transition-all ${
                     isPlaying
                       ? "border-purple-500 bg-purple-50 shadow-md"
-                      : "border-gray-200 bg-white hover:border-purple-300 hover:shadow-sm"
+                      : isLoading
+                        ? "border-gray-300 bg-gray-50 opacity-70"
+                        : "border-gray-200 bg-white hover:border-purple-300 hover:shadow-sm"
                   }`}
                 >
                   <div className="w-10 h-10 rounded-lg overflow-hidden bg-gray-100 flex-shrink-0">
@@ -126,6 +151,11 @@ export default function TestSongs() {
                   {isPlaying && (
                     <div className="absolute top-1 right-2 text-purple-600 text-xs">
                       ▶
+                    </div>
+                  )}
+                  {isLoading && (
+                    <div className="absolute top-1 right-2 text-gray-400 text-xs">
+                      ⏳
                     </div>
                   )}
                 </button>
