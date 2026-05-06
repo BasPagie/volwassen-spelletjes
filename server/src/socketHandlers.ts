@@ -635,8 +635,20 @@ export function registerSocketHandlers(io: IOServer, socket: IOSocket): void {
       player.score = 0;
     }
     roomRoundResults.delete(room.roomId);
+
+    // Cancel any active game
     cleanupBriefing(room.roomId);
+    cleanupGame(room.roomId);
+    cleanupWhatAmIGame(room.roomId);
+    cleanupSnelsteVingerGame(room.roomId);
+    cleanupDrawingGame(room.roomId);
     cleanupMuziekGame(room.roomId);
+    const countdown = roomCountdowns.get(room.roomId);
+    if (countdown) {
+      clearInterval(countdown);
+      roomCountdowns.delete(room.roomId);
+    }
+    roomAdvancing.delete(room.roomId);
 
     // Notify each player individually with their own player object
     for (const player of room.players) {
