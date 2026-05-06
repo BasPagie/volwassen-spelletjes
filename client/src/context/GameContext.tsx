@@ -54,7 +54,6 @@ export interface GameState {
     | "finished";
   timeRemainingMs: number | null;
   errorMessage: string | null;
-  devMode: boolean;
   toasts: Toast[];
   // Wie Ben Ik?
   whatAmIState: WhatAmIClientGameState | null;
@@ -88,7 +87,6 @@ const initialState: GameState = {
   phase: "idle",
   timeRemainingMs: null,
   errorMessage: null,
-  devMode: false,
   toasts: [],
   whatAmIState: null,
   snelsteVingerState: null,
@@ -128,7 +126,6 @@ export type GameAction =
   | { type: "CLEAR_ERROR" }
   | { type: "ADD_TOAST"; toast: Toast }
   | { type: "REMOVE_TOAST"; id: string }
-  | { type: "SET_DEV_MODE"; enabled: boolean }
   | {
       type: "RECONNECTED";
       room: GameRoom;
@@ -357,9 +354,6 @@ function gameReducer(state: GameState, action: GameAction): GameState {
         ...state,
         toasts: state.toasts.filter((t) => t.id !== action.id),
       };
-
-    case "SET_DEV_MODE":
-      return { ...state, devMode: action.enabled };
 
     case "RECONNECTED":
       return {

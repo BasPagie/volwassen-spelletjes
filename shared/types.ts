@@ -518,7 +518,6 @@ export interface ServerToClientEvents {
   'error': (data: { message: string }) => void;
   'kicked': () => void;
   'room-closed': () => void;
-  'dev-mode-status': (data: { enabled: boolean }) => void;
   'reconnected': (data: { room: GameRoom; player: Player; roundState: RoundState | null; phase: 'lobby' | 'playing' | 'round-end' | 'finished'; roundResult: RoundResult | null; finalResults: FinalResults | null; playerProgress: PlayerProgress[] }) => void;
   'reconnect-failed': () => void;
   'room-check': (data: { exists: boolean; joinable: boolean; gameCategory?: string | null }) => void;

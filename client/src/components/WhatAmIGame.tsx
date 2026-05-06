@@ -176,16 +176,6 @@ export default function WhatAmIGame({
             <h1 className="font-display font-black text-xl sm:text-2xl md:text-3xl text-purple-800">
               🎭 Wie Ben Ik?
             </h1>
-            <div className="flex flex-wrap gap-1.5 mt-1">
-              {gameState.packName.split(" + ").map((name, i) => (
-                <span
-                  key={i}
-                  className="inline-block px-2 py-0.5 rounded-full bg-purple-100 text-purple-600 text-xs font-display font-bold"
-                >
-                  {name}
-                </span>
-              ))}
-            </div>
           </div>
 
           {/* Timer */}

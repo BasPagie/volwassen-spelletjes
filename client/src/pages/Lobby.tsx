@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSocket } from "../context/SocketContext";
@@ -32,6 +32,10 @@ export default function Lobby() {
   const { state, dispatch } = useGame();
   const [copied, setCopied] = useState(false);
   const [muted, setMuted] = useState(isMuted());
+  const [devMode, setDevMode] = useState(
+    () => localStorage.getItem("dev-mode") === "1",
+  );
+  const longPressTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const rulesKey =
     state.room?.gameCategory === "what-am-i"
       ? "whatami-rules-seen"
@@ -209,7 +213,33 @@ export default function Lobby() {
           </button>
           <h1
             className={`font-display font-black text-3xl text-transparent bg-clip-text 
-                        bg-gradient-to-r ${theme.gradient}`}
+                        bg-gradient-to-r ${theme.gradient} select-none`}
+            onPointerDown={() => {
+              longPressTimer.current = setTimeout(() => {
+                setDevMode(true);
+                localStorage.setItem("dev-mode", "1");
+                dispatch({
+                  type: "ADD_TOAST",
+                  toast: {
+                    id: "dev-" + Date.now(),
+                    message: "🛠️ Dev mode geactiveerd",
+                    type: "info",
+                  },
+                });
+              }, 3000);
+            }}
+            onPointerUp={() => {
+              if (longPressTimer.current) {
+                clearTimeout(longPressTimer.current);
+                longPressTimer.current = null;
+              }
+            }}
+            onPointerLeave={() => {
+              if (longPressTimer.current) {
+                clearTimeout(longPressTimer.current);
+                longPressTimer.current = null;
+              }
+            }}
           >
             Spelletjeskamer
           </h1>
@@ -300,6 +330,39 @@ export default function Lobby() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+          {/* Dev Tools Panel */}
+          {devMode && isPlayerHost && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.15 }}
+              className="md:col-span-2 card border-2 border-dashed border-orange-300 bg-orange-50"
+            >
+              <div className="flex items-center justify-between">
+                <h3 className="font-display font-bold text-sm text-orange-700">
+                  🛠️ Dev Tools
+                </h3>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => socket?.emit("dev-add-bot")}
+                    className="px-3 py-1.5 rounded-lg bg-orange-500 hover:bg-orange-600 text-white font-display font-bold text-xs transition-colors"
+                  >
+                    + Bot toevoegen
+                  </button>
+                  <button
+                    onClick={() => {
+                      setDevMode(false);
+                      localStorage.removeItem("dev-mode");
+                    }}
+                    className="text-orange-400 hover:text-orange-700 font-bold text-lg leading-none"
+                  >
+                    ×
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          )}
+
           {/* Players */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -360,58 +423,6 @@ export default function Lobby() {
             ) : null}
           </motion.div>
         </div>
-
-        {/* Dev Tools Panel */}
-        {state.devMode && isPlayerHost && (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="mt-4 card border-2 border-dashed border-orange-300 bg-orange-50"
-          >
-            <h3 className="font-display font-bold text-sm text-orange-700 mb-3">
-              🛠️ Dev Tools
-            </h3>
-            <div className="flex flex-wrap items-center gap-2">
-              <button
-                onClick={() => socket?.emit("dev-add-bot")}
-                className="px-3 py-1.5 rounded-lg bg-orange-500 hover:bg-orange-600 text-white font-display font-bold text-xs transition-colors"
-              >
-                + Bot toevoegen
-              </button>
-              {state.room.players
-                .filter((p) => p.isBot)
-                .map((bot) => (
-                  <span
-                    key={bot.id}
-                    className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-orange-100 text-orange-700 text-xs font-display"
-                  >
-                    {bot.avatarUrl.startsWith("data:") ||
-                    bot.avatarUrl.startsWith("http") ? (
-                      <img
-                        src={bot.avatarUrl}
-                        alt=""
-                        className="w-4 h-4 rounded-full object-cover inline"
-                      />
-                    ) : (
-                      <span>{bot.avatarUrl}</span>
-                    )}{" "}
-                    {bot.nickname}
-                    <button
-                      onClick={() =>
-                        socket?.emit("dev-remove-bot", {
-                          playerId: bot.id,
-                        })
-                      }
-                      className="ml-1 hover:text-red-600 font-bold"
-                    >
-                      ×
-                    </button>
-                  </span>
-                ))}
-            </div>
-          </motion.div>
-        )}
       </div>
 
       {/* Info Modal */}

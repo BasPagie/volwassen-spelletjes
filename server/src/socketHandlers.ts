@@ -123,8 +123,6 @@ import { getAllSongCategories } from './songStore.js';
 type IOServer = Server<ClientToServerEvents, ServerToClientEvents>;
 type IOSocket = Socket<ClientToServerEvents, ServerToClientEvents>;
 
-const DEV_MODE = process.env.DEV_MODE === 'true';
-
 // Store round results per room for final results
 const roomRoundResults = new Map<string, RoundResult[]>();
 
@@ -275,7 +273,6 @@ export function registerSocketHandlers(io: IOServer, socket: IOSocket): void {
     const result = createRoom(socket.id, safeName, avatarUrl, safeCategory as import('../../shared/types.js').GameCategory);
     socket.join(result.room.roomId);
     socket.emit('room-created', { room: result.room, player: result.player });
-    if (DEV_MODE) socket.emit('dev-mode-status', { enabled: true });
     console.log(`[Room] Created: ${result.room.roomId} by ${safeName}`);
   });
 
@@ -293,7 +290,6 @@ export function registerSocketHandlers(io: IOServer, socket: IOSocket): void {
     }
     socket.join(roomId);
     socket.emit('room-joined', { room: result.room, player: result.player });
-    if (DEV_MODE) socket.emit('dev-mode-status', { enabled: true });
     socket.to(roomId).emit('player-joined', { player: result.player });
     console.log(`[Room] ${safeName} joined ${roomId}`);
   });
@@ -660,7 +656,6 @@ export function registerSocketHandlers(io: IOServer, socket: IOSocket): void {
 
   // ─── Dev: Add Bot ────────────────────────────────────
   socket.on('dev-add-bot', () => {
-    if (!DEV_MODE) return;
     const mapping = getSocketMapping(socket.id);
     if (!mapping) return;
     if (!isHost(mapping.roomId, mapping.playerId)) return;
@@ -675,7 +670,6 @@ export function registerSocketHandlers(io: IOServer, socket: IOSocket): void {
 
   // ─── Dev: Remove Bot ────────────────────────────────
   socket.on('dev-remove-bot', ({ playerId }) => {
-    if (!DEV_MODE) return;
     const mapping = getSocketMapping(socket.id);
     if (!mapping) return;
     if (!isHost(mapping.roomId, mapping.playerId)) return;
@@ -790,8 +784,6 @@ export function registerSocketHandlers(io: IOServer, socket: IOSocket): void {
       finalResults: finalResultsData,
       playerProgress: progress,
     });
-
-    if (DEV_MODE) socket.emit('dev-mode-status', { enabled: true });
 
     // Notify others that the player is back
     socket.to(roomId).emit('player-joined', { player });
@@ -912,7 +904,7 @@ export function registerSocketHandlers(io: IOServer, socket: IOSocket): void {
         currentRoom.status = 'playing';
         broadcastWhatAmIState(io, roomId, settings);
 
-        if (DEV_MODE) {
+        {
           const bots = currentRoom.players.filter((p) => p.isBot);
           if (bots.length > 0) {
             scheduleWhatAmIBotGuesses(roomId, bots, (rid, playerId, placement, score) => {
@@ -1712,8 +1704,8 @@ function startNewRound(io: IOServer, roomId: string): void {
     );
   }
 
-  // Dev mode: auto-finish bot players after a short delay
-  if (DEV_MODE && room.players.some((p) => p.isBot)) {
+  // Auto-finish bot players after a short delay
+  if (room.players.some((p) => p.isBot)) {
     const delay = 2000 + Math.floor(Math.random() * 3000); // 2-5 seconds
     setTimeout(() => {
       const currentRoom = getRoom(roomId);

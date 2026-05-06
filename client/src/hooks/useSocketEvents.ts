@@ -153,10 +153,6 @@ export function useSocketEvents() {
       navigateRef.current('/');
     });
 
-    socket.on('dev-mode-status', ({ enabled }) => {
-      dispatch({ type: 'SET_DEV_MODE', enabled });
-    });
-
     socket.on('reconnected', ({ room, player, roundState, phase, roundResult, finalResults, playerProgress }) => {
       dispatch({
         type: 'RECONNECTED',
@@ -331,7 +327,6 @@ export function useSocketEvents() {
       socket.off('time-update');
       socket.off('room-closed');
       socket.off('kicked');
-      socket.off('dev-mode-status');
       socket.off('reconnected');
       socket.off('reconnect-failed');
       socket.off('whatami:settings-updated');

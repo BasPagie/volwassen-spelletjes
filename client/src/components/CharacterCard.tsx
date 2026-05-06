@@ -196,9 +196,16 @@ export default function CharacterCard({
           </span>
         </div>
         {!isOwn && assignedCharacter && (
-          <p className="font-display font-black text-sm text-gray-900 truncate">
-            {assignedCharacter.name}
-          </p>
+          <>
+            <p className="font-display font-black text-sm text-gray-900 truncate">
+              {assignedCharacter.name}
+            </p>
+            {assignedCharacter.category && (
+              <p className="font-display text-xs text-gray-400 truncate">
+                {assignedCharacter.category}
+              </p>
+            )}
+          </>
         )}
 
         {isOwn && gaveUp && assignedCharacter && (
