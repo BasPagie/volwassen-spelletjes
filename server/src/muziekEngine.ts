@@ -1,5 +1,5 @@
 import type { MuziekSettings, MuziekPlayerScore, MuziekClientState } from '../../shared/types.js';
-import { getSongsByCategories, refreshPreviewUrls, type SongEntry } from './songStore.js';
+import { getSongsByCategories, getSongsByCategoryName, refreshPreviewUrls, type SongEntry } from './songStore.js';
 
 // ─── Levenshtein distance (same as snelsteVingerEngine) ─
 function levenshtein(a: string, b: string): number {
@@ -163,24 +163,43 @@ function generateOptions(instance: MuziekInstance, songIndex: number): string[] 
     correctAnswer = song.title;
   }
 
-  // Collect wrong options from other songs in the game
-  const wrongPool: string[] = [];
+  // Build a pool of distractors from the same category (from the full song store)
+  const sameCategorySongs = getSongsByCategoryName(song.category);
+  const sameCategoryPool: string[] = [];
+  for (const other of sameCategorySongs) {
+    const option = guessMode === 'artist' ? other.artist : other.title;
+    if (option !== correctAnswer && !sameCategoryPool.includes(option)) {
+      sameCategoryPool.push(option);
+    }
+  }
+
+  // Shuffle same-category pool
+  for (let i = sameCategoryPool.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [sameCategoryPool[i], sameCategoryPool[j]] = [sameCategoryPool[j], sameCategoryPool[i]];
+  }
+
+  // Fallback: other songs in the game playlist (different category)
+  const fallbackPool: string[] = [];
   for (let i = 0; i < instance.songs.length; i++) {
     if (i === songIndex) continue;
     const other = instance.songs[i];
     const option = guessMode === 'artist' ? other.artist : other.title;
-    // Avoid duplicates
-    if (option !== correctAnswer && !wrongPool.includes(option)) {
-      wrongPool.push(option);
+    if (option !== correctAnswer && !sameCategoryPool.includes(option) && !fallbackPool.includes(option)) {
+      fallbackPool.push(option);
     }
   }
-
-  // Shuffle and pick 3
-  for (let i = wrongPool.length - 1; i > 0; i--) {
+  for (let i = fallbackPool.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [wrongPool[i], wrongPool[j]] = [wrongPool[j], wrongPool[i]];
+    [fallbackPool[i], fallbackPool[j]] = [fallbackPool[j], fallbackPool[i]];
   }
-  const wrongOptions = wrongPool.slice(0, 3);
+
+  // Pick 3 wrong answers: prefer same-category, fill with fallback
+  const wrongOptions = sameCategoryPool.slice(0, 3);
+  if (wrongOptions.length < 3) {
+    const needed = 3 - wrongOptions.length;
+    wrongOptions.push(...fallbackPool.slice(0, needed));
+  }
 
   // Combine and shuffle all 4 options
   const options = [correctAnswer, ...wrongOptions];

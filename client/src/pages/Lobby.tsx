@@ -6,7 +6,6 @@ import { clearSession, getSession } from "../context/SocketContext";
 import { useGame } from "../context/GameContext";
 import { useSocketEvents } from "../hooks/useSocketEvents";
 import PlayerList from "../components/PlayerList";
-import GameSettingsPanel from "../components/GameSettingsPanel";
 import WhatAmILobbySettings from "../components/WhatAmILobbySettings";
 import DrawingLobbySettings from "../components/DrawingLobbySettings";
 import SnelsteVingerLobbySettings from "../components/SnelsteVingerLobbySettings";

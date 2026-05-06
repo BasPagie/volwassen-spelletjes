@@ -148,6 +148,17 @@ export function getSongsByCategories(categoryIds: string[], count: number): Song
   return pool.slice(0, count);
 }
 
+/** Get all songs belonging to a category by its display name */
+export function getSongsByCategoryName(categoryName: string): SongEntry[] {
+  const cats = getCategories();
+  for (const cat of cats) {
+    if (cat.name === categoryName) {
+      return cat.songs.map((s) => ({ ...s, category: cat.name }));
+    }
+  }
+  return [];
+}
+
 /**
  * Fetch a fresh preview URL from Deezer's API for a given track ID.
  * Returns the fresh URL or null on failure.

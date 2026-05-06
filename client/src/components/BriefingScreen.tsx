@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { getInstruction, hasSeen, markSeen } from "../lib/gameInstructions";
-import type { RoundType, GameCategory } from "shared/types";
+import type { GameCategory } from "shared/types";
 
 const BG_COLORS: Record<string, string> = {
   blue: "bg-blue-50",
@@ -41,7 +41,7 @@ const GRADIENT_BG: Record<string, string> = {
 
 interface Props {
   briefingKey: string;
-  roundType?: RoundType;
+  roundType?: string;
   gameCategory: GameCategory;
   readyCount: number;
   totalCount: number;

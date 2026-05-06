@@ -39,11 +39,6 @@ export function createRoom(socketId: string, nickname: string, avatarUrl: string
     roomId,
     players: [player],
     settings: {
-      rounds: [
-        { type: 'connections', difficulty: 'medium' },
-        { type: 'puzzelronde', difficulty: 'medium' },
-        { type: 'opendeur', difficulty: 'medium' },
-      ],
       attemptsMode: 'limited',
       maxAttempts: 6,
       timeLimitSeconds: 120,

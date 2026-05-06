@@ -5,7 +5,6 @@ import type {
   GameSettings,
   RoundResult,
   WhatAmISettings,
-  RoundType,
   GameCategory,
 } from '../../shared/types.js';
 import {
@@ -27,23 +26,10 @@ import {
   removeDisconnectedPlayer,
 } from './rooms.js';
 import {
-  startRound,
-  getPlayerRoundState,
-  getSpectatorRoundState,
-  submitGroupGuess,
-  submitAnswer,
-  submitOpenDeurAnswer,
-  skipOpenDeurQuestion,
-  advanceOpenDeurQuestion,
-  submitLingoGuess,
   getPlayerProgress,
-  isRoundComplete,
-  forceEndRound,
   getRoundResult,
   getFinalResults,
-  startTimer,
   cleanupGame,
-  finishBotPlayers,
 } from './gameEngine.js';
 import { PREMADE_AVATARS } from '../../shared/types.js';
 import {
@@ -145,7 +131,7 @@ function startBriefing(
   io: IOServer,
   roomId: string,
   briefingKey: string,
-  roundType: RoundType | undefined,
+  roundType: string | undefined,
   gameCategory: GameCategory,
   activePlayers: { id: string; isBot?: boolean }[],
   startFn: () => void,
@@ -310,12 +296,7 @@ export function registerSocketHandlers(io: IOServer, socket: IOSocket): void {
     }
 
     // Validate settings shape to prevent malformed data
-    if (!settings || !Array.isArray(settings.rounds) || settings.rounds.length === 0 || settings.rounds.length > 5) return;
-    const validTypes = ['connections', 'puzzelronde', 'opendeur', 'lingo'];
-    const validDifficulties = ['easy', 'medium', 'hard'];
-    for (const round of settings.rounds) {
-      if (!validTypes.includes(round.type) || !validDifficulties.includes(round.difficulty)) return;
-    }
+    if (!settings) return;
     if (settings.attemptsMode !== 'limited' && settings.attemptsMode !== 'unlimited') return;
     if (typeof settings.maxAttempts !== 'number' || settings.maxAttempts < 1 || settings.maxAttempts > 10) return;
     if (settings.timeLimitSeconds !== null && (typeof settings.timeLimitSeconds !== 'number' || settings.timeLimitSeconds < 0 || settings.timeLimitSeconds > 600)) return;
@@ -358,264 +339,16 @@ export function registerSocketHandlers(io: IOServer, socket: IOSocket): void {
       return;
     }
 
-    if (room.players.length < 1) {
-      socket.emit('error', { message: 'Er zijn niet genoeg spelers.' });
-      return;
-    }
-
-    // Ensure at least one player is actually playing
-    const activePlayers = room.players.filter(
-      (p) => !(p.isHost && !room.settings.hostPlays)
-    );
-    if (activePlayers.length < 1) {
-      socket.emit('error', { message: 'Er moet minstens 1 speler meedoen.' });
-      return;
-    }
-
-    room.status = 'playing';
-    room.currentRoundIndex = 0;
-    roomRoundResults.set(room.roomId, []);
-
-    io.to(room.roomId).emit('game-started');
-
-    // Show briefing first, then countdown, then start the round
-    const roomId = room.roomId;
-    const roundConfig = room.settings.rounds[room.currentRoundIndex];
-    const active = activePlayers.filter((p) => p.connected || p.isBot);
-    startBriefing(io, roomId, roundConfig.type, roundConfig.type, room.gameCategory, active, () => {
-      startCountdownThenRun(io, roomId, () => {
-        startNewRound(io, roomId);
-      });
-    });
-  });
-
-  // ─── Submit Group Guess ──────────────────────────────
-  socket.on('submit-group', ({ words }) => {
-    if (isRateLimited(socket.id)) return;
-    if (!Array.isArray(words) || words.length !== 4 || !words.every(w => typeof w === 'string')) return;
-    const mapping = getSocketMapping(socket.id);
-    if (!mapping) return;
-
-    const room = getRoom(mapping.roomId);
-    if (!room || room.status !== 'playing') return;
-
-    const result = submitGroupGuess(mapping.roomId, mapping.playerId, words, room);
-    if (!result) return;
-
-    // Get updated state for this player
-    const roundState = getPlayerRoundState(mapping.roomId, mapping.playerId, room);
-    if (!roundState) return;
-
-    socket.emit('group-result', {
-      correct: result.correct,
-      group: result.group,
-      roundState,
-      hintWords: result.hintWords,
-    });
-
-    // Broadcast progress to all
-    const progress = getPlayerProgress(mapping.roomId);
-    io.to(mapping.roomId).emit('player-progress', progress);
-
-    // Check if round is complete
-    if (isRoundComplete(mapping.roomId)) {
-      endCurrentRound(io, mapping.roomId);
-    }
-  });
-
-  // ─── Submit Answer (Puzzelronde) ─────────────────────
-  socket.on('submit-answer', ({ answer }) => {
-    if (isRateLimited(socket.id)) return;
-    if (typeof answer !== 'string' || answer.length > 100) return;
-    const mapping = getSocketMapping(socket.id);
-    if (!mapping) return;
-
-    const room = getRoom(mapping.roomId);
-    if (!room || room.status !== 'playing') return;
-
-    const result = submitAnswer(mapping.roomId, mapping.playerId, answer, room);
-    if (!result) return;
-
-    const roundState = getPlayerRoundState(mapping.roomId, mapping.playerId, room);
-    if (!roundState) return;
-
-    socket.emit('answer-result', {
-      correct: result.correct,
-      groupWords: result.groupWords,
-      roundState,
-    });
-
-    // Broadcast progress
-    const progress = getPlayerProgress(mapping.roomId);
-    io.to(mapping.roomId).emit('player-progress', progress);
-
-    if (isRoundComplete(mapping.roomId)) {
-      endCurrentRound(io, mapping.roomId);
-    }
-  });
-
-  // ─── Submit Open Deur Answer ─────────────────────────
-  socket.on('submit-opendeur-answer', ({ answer }) => {
-    if (isRateLimited(socket.id)) return;
-    if (typeof answer !== 'string' || answer.length > 200) return;
-    const mapping = getSocketMapping(socket.id);
-    if (!mapping) return;
-
-    const room = getRoom(mapping.roomId);
-    if (!room || room.status !== 'playing') return;
-
-    const result = submitOpenDeurAnswer(mapping.roomId, mapping.playerId, answer, room);
-    if (!result) return;
-
-    // Get round state BEFORE advancing (so completed question view is included)
-    const roundState = getPlayerRoundState(mapping.roomId, mapping.playerId, room);
-    if (!roundState) return;
-
-    if (result.correct && result.questionComplete) {
-      // Emit the completed state so client can flash the last answer
-      socket.emit('opendeur-result', {
-        correct: true,
-        matchedAnswer: result.matchedAnswer,
-        roundState,
-        questionComplete: true,
-      });
-      // Now advance to next question (if not finished) and send the new state after a delay
-      if (!result.playerFinished) {
-        advanceOpenDeurQuestion(mapping.roomId, mapping.playerId);
-        const nextRoundState = getPlayerRoundState(mapping.roomId, mapping.playerId, room);
-        if (nextRoundState) {
-          setTimeout(() => {
-            socket.emit('opendeur-next-question', {
-              roundState: nextRoundState,
-              previousAnswers: [],
-            });
-          }, 800);
-        }
-      }
-    } else {
-      socket.emit('opendeur-result', {
-        correct: result.correct,
-        matchedAnswer: result.matchedAnswer,
-        roundState,
-        questionComplete: false,
-      });
-    }
-
-    // Broadcast progress
-    const progress = getPlayerProgress(mapping.roomId);
-    io.to(mapping.roomId).emit('player-progress', progress);
-
-    if (isRoundComplete(mapping.roomId)) {
-      endCurrentRound(io, mapping.roomId);
-    }
-  });
-
-  // ─── Skip Open Deur Question ─────────────────────────
-  socket.on('skip-question', () => {
-    if (isRateLimited(socket.id)) return;
-    const mapping = getSocketMapping(socket.id);
-    if (!mapping) return;
-
-    const room = getRoom(mapping.roomId);
-    if (!room || room.status !== 'playing') return;
-
-    const result = skipOpenDeurQuestion(mapping.roomId, mapping.playerId);
-    if (!result) return;
-
-    const roundState = getPlayerRoundState(mapping.roomId, mapping.playerId, room);
-    if (!roundState) return;
-
-    socket.emit('opendeur-next-question', {
-      roundState,
-      previousAnswers: result.previousAnswers,
-    });
-
-    // Broadcast progress
-    const progress = getPlayerProgress(mapping.roomId);
-    io.to(mapping.roomId).emit('player-progress', progress);
-
-    if (isRoundComplete(mapping.roomId)) {
-      endCurrentRound(io, mapping.roomId);
-    }
-  });
-
-  // ─── Submit Lingo Guess ──────────────────────────────
-  socket.on('submit-lingo-guess', ({ guess }) => {
-    if (isRateLimited(socket.id)) return;
-    if (typeof guess !== 'string' || guess.length > 10) return;
-    const mapping = getSocketMapping(socket.id);
-    if (!mapping) return;
-
-    const room = getRoom(mapping.roomId);
-    if (!room || room.status !== 'playing') return;
-
-    const result = submitLingoGuess(mapping.roomId, mapping.playerId, guess, room);
-    if (!result) return;
-
-    const roundState = getPlayerRoundState(mapping.roomId, mapping.playerId, room);
-    if (!roundState) return;
-
-    if (result.wordComplete && result.previousWord && !result.playerFinished) {
-      // Word complete, advancing to next word
-      socket.emit('lingo-next-word', {
-        roundState,
-        previousWord: result.previousWord,
-      });
-    } else {
-      socket.emit('lingo-result', {
-        correct: result.correct,
-        feedback: result.feedback,
-        roundState,
-      });
-    }
-
-    // Broadcast progress
-    const progress = getPlayerProgress(mapping.roomId);
-    io.to(mapping.roomId).emit('player-progress', progress);
-
-    if (isRoundComplete(mapping.roomId)) {
-      endCurrentRound(io, mapping.roomId);
-    }
+    // No round-based games currently active — use game-specific start events instead
+    socket.emit('error', { message: 'Gebruik de specifieke start-knop voor dit speltype.' });
   });
 
   // ─── Next Round ──────────────────────────────────────
+  // ─── Next Round (reserved for future round-based games) ─
   socket.on('next-round', () => {
     const mapping = getSocketMapping(socket.id);
     if (!mapping) return;
-
-    const room = getRoom(mapping.roomId);
-    if (!room) return;
-
-    if (room.settings.hostControl && !isHost(mapping.roomId, mapping.playerId)) return;
-
-    // Guard: only allow advancing if the current round has actually ended
-    const storedResults = roomRoundResults.get(room.roomId) ?? [];
-    if (storedResults.length <= room.currentRoundIndex) return; // round hasn't ended yet
-
-    // Guard: prevent rapid double-clicks
-    if (roomAdvancing.has(room.roomId)) return;
-    roomAdvancing.add(room.roomId);
-
-    try {
-      room.currentRoundIndex++;
-
-      if (room.currentRoundIndex >= room.settings.rounds.length) {
-        // Game over
-        endGame(io, room.roomId);
-      } else {
-        const roundConfig = room.settings.rounds[room.currentRoundIndex];
-        const active = room.players.filter(
-          (p) => (p.connected || p.isBot) && !(p.isHost && !room.settings.hostPlays)
-        );
-        startBriefing(io, room.roomId, roundConfig.type, roundConfig.type, room.gameCategory, active, () => {
-          startCountdownThenRun(io, room.roomId, () => {
-            startNewRound(io, room.roomId);
-          });
-        });
-      }
-    } finally {
-      roomAdvancing.delete(room.roomId);
-    }
+    // No round-based games currently active
   });
 
   // ─── Play Again ──────────────────────────────────────
@@ -755,29 +488,18 @@ export function registerSocketHandlers(io: IOServer, socket: IOSocket): void {
 
     // Determine current phase and gather state
     let phase: 'lobby' | 'playing' | 'round-end' | 'finished' = 'lobby';
-    let roundState: import('../../shared/types.js').RoundState | null = null;
     let roundResult: import('../../shared/types.js').RoundResult | null = null;
     let finalResultsData: import('../../shared/types.js').FinalResults | null = null;
     let progress: import('../../shared/types.js').PlayerProgress[] = [];
 
     if (room.status === 'playing') {
-      // Check if there's an active game
-      const playerState = getPlayerRoundState(roomId, playerId, room);
-      const spectatorState = player.isHost && !room.settings.hostPlays
-        ? getSpectatorRoundState(roomId, room)
-        : null;
-      roundState = playerState ?? spectatorState ?? null;
+      phase = 'playing';
 
       // Check if we're between rounds (round-end)
       const storedResults = roomRoundResults.get(roomId) ?? [];
       if (storedResults.length > room.currentRoundIndex) {
-        // We have a result for the current round → round-end phase
         phase = 'round-end';
         roundResult = storedResults[storedResults.length - 1];
-      } else if (roundState) {
-        phase = 'playing';
-      } else {
-        phase = 'playing'; // maybe between rounds, client will show loading
       }
 
       progress = getPlayerProgress(roomId);
@@ -790,7 +512,6 @@ export function registerSocketHandlers(io: IOServer, socket: IOSocket): void {
     socket.emit('reconnected', {
       room,
       player,
-      roundState,
       phase,
       roundResult,
       finalResults: finalResultsData,
@@ -1653,111 +1374,6 @@ function handleDisconnect(io: IOServer, socket: IOSocket): void {
 
     console.log(`[Room] Player ${playerId} permanently removed from ${roomId} (timeout)`);
   });
-}
-
-function startNewRound(io: IOServer, roomId: string): void {
-  const room = getRoom(roomId);
-  if (!room) return;
-
-  const result = startRound(room);
-  if (!result) {
-    io.to(roomId).emit('error', { message: 'Kon de ronde niet starten. Geen puzzels beschikbaar.' });
-    return;
-  }
-
-  const roundConfig = room.settings.rounds[room.currentRoundIndex];
-
-  // Send personalized round state to each player
-  for (const player of room.players) {
-    // Skip spectating host — handled below
-    if (player.isHost && !room.settings.hostPlays) continue;
-
-    const playerState = getPlayerRoundState(roomId, player.id, room);
-    if (!playerState) continue;
-    const sid = getSocketIdForPlayer(roomId, player.id);
-    if (sid) {
-      io.to(sid).emit('round-start', {
-        roundIndex: room.currentRoundIndex,
-        roundState: playerState,
-        roundType: roundConfig.type,
-      });
-    }
-  }
-
-  // Send spectator view to host if they are not playing
-  if (!room.settings.hostPlays) {
-    const host = room.players.find((p) => p.isHost);
-    if (host) {
-      const spectatorState = getSpectatorRoundState(roomId, room);
-      if (spectatorState) {
-        const sid = getSocketIdForPlayer(roomId, host.id);
-        if (sid) {
-          io.to(sid).emit('round-start', {
-            roundIndex: room.currentRoundIndex,
-            roundState: spectatorState,
-            roundType: roundConfig.type,
-          });
-        }
-      }
-    }
-  }
-
-  // Start timer if configured
-  if (room.settings.timeLimitSeconds) {
-    startTimer(
-      roomId,
-      (timeRemainingMs) => {
-        io.to(roomId).emit('time-update', { timeRemainingMs });
-      },
-      () => {
-        forceEndRound(roomId);
-        endCurrentRound(io, roomId);
-      }
-    );
-  }
-
-  // Auto-finish bot players after a short delay
-  if (room.players.some((p) => p.isBot)) {
-    const delay = 2000 + Math.floor(Math.random() * 3000); // 2-5 seconds
-    setTimeout(() => {
-      const currentRoom = getRoom(roomId);
-      if (!currentRoom) return;
-      finishBotPlayers(roomId, currentRoom);
-      const progress = getPlayerProgress(roomId);
-      io.to(roomId).emit('player-progress', progress);
-      if (isRoundComplete(roomId)) {
-        endCurrentRound(io, roomId);
-      }
-    }, delay);
-  }
-}
-
-function endCurrentRound(io: IOServer, roomId: string): void {
-  const room = getRoom(roomId);
-  if (!room) return;
-
-  const roundResult = getRoundResult(roomId, room);
-  if (!roundResult) return; // already ended (roundEnding flag or no instance)
-
-  // Store round result
-  const results = roomRoundResults.get(roomId) ?? [];
-  results.push(roundResult);
-  roomRoundResults.set(roomId, results);
-
-  io.to(roomId).emit('round-end', roundResult);
-}
-
-function endGame(io: IOServer, roomId: string): void {
-  const room = getRoom(roomId);
-  if (!room) return;
-
-  room.status = 'finished';
-
-  const allResults = roomRoundResults.get(roomId) ?? [];
-  const finalResults = getFinalResults(room, allResults);
-
-  io.to(roomId).emit('game-end', finalResults);
-  cleanupGame(roomId);
 }
 
 // ─── Snelste Vinger Helpers ────────────────────────────

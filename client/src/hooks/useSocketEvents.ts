@@ -68,54 +68,12 @@ export function useSocketEvents() {
       dispatch({ type: 'SCORE_UPDATED', playerId, score });
     });
 
-    socket.on('round-start', ({ roundState, roundIndex }) => {
-      dispatch({ type: 'CLEAR_BRIEFING' });
-      dispatch({ type: 'ROUND_START', roundState, roundIndex });
-    });
-
     socket.on('briefing-start', ({ briefingKey, roundType, gameCategory }) => {
       dispatch({ type: 'SET_BRIEFING', briefingKey, roundType, gameCategory });
     });
 
     socket.on('briefing-ready-count', ({ ready, total }) => {
       dispatch({ type: 'BRIEFING_READY_COUNT', ready, total });
-    });
-
-    socket.on('group-result', ({ roundState, hintWords }) => {
-      dispatch({ type: 'UPDATE_ROUND_STATE', roundState, hintWords });
-    });
-
-    socket.on('answer-result', ({ correct, roundState }) => {
-      dispatch({ type: 'UPDATE_ROUND_STATE', roundState, answerResult: { correct } });
-      playSound(correct ? 'correct' : 'wrong');
-      dispatch({ type: 'ADD_TOAST', toast: { id: nextToastId(), message: correct ? 'Goed antwoord! 🎉' : 'Helaas, fout antwoord', type: correct ? 'success' : 'error' } });
-    });
-
-    socket.on('opendeur-result', ({ correct, matchedAnswer, roundState, questionComplete }) => {
-      dispatch({ type: 'UPDATE_ROUND_STATE', roundState });
-      if (correct) {
-        playSound('correct');
-        dispatch({ type: 'ADD_TOAST', toast: { id: nextToastId(), message: `Correct: ${matchedAnswer}! 🎉`, type: 'success' } });
-      } else {
-        playSound('wrong');
-        dispatch({ type: 'ADD_TOAST', toast: { id: nextToastId(), message: 'Helaas, dat is niet goed', type: 'error' } });
-      }
-    });
-
-    socket.on('opendeur-next-question', ({ roundState, previousAnswers }) => {
-      dispatch({ type: 'UPDATE_ROUND_STATE', roundState });
-    });
-
-    socket.on('lingo-result', ({ correct, feedback, roundState }) => {
-      dispatch({ type: 'UPDATE_ROUND_STATE', roundState });
-      if (correct) {
-        playSound('correct');
-        dispatch({ type: 'ADD_TOAST', toast: { id: nextToastId(), message: 'Woord geraden! 🎉', type: 'success' } });
-      }
-    });
-
-    socket.on('lingo-next-word', ({ roundState, previousWord }) => {
-      dispatch({ type: 'UPDATE_ROUND_STATE', roundState });
     });
 
     socket.on('player-progress', (progress) => {
@@ -153,12 +111,11 @@ export function useSocketEvents() {
       navigateRef.current('/');
     });
 
-    socket.on('reconnected', ({ room, player, roundState, phase, roundResult, finalResults, playerProgress }) => {
+    socket.on('reconnected', ({ room, player, phase, roundResult, finalResults, playerProgress }) => {
       dispatch({
         type: 'RECONNECTED',
         room,
         player,
-        roundState,
         phase,
         roundResult,
         finalResults,
@@ -313,13 +270,6 @@ export function useSocketEvents() {
       socket.off('game-started');
       socket.off('countdown');
       socket.off('score-updated');
-      socket.off('round-start');
-      socket.off('group-result');
-      socket.off('answer-result');
-      socket.off('opendeur-result');
-      socket.off('opendeur-next-question');
-      socket.off('lingo-result');
-      socket.off('lingo-next-word');
       socket.off('player-progress');
       socket.off('round-end');
       socket.off('game-end');

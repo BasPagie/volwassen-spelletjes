@@ -13,19 +13,9 @@ export interface Player {
 }
 
 // ─── Game Settings ─────────────────────────────────────
-export type RoundType = 'connections' | 'puzzelronde' | 'opendeur' | 'lingo';
 export type AttemptsMode = 'limited' | 'unlimited';
-export type PuzzleDifficulty = 'easy' | 'medium' | 'hard';
-
-export interface RoundConfig {
-  type: RoundType;
-  difficulty: PuzzleDifficulty;
-  puzzleId?: string; // undefined = random
-  customPuzzle?: ConnectionsPuzzle | PuzzelrondePuzzle | OpenDeurPuzzle | LingoPuzzle;
-}
 
 export interface GameSettings {
-  rounds: RoundConfig[];
   attemptsMode: AttemptsMode;
   maxAttempts: number; // only used when attemptsMode = 'limited'
   timeLimitSeconds: number | null; // null = no limit
@@ -34,12 +24,6 @@ export interface GameSettings {
 }
 
 export const DEFAULT_SETTINGS: GameSettings = {
-  rounds: [
-    { type: 'connections', difficulty: 'medium' },
-    { type: 'opendeur', difficulty: 'medium' },
-    { type: 'puzzelronde', difficulty: 'medium' },
-    { type: 'lingo', difficulty: 'medium' },
-  ],
   attemptsMode: 'limited',
   maxAttempts: 6,
   timeLimitSeconds: 120,
@@ -297,111 +281,6 @@ export interface MuziekClientState {
   options?: string[];              // multiple-choice options (meerkeuze mode)
 }
 
-// ─── Puzzles ───────────────────────────────────────────
-export interface ConnectionsGroup {
-  label: string;
-  words: string[];
-  difficulty: 1 | 2 | 3 | 4; // 1=easiest(yellow), 4=hardest(purple)
-}
-
-export interface ConnectionsPuzzle {
-  id: string;
-  type: 'connections';
-  difficulty: PuzzleDifficulty;
-  groups: [ConnectionsGroup, ConnectionsGroup, ConnectionsGroup, ConnectionsGroup];
-}
-
-export interface PuzzelrondeGroup {
-  words: string[];
-  answer: string; // the connecting word players must guess
-}
-
-export interface PuzzelrondePuzzle {
-  id: string;
-  type: 'puzzelronde';
-  difficulty: PuzzleDifficulty;
-  groups: [PuzzelrondeGroup, PuzzelrondeGroup, PuzzelrondeGroup, PuzzelrondeGroup];
-}
-
-// ─── Open Deur ─────────────────────────────────────────
-export interface OpenDeurQuestion {
-  question: string; // e.g. "Wat weet je van de Olympische Spelen?"
-  answers: string[]; // 4 correct answers
-}
-
-export interface OpenDeurPuzzle {
-  id: string;
-  type: 'opendeur';
-  difficulty: PuzzleDifficulty;
-  questions: [OpenDeurQuestion, OpenDeurQuestion, OpenDeurQuestion];
-}
-
-// ─── Lingo ─────────────────────────────────────────────
-export type LingoLetterFeedback = 'correct' | 'present' | 'absent';
-
-export interface LingoGuess {
-  word: string;
-  feedback: LingoLetterFeedback[];
-}
-
-export interface LingoWordResult {
-  guessed: boolean;
-  guessCount: number;
-}
-
-export interface LingoPuzzle {
-  id: string;
-  type: 'lingo';
-  difficulty: PuzzleDifficulty;
-  words: string[]; // 5 five-letter Dutch words
-}
-
-export type Puzzle = ConnectionsPuzzle | PuzzelrondePuzzle | OpenDeurPuzzle | LingoPuzzle;
-
-// ─── Round State (sent to clients) ────────────────────
-export interface ConnectionsRoundState {
-  type: 'connections';
-  words: string[]; // shuffled 16 words
-  solvedGroups: ConnectionsGroup[];
-  attemptsLeft: number | null; // null = unlimited
-  timeRemainingMs: number | null;
-}
-
-export interface PuzzelrondeRoundState {
-  type: 'puzzelronde';
-  words: string[]; // shuffled 16 words (always all visible)
-  solvedGroups: { words: string[]; answer: string }[];
-  totalGroups: number;
-  timeRemainingMs: number | null;
-}
-
-export interface OpenDeurRoundState {
-  type: 'opendeur';
-  currentQuestionIndex: number;
-  question: string;
-  foundAnswers: string[]; // answers the player has found so far
-  answerHints: (string | null)[]; // per-slot: first letter hint if unfound, null if found (original answer order)
-  foundAnswerSlots: (string | null)[]; // per-slot: matched answer text if found, null if unfound (original answer order)
-  totalAnswers: number; // always 4
-  totalQuestions: number; // always 3
-  timeRemainingMs: number | null;
-}
-
-export interface LingoRoundState {
-  type: 'lingo';
-  wordLength: number;
-  currentWordIndex: number;
-  totalWords: number;
-  firstLetter: string;
-  guesses: LingoGuess[];
-  maxGuessesPerWord: number;
-  completedWords: LingoWordResult[];
-  attemptsLeft: number | null;
-  timeRemainingMs: number | null;
-}
-
-export type RoundState = ConnectionsRoundState | PuzzelrondeRoundState | OpenDeurRoundState | LingoRoundState;
-
 // ─── Player Progress (shown to other players) ─────────
 export interface PlayerProgress {
   playerId: string;
@@ -416,7 +295,7 @@ export interface PlayerRoundResult {
   nickname: string;
   avatarUrl: string;
   groupsFound: number;
-  correctAnswers: number; // puzzelronde: correct connecting words
+  correctAnswers: number;
   wrongGuesses: number;
   timeUsedMs: number;
   roundScore: number;
@@ -424,9 +303,8 @@ export interface PlayerRoundResult {
 
 export interface RoundResult {
   roundIndex: number;
-  roundType: RoundType;
+  roundType: string;
   results: PlayerRoundResult[];
-  correctGroups: ConnectionsGroup[] | PuzzelrondeGroup[] | OpenDeurQuestion[] | string[];
 }
 
 // ─── Final Results ─────────────────────────────────────
@@ -450,11 +328,6 @@ export interface ClientToServerEvents {
   'leave-room': () => void;
   'update-settings': (settings: GameSettings) => void;
   'start-game': () => void;
-  'submit-group': (data: { words: string[] }) => void;
-  'submit-answer': (data: { answer: string }) => void;
-  'submit-opendeur-answer': (data: { answer: string }) => void;
-  'submit-lingo-guess': (data: { guess: string }) => void;
-  'skip-question': () => void;
   'next-round': () => void;
   'play-again': () => void;
   'update-score': (data: { playerId: string; score: number }) => void;
@@ -503,13 +376,6 @@ export interface ServerToClientEvents {
   'settings-updated': (settings: GameSettings) => void;
   'game-started': () => void;
   'countdown': (data: { count: number }) => void;
-  'round-start': (data: { roundIndex: number; roundState: RoundState; roundType: RoundType }) => void;
-  'group-result': (data: { correct: boolean; group?: ConnectionsGroup | { words: string[] }; roundState: RoundState; hintWords?: string[] }) => void;
-  'answer-result': (data: { correct: boolean; groupWords?: string[]; roundState: RoundState }) => void;
-  'opendeur-result': (data: { correct: boolean; matchedAnswer?: string; roundState: RoundState; questionComplete?: boolean }) => void;
-  'opendeur-next-question': (data: { roundState: RoundState; previousAnswers: string[] }) => void;
-  'lingo-result': (data: { correct: boolean; feedback?: LingoLetterFeedback[]; roundState: RoundState }) => void;
-  'lingo-next-word': (data: { roundState: RoundState; previousWord: string }) => void;
   'player-progress': (data: PlayerProgress[]) => void;
   'time-update': (data: { timeRemainingMs: number }) => void;
   'round-end': (data: RoundResult) => void;
@@ -518,7 +384,7 @@ export interface ServerToClientEvents {
   'error': (data: { message: string }) => void;
   'kicked': () => void;
   'room-closed': () => void;
-  'reconnected': (data: { room: GameRoom; player: Player; roundState: RoundState | null; phase: 'lobby' | 'playing' | 'round-end' | 'finished'; roundResult: RoundResult | null; finalResults: FinalResults | null; playerProgress: PlayerProgress[] }) => void;
+  'reconnected': (data: { room: GameRoom; player: Player; phase: 'lobby' | 'playing' | 'round-end' | 'finished'; roundResult: RoundResult | null; finalResults: FinalResults | null; playerProgress: PlayerProgress[] }) => void;
   'reconnect-failed': () => void;
   'room-check': (data: { exists: boolean; joinable: boolean; gameCategory?: string | null }) => void;
   // ─── Wie Ben Ik? ───────────────────────────────────
@@ -558,7 +424,7 @@ export interface ServerToClientEvents {
   'muziek:scores-updated': (data: { scores: MuziekPlayerScore[] }) => void;
   'muziek:game-end': (data: { scores: MuziekPlayerScore[] }) => void;
   // ─── Briefing ──────────────────────────────────────
-  'briefing-start': (data: { briefingKey: string; roundType?: RoundType; gameCategory: GameCategory }) => void;
+  'briefing-start': (data: { briefingKey: string; roundType?: string; gameCategory: GameCategory }) => void;
   'briefing-ready-count': (data: { ready: number; total: number }) => void;
 }
 

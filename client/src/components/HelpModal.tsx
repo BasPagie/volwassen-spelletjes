@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { getInstruction } from "../lib/gameInstructions";
-import type { RoundType, GameCategory } from "shared/types";
+import type { GameCategory } from "shared/types";
 
 const BG_COLORS: Record<string, string> = {
   blue: "bg-blue-50",
@@ -19,7 +19,7 @@ const TEXT_COLORS: Record<string, string> = {
 };
 
 interface Props {
-  instructionKey: RoundType | GameCategory;
+  instructionKey: string | GameCategory;
   open: boolean;
   onClose: () => void;
 }

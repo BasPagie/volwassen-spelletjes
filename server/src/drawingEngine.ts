@@ -529,16 +529,3 @@ export function getDrawerId(roomId: string): string | null {
   if (!inst) return null;
   return inst.currentDrawerId;
 }
-
-export function getPhase(roomId: string): string | null {
-  const inst = activeGames.get(roomId);
-  if (!inst) return null;
-  return inst.phase;
-}
-
-export function getTimeRemainingMs(roomId: string): number {
-  const inst = activeGames.get(roomId);
-  if (!inst || inst.phase !== 'drawing') return 0;
-  const elapsed = Date.now() - inst.turnStartTime;
-  return Math.max(0, inst.settings.drawTimeSeconds * 1000 - elapsed);
-}

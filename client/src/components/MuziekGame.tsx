@@ -20,6 +20,7 @@ export default function MuziekGame({ state, isSpectator }: Props) {
   const [lastResult, setLastResult] = useState<"correct" | "wrong" | null>(
     null,
   );
+  const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [audioError, setAudioError] = useState(false);
   const [volume, setVolume] = useState(0.4);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -113,6 +114,7 @@ export default function MuziekGame({ state, isSpectator }: Props) {
     }
     setInput("");
     setLastResult(null);
+    setSelectedOption(null);
   }, [state.songIndex, state.phase]);
 
   // Listen for buzz results to show inline flash
@@ -127,16 +129,18 @@ export default function MuziekGame({ state, isSpectator }: Props) {
     };
   }, [socket]);
 
-  // Clear result flash
+  // Clear result flash (only for text input mode, not multiple choice)
   useEffect(() => {
-    if (lastResult) {
+    if (lastResult && !selectedOption) {
       if (resultTimeout.current) clearTimeout(resultTimeout.current);
-      resultTimeout.current = setTimeout(() => setLastResult(null), 1500);
+      resultTimeout.current = setTimeout(() => {
+        setLastResult(null);
+      }, 1500);
     }
     return () => {
       if (resultTimeout.current) clearTimeout(resultTimeout.current);
     };
-  }, [lastResult]);
+  }, [lastResult, selectedOption]);
 
   const handleBuzz = useCallback(() => {
     if (!socket || !input.trim() || state.answered) return;
@@ -146,10 +150,11 @@ export default function MuziekGame({ state, isSpectator }: Props) {
 
   const handleOptionClick = useCallback(
     (option: string) => {
-      if (!socket || state.answered) return;
+      if (!socket || state.answered || selectedOption) return;
+      setSelectedOption(option);
       socket.emit("muziek:buzz", { answer: option });
     },
-    [socket, state.answered],
+    [socket, state.answered, selectedOption],
   );
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -303,15 +308,32 @@ export default function MuziekGame({ state, isSpectator }: Props) {
           ) : state.options && state.options.length > 0 ? (
             /* Meerkeuze mode: 4 option buttons */
             <div className="grid grid-cols-2 gap-3">
-              {state.options.map((option) => (
-                <button
-                  key={option}
-                  onClick={() => handleOptionClick(option)}
-                  className="px-4 py-3 rounded-xl border-2 border-gray-200 hover:border-purple-400 hover:bg-purple-50 font-display font-semibold text-sm text-gray-800 transition-all text-left"
-                >
-                  {option}
-                </button>
-              ))}
+              {state.options.map((option) => {
+                const isSelected = selectedOption === option;
+                const showCorrect = isSelected && lastResult === "correct";
+                const showWrong = isSelected && lastResult === "wrong";
+                return (
+                  <button
+                    key={option}
+                    onClick={() => handleOptionClick(option)}
+                    disabled={!!selectedOption}
+                    className={`px-4 py-3 rounded-xl border-2 font-display font-semibold text-sm transition-all text-left
+                      ${
+                        showCorrect
+                          ? "border-green-400 bg-green-50 text-green-800"
+                          : showWrong
+                            ? "border-red-400 bg-red-50 text-red-800 animate-shake"
+                            : "border-gray-200 hover:border-purple-400 hover:bg-purple-50 text-gray-800"
+                      }
+                      ${selectedOption && !isSelected ? "opacity-50" : ""}
+                    `}
+                  >
+                    {showCorrect && "✅ "}
+                    {showWrong && "❌ "}
+                    {option}
+                  </button>
+                );
+              })}
             </div>
           ) : (
             /* Text input mode */

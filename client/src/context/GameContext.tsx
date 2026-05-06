@@ -10,7 +10,6 @@ import type {
   Player,
   GameRoom,
   GameSettings,
-  RoundState,
   PlayerProgress,
   RoundResult,
   FinalResults,
@@ -22,7 +21,6 @@ import type {
   DrawingSettings,
   MuziekClientState,
   MuziekSettings,
-  RoundType,
   GameCategory,
 } from "shared/types";
 
@@ -36,9 +34,6 @@ export interface Toast {
 export interface GameState {
   player: Player | null;
   room: GameRoom | null;
-  roundState: RoundState | null;
-  hintWords: string[];
-  lastAnswerResult: { correct: boolean } | null;
   playerProgress: PlayerProgress[];
   roundResults: RoundResult[];
   currentRoundResult: RoundResult | null;
@@ -66,7 +61,7 @@ export interface GameState {
   // Briefing
   briefing: {
     briefingKey: string;
-    roundType?: RoundType;
+    roundType?: string;
     gameCategory: GameCategory;
     readyCount: number;
     totalCount: number;
@@ -76,9 +71,6 @@ export interface GameState {
 const initialState: GameState = {
   player: null,
   room: null,
-  roundState: null,
-  hintWords: [],
-  lastAnswerResult: null,
   playerProgress: [],
   roundResults: [],
   currentRoundResult: null,
@@ -110,13 +102,6 @@ export type GameAction =
   | { type: "GAME_STARTED" }
   | { type: "COUNTDOWN"; count: number }
   | { type: "SCORE_UPDATED"; playerId: string; score: number }
-  | { type: "ROUND_START"; roundState: RoundState; roundIndex?: number }
-  | {
-      type: "UPDATE_ROUND_STATE";
-      roundState: RoundState;
-      hintWords?: string[];
-      answerResult?: { correct: boolean; correctAnswer?: string };
-    }
   | { type: "PLAYER_PROGRESS"; progress: PlayerProgress[] }
   | { type: "ROUND_END"; result: RoundResult }
   | { type: "GAME_END"; results: FinalResults }
@@ -130,7 +115,6 @@ export type GameAction =
       type: "RECONNECTED";
       room: GameRoom;
       player: Player;
-      roundState: RoundState | null;
       phase: "lobby" | "playing" | "round-end" | "finished";
       roundResult: RoundResult | null;
       finalResults: FinalResults | null;
@@ -175,7 +159,7 @@ export type GameAction =
   | {
       type: "SET_BRIEFING";
       briefingKey: string;
-      roundType?: RoundType;
+      roundType?: string;
       gameCategory: GameCategory;
     }
   | { type: "BRIEFING_READY_COUNT"; ready: number; total: number }
@@ -286,30 +270,6 @@ function gameReducer(state: GameState, action: GameAction): GameState {
         },
       };
 
-    case "ROUND_START":
-      return {
-        ...state,
-        roundState: action.roundState,
-        timeRemainingMs: null,
-        hintWords: [],
-        lastAnswerResult: null,
-        playerProgress: [],
-        currentRoundResult: null,
-        phase: "playing",
-        room:
-          state.room && action.roundIndex != null
-            ? { ...state.room, currentRoundIndex: action.roundIndex }
-            : state.room,
-      };
-
-    case "UPDATE_ROUND_STATE":
-      return {
-        ...state,
-        roundState: action.roundState,
-        hintWords: action.hintWords ?? [],
-        lastAnswerResult: action.answerResult ?? state.lastAnswerResult,
-      };
-
     case "PLAYER_PROGRESS":
       return { ...state, playerProgress: action.progress };
 
@@ -331,7 +291,6 @@ function gameReducer(state: GameState, action: GameAction): GameState {
     case "NEXT_ROUND":
       return {
         ...state,
-        roundState: null,
         timeRemainingMs: null,
         currentRoundResult: null,
         phase: "playing",
@@ -360,15 +319,12 @@ function gameReducer(state: GameState, action: GameAction): GameState {
         ...state,
         player: action.player,
         room: action.room,
-        roundState: action.roundState,
         timeRemainingMs: null,
         currentRoundResult: action.roundResult,
         finalResults: action.finalResults,
         playerProgress: action.playerProgress,
         phase: action.phase,
         countdown: null,
-        hintWords: [],
-        lastAnswerResult: null,
         errorMessage: null,
       };
 

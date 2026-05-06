@@ -314,12 +314,25 @@ export default function DrawingGame({ state, playerId }: Props) {
           <div>
             {isDrawer ? (
               <p className="text-gray-800 font-display font-black text-lg">
-                Teken: <span className="text-teal-600">{state.word}</span>
+                {state.phase === "reveal" ? (
+                  state.correctGuessers.length > 0 ? (
+                    "✅ Woord geraden!"
+                  ) : (
+                    "❌ Niemand heeft het geraden"
+                  )
+                ) : (
+                  <>
+                    Teken: <span className="text-teal-600">{state.word}</span>
+                  </>
+                )}
               </p>
             ) : state.phase === "reveal" ? (
-              <p className="text-gray-800 font-display font-black text-lg">
-                Het was:{" "}
-                <span className="text-teal-600">{state.revealWord}</span>
+              <p
+                className={`font-display font-bold text-sm ${state.correctGuessers.length > 0 ? "text-green-600" : "text-red-500"}`}
+              >
+                {state.correctGuessers.length > 0
+                  ? "✅ Woord geraden!"
+                  : "❌ Niemand heeft het geraden"}
               </p>
             ) : hasGuessedCorrectly ? (
               <p className="text-green-600 font-display font-bold text-lg">
@@ -353,16 +366,36 @@ export default function DrawingGame({ state, playerId }: Props) {
           {/* Canvas + input */}
           <div className="flex-1 flex flex-col min-h-0">
             <div className="flex-1 flex flex-col items-center min-h-0">
-              <DrawingCanvas
-                isDrawer={isDrawer && state.phase === "drawing"}
-                onStroke={handleStroke}
-                onFill={handleFill}
-                onClear={handleClear}
-                onUndo={handleUndo}
-                incomingStroke={incomingStroke}
-                incomingFill={incomingFill}
-                clearSignal={clearSignal}
-              />
+              <div className="relative w-full flex justify-center flex-1 min-h-0">
+                <DrawingCanvas
+                  isDrawer={isDrawer && state.phase === "drawing"}
+                  onStroke={handleStroke}
+                  onFill={handleFill}
+                  onClear={handleClear}
+                  onUndo={handleUndo}
+                  incomingStroke={incomingStroke}
+                  incomingFill={incomingFill}
+                  clearSignal={clearSignal}
+                />
+                {/* Word reveal overlay centered on canvas */}
+                {state.phase === "reveal" && state.revealWord && (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8, y: 10 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    transition={{ type: "spring", damping: 15, stiffness: 200 }}
+                    className="absolute inset-0 flex items-center justify-center pointer-events-none z-10"
+                  >
+                    <div className="px-6 py-3 bg-white/95 backdrop-blur-sm rounded-xl shadow-lg border border-teal-200">
+                      <p className="font-display font-black text-xl sm:text-2xl text-gray-800">
+                        Het woord was:{" "}
+                        <span className="text-teal-600">
+                          {state.revealWord}
+                        </span>
+                      </p>
+                    </div>
+                  </motion.div>
+                )}
+              </div>
               {/* Guess input — always directly below canvas */}
               {!isDrawer &&
                 !hasGuessedCorrectly &&

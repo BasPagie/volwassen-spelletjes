@@ -291,12 +291,6 @@ function advanceTurn(
   if (onTurnAdvance) onTurnAdvance(instance.roomId);
 }
 
-export function getCurrentTurnPlayerId(roomId: string): string | undefined {
-  const instance = activeGames.get(roomId);
-  if (!instance || instance.gameMode !== 'turns') return undefined;
-  return instance.turnOrder[instance.currentTurnIndex];
-}
-
 export function skipTurn(
   roomId: string,
   playerId: string,
