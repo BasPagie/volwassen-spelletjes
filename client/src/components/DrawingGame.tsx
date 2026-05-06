@@ -14,9 +14,16 @@ import { playSound } from "../hooks/useSoundEffect";
 interface Props {
   state: DrawingClientState;
   playerId: string;
+  isHost?: boolean;
+  onBackToLobby?: () => void;
 }
 
-export default function DrawingGame({ state, playerId }: Props) {
+export default function DrawingGame({
+  state,
+  playerId,
+  isHost,
+  onBackToLobby,
+}: Props) {
   const socket = useSocket();
   const [guessInput, setGuessInput] = useState("");
   const [messages, setMessages] = useState<
@@ -301,7 +308,17 @@ export default function DrawingGame({ state, playerId }: Props) {
     <div className="h-screen flex flex-col overflow-hidden px-2 sm:px-4 py-2 sm:py-3">
       <div className="max-w-5xl mx-auto w-full flex flex-col flex-1 min-h-0">
         {/* Header */}
-        <div className="text-center mb-2 shrink-0">
+        <div className="text-center mb-2 shrink-0 relative">
+          {isHost && onBackToLobby && (
+            <div className="absolute left-0 top-0">
+              <button
+                onClick={onBackToLobby}
+                className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-600 font-display font-bold text-xs transition-colors"
+              >
+                ← Lobby
+              </button>
+            </div>
+          )}
           <div className="flex items-center justify-center gap-2 sm:gap-3 mb-1">
             <span className="px-3 py-1 rounded-full text-sm font-display font-bold bg-teal-100 text-teal-700">
               ✏️ Tekenwedstrijd
@@ -366,7 +383,7 @@ export default function DrawingGame({ state, playerId }: Props) {
           {/* Canvas + input */}
           <div className="flex-1 flex flex-col min-h-0">
             <div className="flex-1 flex flex-col items-center min-h-0">
-              <div className="relative w-full flex justify-center flex-1 min-h-0">
+              <div className="relative w-full max-w-[800px] aspect-[8/5] max-h-full mx-auto">
                 <DrawingCanvas
                   isDrawer={isDrawer && state.phase === "drawing"}
                   onStroke={handleStroke}

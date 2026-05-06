@@ -163,7 +163,12 @@ export default function Game() {
       return <GameSkeletonWithBack variant="game" roomId={roomId} />;
     }
     return (
-      <DrawingGame state={state.drawingState} playerId={state.player!.id} />
+      <DrawingGame
+        state={state.drawingState}
+        playerId={state.player!.id}
+        isHost={state.player!.isHost}
+        onBackToLobby={handleBackToLobby}
+      />
     );
   }
 
