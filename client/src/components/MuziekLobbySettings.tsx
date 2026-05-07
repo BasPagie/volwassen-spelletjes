@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import type { MuziekSettings } from "shared/types";
-import { DEFAULT_MUZIEK_SETTINGS } from "shared/types";
+import { DEFAULT_MUZIEK_SETTINGS, HEARDLE_PHASES } from "shared/types";
 
 interface SongCategory {
   id: string;
@@ -79,7 +79,9 @@ export default function MuziekLobbySettings({
             </div>
             <div>
               <span className="text-xs text-gray-400">Clip duur</span>
-              <p className="font-semibold">{current.clipDuration}s</p>
+              <p className="font-semibold">
+                {current.heardleMode ? "Heardle" : `${current.clipDuration}s`}
+              </p>
             </div>
             <div>
               <span className="text-xs text-gray-400">Raad modus</span>
@@ -187,27 +189,101 @@ export default function MuziekLobbySettings({
         </div>
       </div>
 
-      {/* Clip duration */}
+      {/* Clip duration — hidden in heardle mode */}
+      {!current.heardleMode && (
+        <div>
+          <label className="text-sm font-semibold text-gray-600 mb-2 block">
+            Clip duur (seconden)
+          </label>
+          <div className="flex gap-2">
+            {[5, 10, 15, 20, 30].map((n) => (
+              <button
+                key={n}
+                onClick={() => update({ clipDuration: n })}
+                className={`px-4 py-2 rounded-lg font-display font-bold text-sm transition-all ${
+                  current.clipDuration === n
+                    ? "bg-purple-600 text-white"
+                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                }`}
+              >
+                {n}s
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Heardle mode toggle */}
       <div>
-        <label className="text-sm font-semibold text-gray-600 mb-2 block">
-          Clip duur (seconden)
-        </label>
-        <div className="flex gap-2">
-          {[5, 10, 15, 20, 30].map((n) => (
+        <span className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">
+          Speelstijl
+        </span>
+        <p className="text-xs text-gray-400 mb-2">
+          Heardle: hoor steeds een langer fragment (
+          {HEARDLE_PHASES.join("s → ")}s)
+        </p>
+        <div className="bg-gray-50/50 rounded-2xl border border-gray-100 p-3">
+          <div className="flex gap-2">
             <button
-              key={n}
-              onClick={() => update({ clipDuration: n })}
-              className={`px-4 py-2 rounded-lg font-display font-bold text-sm transition-all ${
-                current.clipDuration === n
-                  ? "bg-purple-600 text-white"
+              onClick={() => update({ heardleMode: false })}
+              className={`flex-1 py-2 px-3 rounded-xl text-sm font-medium transition-all ${
+                !current.heardleMode
+                  ? "bg-purple-600 text-white shadow-md"
                   : "bg-gray-100 text-gray-600 hover:bg-gray-200"
               }`}
             >
-              {n}s
+              🎧 Normaal
             </button>
-          ))}
+            <button
+              onClick={() => update({ heardleMode: true })}
+              className={`flex-1 py-2 px-3 rounded-xl text-sm font-medium transition-all ${
+                current.heardleMode
+                  ? "bg-purple-600 text-white shadow-md"
+                  : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+              }`}
+            >
+              🎵 Heardle
+            </button>
+          </div>
         </div>
       </div>
+
+      {/* Heardle guess mode — only shown in heardle mode */}
+      {current.heardleMode && (
+        <div>
+          <span className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">
+            Gokken per fase
+          </span>
+          <p className="text-xs text-gray-400 mb-2">
+            Één kans: fout = wachten tot volgende fase. Onbeperkt: penalty bij
+            fout antwoord.
+          </p>
+          <div className="bg-gray-50/50 rounded-2xl border border-gray-100 p-3">
+            <div className="flex gap-2">
+              <button
+                onClick={() => update({ heardleGuessMode: "unlimited" })}
+                className={`flex-1 py-2 px-3 rounded-xl text-sm font-medium transition-all ${
+                  current.heardleGuessMode === "unlimited"
+                    ? "bg-purple-600 text-white shadow-md"
+                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                }`}
+              >
+                ♾️ Onbeperkt
+              </button>
+              <button
+                onClick={() => update({ heardleGuessMode: "one-per-phase" })}
+                className={`flex-1 py-2 px-3 rounded-xl text-sm font-medium transition-all ${
+                  current.heardleGuessMode === "one-per-phase"
+                    ? "bg-purple-600 text-white shadow-md"
+                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                }`}
+              >
+                1️⃣ Één per fase
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Guess mode */}
       <div>

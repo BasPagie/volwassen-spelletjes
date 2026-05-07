@@ -456,18 +456,19 @@
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/b4f389a59fa6f9f9fd09c2af0a702d18/250x250-000000-80-0-0.jpg"
       },
       {
-        "title": "Gummy Bear Song",
-        "artist": "Gummibär",
+        "title": "Blue (Da Ba Dee)",
+        "artist": "Eiffel 65",
         "acceptedAnswers": [
-          "gummy bear song",
-          "gummibär",
-          "gummibr",
-          "gummy bear song gummibär",
-          "gummibär gummy bear song"
+          "blue",
+          "blue da ba dee",
+          "da ba dee",
+          "eiffel 65",
+          "blue eiffel 65",
+          "eiffel 65 blue"
         ],
-        "deezerId": 1558374432,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/6/c/e/0/6cea80ec489ffe537e22befbdda0d6f4.mp3?hdnea=exp=1778090555~acl=/api/1/1/6/c/e/0/6cea80ec489ffe537e22befbdda0d6f4.mp3*~data=user_id=0,application_id=42~hmac=5681a9e0cc47877f43e845ac978da40686b4cf28be53eb0092c480d4d2cbf15d",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/bef44e8c7de739a187806878a34a390a/250x250-000000-80-0-0.jpg"
+        "deezerId": 89629797,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/e/b/0/0/eb0591cd63ab61069bc14b1082f78efe.mp3?hdnea=exp=1778160662~acl=/api/1/1/e/b/0/0/eb0591cd63ab61069bc14b1082f78efe.mp3*~data=user_id=0,application_id=42~hmac=903981931cf22413f232e1dd427859703199015865f8bc8b9958b9246aa92e29",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/03aaa3268500f38fe03588f7b25522dd/250x250-000000-80-0-0.jpg"
       },
       {
         "title": "Witch Doctor",
@@ -808,6 +809,19 @@
         "deezerId": 569781822,
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/2/7/f/0/27f9b0b214c720e860166dd055b6e54d.mp3?hdnea=exp=1778090566~acl=/api/1/1/2/7/f/0/27f9b0b214c720e860166dd055b6e54d.mp3*~data=user_id=0,application_id=42~hmac=27a39cf45c56e8328c07838ee7aa1d29edb8cdcb714ed772864ee0aa542b72a2",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/1dc201816ddb71224f2de38698318488/250x250-000000-80-0-0.jpg"
+      },
+      {
+        "title": "Lost in Paradise",
+        "artist": "ALI",
+        "acceptedAnswers": [
+          "lost in paradise",
+          "ali",
+          "lost in paradise ali",
+          "ali lost in paradise"
+        ],
+        "deezerId": 1093607442,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/1/9/2/0/1924ad13f8caacce9ea51d084a03e9a9.mp3?hdnea=exp=1778106504~acl=/api/1/1/1/9/2/0/1924ad13f8caacce9ea51d084a03e9a9.mp3*~data=user_id=0,application_id=42~hmac=fcfca5fb35d2c7e572a8c17d0199ef04b5bf08e93bd37818837952a319bf90aa",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/39c03120b61a1c05be82f5a1458a8853/250x250-000000-80-0-0.jpg"
       }
     ]
   },
@@ -1111,16 +1125,16 @@
       },
       {
         "title": "Still Alive",
-        "artist": "Jonathan Coulton",
+        "artist": "Aperture Science Psychoacoustic Laboratories",
         "acceptedAnswers": [
           "still alive",
-          "jonathan coulton",
-          "still alive jonathan coulton",
-          "jonathan coulton still alive"
+          "portal",
+          "still alive portal",
+          "glados"
         ],
-        "deezerId": 11045114,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/2/9/9/0/29977b65d57e38c720e218f5318d3542.mp3?hdnea=exp=1778090579~acl=/api/1/1/2/9/9/0/29977b65d57e38c720e218f5318d3542.mp3*~data=user_id=0,application_id=42~hmac=da87a355a7b038cd221504dd5e9f33e9d328d1068a40187337cebf65681c9e0f",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/e3f0a44961b7431f823f2d6a8a032edb/250x250-000000-80-0-0.jpg"
+        "deezerId": 3947010221,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/8/3/2/0/8325e3491407e1f04d4cf0193b017363.mp3?hdnea=exp=1778161521~acl=/api/1/1/8/3/2/0/8325e3491407e1f04d4cf0193b017363.mp3*~data=user_id=0,application_id=42~hmac=4697af61b0eab20f6c155cdb41baf63ea826a230dbee1da08e13ad19af1718c1",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/e535d7845f6ddc4f45ab1986fb473b58/250x250-000000-80-0-0.jpg"
       },
       {
         "title": "Bury the Light",
@@ -1227,17 +1241,17 @@
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/37a1d452b5020db12c2983cd5e26d700/250x250-000000-80-0-0.jpg"
       },
       {
-        "title": "Dragonborn Comes",
-        "artist": "Malukah",
+        "title": "Devil Trigger",
+        "artist": "Casey Edwards",
         "acceptedAnswers": [
-          "dragonborn comes",
-          "malukah",
-          "dragonborn comes malukah",
-          "malukah dragonborn comes"
+          "devil trigger",
+          "casey edwards",
+          "devil trigger casey edwards",
+          "casey edwards devil trigger"
         ],
-        "deezerId": 390415181,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/7/3/e/0/73e231b4ba45312df19914f3d83168da.mp3?hdnea=exp=1778090583~acl=/api/1/1/7/3/e/0/73e231b4ba45312df19914f3d83168da.mp3*~data=user_id=0,application_id=42~hmac=19fdf811bab8efe04dc47ccc07be524bbd1051aef05e6bfa78c9b13993716144",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/e4a800dd97ce682c7add060740aafa98/250x250-000000-80-0-0.jpg"
+        "deezerId": 2705779592,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/0/1/5/0/0158fef3a51e3af6a158db4253366576.mp3?hdnea=exp=1778161504~acl=/api/1/1/0/1/5/0/0158fef3a51e3af6a158db4253366576.mp3*~data=user_id=0,application_id=42~hmac=8514b7f509bc2117c066feaf9c8619dc9c942b65eafa54327cdfec863ed716d0",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/80c2dec68d8f7da31ab4ace26f305378/250x250-000000-80-0-0.jpg"
       },
       {
         "title": "Sanctuary",
@@ -1273,11 +1287,12 @@
           "city escape",
           "crush 40",
           "city escape crush 40",
-          "crush 40 city escape"
+          "escape from the city",
+          "sonic adventure"
         ],
-        "deezerId": 0,
-        "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/34/d1/23/34d1239b-1efd-1bc3-ff86-2d0f947668b8/mzaf_10784434046657021328.plus.aac.p.m4a",
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/20/74/b8/2074b81d-d546-b0c2-d85b-dda3a5e17661/886448236856.jpg/250x250bb.jpg"
+        "deezerId": 1243931232,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/2/f/b/0/2fb270dfd6e7d7aec3ae4a6a7933d244.mp3?hdnea=exp=1778161701~acl=/api/1/1/2/f/b/0/2fb270dfd6e7d7aec3ae4a6a7933d244.mp3*~data=user_id=0,application_id=42~hmac=799a940316a9c8eee1f9b7d6a4dbfaedc24ef7d6e8a2cf85b53a19ad50eee52a",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/6504f5be99b704e41a4edfea89ee00ef/250x250-000000-80-0-0.jpg"
       },
       {
         "title": "Weight of the World",
@@ -1306,17 +1321,17 @@
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/eb3d15a03bf6ac3fbcb209aa9d752567/250x250-000000-80-0-0.jpg"
       },
       {
-        "title": "Devils Never Cry",
-        "artist": "Capcom",
+        "title": "First Light",
+        "artist": "Lana Del Rey",
         "acceptedAnswers": [
-          "devils never cry",
-          "capcom",
-          "devils never cry capcom",
-          "capcom devils never cry"
+          "first light",
+          "lana del rey",
+          "first light lana del rey",
+          "lana del rey first light"
         ],
-        "deezerId": 2705819942,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/7/3/5/0/735396ff4f910499a9091314b197816b.mp3?hdnea=exp=1778090586~acl=/api/1/1/7/3/5/0/735396ff4f910499a9091314b197816b.mp3*~data=user_id=0,application_id=42~hmac=f51f55f6ecc6bf2a0b423caffd0b8b82eb42d38888007dbc1a9de869995c83de",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/73112a43fcfa996a86be56476bf080f6/250x250-000000-80-0-0.jpg"
+        "deezerId": 3958854131,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/6/4/2/0/64226721cebdc490b451b88c641cd805.mp3?hdnea=exp=1778161509~acl=/api/1/1/6/4/2/0/64226721cebdc490b451b88c641cd805.mp3*~data=user_id=0,application_id=42~hmac=3e609795f5cc5d50b6a52c9416c977795d00bcbcf31b1f738e3dcb8abed286ea",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/6f91210db2e594848ef5b609a98de9b5/250x250-000000-80-0-0.jpg"
       },
       {
         "title": "Dragonforce - Through the Fire and Flames",
@@ -1334,16 +1349,16 @@
       },
       {
         "title": "Want You Gone",
-        "artist": "Jonathan Coulton",
+        "artist": "Aperture Science Psychoacoustic Laboratories",
         "acceptedAnswers": [
           "want you gone",
-          "jonathan coulton",
-          "want you gone jonathan coulton",
-          "jonathan coulton want you gone"
+          "portal",
+          "want you gone portal",
+          "glados"
         ],
-        "deezerId": 55357011,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/5/8/0/0/58084d62026dd27e89a60c1a32041243.mp3?hdnea=exp=1778090587~acl=/api/1/1/5/8/0/0/58084d62026dd27e89a60c1a32041243.mp3*~data=user_id=0,application_id=42~hmac=40c7d2bee5c1aa640d6df231fb1f7462972615fdda5fa752d10944b40bd38537",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/55e3968fd2dfe670e78a13ddfd606d81/250x250-000000-80-0-0.jpg"
+        "deezerId": 3947009911,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/2/b/8/0/2b89bae261eacc7c4ee308525d866b42.mp3?hdnea=exp=1778161532~acl=/api/1/1/2/b/8/0/2b89bae261eacc7c4ee308525d866b42.mp3*~data=user_id=0,application_id=42~hmac=350f149af5273dec5f8049ce32d827608f3e0dbddcfb4e7b012620c9865a92ec",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/e535d7845f6ddc4f45ab1986fb473b58/250x250-000000-80-0-0.jpg"
       },
       {
         "title": "Open Your Heart",
@@ -1446,19 +1461,6 @@
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/7d79a75867af3836510d67564362ea10/250x250-000000-80-0-0.jpg"
       },
       {
-        "title": "Silver For Monsters",
-        "artist": "Percival Schuttenbach",
-        "acceptedAnswers": [
-          "silver for monsters",
-          "percival schuttenbach",
-          "silver for monsters percival schuttenbach",
-          "percival schuttenbach silver for monsters"
-        ],
-        "deezerId": 448311922,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/6/f/d/0/6fd6740f1b7c7a0871a69b6231e6d600.mp3?hdnea=exp=1778090591~acl=/api/1/1/6/f/d/0/6fd6740f1b7c7a0871a69b6231e6d600.mp3*~data=user_id=0,application_id=42~hmac=6f269cdc40b90cc69ebc4f79dd66e9479ab3468c723118b466cf77df5b41bbe5",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/ddd604bb37a3feb9d8170b7b6d47cb76/250x250-000000-80-0-0.jpg"
-      },
-      {
         "title": "His Theme",
         "artist": "Toby Fox",
         "acceptedAnswers": [
@@ -1513,42 +1515,16 @@
       },
       {
         "title": "Song of Storms",
-        "artist": "Koji Kondo",
+        "artist": "Jon Batiste",
         "acceptedAnswers": [
           "song of storms",
-          "koji kondo",
-          "song of storms koji kondo",
-          "koji kondo song of storms"
+          "zelda",
+          "ocarina of time",
+          "legend of zelda"
         ],
-        "deezerId": 1622369062,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/4/2/7/0/42754c30215842579e547f38b265c32e.mp3?hdnea=exp=1778090593~acl=/api/1/1/4/2/7/0/42754c30215842579e547f38b265c32e.mp3*~data=user_id=0,application_id=42~hmac=71cdea18502233fdb13ee1839a01258071b50ef70a84f97b3ac7a41733eaee3a",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/b36e57d453a1151747888f215f654a19/250x250-000000-80-0-0.jpg"
-      },
-      {
-        "title": "Main Theme",
-        "artist": "The Elder Scrolls",
-        "acceptedAnswers": [
-          "main theme",
-          "the elder scrolls",
-          "main theme the elder scrolls",
-          "the elder scrolls main theme"
-        ],
-        "deezerId": 854534602,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/a/3/7/0/a37cb7c8a85b7cfa5c819c689ee88b68.mp3?hdnea=exp=1778090593~acl=/api/1/1/a/3/7/0/a37cb7c8a85b7cfa5c819c689ee88b68.mp3*~data=user_id=0,application_id=42~hmac=2334790e053fde7c91f2d29db825878ba4911a78f18c16ca646d3bcc09011762",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/81f44b7fb596e41f28a20d83dff9fdb2/250x250-000000-80-0-0.jpg"
-      },
-      {
-        "title": "Pigstep",
-        "artist": "Lena Raine",
-        "acceptedAnswers": [
-          "pigstep",
-          "lena raine",
-          "pigstep lena raine",
-          "lena raine pigstep"
-        ],
-        "deezerId": 987461812,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/6/a/a/0/6aab1b826bdbece30d21e718fa7348f7.mp3?hdnea=exp=1778090594~acl=/api/1/1/6/a/a/0/6aab1b826bdbece30d21e718fa7348f7.mp3*~data=user_id=0,application_id=42~hmac=7cd9d47ecbefbcc815d5b1503401c8b07075580028aa705419aec1a3879bc14e",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/03b7ba57eba9250f860d5b11ffc7dbf8/250x250-000000-80-0-0.jpg"
+        "deezerId": 3911901121,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/f/4/e/0/f4ef24d93d8051825e7021f3c8c81bbc.mp3?hdnea=exp=1778163249~acl=/api/1/1/f/4/e/0/f4ef24d93d8051825e7021f3c8c81bbc.mp3*~data=user_id=0,application_id=42~hmac=d24a60a31680d3b820da9b0484e8b4109e8fa96f48e04c4fbe505e09fa62cd9e",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/6a538e61679c2f5debe6e2a8aa902770/250x250-000000-80-0-0.jpg"
       },
       {
         "title": "BFG Division",
@@ -1603,32 +1579,261 @@
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/73b741e3e925f5bb9b27ae2b3c2c78a7/250x250-000000-80-0-0.jpg"
       },
       {
-        "title": "Main Theme - The Witcher 3",
-        "artist": "Marcin Przybylowicz",
+        "title": "Ludwig, the Holy Blade",
+        "artist": "SIE Sound Team",
         "acceptedAnswers": [
-          "main theme - the witcher 3",
-          "main theme  the witcher 3",
-          "marcin przybylowicz",
-          "main theme - the witcher 3 marcin przybylowicz",
-          "marcin przybylowicz main theme - the witcher 3"
+          "ludwig",
+          "ludwig the holy blade",
+          "bloodborne",
+          "ludwig bloodborne"
         ],
-        "deezerId": 0,
-        "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/c7/8f/82/c78f822b-33ef-fdc0-1034-213306c234d8/mzaf_15756648107427334331.plus.aac.p.m4a",
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/6d/dc/ff/6ddcff60-e6b8-a8e2-d048-0557611cf330/0000411611116.jpg/250x250bb.jpg"
+        "deezerId": 2981758331,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/6/e/8/0/6e85511a0b1b3fbddc9d6aa56d57a7eb.mp3?hdnea=exp=1778162519~acl=/api/1/1/6/e/8/0/6e85511a0b1b3fbddc9d6aa56d57a7eb.mp3*~data=user_id=0,application_id=42~hmac=130614836450985d37aac8c62f01a11c5e2e9d5a6365012cec2ee2f52ded1b83",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/0fc982bf3a43fc98a33ef7f74b53df66/250x250-000000-80-0-0.jpg"
       },
       {
-        "title": "Persona 5 - Beneath the Mask",
-        "artist": "Lyn",
+        "title": "Cleric Beast",
+        "artist": "SIE Sound Team",
         "acceptedAnswers": [
-          "persona 5 - beneath the mask",
-          "persona 5  beneath the mask",
-          "lyn",
-          "persona 5 - beneath the mask lyn",
-          "lyn persona 5 - beneath the mask"
+          "cleric beast",
+          "bloodborne",
+          "cleric beast bloodborne"
         ],
-        "deezerId": 1248334482,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/e/1/e/0/e1eabacaa8fdaef26b84c8923a6bc701.mp3?hdnea=exp=1778090597~acl=/api/1/1/e/1/e/0/e1eabacaa8fdaef26b84c8923a6bc701.mp3*~data=user_id=0,application_id=42~hmac=c7b37b37d8e0bed016ee532d3337b7bd655a02c105e10a5c8c2ce5dd967a220c",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/37a1d452b5020db12c2983cd5e26d700/250x250-000000-80-0-0.jpg"
+        "deezerId": 1240321562,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/d/1/c/0/d1cca960e08a13eb4b622f6fcd701080.mp3?hdnea=exp=1778162519~acl=/api/1/1/d/1/c/0/d1cca960e08a13eb4b622f6fcd701080.mp3*~data=user_id=0,application_id=42~hmac=14e6f28b3cbb91d675d27055dd62fcfbb51e7aef7801adb5e2d1aab25a05cffa",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/1fa20465330b53eb1183962c3eb1bf06/250x250-000000-80-0-0.jpg"
+      },
+      {
+        "title": "Gwyn, Lord of Cinder",
+        "artist": "Motoi Sakuraba",
+        "acceptedAnswers": [
+          "gwyn",
+          "gwyn lord of cinder",
+          "dark souls",
+          "motoi sakuraba"
+        ],
+        "deezerId": 3069067941,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/0/b/e/0/0be159ebab930483943b57d8ff3e82f3.mp3?hdnea=exp=1778162519~acl=/api/1/1/0/b/e/0/0be159ebab930483943b57d8ff3e82f3.mp3*~data=user_id=0,application_id=42~hmac=81293a8965bdb3de331705f6bfe5db66dea3e040c8b06447224e98bab291ef88",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/6cec8436387ebe3cc7270c36c866ebe3/250x250-000000-80-0-0.jpg"
+      },
+      {
+        "title": "Soul of Cinder",
+        "artist": "Yuka Kitamura",
+        "acceptedAnswers": [
+          "soul of cinder",
+          "dark souls 3",
+          "yuka kitamura",
+          "soul of cinder dark souls"
+        ],
+        "deezerId": 3069125531,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/0/9/6/0/096cb6b150625942d95b596eedd1e8de.mp3?hdnea=exp=1778162519~acl=/api/1/1/0/9/6/0/096cb6b150625942d95b596eedd1e8de.mp3*~data=user_id=0,application_id=42~hmac=67ea68300552a3d82e6263ddb058d6c170751e510f89471556e78b2487e5857e",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/4fb06a242b26f54eaacaf667c2910c3d/250x250-000000-80-0-0.jpg"
+      },
+      {
+        "title": "Abyss Watchers",
+        "artist": "Yuka Kitamura",
+        "acceptedAnswers": [
+          "abyss watchers",
+          "dark souls 3",
+          "yuka kitamura",
+          "abyss watchers dark souls"
+        ],
+        "deezerId": 3069125491,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/d/6/b/0/d6bc1899864c35e9443cec5d2fa1bb8c.mp3?hdnea=exp=1778162519~acl=/api/1/1/d/6/b/0/d6bc1899864c35e9443cec5d2fa1bb8c.mp3*~data=user_id=0,application_id=42~hmac=516b5a3a9da634a100ce8e1612b705586b7e7385318e9f67b89b9c3cae438cb5",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/4fb06a242b26f54eaacaf667c2910c3d/250x250-000000-80-0-0.jpg"
+      },
+      {
+        "title": "Elden Ring",
+        "artist": "Tsukasa Saitoh",
+        "acceptedAnswers": [
+          "elden ring",
+          "elden ring main theme",
+          "tsukasa saitoh"
+        ],
+        "deezerId": 1892294737,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/f/b/b/0/fbb54d92b9c10a54d7336b00da7372ef.mp3?hdnea=exp=1778162519~acl=/api/1/1/f/b/b/0/fbb54d92b9c10a54d7336b00da7372ef.mp3*~data=user_id=0,application_id=42~hmac=faf95b4de11e921c055dc76509070201d825dca0cb39483114eeacc1fdd3a221",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/c4d859c9a61478cf0c049f995a4bfa03/250x250-000000-80-0-0.jpg"
+      },
+      {
+        "title": "The Final Battle",
+        "artist": "Tsukasa Saitoh",
+        "acceptedAnswers": [
+          "the final battle",
+          "elden ring",
+          "radagon",
+          "elden beast"
+        ],
+        "deezerId": 1892295387,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/1/1/a/0/11a9d30a203c730fed4cf27190acdb0c.mp3?hdnea=exp=1778162520~acl=/api/1/1/1/1/a/0/11a9d30a203c730fed4cf27190acdb0c.mp3*~data=user_id=0,application_id=42~hmac=a8a7df3123a48859fe76efe498571d5afe5fc52e38e57b471eeb5702dac64e95",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/c4d859c9a61478cf0c049f995a4bfa03/250x250-000000-80-0-0.jpg"
+      },
+      {
+        "title": "BIG SHOT",
+        "artist": "Toby Fox",
+        "acceptedAnswers": [
+          "big shot",
+          "deltarune",
+          "toby fox",
+          "big shot deltarune"
+        ],
+        "deezerId": 1497605402,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/0/c/5/0/0c5a0b4f13046d7445e5b180b95d4d65.mp3?hdnea=exp=1778162520~acl=/api/1/1/0/c/5/0/0c5a0b4f13046d7445e5b180b95d4d65.mp3*~data=user_id=0,application_id=42~hmac=3ea981ae751965b10104d3caa6c032417b7a384b25b03923869536297d07eb50",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/8bc177b155667afeb856622d01943230/250x250-000000-80-0-0.jpg"
+      },
+      {
+        "title": "THE WORLD REVOLVING",
+        "artist": "Toby Fox",
+        "acceptedAnswers": [
+          "the world revolving",
+          "deltarune",
+          "toby fox",
+          "jevil"
+        ],
+        "deezerId": 1402803452,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/e/8/8/0/e88a0213567e0c26cbb0dd1db446c2fa.mp3?hdnea=exp=1778162520~acl=/api/1/1/e/8/8/0/e88a0213567e0c26cbb0dd1db446c2fa.mp3*~data=user_id=0,application_id=42~hmac=54c1edfd94019c9c6a05790f8f3302e61d272c25686e8ca5e2399d19d703e385",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/b54a3c7cf4ccdb0518048e2e2afbce4f/250x250-000000-80-0-0.jpg"
+      },
+      {
+        "title": "Unshaken",
+        "artist": "D'Angelo",
+        "acceptedAnswers": [
+          "unshaken",
+          "dangelo",
+          "d'angelo",
+          "red dead redemption"
+        ],
+        "deezerId": 688442482,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/1/e/0/0/1e038d3bc2bb5fccd07610c792786026.mp3?hdnea=exp=1778162520~acl=/api/1/1/1/e/0/0/1e038d3bc2bb5fccd07610c792786026.mp3*~data=user_id=0,application_id=42~hmac=9735b7c3602137c3cf53c3100f184671659b4eba254e7855ec2a1af846c68ce6",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/743f10679fbd7de6368b90a3bcfebe06/250x250-000000-80-0-0.jpg"
+      },
+      {
+        "title": "That's The Way It Is",
+        "artist": "Daniel Lanois",
+        "acceptedAnswers": [
+          "thats the way it is",
+          "that's the way it is",
+          "daniel lanois",
+          "red dead redemption"
+        ],
+        "deezerId": 688442502,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/8/2/f/0/82fadd34b5a9ffd56f4cf77ecf982aa4.mp3?hdnea=exp=1778162520~acl=/api/1/1/8/2/f/0/82fadd34b5a9ffd56f4cf77ecf982aa4.mp3*~data=user_id=0,application_id=42~hmac=dbc1bb5fb1a0d8976840fe64018517c85559827601ef6bb4d89b50e3e32bb705",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/743f10679fbd7de6368b90a3bcfebe06/250x250-000000-80-0-0.jpg"
+      },
+      {
+        "title": "Aquatic Ambiance",
+        "artist": "GENTLE LOVE",
+        "acceptedAnswers": [
+          "aquatic ambiance",
+          "donkey kong country",
+          "donkey kong",
+          "david wise"
+        ],
+        "deezerId": 121478682,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/2/0/4/0/204970988e158809d51e82805f2266b6.mp3?hdnea=exp=1778162520~acl=/api/1/1/2/0/4/0/204970988e158809d51e82805f2266b6.mp3*~data=user_id=0,application_id=42~hmac=165e651c136d85ca356d8a0579ef8327025ed69105d6da13f137cf6046072641",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/2a0a783dad00ed65504cc00c5e4e6e35/250x250-000000-80-0-0.jpg"
+      },
+      {
+        "title": "Down by the River",
+        "artist": "Borislav Slavov",
+        "acceptedAnswers": [
+          "down by the river",
+          "baldurs gate 3",
+          "baldur's gate 3",
+          "borislav slavov"
+        ],
+        "deezerId": 2435633395,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/7/a/a/0/7aafd52c3b0f5d8fa215b26e999d49f5.mp3?hdnea=exp=1778163088~acl=/api/1/1/7/a/a/0/7aafd52c3b0f5d8fa215b26e999d49f5.mp3*~data=user_id=0,application_id=42~hmac=71d1aaefe02ac0b3abc3a16d28f0ad8279747623422b3af73cf26286f58df220",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/b2ab6d0b329801788409c614d568202e/250x250-000000-80-0-0.jpg",
+        "clipStartOffset": 5
+      },
+      {
+        "title": "Guile's Theme",
+        "artist": "Capcom Sound Team",
+        "acceptedAnswers": [
+          "guile's theme",
+          "guiles theme",
+          "street fighter",
+          "guile"
+        ],
+        "deezerId": 2705684212,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/5/3/c/0/53c09844ec5e9b6e3e3baaff88284732.mp3?hdnea=exp=1778163088~acl=/api/1/1/5/3/c/0/53c09844ec5e9b6e3e3baaff88284732.mp3*~data=user_id=0,application_id=42~hmac=f307bd28439fb5070f4419882f1b8815505ab02739feac39b18dc7d3256606c4",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/bff1866edd52f320263c02c63744c5b4/250x250-000000-80-0-0.jpg"
+      },
+      {
+        "title": "Katamari on the Rocks",
+        "artist": "Masayuki Tanaka",
+        "acceptedAnswers": [
+          "katamari on the rocks",
+          "katamari",
+          "katamari damacy"
+        ],
+        "deezerId": 2692989602,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/6/c/c/0/6cc6f1a382b6dc955ec6e4d0ca3e9c40.mp3?hdnea=exp=1778163115~acl=/api/1/1/6/c/c/0/6cc6f1a382b6dc955ec6e4d0ca3e9c40.mp3*~data=user_id=0,application_id=42~hmac=62f95964bf666c4d733d1981acd012aa9abefe52bb8452d18d031d0bd89b089e",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/aedd4dcee7c61b74f983af5729ee4d1f/250x250-000000-80-0-0.jpg"
+      },
+      {
+        "title": "The Last of Us",
+        "artist": "Gustavo Santaolalla",
+        "acceptedAnswers": [
+          "the last of us",
+          "gustavo santaolalla",
+          "the last of us theme"
+        ],
+        "deezerId": 67770820,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/e/7/6/0/e7689259806c7f6a08a4627cb7f46d1e.mp3?hdnea=exp=1778162520~acl=/api/1/1/e/7/6/0/e7689259806c7f6a08a4627cb7f46d1e.mp3*~data=user_id=0,application_id=42~hmac=9feefba8609e4226208a907ca55f4488b613e3fc37ab7d3dab46335e23a14d2a",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/a31b4c4a32493fbd0dff58c0e2969161/250x250-000000-80-0-0.jpg"
+      },
+      {
+        "title": "Divine Bloodlines",
+        "artist": "Super Smash Bros. Ultimate",
+        "acceptedAnswers": [
+          "divine bloodlines",
+          "castlevania",
+          "castlevania rondo of blood",
+          "richter belmont"
+        ],
+        "deezerId": 0,
+        "previewUrl": "/audio/divine-bloodlines-ssbu.mp3",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/8e455cf7e173d9020ae8e49a647a8f70/250x250-000000-80-0-0.jpg"
+      },
+      {
+        "title": "Vampire Killer",
+        "artist": "Super Smash Bros. Ultimate",
+        "acceptedAnswers": [
+          "vampire killer",
+          "castlevania",
+          "simon belmont",
+          "konami"
+        ],
+        "deezerId": 0,
+        "previewUrl": "/audio/vampire-killer-ssbu.mp3",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/cdab33bd7a693fc9bd3a83dbf90d8d83/250x250-000000-80-0-0.jpg"
+      },
+      {
+        "title": "Let's Dance, Boys!",
+        "artist": "SEGA",
+        "acceptedAnswers": [
+          "lets dance boys",
+          "let's dance boys",
+          "bayonetta",
+          "bayonetta 1"
+        ],
+        "deezerId": 1244782812,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/4/4/2/0/442f0c72046d8f6b188b314d9bfdaadc.mp3?hdnea=exp=1778163586~acl=/api/1/1/4/4/2/0/442f0c72046d8f6b188b314d9bfdaadc.mp3*~data=user_id=0,application_id=42~hmac=f977644a4cfd8b9ccd2189f49b2326dd5cb48f4c79cc6b8e355e3a89c9ccbf8d",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/a07b8ba0a6afbf880b79bc0b19527b76/250x250-000000-80-0-0.jpg"
+      },
+      {
+        "title": "Lumière",
+        "artist": "Lorien Testard",
+        "acceptedAnswers": [
+          "lumiere",
+          "expedition 33",
+          "clair obscur",
+          "clair obscur expedition 33"
+        ],
+        "deezerId": 3315246271,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/5/1/f/0/51f2956cdc0d263be778cc55191416d0.mp3?hdnea=exp=1778162520~acl=/api/1/1/5/1/f/0/51f2956cdc0d263be778cc55191416d0.mp3*~data=user_id=0,application_id=42~hmac=d0c3b04a936d65285792a0f9ac8e459bd58781ee9c3628847eeb009accfca9f1",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/f20170f882ac3751d1ec3d8e8900b153/250x250-000000-80-0-0.jpg"
       }
     ]
   },
@@ -2449,6 +2654,19 @@
         "deezerId": 3152791,
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/1/9/2/0/1921ea9df7a0f5b0c39919ecbf8b950b.mp3?hdnea=exp=1778090626~acl=/api/1/1/1/9/2/0/1921ea9df7a0f5b0c39919ecbf8b950b.mp3*~data=user_id=0,application_id=42~hmac=fcc49af9a531e2001e2f701a4d7c84194c6820d1ac3efcb7818f9e1f6002ce8d",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/d81a729eef520198f77d3de7e0fb6458/250x250-000000-80-0-0.jpg"
+      },
+      {
+        "title": "Walk Like an Egyptian",
+        "artist": "The Bangles",
+        "acceptedAnswers": [
+          "walk like an egyptian",
+          "the bangles",
+          "walk like an egyptian the bangles",
+          "the bangles walk like an egyptian"
+        ],
+        "deezerId": 1056919,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/c/8/e/0/c8e6426c7a4553311cbee87cedc4b004.mp3?hdnea=exp=1778106497~acl=/api/1/1/c/8/e/0/c8e6426c7a4553311cbee87cedc4b004.mp3*~data=user_id=0,application_id=42~hmac=476d3f8251770d67f7e1b35963b4164050248ab825c2f5ecd1e51ddd82cc56da",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/3bdcbeeaa0df5998e003c25de3c271cc/250x250-000000-80-0-0.jpg"
       }
     ]
   },
@@ -2721,6 +2939,33 @@
         "deezerId": 703748,
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/e/7/0/0/e70f2f54fcdc64c5ed369d1d859ec62e.mp3?hdnea=exp=1778090635~acl=/api/1/1/e/7/0/0/e70f2f54fcdc64c5ed369d1d859ec62e.mp3*~data=user_id=0,application_id=42~hmac=6c57e7b2aa551600eed07c2394e5a51d11f06c63148787db52fe13e07dd0af4b",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/655e659d77faed4a3dca4f9c5a0fcd9e/250x250-000000-80-0-0.jpg"
+      },
+      {
+        "title": "I Want You",
+        "artist": "Savage Garden",
+        "acceptedAnswers": [
+          "i want you",
+          "savage garden",
+          "i want you savage garden",
+          "savage garden i want you"
+        ],
+        "deezerId": 117262948,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/e/f/c/0/efc76c519a52773fc1acc409b7583421.mp3?hdnea=exp=1778106498~acl=/api/1/1/e/f/c/0/efc76c519a52773fc1acc409b7583421.mp3*~data=user_id=0,application_id=42~hmac=68af07226608394d37ac2800c1685b11a0bb14f6d2154d652d8e939e7aaeee61",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/d393bffce44a4cf6ac86fab7adc51c62/250x250-000000-80-0-0.jpg"
+      },
+      {
+        "title": "Freek'n You",
+        "artist": "Jodeci",
+        "acceptedAnswers": [
+          "freek'n you",
+          "freekn you",
+          "jodeci",
+          "freek'n you jodeci",
+          "jodeci freek'n you"
+        ],
+        "deezerId": 2523761,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/e/2/2/0/e227c46b2e0978df9f7785cfb94d6b1a.mp3?hdnea=exp=1778106498~acl=/api/1/1/e/2/2/0/e227c46b2e0978df9f7785cfb94d6b1a.mp3*~data=user_id=0,application_id=42~hmac=66ced7245d880a1f4216abee429377b1e705a97d39497b426e0151ad07eb1b94",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/6b99bd86773b4a83d8f5d1d40ddad959/250x250-000000-80-0-0.jpg"
       }
     ]
   },
@@ -2994,6 +3239,32 @@
         "deezerId": 680516,
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/3/0/6/0/306de2a55d56aa17a8f5280eed398b43.mp3?hdnea=exp=1778090645~acl=/api/1/1/3/0/6/0/306de2a55d56aa17a8f5280eed398b43.mp3*~data=user_id=0,application_id=42~hmac=64edacc547eafa5f58460ccc38d82e46ef1ae20fbfd5899332b840ab8b7b25fb",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/a3a4028b1192c50d82a579439cbfc4af/250x250-000000-80-0-0.jpg"
+      },
+      {
+        "title": "Distant Dreamer",
+        "artist": "Duffy",
+        "acceptedAnswers": [
+          "distant dreamer",
+          "duffy",
+          "distant dreamer duffy",
+          "duffy distant dreamer"
+        ],
+        "deezerId": 2606176,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/0/8/e/0/08ea6c945369c9849681e835868fec0c.mp3?hdnea=exp=1778106497~acl=/api/1/1/0/8/e/0/08ea6c945369c9849681e835868fec0c.mp3*~data=user_id=0,application_id=42~hmac=13949cdf13b379bc33f2106335f59f485f70cc9ec960a5f97e86f46d55e5a199",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/e5e9ef4482d4615992f2972ccd9f6e96/250x250-000000-80-0-0.jpg"
+      },
+      {
+        "title": "Modern Crusaders",
+        "artist": "Enigma",
+        "acceptedAnswers": [
+          "modern crusaders",
+          "enigma",
+          "modern crusaders enigma",
+          "enigma modern crusaders"
+        ],
+        "deezerId": 3454060,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/2/c/0/0/2c0eb3c4304afc91c3b0c2f2e725ebbf.mp3?hdnea=exp=1778106498~acl=/api/1/1/2/c/0/0/2c0eb3c4304afc91c3b0c2f2e725ebbf.mp3*~data=user_id=0,application_id=42~hmac=91c7ad2233abcc017500c2821ded460f45013483124e83f27c11f649dec2a5be",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/21fc2bc4677aa422c1391cbbb392bf8e/250x250-000000-80-0-0.jpg"
       }
     ]
   },
@@ -3533,6 +3804,19 @@
         "deezerId": 12209331,
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/4/2/4/0/424c67c4ef4d10490bdfad20a9f31c50.mp3?hdnea=exp=1778090663~acl=/api/1/1/4/2/4/0/424c67c4ef4d10490bdfad20a9f31c50.mp3*~data=user_id=0,application_id=42~hmac=8b3a4eabcffe7607dbf490c6ca50730348db1886f516c4a06b4b582e59428ea1",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/fb22a75aa1aafc992230abd0bd79faef/250x250-000000-80-0-0.jpg"
+      },
+      {
+        "title": "Roundabout",
+        "artist": "Yes",
+        "acceptedAnswers": [
+          "roundabout",
+          "yes",
+          "roundabout yes",
+          "yes roundabout"
+        ],
+        "deezerId": 716219,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/7/6/b/0/76b8a24f702099a4f31572e414f5e876.mp3?hdnea=exp=1778106496~acl=/api/1/1/7/6/b/0/76b8a24f702099a4f31572e414f5e876.mp3*~data=user_id=0,application_id=42~hmac=8f3adf72eec44eb25d17a39f4c20e972223549d6f7890f003eb1e22f242bf7ab",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/0a2280085919a80732cdebad5a9cf83b/250x250-000000-80-0-0.jpg"
       }
     ]
   },
@@ -4383,18 +4667,17 @@
       },
       {
         "title": "A Whole New World",
-        "artist": "Peabo Bryson & Regina Belle",
+        "artist": "Lea Salonga",
         "acceptedAnswers": [
           "a whole new world",
-          "peabo bryson & regina belle",
-          "peabo bryson  regina belle",
-          "a whole new world peabo bryson & regina belle",
-          "peabo bryson & regina belle a whole new world",
+          "lea salonga",
+          "a whole new world lea salonga",
+          "lea salonga a whole new world",
           "aladdin"
         ],
-        "deezerId": 1030914,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/8/d/6/0/8d654d1b4fa40ebb57c3d6276889f576.mp3?hdnea=exp=1778092523~acl=/api/1/1/8/d/6/0/8d654d1b4fa40ebb57c3d6276889f576.mp3*~data=user_id=0,application_id=42~hmac=05c6485e38116e8710e02b22053ac260de30685335e3894f5e2f5d68f5aa1534",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/0b337444756545c537794d1126b6c6b9/250x250-000000-80-0-0.jpg"
+        "deezerId": 120917666,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/9/1/e/0/91e10a6a0827c5f1f9c16fdd4ecde0a7.mp3?hdnea=exp=1778149048~acl=/api/1/1/9/1/e/0/91e10a6a0827c5f1f9c16fdd4ecde0a7.mp3*~data=user_id=0,application_id=42~hmac=290d7b627af4d935d3e1a52c8852b01e93f43332a8b6add0124f251c8c269113",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/c6d6541f3be22f43be5fc3754e955b33/250x250-000000-80-0-0.jpg"
       },
       {
         "title": "Circle of Life",
@@ -4412,17 +4695,18 @@
       },
       {
         "title": "Under the Sea",
-        "artist": "The Little Mermaid",
+        "artist": "Samuel E. Wright",
         "acceptedAnswers": [
           "under the sea",
-          "the little mermaid",
-          "under the sea the little mermaid",
-          "the little mermaid under the sea",
+          "samuel e. wright",
+          "samuel e wright",
+          "under the sea samuel e. wright",
+          "samuel e. wright under the sea",
           "kleine zeemeermin"
         ],
-        "deezerId": 0,
-        "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/c6/6a/a2/c66aa2ec-b148-5af2-7480-b988b0b07f16/mzaf_1180893603085798672.plus.aac.p.m4a",
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/9f/ae/fd/9faefda3-d883-f3f1-e1e2-578ce6d75907/23UMGIM44884.rgb.jpg/250x250bb.jpg"
+        "deezerId": 145187392,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/2/1/4/0/214d0eff870457a3ad4b4b20d0d05327.mp3?hdnea=exp=1778149049~acl=/api/1/1/2/1/4/0/214d0eff870457a3ad4b4b20d0d05327.mp3*~data=user_id=0,application_id=42~hmac=ee746e164bc1b1b544bd1e2d3f4444c03e7cab79eee99210e6c1b13ccc810899",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/af5e46eeee7bd76c205845efa56f9d10/250x250-000000-80-0-0.jpg"
       },
       {
         "title": "Hakuna Matata",
@@ -4448,7 +4732,7 @@
           "sleeping beauty"
         ],
         "deezerId": 13796248,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/d/3/1/0/d31aa1a5138340f1861e2e598d13e3b5.mp3?hdnea=exp=1778092526~acl=/api/1/1/d/3/1/0/d31aa1a5138340f1861e2e598d13e3b5.mp3*~data=user_id=0,application_id=42~hmac=b4aab3bf3bcbc3d89620b033e9bfb20de32d01a5621082dcee4afa0847e7f69a",
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/d/3/1/0/d31aa1a5138340f1861e2e598d13e3b5.mp3?hdnea=exp=1778149050~acl=/api/1/1/d/3/1/0/d31aa1a5138340f1861e2e598d13e3b5.mp3*~data=user_id=0,application_id=42~hmac=f7af0a64078570e4b4c00c42f3a6b3040e92733844762621718f8a142fcd010a",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/14a81bace45d294ce77d80326d67620c/250x250-000000-80-0-0.jpg"
       },
       {
@@ -4467,17 +4751,21 @@
         "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/94/4d/9a/944d9a8d-0549-f537-5706-5b083bd84a7d/21UM1IM38949.rgb.jpg/250x250bb.jpg"
       },
       {
-        "title": "Into the Unknown",
-        "artist": "Frozen 2",
+        "title": "How Far I'll Go",
+        "artist": "Auli'i Cravalho",
         "acceptedAnswers": [
-          "into the unknown",
-          "frozen 2",
-          "into the unknown frozen 2",
-          "frozen 2 into the unknown"
+          "how far i'll go",
+          "how far ill go",
+          "auli'i cravalho",
+          "aulii cravalho",
+          "how far i'll go auli'i cravalho",
+          "auli'i cravalho how far i'll go",
+          "moana",
+          "vaiana"
         ],
-        "deezerId": 0,
-        "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/f5/91/ea/f591eaf6-cd4d-a634-f982-be10eafd4e8a/mzaf_8315384133362724523.plus.aac.p.m4a",
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/66/cf/70/66cf7012-98ed-b201-21ed-b1ee0e9ad26f/19UM1IM00155.rgb.jpg/250x250bb.jpg"
+        "deezerId": 136349848,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/5/c/6/0/5c61577f8de9642363979bbb6ffc0f66.mp3?hdnea=exp=1778149051~acl=/api/1/1/5/c/6/0/5c61577f8de9642363979bbb6ffc0f66.mp3*~data=user_id=0,application_id=42~hmac=263aaa9d5eb1d339e2f422145db3821695a2cf471a15b124a279730371bdf2fd",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/846f7d5f33ade67c54841ae1db6756ef/250x250-000000-80-0-0.jpg"
       },
       {
         "title": "You've Got a Friend in Me",
@@ -4520,7 +4808,7 @@
           "lion king"
         ],
         "deezerId": 97114650,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/9/6/b/0/96be9fd08267356f2cd1b1d880e37a1f.mp3?hdnea=exp=1778092530~acl=/api/1/1/9/6/b/0/96be9fd08267356f2cd1b1d880e37a1f.mp3*~data=user_id=0,application_id=42~hmac=e0ee9a17cf3519367537d0a1e2960eeac48286163220c3c9c843fe2660d48590",
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/9/6/b/0/96be9fd08267356f2cd1b1d880e37a1f.mp3?hdnea=exp=1778149053~acl=/api/1/1/9/6/b/0/96be9fd08267356f2cd1b1d880e37a1f.mp3*~data=user_id=0,application_id=42~hmac=04ef1c6fbb82032bc4c1858952756506c053ea2dfec4dd162f9df39956295d10",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/090c87bafad618079fa6a9c2670d5e8d/250x250-000000-80-0-0.jpg"
       },
       {
@@ -4534,7 +4822,7 @@
           "coco"
         ],
         "deezerId": 424600092,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/7/0/1/0/7012848085d047a375b8ffa118a71afa.mp3?hdnea=exp=1778092530~acl=/api/1/1/7/0/1/0/7012848085d047a375b8ffa118a71afa.mp3*~data=user_id=0,application_id=42~hmac=7533d79087dd1cadaa70ec92a87ba03a583b1a02fcd0a3fbf3e2bb763758bfbd",
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/7/0/1/0/7012848085d047a375b8ffa118a71afa.mp3?hdnea=exp=1778149054~acl=/api/1/1/7/0/1/0/7012848085d047a375b8ffa118a71afa.mp3*~data=user_id=0,application_id=42~hmac=419d5ad218952f0a3ec5f4d6b31278177dbb85e9070acd1faf86a0a10fc0a2cd",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/f50ebfc15c739c4e4effee2c94bec9a8/250x250-000000-80-0-0.jpg"
       },
       {
@@ -4548,7 +4836,7 @@
           "hercules"
         ],
         "deezerId": 531228861,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/2/4/7/0/24727a08fef4df05f3fcc8954737b672.mp3?hdnea=exp=1778092531~acl=/api/1/1/2/4/7/0/24727a08fef4df05f3fcc8954737b672.mp3*~data=user_id=0,application_id=42~hmac=336905e0c72b6e456ecb4dabbdca4208a183dafdda3535e84fa2ada4bbc3bf9b",
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/2/4/7/0/24727a08fef4df05f3fcc8954737b672.mp3?hdnea=exp=1778149054~acl=/api/1/1/2/4/7/0/24727a08fef4df05f3fcc8954737b672.mp3*~data=user_id=0,application_id=42~hmac=e37edcb0b37cad6041756893ecfd24a397f2b4e4efdb961770a387ded707d7dd",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/1659269f7fdc5dc9148a6dbdb4f949bf/250x250-000000-80-0-0.jpg"
       },
       {
@@ -4563,22 +4851,22 @@
           "mulan"
         ],
         "deezerId": 1377537512,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/3/c/c/0/3cc2f409b2d4c45e999cb9e960c629d2.mp3?hdnea=exp=1778092531~acl=/api/1/1/3/c/c/0/3cc2f409b2d4c45e999cb9e960c629d2.mp3*~data=user_id=0,application_id=42~hmac=bb358095343e16ae0d29135a8292396f1147954bc3bb37371aafaab45450f478",
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/3/c/c/0/3cc2f409b2d4c45e999cb9e960c629d2.mp3?hdnea=exp=1778149055~acl=/api/1/1/3/c/c/0/3cc2f409b2d4c45e999cb9e960c629d2.mp3*~data=user_id=0,application_id=42~hmac=f0ef321f474e1084c09088e0831b84b50ea50f4c9c56195fe28e54ccee9aef1c",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/384e9463b7be3d9ba8bdb2d989af9872/250x250-000000-80-0-0.jpg"
       },
       {
         "title": "Colors of the Wind",
-        "artist": "Vanessa Williams",
+        "artist": "Judy Kuhn",
         "acceptedAnswers": [
           "colors of the wind",
-          "vanessa williams",
-          "colors of the wind vanessa williams",
-          "vanessa williams colors of the wind",
+          "judy kuhn",
+          "colors of the wind judy kuhn",
+          "judy kuhn colors of the wind",
           "pocahontas"
         ],
-        "deezerId": 122832152,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/4/7/6/0/476b7215ed0da752570eb3bee66b61a6.mp3?hdnea=exp=1778092532~acl=/api/1/1/4/7/6/0/476b7215ed0da752570eb3bee66b61a6.mp3*~data=user_id=0,application_id=42~hmac=ee7a9ca525884a5c2f1e105911f1293e3d7144207583b57e0132ac0737f1bc93",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/3da9679e6b47f7f22aba04cf71b3adec/250x250-000000-80-0-0.jpg"
+        "deezerId": 3118641,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/3/0/a/0/30aa3dcceca768ed1040bf2922796cb8.mp3?hdnea=exp=1778149055~acl=/api/1/1/3/0/a/0/30aa3dcceca768ed1040bf2922796cb8.mp3*~data=user_id=0,application_id=42~hmac=4468cfcaf8fdf36c2fc472da27f8f1fbaf745ee4fe487ba51fc37db40ad3305d",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/de4597bafe425099b7a4f7a55647062d/250x250-000000-80-0-0.jpg"
       },
       {
         "title": "Friend Like Me",
@@ -4591,7 +4879,7 @@
           "aladdin"
         ],
         "deezerId": 120917660,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/a/3/0/0/a303d5cff64e4ae5f247d618f74c4bcf.mp3?hdnea=exp=1778092532~acl=/api/1/1/a/3/0/0/a303d5cff64e4ae5f247d618f74c4bcf.mp3*~data=user_id=0,application_id=42~hmac=2eafdd9a34b823f205e436eba2ecac77b11509845ec38582d1dbffd1a5d5264a",
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/a/3/0/0/a303d5cff64e4ae5f247d618f74c4bcf.mp3?hdnea=exp=1778149055~acl=/api/1/1/a/3/0/0/a303d5cff64e4ae5f247d618f74c4bcf.mp3*~data=user_id=0,application_id=42~hmac=c075092fae92df18c764532170828bbe49b71bdd7f4339a1b7c394cd082fa942",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/c6d6541f3be22f43be5fc3754e955b33/250x250-000000-80-0-0.jpg"
       },
       {
@@ -4606,7 +4894,7 @@
           "kleine zeemeermin"
         ],
         "deezerId": 145187390,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/d/2/5/0/d253fb4e9d35ba4a2204a6d009d4497a.mp3?hdnea=exp=1778092532~acl=/api/1/1/d/2/5/0/d253fb4e9d35ba4a2204a6d009d4497a.mp3*~data=user_id=0,application_id=42~hmac=465255fd9539e24043974bd40ab723f3f9697693fe61f8f0c5f95b6ca7a97a1d",
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/d/2/5/0/d253fb4e9d35ba4a2204a6d009d4497a.mp3?hdnea=exp=1778149056~acl=/api/1/1/d/2/5/0/d253fb4e9d35ba4a2204a6d009d4497a.mp3*~data=user_id=0,application_id=42~hmac=52ccfdd63aacff9b4bc32ec62d738117bb5a25b4782ac9ae00b3c80bc7ed2a06",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/af5e46eeee7bd76c205845efa56f9d10/250x250-000000-80-0-0.jpg"
       },
       {
@@ -4621,7 +4909,7 @@
           "rapunzel"
         ],
         "deezerId": 7599985,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/4/a/a/0/4aa830f2ae46c6685ac9d609f755b50e.mp3?hdnea=exp=1778092533~acl=/api/1/1/4/a/a/0/4aa830f2ae46c6685ac9d609f755b50e.mp3*~data=user_id=0,application_id=42~hmac=b6b89ac4bcf2a61c06198ca671fccfaf002ccf08696921a03f0d0451d60c2343",
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/4/a/a/0/4aa830f2ae46c6685ac9d609f755b50e.mp3?hdnea=exp=1778149056~acl=/api/1/1/4/a/a/0/4aa830f2ae46c6685ac9d609f755b50e.mp3*~data=user_id=0,application_id=42~hmac=f790e92f752dba6d0700ea3af69028edeec5a75b7c57f3801537812e605f847a",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/040b6e2d8fa673ed8a3453535f6c2b48/250x250-000000-80-0-0.jpg"
       },
       {
@@ -4635,7 +4923,7 @@
           "pinocchio"
         ],
         "deezerId": 677778432,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/2/7/b/0/27b2b2ec3f3a44064c25c011741389f7.mp3?hdnea=exp=1778092533~acl=/api/1/1/2/7/b/0/27b2b2ec3f3a44064c25c011741389f7.mp3*~data=user_id=0,application_id=42~hmac=b88080d4f1b6ee82c466bd6eb2b40a5ef4c84bfc6693e596451bedb961fcff91",
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/2/7/b/0/27b2b2ec3f3a44064c25c011741389f7.mp3?hdnea=exp=1778149057~acl=/api/1/1/2/7/b/0/27b2b2ec3f3a44064c25c011741389f7.mp3*~data=user_id=0,application_id=42~hmac=7d420a667501ac3b10b4ca62362757e4de1fa4cbc54f09cf4004da887830a8d1",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/a75e57040c3444afc73542bc04fc37a1/250x250-000000-80-0-0.jpg"
       },
       {
@@ -4649,7 +4937,7 @@
           "beauty and the beast"
         ],
         "deezerId": 7087380,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/0/3/e/0/03e30b4d2f486d13a0f175d58e86108d.mp3?hdnea=exp=1778092534~acl=/api/1/1/0/3/e/0/03e30b4d2f486d13a0f175d58e86108d.mp3*~data=user_id=0,application_id=42~hmac=339b1de1e6ea1dcb0f2f4878b68430825920a08dd37e537c581dfbb67b23ad26",
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/0/3/e/0/03e30b4d2f486d13a0f175d58e86108d.mp3?hdnea=exp=1778149057~acl=/api/1/1/0/3/e/0/03e30b4d2f486d13a0f175d58e86108d.mp3*~data=user_id=0,application_id=42~hmac=32b4c2325eeeb8c5d50ff9971f5675049ba00b61901b9f225d28e10d3a59a4bd",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/2b185b2c7afa0fa9968faf473fae8ac2/250x250-000000-80-0-0.jpg"
       },
       {
@@ -4664,7 +4952,7 @@
           "prinses en de kikker"
         ],
         "deezerId": 534375642,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/0/b/1/0/0b182818dd43d41f616797fdb5909cdd.mp3?hdnea=exp=1778092534~acl=/api/1/1/0/b/1/0/0b182818dd43d41f616797fdb5909cdd.mp3*~data=user_id=0,application_id=42~hmac=2ac34c5f7604ba34ebdf71c1f876ba8219e2404acedd6d5f2da55e1d46451a83",
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/0/b/1/0/0b182818dd43d41f616797fdb5909cdd.mp3?hdnea=exp=1778149058~acl=/api/1/1/0/b/1/0/0b182818dd43d41f616797fdb5909cdd.mp3*~data=user_id=0,application_id=42~hmac=3b512a25881624e7629bbff1e61c4101807705c11dea7d3a60b8d914f380bbc3",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/fcd731f6c0d9e9028fdf337b6f07a581/250x250-000000-80-0-0.jpg"
       },
       {
@@ -4679,7 +4967,7 @@
           "assepoester"
         ],
         "deezerId": 13796253,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/a/b/a/0/abab843453fde905a5c5492b8f8e6c9c.mp3?hdnea=exp=1778092535~acl=/api/1/1/a/b/a/0/abab843453fde905a5c5492b8f8e6c9c.mp3*~data=user_id=0,application_id=42~hmac=175431d4b2ff8c14621246263d7d24b1fa4946cdb47d8018c2504b06e5ac2cd4",
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/a/b/a/0/abab843453fde905a5c5492b8f8e6c9c.mp3?hdnea=exp=1778149058~acl=/api/1/1/a/b/a/0/abab843453fde905a5c5492b8f8e6c9c.mp3*~data=user_id=0,application_id=42~hmac=c57618a7518138e3f1f14a70347f1973bc433235ca1b97c5ab02a3d71181e57f",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/14a81bace45d294ce77d80326d67620c/250x250-000000-80-0-0.jpg"
       },
       {
@@ -4693,7 +4981,7 @@
           "mulan"
         ],
         "deezerId": 1377537502,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/4/9/1/0/491207ccfbb4ab069f37e39c0eac7905.mp3?hdnea=exp=1778092535~acl=/api/1/1/4/9/1/0/491207ccfbb4ab069f37e39c0eac7905.mp3*~data=user_id=0,application_id=42~hmac=3ef93bf9d4148bd0ade87fa39ff090ad5d4639f413984e1fdcc718bc3d4b8ea3",
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/4/9/1/0/491207ccfbb4ab069f37e39c0eac7905.mp3?hdnea=exp=1778149058~acl=/api/1/1/4/9/1/0/491207ccfbb4ab069f37e39c0eac7905.mp3*~data=user_id=0,application_id=42~hmac=f534cf9f9df22d7d0f14ada4188eb7241f1b71b316413d5bcb13392f47b6be81",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/384e9463b7be3d9ba8bdb2d989af9872/250x250-000000-80-0-0.jpg"
       },
       {
@@ -4708,7 +4996,7 @@
           "tarzan"
         ],
         "deezerId": 561875132,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/2/1/3/0/2139586678b734d02d63ef1694720648.mp3?hdnea=exp=1778092535~acl=/api/1/1/2/1/3/0/2139586678b734d02d63ef1694720648.mp3*~data=user_id=0,application_id=42~hmac=0e88d0f08a5b14be7151e8c868f42c9105d2f51b113aac248f5f69063708871e",
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/2/1/3/0/2139586678b734d02d63ef1694720648.mp3?hdnea=exp=1778149059~acl=/api/1/1/2/1/3/0/2139586678b734d02d63ef1694720648.mp3*~data=user_id=0,application_id=42~hmac=23ef96af8db6307e2fb368fa51f713975dc099271028d5bd45f6c30b712c61ec",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/6f48385948df5ed9a8e00c647a87e3a9/250x250-000000-80-0-0.jpg"
       },
       {
@@ -4723,23 +5011,23 @@
           "lion king"
         ],
         "deezerId": 24307581,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/e/3/1/0/e31206740b85ceb6f6035042a68f8047.mp3?hdnea=exp=1778092536~acl=/api/1/1/e/3/1/0/e31206740b85ceb6f6035042a68f8047.mp3*~data=user_id=0,application_id=42~hmac=abae987ea2cd7db427833779d99a36314e48aa18aa766c42a6260b85c24c8504",
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/e/3/1/0/e31206740b85ceb6f6035042a68f8047.mp3?hdnea=exp=1778149059~acl=/api/1/1/e/3/1/0/e31206740b85ceb6f6035042a68f8047.mp3*~data=user_id=0,application_id=42~hmac=2e1c1a5744dd645cf52e16bb86331d91d63491002f0478a2cdc5d4d05f39e74d",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/bc1d8aee799295e81943ff4b7878296d/250x250-000000-80-0-0.jpg"
       },
       {
-        "title": "Do You Want to Build a Snowman?",
-        "artist": "Kristen Bell",
+        "title": "I Won't Say (I'm in Love)",
+        "artist": "Susan Egan",
         "acceptedAnswers": [
-          "do you want to build a snowman?",
-          "do you want to build a snowman",
-          "kristen bell",
-          "do you want to build a snowman? kristen bell",
-          "kristen bell do you want to build a snowman?",
-          "frozen"
+          "i won't say (i'm in love)",
+          "i wont say im in love",
+          "susan egan",
+          "i won't say (i'm in love) susan egan",
+          "susan egan i won't say (i'm in love)",
+          "hercules"
         ],
-        "deezerId": 72371923,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/6/d/2/0/6d26d84faea1a1b4cfabf7f87bac0f15.mp3?hdnea=exp=1778092536~acl=/api/1/1/6/d/2/0/6d26d84faea1a1b4cfabf7f87bac0f15.mp3*~data=user_id=0,application_id=42~hmac=e872e36eb8e618d33fa0acd3d89feec7a083bab4a7488e8897e1d66104ff9483",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/f669aa7623ad8af5fbeb5a196346013a/250x250-000000-80-0-0.jpg"
+        "deezerId": 13796274,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/d/0/6/0/d06bd591f2395dffb7aa7ed7d04d32bf.mp3?hdnea=exp=1778149060~acl=/api/1/1/d/0/6/0/d06bd591f2395dffb7aa7ed7d04d32bf.mp3*~data=user_id=0,application_id=42~hmac=7c5c41734456b4a3c43b21d8edd6d71383146f5da36586a6710e27b7d10ddfc0",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/14a81bace45d294ce77d80326d67620c/250x250-000000-80-0-0.jpg"
       },
       {
         "title": "Zero to Hero",
@@ -4753,7 +5041,7 @@
           "hercules"
         ],
         "deezerId": 531228901,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/f/9/e/0/f9e9d21b3203d8d667d3ac7eca95a5cd.mp3?hdnea=exp=1778092537~acl=/api/1/1/f/9/e/0/f9e9d21b3203d8d667d3ac7eca95a5cd.mp3*~data=user_id=0,application_id=42~hmac=90f78d4e135671305ce4797f5a763fadb9d5c4dd1f6a47ccb266287836d68703",
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/f/9/e/0/f9e9d21b3203d8d667d3ac7eca95a5cd.mp3?hdnea=exp=1778149060~acl=/api/1/1/f/9/e/0/f9e9d21b3203d8d667d3ac7eca95a5cd.mp3*~data=user_id=0,application_id=42~hmac=91f7fee3356acba06d98fb58f24b868c8ec5eaa403dd99dbef476fbf4fdb2126",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/1659269f7fdc5dc9148a6dbdb4f949bf/250x250-000000-80-0-0.jpg"
       },
       {
@@ -4767,7 +5055,7 @@
           "aladdin"
         ],
         "deezerId": 120917664,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/9/0/b/0/90b9777d4c9cdbaa5c84d5598958c2ce.mp3?hdnea=exp=1778092537~acl=/api/1/1/9/0/b/0/90b9777d4c9cdbaa5c84d5598958c2ce.mp3*~data=user_id=0,application_id=42~hmac=88e7473dd5b6114d65c4771834eb0c888be49f29a44a16069929bd72a8f91819",
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/9/0/b/0/90b9777d4c9cdbaa5c84d5598958c2ce.mp3?hdnea=exp=1778149061~acl=/api/1/1/9/0/b/0/90b9777d4c9cdbaa5c84d5598958c2ce.mp3*~data=user_id=0,application_id=42~hmac=121b70ce36f42f44b499d562d2b432636bf68895f9993a048b586d826e4370e0",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/c6d6541f3be22f43be5fc3754e955b33/250x250-000000-80-0-0.jpg"
       },
       {
@@ -4783,23 +5071,24 @@
           "assepoester"
         ],
         "deezerId": 1518135502,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/1/d/3/0/1d309bf8a7dff87340393e3a098822ae.mp3?hdnea=exp=1778092538~acl=/api/1/1/1/d/3/0/1d309bf8a7dff87340393e3a098822ae.mp3*~data=user_id=0,application_id=42~hmac=5fd48216910940237627dcd7c4d692c1be09fc25b7a169888560e2ef4ab7f9cb",
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/1/d/3/0/1d309bf8a7dff87340393e3a098822ae.mp3?hdnea=exp=1778149061~acl=/api/1/1/1/d/3/0/1d309bf8a7dff87340393e3a098822ae.mp3*~data=user_id=0,application_id=42~hmac=be30a6f2d3e0508bb7bee2189468a85690078005b29da68d72ca1dec4262f454",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/1ae7b788b85aa740178dcc96fff79e29/250x250-000000-80-0-0.jpg"
       },
       {
         "title": "Kiss the Girl",
-        "artist": "Ashley Tisdale",
+        "artist": "Samuel E. Wright",
         "acceptedAnswers": [
           "kiss the girl",
-          "ashley tisdale",
-          "kiss the girl ashley tisdale",
-          "ashley tisdale kiss the girl",
+          "samuel e. wright",
+          "samuel e wright",
+          "kiss the girl samuel e. wright",
+          "samuel e. wright kiss the girl",
           "little mermaid",
           "kleine zeemeermin"
         ],
-        "deezerId": 145187422,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/a/8/8/0/a888d1005e5d879bb076630e43f2c14d.mp3?hdnea=exp=1778092538~acl=/api/1/1/a/8/8/0/a888d1005e5d879bb076630e43f2c14d.mp3*~data=user_id=0,application_id=42~hmac=8e8e8fb9b4c6af8e79f72bf74c3ac54e305c0013e911d2a9a496d424c178cd64",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/af5e46eeee7bd76c205845efa56f9d10/250x250-000000-80-0-0.jpg"
+        "deezerId": 3118575,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/2/d/3/0/2d30b44dd17370baf60f929fec8310cd.mp3?hdnea=exp=1778149061~acl=/api/1/1/2/d/3/0/2d30b44dd17370baf60f929fec8310cd.mp3*~data=user_id=0,application_id=42~hmac=b9005f06c8ebf09057967bc4fe9c15a2fcf08a3e843f40c160f6dee9663aa7ea",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/e88c0d811be16205977c3f1c878a141e/250x250-000000-80-0-0.jpg"
       }
     ]
   }

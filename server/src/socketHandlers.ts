@@ -99,6 +99,9 @@ import {
   startMuziekGame,
   getMuziekInstance,
   processMuziekBuzz,
+  processHeardleSkip,
+  processGiveUp,
+  checkHeardleAutoAdvance,
   advanceToNextSong,
   getMuziekScores,
   buildMuziekClientState,
@@ -1178,6 +1181,7 @@ export function registerSocketHandlers(io: IOServer, socket: IOSocket): void {
           id: p.id,
           nickname: p.nickname,
           avatarUrl: p.avatarUrl,
+          isBot: p.isBot,
         }));
 
         const instance = await startMuziekGame(roomId, settings, playerList, (inst) => {
@@ -1219,6 +1223,9 @@ export function registerSocketHandlers(io: IOServer, socket: IOSocket): void {
               broadcastMuziekSong(io, roomId);
             }
           }, 4000);
+        }, (inst) => {
+          // Heardle phase advanced — broadcast updated state to all players
+          broadcastMuziekSong(io, roomId);
         });
 
         currentRoom.status = 'playing';
@@ -1248,10 +1255,62 @@ export function registerSocketHandlers(io: IOServer, socket: IOSocket): void {
 
     socket.emit('muziek:buzz-result', { correct: result.correct, penalty: result.penalty, position: result.position });
 
-    // In everyone-scores mode, broadcast updated scores when someone gets it right
+    // In everyone-scores mode, broadcast updated state when someone gets it right
     if (result.correct && !instance.settings.snelsteRader) {
-      const scores = getMuziekScores(instance);
-      io.to(mapping.roomId).emit('muziek:scores-updated', { scores });
+      if (instance.settings.heardleMode) {
+        // Check if phase should auto-advance now that this player answered
+        const advanced = checkHeardleAutoAdvance(instance);
+        if (!advanced) {
+          // Full state broadcast so the guesser sees the reveal + bots re-schedule
+          broadcastMuziekSong(io, mapping.roomId);
+        }
+        // If advanced, onPhaseAdvance callback already broadcasts
+      } else {
+        const scores = getMuziekScores(instance);
+        io.to(mapping.roomId).emit('muziek:scores-updated', { scores });
+      }
+    }
+  });
+
+  // ─── Muziek — Heardle Skip ───────────────────────────
+  socket.on('muziek:heardle-skip', () => {
+    if (isRateLimited(socket.id)) return;
+
+    const mapping = getSocketMapping(socket.id);
+    if (!mapping) return;
+
+    const room = getRoom(mapping.roomId);
+    if (!room || room.gameCategory !== 'muziek' || room.status !== 'playing') return;
+
+    const instance = getMuziekInstance(mapping.roomId);
+    if (!instance || !instance.settings.heardleMode) return;
+
+    const advanced = processHeardleSkip(mapping.roomId, mapping.playerId);
+
+    if (!advanced) {
+      // Phase didn't advance yet, but broadcast updated skip count to all
+      broadcastMuziekSong(io, mapping.roomId);
+    }
+    // If phase advanced, onPhaseAdvance callback already broadcasts
+  });
+
+  // ─── Muziek — Give Up ────────────────────────────────
+  socket.on('muziek:give-up', () => {
+    if (isRateLimited(socket.id)) return;
+
+    const mapping = getSocketMapping(socket.id);
+    if (!mapping) return;
+
+    const room = getRoom(mapping.roomId);
+    if (!room || room.gameCategory !== 'muziek' || room.status !== 'playing') return;
+
+    const instance = getMuziekInstance(mapping.roomId);
+    if (!instance || !instance.settings.heardleMode) return;
+
+    const advanced = processGiveUp(mapping.roomId, mapping.playerId);
+
+    if (!advanced) {
+      broadcastMuziekSong(io, mapping.roomId);
     }
   });
 
@@ -1276,6 +1335,54 @@ function broadcastMuziekSong(io: IOServer, roomId: string): void {
     if (!sid) continue;
     const state = buildMuziekClientState(instance, player.id, false);
     io.to(sid).emit('muziek:song', state);
+  }
+
+  // Auto-skip for bots in heardle mode
+  if (instance.settings.heardleMode) {
+    scheduleBotHeardleSkips(io, roomId, instance);
+  }
+}
+
+function scheduleBotHeardleSkips(io: IOServer, roomId: string, instance: ReturnType<typeof getMuziekInstance>): void {
+  if (!instance) return;
+  const bots = instance.players.filter(p => p.isBot);
+  for (const bot of bots) {
+    // Skip after a short random delay (1-3s) to simulate "listening"
+    const delay = 1000 + Math.random() * 2000;
+    setTimeout(() => {
+      const inst = getMuziekInstance(roomId);
+      if (!inst || inst.songEnding) return;
+      if (inst.answeredCorrectSet.has(bot.id)) return;
+      if (inst.gaveUpThisSong.has(bot.id)) return;
+      if (inst.heardleSkipped.has(bot.id)) return;
+
+      // Randomly: 30% guess correct, 20% give up, 50% skip
+      const roll = Math.random();
+      if (roll < 0.3) {
+        // Bot guesses correctly
+        const song = inst.songs[inst.currentSongIndex];
+        if (song) {
+          processMuziekBuzz(roomId, bot.id, song.title);
+          // Check if phase should advance now that bot answered
+          const advanced = checkHeardleAutoAdvance(inst);
+          if (!advanced) {
+            broadcastMuziekSong(io, roomId);
+          }
+        }
+      } else if (roll < 0.5) {
+        // Bot gives up
+        const advanced = processGiveUp(roomId, bot.id);
+        if (!advanced) {
+          broadcastMuziekSong(io, roomId);
+        }
+      } else {
+        // Bot skips
+        const advanced = processHeardleSkip(roomId, bot.id);
+        if (!advanced) {
+          broadcastMuziekSong(io, roomId);
+        }
+      }
+    }, delay);
   }
 }
 

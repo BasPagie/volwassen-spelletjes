@@ -96,6 +96,15 @@ const SONGS = [
   { title: "One Punch Man Theme", artist: "Makoto Miyazaki", category: "anime-ost" },
   { title: "Tokyo Ghoul - Glassy Sky", artist: "Donna Burke", category: "anime-ost" },
 
+  // ─── JoJo endings (redistributed to proper categories) ──
+  { title: "Roundabout", artist: "Yes", category: "classics" },
+  { title: "Walk Like an Egyptian", artist: "The Bangles", category: "80s" },
+  { title: "Distant Dreamer", artist: "Duffy", category: "2000s" },
+  { title: "I Want You", artist: "Savage Garden", category: "90s" },
+  { title: "Freek'n You", artist: "Jodeci", category: "90s" },
+  { title: "Modern Crusaders", artist: "Enigma", category: "2000s" },
+  { title: "Lost in Paradise", artist: "ALI", category: "anime" },
+
   // ─── Video Game Songs (vocals) ──────────────────────────
   { title: "Jump Up, Super Star!", artist: "Nintendo", category: "game-songs", previewUrl: "https://lambda.vgmtreasurechest.com/soundtracks/super-mario-odyssey-original-soundtrack/tvygjaci/2-12.%20Jump%20Up%2C%20Super%20Star%21%20-%20New%20Donk%20City%20Festival.mp3", coverUrl: "https://i1.sndcdn.com/artworks-000249363267-betlv6-t500x500.jpg", startOffset: 30 },
   { title: "Still Alive", artist: "Jonathan Coulton", category: "game-songs" },
@@ -297,20 +306,20 @@ const SONGS = [
 
   // ─── Disney ────────────────────────────────────────────
   { title: "Let It Go", artist: "Idina Menzel", category: "disney", deezerId: 73248591, altTitles: ["frozen"] },
-  { title: "A Whole New World", artist: "Peabo Bryson & Regina Belle", category: "disney", deezerId: 1030914, altTitles: ["aladdin"] },
+  { title: "A Whole New World", artist: "Lea Salonga", category: "disney", deezerId: 120917666, altTitles: ["aladdin"] },
   { title: "Circle of Life", artist: "Elton John", category: "disney", deezerId: 540930, altTitles: ["lion king"] },
-  { title: "Under the Sea", artist: "The Little Mermaid", category: "disney", deezerId: 4068498, altTitles: ["kleine zeemeermin"] },
+  { title: "Under the Sea", artist: "Samuel E. Wright", category: "disney", deezerId: 145187392, altTitles: ["kleine zeemeermin"] },
   { title: "Hakuna Matata", artist: "The Lion King", category: "disney", deezerId: 540932 },
   { title: "Once Upon a Dream", artist: "Mary Costa", category: "disney", deezerId: 13796248, altTitles: ["sleeping beauty"] },
   { title: "We Don't Talk About Bruno", artist: "Encanto", category: "disney", deezerId: 1578198647, altTitles: ["bruno"] },
-  { title: "Into the Unknown", artist: "Frozen 2", category: "disney", deezerId: 803096442 },
+  { title: "How Far I'll Go", artist: "Auli'i Cravalho", category: "disney", deezerId: 136349848, altTitles: ["moana", "vaiana"] },
   { title: "You've Got a Friend in Me", artist: "Toy Story", category: "disney", deezerId: 2304081, altTitles: ["randy newman"] },
   { title: "Beauty and the Beast", artist: "Celine Dion & Peabo Bryson", category: "disney", deezerId: 2942853, altTitles: ["belle en het beest"] },
   { title: "Can You Feel the Love Tonight", artist: "Elton John", category: "disney", deezerId: 97114650, altTitles: ["lion king"] },
   { title: "Remember Me", artist: "Anthony Gonzalez", category: "disney", deezerId: 424600092, altTitles: ["coco"] },
   { title: "Go the Distance", artist: "Roger Bart", category: "disney", deezerId: 531228861, altTitles: ["hercules"] },
   { title: "I'll Make a Man Out of You", artist: "Donny Osmond", category: "disney", deezerId: 1377537512, altTitles: ["mulan"] },
-  { title: "Colors of the Wind", artist: "Vanessa Williams", category: "disney", deezerId: 122832152, altTitles: ["pocahontas"] },
+  { title: "Colors of the Wind", artist: "Judy Kuhn", category: "disney", deezerId: 3118641, altTitles: ["pocahontas"] },
   { title: "Friend Like Me", artist: "Robin Williams", category: "disney", deezerId: 120917660, altTitles: ["aladdin"] },
   { title: "Part of Your World", artist: "Jodi Benson", category: "disney", deezerId: 145187390, altTitles: ["little mermaid", "kleine zeemeermin"] },
   { title: "I See the Light", artist: "Mandy Moore", category: "disney", deezerId: 7599985, altTitles: ["tangled", "rapunzel"] },
@@ -321,11 +330,11 @@ const SONGS = [
   { title: "Reflection", artist: "Lea Salonga", category: "disney", deezerId: 1377537502, altTitles: ["mulan"] },
   { title: "You'll Be in My Heart", artist: "Phil Collins", category: "disney", deezerId: 561875132, altTitles: ["tarzan"] },
   { title: "I Just Can't Wait to Be King", artist: "Jason Weaver", category: "disney", deezerId: 24307581, altTitles: ["lion king"] },
-  { title: "Do You Want to Build a Snowman?", artist: "Kristen Bell", category: "disney", deezerId: 72371923, altTitles: ["frozen"] },
+  { title: "I Won't Say (I'm in Love)", artist: "Susan Egan", category: "disney", deezerId: 13796274, altTitles: ["hercules"] },
   { title: "Zero to Hero", artist: "Chorus - Hercules", category: "disney", deezerId: 531228901, altTitles: ["hercules"] },
   { title: "Prince Ali", artist: "Robin Williams", category: "disney", deezerId: 120917664, altTitles: ["aladdin"] },
   { title: "Bibbidi-Bobbidi-Boo", artist: "Verna Felton", category: "disney", deezerId: 1518135502, altTitles: ["cinderella", "assepoester"] },
-  { title: "Kiss the Girl", artist: "Ashley Tisdale", category: "disney", deezerId: 145187422, altTitles: ["little mermaid", "kleine zeemeermin"] },
+  { title: "Kiss the Girl", artist: "Samuel E. Wright", category: "disney", deezerId: 3118575, altTitles: ["little mermaid", "kleine zeemeermin"] },
 
   // ─── Musical & Broadway ───────────────────────────────
   { title: "Defying Gravity", artist: "Wicked", category: "musical", deezerId: 2124211 },

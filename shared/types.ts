@@ -235,7 +235,11 @@ export interface MuziekSettings {
   streakBonus: boolean;
   snelsteRader: boolean;           // true = first correct ends song (old behavior)
   meerkeuze: boolean;              // true = show 4 multiple-choice options
+  heardleMode: boolean;            // true = progressive reveal (1s→2s→4s→7s→11s→16s)
+  heardleGuessMode: 'one-per-phase' | 'unlimited'; // one guess per phase or unlimited
 }
+
+export const HEARDLE_PHASES = [1, 2, 4, 7, 11, 16] as const;
 
 export const DEFAULT_MUZIEK_SETTINGS: MuziekSettings = {
   categoryIds: ['pop', 'memes', 'anime', 'gaming', 'edm', 'dutch', '80s-90s', '2000s', '2010s-nu', 'classics'],
@@ -248,6 +252,8 @@ export const DEFAULT_MUZIEK_SETTINGS: MuziekSettings = {
   streakBonus: true,
   snelsteRader: false,
   meerkeuze: false,
+  heardleMode: false,
+  heardleGuessMode: 'unlimited',
 };
 
 export interface MuziekPlayerScore {
@@ -258,6 +264,7 @@ export interface MuziekPlayerScore {
   streak: number;
   correctCount: number;
   wrongCount: number;
+  heardleStatus?: 'guessing' | 'skipped' | 'gave-up' | 'correct' | 'locked-out';
 }
 
 export interface MuziekClientState {
@@ -279,6 +286,16 @@ export interface MuziekClientState {
   scores: MuziekPlayerScore[];
   phase: 'listening' | 'reveal' | 'finished';
   options?: string[];              // multiple-choice options (meerkeuze mode)
+  // Heardle mode fields
+  heardleMode?: boolean;
+  heardlePhase?: number;           // 0-5 (which phase we're in)
+  heardleTotalPhases?: number;     // 6
+  heardlePhaseDuration?: number;   // current phase's audio length in seconds
+  heardleLockedOut?: boolean;      // one-per-phase: player is locked out this phase
+  heardleSkipped?: boolean;        // this player has voted to skip
+  heardleGaveUp?: boolean;          // this player gave up on this song
+  heardleSkipCount?: number;       // how many players have voted to skip
+  heardlePlayersRemaining?: number; // players who haven't answered correctly yet
 }
 
 // ─── Player Progress (shown to other players) ─────────
@@ -364,6 +381,8 @@ export interface ClientToServerEvents {
   'muziek:update-settings': (settings: MuziekSettings) => void;
   'muziek:start-game': () => void;
   'muziek:buzz': (data: { answer: string }) => void;
+  'muziek:heardle-skip': () => void;
+  'muziek:give-up': () => void;
   // ─── Briefing ──────────────────────────────────────
   'player-ready': () => void;
 }

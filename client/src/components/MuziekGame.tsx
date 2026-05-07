@@ -2,7 +2,7 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Howl } from "howler";
 import type { MuziekClientState, MuziekPlayerScore } from "shared/types";
-import { PREMADE_AVATARS } from "shared/types";
+import { PREMADE_AVATARS, HEARDLE_PHASES } from "shared/types";
 import { useSocket } from "../context/SocketContext";
 
 function isEmojiAvatar(url: string): boolean {
@@ -49,12 +49,18 @@ export default function MuziekGame({ state, isSpectator }: Props) {
   }, [state.phase, displayMs > 0]);
 
   // ─── Audio playback ──────────────────────────────────
+  const heardleStopTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   useEffect(() => {
     // Stop previous audio
     if (howlRef.current) {
       howlRef.current.stop();
       howlRef.current.unload();
       howlRef.current = null;
+    }
+    if (heardleStopTimeout.current) {
+      clearTimeout(heardleStopTimeout.current);
+      heardleStopTimeout.current = null;
     }
 
     setAudioError(false);
@@ -73,6 +79,13 @@ export default function MuziekGame({ state, isSpectator }: Props) {
             howl.seek(state.clipStartOffset);
           }, 150);
         }
+        // Heardle mode: stop audio after phase duration
+        if (state.heardleMode && state.heardlePhaseDuration) {
+          const stopDelay = state.heardlePhaseDuration * 1000 + 150; // account for seek delay
+          heardleStopTimeout.current = setTimeout(() => {
+            howl.stop();
+          }, stopDelay);
+        }
       },
       onloaderror: (_id: unknown, err: unknown) => {
         console.warn("[Muziek] Failed to load audio preview", err);
@@ -90,8 +103,12 @@ export default function MuziekGame({ state, isSpectator }: Props) {
     return () => {
       howl.stop();
       howl.unload();
+      if (heardleStopTimeout.current) {
+        clearTimeout(heardleStopTimeout.current);
+        heardleStopTimeout.current = null;
+      }
     };
-  }, [state.songIndex, state.previewUrl]);
+  }, [state.songIndex, state.previewUrl, state.heardlePhase]);
 
   // ─── Volume change ───────────────────────────────────
   useEffect(() => {
@@ -107,7 +124,7 @@ export default function MuziekGame({ state, isSpectator }: Props) {
     }
   }, [state.phase, state.winnerId, state.correctTitle]);
 
-  // Focus input on new song
+  // Focus input on new song / new heardle phase
   useEffect(() => {
     if (state.phase === "listening" && inputRef.current) {
       inputRef.current.focus();
@@ -115,7 +132,7 @@ export default function MuziekGame({ state, isSpectator }: Props) {
     setInput("");
     setLastResult(null);
     setSelectedOption(null);
-  }, [state.songIndex, state.phase]);
+  }, [state.songIndex, state.phase, state.heardlePhase]);
 
   // Listen for buzz results to show inline flash
   useEffect(() => {
@@ -178,35 +195,76 @@ export default function MuziekGame({ state, isSpectator }: Props) {
       {/* Timer bar */}
       {state.phase === "listening" && !isRevealing && (
         <div className="flex-shrink-0 mb-4">
-          <div className="flex items-center justify-between mb-1">
-            <span className="text-xs font-display font-bold text-gray-500">
-              🎵 Luister...
-            </span>
-            <span
-              className={`font-display font-black text-lg tabular-nums ${
-                isCritical
-                  ? "text-red-500 animate-pulse"
-                  : isLow
-                    ? "text-orange-500"
-                    : "text-gray-700"
-              }`}
-            >
-              {seconds}s
-            </span>
-          </div>
-          <div className="h-3 bg-gray-100 rounded-full overflow-hidden">
-            <motion.div
-              className={`h-full rounded-full transition-colors duration-500 ${
-                isCritical
-                  ? "bg-red-500"
-                  : isLow
-                    ? "bg-orange-400"
-                    : "bg-purple-500"
-              }`}
-              style={{ width: `${fraction * 100}%` }}
-              transition={{ duration: 0.1 }}
-            />
-          </div>
+          {/* Heardle phase indicator */}
+          {state.heardleMode ? (
+            <div>
+              <div className="flex items-center justify-between mb-1.5">
+                <span className="text-xs font-display font-bold text-gray-500">
+                  🎵 Fase {(state.heardlePhase ?? 0) + 1}/
+                  {state.heardleTotalPhases ?? HEARDLE_PHASES.length}
+                </span>
+                <span className="text-xs font-display font-semibold text-purple-600">
+                  {state.heardlePhaseDuration}s fragment
+                </span>
+              </div>
+              <div className="flex gap-1 mb-3">
+                {HEARDLE_PHASES.map((dur, i) => (
+                  <div
+                    key={i}
+                    className={`flex-1 h-2 rounded-full transition-all ${
+                      i < (state.heardlePhase ?? 0)
+                        ? "bg-gray-300"
+                        : i === (state.heardlePhase ?? 0)
+                          ? "bg-purple-500"
+                          : "bg-gray-100"
+                    }`}
+                    title={`${dur}s`}
+                  />
+                ))}
+              </div>
+              {/* Skip vote info */}
+              {!isSpectator && !state.answered && (
+                <div className="flex items-center justify-between">
+                  <span className="text-xs text-gray-400">
+                    {state.heardleSkipCount ?? 0}/
+                    {state.heardlePlayersRemaining ?? 0} willen door
+                  </span>
+                </div>
+              )}
+            </div>
+          ) : (
+            <>
+              <div className="flex items-center justify-between mb-1">
+                <span className="text-xs font-display font-bold text-gray-500">
+                  🎵 Luister...
+                </span>
+                <span
+                  className={`font-display font-black text-lg tabular-nums ${
+                    isCritical
+                      ? "text-red-500 animate-pulse"
+                      : isLow
+                        ? "text-orange-500"
+                        : "text-gray-700"
+                  }`}
+                >
+                  {seconds}s
+                </span>
+              </div>
+              <div className="h-3 bg-gray-100 rounded-full overflow-hidden">
+                <motion.div
+                  className={`h-full rounded-full transition-colors duration-500 ${
+                    isCritical
+                      ? "bg-red-500"
+                      : isLow
+                        ? "bg-orange-400"
+                        : "bg-purple-500"
+                  }`}
+                  style={{ width: `${fraction * 100}%` }}
+                  transition={{ duration: 0.1 }}
+                />
+              </div>
+            </>
+          )}
         </div>
       )}
 
@@ -260,6 +318,23 @@ export default function MuziekGame({ state, isSpectator }: Props) {
                   />
                   <span className="text-sm">🔊</span>
                 </div>
+                {/* Heardle replay button */}
+                {state.heardleMode && !audioError && (
+                  <button
+                    onClick={() => {
+                      const howl = howlRef.current;
+                      if (!howl) return;
+                      if (heardleStopTimeout.current) {
+                        clearTimeout(heardleStopTimeout.current);
+                      }
+                      howl.stop();
+                      howl.play();
+                    }}
+                    className="mt-3 px-4 py-2 rounded-lg bg-purple-100 hover:bg-purple-200 text-purple-700 font-display font-bold text-sm transition-colors"
+                  >
+                    🔁 Opnieuw afspelen
+                  </button>
+                )}
               </div>
             )}
 
@@ -304,6 +379,10 @@ export default function MuziekGame({ state, isSpectator }: Props) {
           {state.answered ? (
             <p className="text-center text-green-500 font-display font-bold text-sm">
               ✅ Correct!
+            </p>
+          ) : state.heardleLockedOut ? (
+            <p className="text-center text-orange-500 font-display font-bold text-sm">
+              ⏳ Wacht op volgende fase...
             </p>
           ) : state.options && state.options.length > 0 ? (
             /* Meerkeuze mode: 4 option buttons */
@@ -376,6 +455,37 @@ export default function MuziekGame({ state, isSpectator }: Props) {
               </motion.p>
             )}
           </AnimatePresence>
+
+          {/* Heardle Skip + Give Up buttons */}
+          {state.heardleMode && !state.answered && !state.heardleGaveUp && (
+            <div className="flex gap-2 mt-3">
+              {!state.heardleSkipped ? (
+                <button
+                  onClick={() => socket?.emit("muziek:heardle-skip")}
+                  className="flex-1 py-2.5 rounded-xl border-2 border-gray-200 hover:border-orange-300 hover:bg-orange-50 text-gray-600 font-display font-bold text-sm transition-all"
+                >
+                  ⏭️ Skip ({state.heardleSkipCount ?? 0}/
+                  {state.heardlePlayersRemaining ?? 0})
+                </button>
+              ) : (
+                <span className="flex-1 py-2.5 text-center text-gray-400 font-display font-semibold text-sm">
+                  ⏳ Wachten... ({state.heardleSkipCount ?? 0}/
+                  {state.heardlePlayersRemaining ?? 0})
+                </span>
+              )}
+              <button
+                onClick={() => socket?.emit("muziek:give-up")}
+                className="flex-1 py-2.5 rounded-xl border-2 border-gray-200 hover:border-red-300 hover:bg-red-50 text-gray-500 font-display font-bold text-sm transition-all"
+              >
+                🤷 Weet ik niet
+              </button>
+            </div>
+          )}
+          {state.heardleMode && !state.answered && state.heardleGaveUp && (
+            <p className="text-center mt-3 text-red-400 font-display font-semibold text-sm">
+              Je hebt opgegeven voor dit nummer
+            </p>
+          )}
         </div>
       )}
 
@@ -407,6 +517,21 @@ export default function MuziekGame({ state, isSpectator }: Props) {
                 </p>
                 <p className="text-xs text-gray-500">{s.score} pts</p>
               </div>
+              {s.heardleStatus === "correct" && (
+                <span className="text-xs">✅</span>
+              )}
+              {s.heardleStatus === "gave-up" && (
+                <span className="text-xs">🤷</span>
+              )}
+              {s.heardleStatus === "skipped" && (
+                <span className="text-xs">⏭️</span>
+              )}
+              {s.heardleStatus === "locked-out" && (
+                <span className="text-xs">❌</span>
+              )}
+              {s.heardleStatus === "guessing" && (
+                <span className="text-xs">💭</span>
+              )}
               {s.streak > 1 && (
                 <span className="text-xs font-bold text-orange-500">
                   🔥{s.streak}
