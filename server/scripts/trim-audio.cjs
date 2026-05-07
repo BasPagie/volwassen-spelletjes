@@ -5,13 +5,13 @@ const path = require('path');
 
 const tracks = [
   {
-    url: 'https://nu.vgmtreasurechest.com/soundtracks/super-smash-bros.-ultimate-expanded-vol.-29-castlevania-switch-gamerip-2018/ctonzhlj/1-01.%20Vampire%20Killer%20%28New%20Remix%29.mp3',
-    out: 'vampire-killer-ssbu.mp3',
+    url: 'https://lambda.vgmtreasurechest.com/soundtracks/donkey-kong-country-original-soundtrack-dk-jamz/dguenanp/08%20-%20Aquatic%20Ambiance.mp3',
+    out: 'aquatic-ambiance-dkc.mp3',
     start: 0
   },
   {
-    url: 'https://nu.vgmtreasurechest.com/soundtracks/super-smash-bros.-ultimate-expanded-vol.-29-castlevania-switch-gamerip-2018/rbfxwqqf/1-16.%20Divine%20Bloodlines.mp3',
-    out: 'divine-bloodlines-ssbu.mp3',
+    url: 'https://lambda.vgmtreasurechest.com/soundtracks/super-smash-bros.-ultimate-expanded-vol.-04-the-legend-of-zelda-switch-gamerip-2018/tsjtnjjq/1-21.%20Song%20of%20Storms.mp3',
+    out: 'song-of-storms-ssbu.mp3',
     start: 0
   }
 ];

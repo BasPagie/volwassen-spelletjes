@@ -1372,6 +1372,33 @@
         "deezerId": 1243877402,
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/5/b/a/0/5ba320963bf6cd3067342c7da35d8d09.mp3?hdnea=exp=1778090588~acl=/api/1/1/5/b/a/0/5ba320963bf6cd3067342c7da35d8d09.mp3*~data=user_id=0,application_id=42~hmac=78f0efaa04a500fab895fe861ed022d21ee178238a0829330d4ca22197292624",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/48829bbb6d5b6fcf8a6a01983950cb2e/250x250-000000-80-0-0.jpg"
+      },
+      {
+        "title": "Down by the River",
+        "artist": "Borislav Slavov",
+        "acceptedAnswers": [
+          "down by the river",
+          "baldurs gate 3",
+          "baldur's gate 3",
+          "borislav slavov"
+        ],
+        "deezerId": 2435633395,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/7/a/a/0/7aafd52c3b0f5d8fa215b26e999d49f5.mp3?hdnea=exp=1778163088~acl=/api/1/1/7/a/a/0/7aafd52c3b0f5d8fa215b26e999d49f5.mp3*~data=user_id=0,application_id=42~hmac=71d1aaefe02ac0b3abc3a16d28f0ad8279747623422b3af73cf26286f58df220",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/b2ab6d0b329801788409c614d568202e/250x250-000000-80-0-0.jpg",
+        "clipStartOffset": 5
+      },
+      {
+        "title": "Lumière",
+        "artist": "Lorien Testard",
+        "acceptedAnswers": [
+          "lumiere",
+          "expedition 33",
+          "clair obscur",
+          "clair obscur expedition 33"
+        ],
+        "deezerId": 3315246271,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/5/1/f/0/51f2956cdc0d263be778cc55191416d0.mp3?hdnea=exp=1778162520~acl=/api/1/1/5/1/f/0/51f2956cdc0d263be778cc55191416d0.mp3*~data=user_id=0,application_id=42~hmac=d0c3b04a936d65285792a0f9ac8e459bd58781ee9c3628847eeb009accfca9f1",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/f20170f882ac3751d1ec3d8e8900b153/250x250-000000-80-0-0.jpg"
       }
     ]
   },
@@ -1515,15 +1542,15 @@
       },
       {
         "title": "Song of Storms",
-        "artist": "Jon Batiste",
+        "artist": "Koji Kondo",
         "acceptedAnswers": [
           "song of storms",
           "zelda",
           "ocarina of time",
           "legend of zelda"
         ],
-        "deezerId": 3911901121,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/f/4/e/0/f4ef24d93d8051825e7021f3c8c81bbc.mp3?hdnea=exp=1778163249~acl=/api/1/1/f/4/e/0/f4ef24d93d8051825e7021f3c8c81bbc.mp3*~data=user_id=0,application_id=42~hmac=d24a60a31680d3b820da9b0484e8b4109e8fa96f48e04c4fbe505e09fa62cd9e",
+        "deezerId": 0,
+        "previewUrl": "/audio/song-of-storms-ssbu.mp3",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/6a538e61679c2f5debe6e2a8aa902770/250x250-000000-80-0-0.jpg"
       },
       {
@@ -1630,17 +1657,18 @@
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/4fb06a242b26f54eaacaf667c2910c3d/250x250-000000-80-0-0.jpg"
       },
       {
-        "title": "Abyss Watchers",
-        "artist": "Yuka Kitamura",
+        "title": "The Other Promise",
+        "artist": "Yoko Shimomura",
         "acceptedAnswers": [
-          "abyss watchers",
-          "dark souls 3",
-          "yuka kitamura",
-          "abyss watchers dark souls"
+          "the other promise",
+          "kingdom hearts",
+          "kingdom hearts 2",
+          "roxas",
+          "yoko shimomura"
         ],
-        "deezerId": 3069125491,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/d/6/b/0/d6bc1899864c35e9443cec5d2fa1bb8c.mp3?hdnea=exp=1778162519~acl=/api/1/1/d/6/b/0/d6bc1899864c35e9443cec5d2fa1bb8c.mp3*~data=user_id=0,application_id=42~hmac=516b5a3a9da634a100ce8e1612b705586b7e7385318e9f67b89b9c3cae438cb5",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/4fb06a242b26f54eaacaf667c2910c3d/250x250-000000-80-0-0.jpg"
+        "deezerId": 2131884837,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/8/3/d/0/83d8bea0b25d6ed38ba7521005bdd899.mp3?hdnea=exp=1778193422~acl=/api/1/1/8/3/d/0/83d8bea0b25d6ed38ba7521005bdd899.mp3*~data=user_id=0,application_id=42~hmac=0364bb99c37af58c85f8a0fd8b32f4f0a39a38f8d0253f3a4895a6ddb4d39347",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/fd41cf429a8a2f7b8a6123d676e31a54/250x250-000000-80-0-0.jpg"
       },
       {
         "title": "Elden Ring",
@@ -1655,16 +1683,16 @@
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/c4d859c9a61478cf0c049f995a4bfa03/250x250-000000-80-0-0.jpg"
       },
       {
-        "title": "The Final Battle",
-        "artist": "Tsukasa Saitoh",
+        "title": "Malenia, Blade of Miquella",
+        "artist": "Yuka Kitamura",
         "acceptedAnswers": [
-          "the final battle",
+          "malenia",
+          "malenia blade of miquella",
           "elden ring",
-          "radagon",
-          "elden beast"
+          "yuka kitamura"
         ],
-        "deezerId": 1892295387,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/1/1/a/0/11a9d30a203c730fed4cf27190acdb0c.mp3?hdnea=exp=1778162520~acl=/api/1/1/1/1/a/0/11a9d30a203c730fed4cf27190acdb0c.mp3*~data=user_id=0,application_id=42~hmac=a8a7df3123a48859fe76efe498571d5afe5fc52e38e57b471eeb5702dac64e95",
+        "deezerId": 1892295287,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/1/5/7/0/1571a2656330ece8eab62c0bf4c200bd.mp3?hdnea=exp=1778192205~acl=/api/1/1/1/5/7/0/1571a2656330ece8eab62c0bf4c200bd.mp3*~data=user_id=0,application_id=42~hmac=2b17ba8f9e1c1348f06fb746c3923ec1d88ca3d9197579e7c30b44a947059f37",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/c4d859c9a61478cf0c049f995a4bfa03/250x250-000000-80-0-0.jpg"
       },
       {
@@ -1694,57 +1722,17 @@
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/b54a3c7cf4ccdb0518048e2e2afbce4f/250x250-000000-80-0-0.jpg"
       },
       {
-        "title": "Unshaken",
-        "artist": "D'Angelo",
-        "acceptedAnswers": [
-          "unshaken",
-          "dangelo",
-          "d'angelo",
-          "red dead redemption"
-        ],
-        "deezerId": 688442482,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/1/e/0/0/1e038d3bc2bb5fccd07610c792786026.mp3?hdnea=exp=1778162520~acl=/api/1/1/1/e/0/0/1e038d3bc2bb5fccd07610c792786026.mp3*~data=user_id=0,application_id=42~hmac=9735b7c3602137c3cf53c3100f184671659b4eba254e7855ec2a1af846c68ce6",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/743f10679fbd7de6368b90a3bcfebe06/250x250-000000-80-0-0.jpg"
-      },
-      {
-        "title": "That's The Way It Is",
-        "artist": "Daniel Lanois",
-        "acceptedAnswers": [
-          "thats the way it is",
-          "that's the way it is",
-          "daniel lanois",
-          "red dead redemption"
-        ],
-        "deezerId": 688442502,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/8/2/f/0/82fadd34b5a9ffd56f4cf77ecf982aa4.mp3?hdnea=exp=1778162520~acl=/api/1/1/8/2/f/0/82fadd34b5a9ffd56f4cf77ecf982aa4.mp3*~data=user_id=0,application_id=42~hmac=dbc1bb5fb1a0d8976840fe64018517c85559827601ef6bb4d89b50e3e32bb705",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/743f10679fbd7de6368b90a3bcfebe06/250x250-000000-80-0-0.jpg"
-      },
-      {
         "title": "Aquatic Ambiance",
-        "artist": "GENTLE LOVE",
+        "artist": "David Wise",
         "acceptedAnswers": [
           "aquatic ambiance",
           "donkey kong country",
           "donkey kong",
           "david wise"
         ],
-        "deezerId": 121478682,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/2/0/4/0/204970988e158809d51e82805f2266b6.mp3?hdnea=exp=1778162520~acl=/api/1/1/2/0/4/0/204970988e158809d51e82805f2266b6.mp3*~data=user_id=0,application_id=42~hmac=165e651c136d85ca356d8a0579ef8327025ed69105d6da13f137cf6046072641",
+        "deezerId": 0,
+        "previewUrl": "/audio/aquatic-ambiance-dkc.mp3",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/2a0a783dad00ed65504cc00c5e4e6e35/250x250-000000-80-0-0.jpg"
-      },
-      {
-        "title": "Down by the River",
-        "artist": "Borislav Slavov",
-        "acceptedAnswers": [
-          "down by the river",
-          "baldurs gate 3",
-          "baldur's gate 3",
-          "borislav slavov"
-        ],
-        "deezerId": 2435633395,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/7/a/a/0/7aafd52c3b0f5d8fa215b26e999d49f5.mp3?hdnea=exp=1778163088~acl=/api/1/1/7/a/a/0/7aafd52c3b0f5d8fa215b26e999d49f5.mp3*~data=user_id=0,application_id=42~hmac=71d1aaefe02ac0b3abc3a16d28f0ad8279747623422b3af73cf26286f58df220",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/b2ab6d0b329801788409c614d568202e/250x250-000000-80-0-0.jpg",
-        "clipStartOffset": 5
       },
       {
         "title": "Guile's Theme",
@@ -1823,17 +1811,70 @@
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/a07b8ba0a6afbf880b79bc0b19527b76/250x250-000000-80-0-0.jpg"
       },
       {
-        "title": "Lumière",
-        "artist": "Lorien Testard",
+        "title": "Majula",
+        "artist": "Motoi Sakuraba",
         "acceptedAnswers": [
-          "lumiere",
-          "expedition 33",
-          "clair obscur",
-          "clair obscur expedition 33"
+          "majula",
+          "dark souls 2",
+          "dark souls ii",
+          "motoi sakuraba"
         ],
-        "deezerId": 3315246271,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/5/1/f/0/51f2956cdc0d263be778cc55191416d0.mp3?hdnea=exp=1778162520~acl=/api/1/1/5/1/f/0/51f2956cdc0d263be778cc55191416d0.mp3*~data=user_id=0,application_id=42~hmac=d0c3b04a936d65285792a0f9ac8e459bd58781ee9c3628847eeb009accfca9f1",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/f20170f882ac3751d1ec3d8e8900b153/250x250-000000-80-0-0.jpg"
+        "deezerId": 3068156011,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/4/d/a/0/4da1569466d46abdc589d8d546a5b72b.mp3?hdnea=exp=1778191793~acl=/api/1/1/4/d/a/0/4da1569466d46abdc589d8d546a5b72b.mp3*~data=user_id=0,application_id=42~hmac=936faa130a4509ab7d0a0e3d0cb745335744ca530e03fc88e12578821a8bb4fc",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/b85b5d5b60f30b1146d74fb0a5b32d5a/250x250-000000-80-0-0.jpg"
+      },
+      {
+        "title": "Vector to the Heavens",
+        "artist": "Yoko Shimomura",
+        "acceptedAnswers": [
+          "vector to the heavens",
+          "kingdom hearts",
+          "kingdom hearts 358",
+          "xion",
+          "yoko shimomura"
+        ],
+        "deezerId": 2939849361,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/c/3/0/0/c30a721af353002080528bb0e1465053.mp3?hdnea=exp=1778193422~acl=/api/1/1/c/3/0/0/c30a721af353002080528bb0e1465053.mp3*~data=user_id=0,application_id=42~hmac=249d879b662ee6e6a4fe6d1cfd6247a2b65705afe356c4d11da5224f5f2b4a3e",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/2eeb041c95959499ce37ec92d4bad786/250x250-000000-80-0-0.jpg"
+      },
+      {
+        "title": "Dancer of the Boreal Valley",
+        "artist": "Yuka Kitamura",
+        "acceptedAnswers": [
+          "dancer of the boreal valley",
+          "dancer",
+          "dark souls 3",
+          "dark souls iii"
+        ],
+        "deezerId": 3069125431,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/b/3/2/0/b321f6e935e722e6cecd124fa1d50e9c.mp3?hdnea=exp=1778191793~acl=/api/1/1/b/3/2/0/b321f6e935e722e6cecd124fa1d50e9c.mp3*~data=user_id=0,application_id=42~hmac=c95efd6f301fcee050d480450fc666ac355d447e95c96159d0284ef70f0ef3ad",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/4fb06a242b26f54eaacaf667c2910c3d/250x250-000000-80-0-0.jpg"
+      },
+      {
+        "title": "Slave Knight Gael",
+        "artist": "Yuka Kitamura",
+        "acceptedAnswers": [
+          "slave knight gael",
+          "gael",
+          "dark souls 3",
+          "dark souls iii"
+        ],
+        "deezerId": 3069125601,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/0/8/2/0/08232759fb80c6a3e2b93e74400ae666.mp3?hdnea=exp=1778191793~acl=/api/1/1/0/8/2/0/08232759fb80c6a3e2b93e74400ae666.mp3*~data=user_id=0,application_id=42~hmac=20a46d6e0e3d928fb7001e69c420da0ce6bda671bc75880007c435e7153c1cab",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/4fb06a242b26f54eaacaf667c2910c3d/250x250-000000-80-0-0.jpg"
+      },
+      {
+        "title": "Forze del Male",
+        "artist": "Yoko Shimomura",
+        "acceptedAnswers": [
+          "forze del male",
+          "kingdom hearts",
+          "kingdom hearts 1",
+          "yoko shimomura"
+        ],
+        "deezerId": 2133108357,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/7/7/8/0/7788e2978cb37d6d0f758fa80caad3a2.mp3?hdnea=exp=1778193422~acl=/api/1/1/7/7/8/0/7788e2978cb37d6d0f758fa80caad3a2.mp3*~data=user_id=0,application_id=42~hmac=939b4b8f246de5e41eef970ed307aaf8f67d25b704a9ae4fc8138578e70593dc",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/7d79a75867af3836510d67564362ea10/250x250-000000-80-0-0.jpg"
       }
     ]
   },
