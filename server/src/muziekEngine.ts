@@ -56,6 +56,20 @@ function isAnswerCorrect(guess: string, song: SongEntry, guessMode: 'title' | 'a
   return false;
 }
 
+function isMediaMatch(guess: string, song: SongEntry): boolean {
+  if (!song.media) return false;
+  const normalizedGuess = normalize(guess);
+  if (normalizedGuess.length < 2) return false;
+  const target = normalize(song.media);
+  if (target.length === 0) return false;
+  if (normalizedGuess === target) return true;
+  if (target.length >= 5 && normalizedGuess.includes(target)) return true;
+  if (normalizedGuess.length >= 5 && target.includes(normalizedGuess)) return true;
+  const maxDist = target.length >= 8 ? 2 : target.length >= 5 ? 1 : 0;
+  if (levenshtein(normalizedGuess, target) <= maxDist) return true;
+  return false;
+}
+
 // ─── Game Instance ──────────────────────────────────────
 interface MuziekInstance {
   roomId: string;
@@ -70,6 +84,7 @@ interface MuziekInstance {
   buzzedWrongThisSong: Set<string>;
   answeredCorrectThisSong: string | null;
   answeredCorrectSet: Set<string>;   // all players who answered correctly this song
+  mediaGuessedSet: Set<string>;      // players who already got media-only points this song
   currentOptions: string[];          // meerkeuze: 4 shuffled options (empty if not meerkeuze)
   onSongEnd: ((instance: MuziekInstance) => void) | null;
   // Heardle mode
@@ -120,6 +135,7 @@ export async function startMuziekGame(
     buzzedWrongThisSong: new Set(),
     answeredCorrectThisSong: null,
     answeredCorrectSet: new Set(),
+    mediaGuessedSet: new Set(),
     currentOptions: [],
     onSongEnd,
     heardlePhase: 0,
@@ -307,7 +323,7 @@ export function processMuziekBuzz(
   roomId: string,
   playerId: string,
   answer: string,
-): { correct: boolean; penalty?: number; position?: number } | null {
+): { correct: boolean; penalty?: number; position?: number; mediaOnly?: boolean; points?: number } | null {
   const instance = activeGames.get(roomId);
   if (!instance) return null;
   if (instance.songEnding) return null;
@@ -381,6 +397,15 @@ export function processMuziekBuzz(
 
     return { correct: true, position };
   } else {
+    // Check if it's a media-only match (e.g. guessing the game/anime name)
+    if (!instance.mediaGuessedSet.has(playerId) && isMediaMatch(answer, song)) {
+      instance.mediaGuessedSet.add(playerId);
+      const halfPoints = Math.floor(instance.settings.pointsCorrect * 0.5);
+      playerScore.score += halfPoints;
+      // Don't count as fully correct — player can still try for the song title
+      return { correct: true, position: undefined, mediaOnly: true, points: halfPoints };
+    }
+
     instance.buzzedWrongThisSong.add(playerId);
     playerScore.streak = 0;
     playerScore.wrongCount++;
@@ -414,6 +439,7 @@ export function advanceToNextSong(roomId: string): boolean {
   instance.buzzedWrongThisSong.clear();
   instance.answeredCorrectThisSong = null;
   instance.answeredCorrectSet.clear();
+  instance.mediaGuessedSet.clear();
   instance.songEnding = false;
 
   // Reset heardle state
@@ -505,6 +531,7 @@ export function buildMuziekClientState(instance: MuziekInstance, playerId: strin
     correctTitle: revealForPlayer ? (song?.title ?? null) : null,
     correctArtist: revealForPlayer ? (song?.artist ?? null) : null,
     coverUrl: revealForPlayer ? (song?.coverUrl ?? null) : null,
+    media: revealForPlayer ? (song?.media ?? null) : null,
     scores,
     phase: 'listening',
     options: instance.settings.meerkeuze ? instance.currentOptions : undefined,

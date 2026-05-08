@@ -1197,6 +1197,7 @@ export function registerSocketHandlers(io: IOServer, socket: IOSocket): void {
               correctTitle: song?.title ?? '',
               correctArtist: song?.artist ?? '',
               coverUrl: song?.coverUrl ?? null,
+              media: song?.media ?? null,
               scores,
             });
           } else {
@@ -1204,6 +1205,7 @@ export function registerSocketHandlers(io: IOServer, socket: IOSocket): void {
               correctTitle: song?.title ?? '',
               correctArtist: song?.artist ?? '',
               coverUrl: song?.coverUrl ?? null,
+              media: song?.media ?? null,
               scores,
             });
           }
@@ -1253,7 +1255,13 @@ export function registerSocketHandlers(io: IOServer, socket: IOSocket): void {
     const result = processMuziekBuzz(mapping.roomId, mapping.playerId, answer);
     if (!result) return;
 
-    socket.emit('muziek:buzz-result', { correct: result.correct, penalty: result.penalty, position: result.position });
+    socket.emit('muziek:buzz-result', { correct: result.correct, penalty: result.penalty, position: result.position, mediaOnly: result.mediaOnly, points: result.points });
+
+    // Media-only match: broadcast updated scores but don't end/advance
+    if (result.mediaOnly) {
+      broadcastMuziekSong(io, mapping.roomId);
+      return;
+    }
 
     // In everyone-scores mode, broadcast updated state when someone gets it right
     if (result.correct && !instance.settings.snelsteRader) {

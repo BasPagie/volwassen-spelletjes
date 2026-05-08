@@ -1,5 +1,6 @@
 import express from 'express';
 import http from 'http';
+import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { Server } from 'socket.io';
@@ -81,6 +82,30 @@ app.get('/api/song-preview/:deezerId', async (req, res) => {
     res.json({ previewUrl: data.preview });
   } catch {
     res.status(502).json({ error: 'Failed to fetch preview' });
+  }
+});
+
+app.patch('/api/songs/offset', (req, res) => {
+  const { category, songIndex, startOffset } = req.body;
+  if (typeof category !== 'string' || typeof songIndex !== 'number' || typeof startOffset !== 'number') {
+    res.status(400).json({ error: 'Invalid parameters' });
+    return;
+  }
+  if (startOffset < 0 || startOffset > 29) {
+    res.status(400).json({ error: 'startOffset must be between 0 and 29' });
+    return;
+  }
+  const songsPath = path.join(__dirname, '..', 'data', 'songs.json');
+  try {
+    const data = JSON.parse(fs.readFileSync(songsPath, 'utf8'));
+    const cat = data.find((c: { id: string }) => c.id === category);
+    if (!cat) { res.status(404).json({ error: 'Category not found' }); return; }
+    if (songIndex < 0 || songIndex >= cat.songs.length) { res.status(404).json({ error: 'Song not found' }); return; }
+    cat.songs[songIndex].startOffset = startOffset;
+    fs.writeFileSync(songsPath, JSON.stringify(data, null, 2) + '\n', 'utf8');
+    res.json({ ok: true, startOffset });
+  } catch {
+    res.status(500).json({ error: 'Failed to update' });
   }
 });
 

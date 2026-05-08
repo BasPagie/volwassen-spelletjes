@@ -229,28 +229,33 @@ export function useSocketEvents() {
       dispatch({ type: 'SET_MUZIEK_STATE', state });
     });
 
-    socket.on('muziek:buzz-result', ({ correct }) => {
+    socket.on('muziek:buzz-result', ({ correct, mediaOnly, points }) => {
       if (isSpectatorRef.current) return;
-      playSound(correct ? 'correct' : 'wrong');
-      if (!correct) {
-        dispatch({ type: 'ADD_TOAST', toast: { id: nextToastId(), message: '❌ Fout! Probeer opnieuw', type: 'error' } });
+      if (mediaOnly) {
+        playSound('correct');
+        dispatch({ type: 'ADD_TOAST', toast: { id: nextToastId(), message: `🎯 Juiste bron! +${points ?? 0} punten (halve score). Raad nu het nummer!`, type: 'info' } });
+      } else {
+        playSound(correct ? 'correct' : 'wrong');
+        if (!correct) {
+          dispatch({ type: 'ADD_TOAST', toast: { id: nextToastId(), message: '❌ Fout! Probeer opnieuw', type: 'error' } });
+        }
       }
     });
 
-    socket.on('muziek:song-won', ({ winnerName, correctTitle, correctArtist, coverUrl, scores }) => {
+    socket.on('muziek:song-won', ({ winnerName, correctTitle, correctArtist, coverUrl, media, scores }) => {
       if (!isSpectatorRef.current) {
         playSound('correct');
         dispatch({ type: 'ADD_TOAST', toast: { id: nextToastId(), message: `🏆 ${winnerName} raadde het!`, type: 'success' } });
       }
-      dispatch({ type: 'UPDATE_MUZIEK_STATE', patch: { winnerId: scores[0]?.playerId ?? null, winnerName, correctTitle, correctArtist, coverUrl, scores, phase: 'reveal' } });
+      dispatch({ type: 'UPDATE_MUZIEK_STATE', patch: { winnerId: scores[0]?.playerId ?? null, winnerName, correctTitle, correctArtist, coverUrl, media, scores, phase: 'reveal' } });
     });
 
-    socket.on('muziek:song-timeout', ({ correctTitle, correctArtist, coverUrl, scores }) => {
+    socket.on('muziek:song-timeout', ({ correctTitle, correctArtist, coverUrl, media, scores }) => {
       if (!isSpectatorRef.current) {
         playSound('wrong');
         dispatch({ type: 'ADD_TOAST', toast: { id: nextToastId(), message: `⏱️ Tijd voorbij! Het was: ${correctTitle}`, type: 'warning' } });
       }
-      dispatch({ type: 'UPDATE_MUZIEK_STATE', patch: { winnerId: null, winnerName: null, correctTitle, correctArtist, coverUrl, scores, phase: 'reveal' } });
+      dispatch({ type: 'UPDATE_MUZIEK_STATE', patch: { winnerId: null, winnerName: null, correctTitle, correctArtist, coverUrl, media, scores, phase: 'reveal' } });
     });
 
     socket.on('muziek:scores-updated', ({ scores }) => {

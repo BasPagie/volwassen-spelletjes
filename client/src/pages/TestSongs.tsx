@@ -21,6 +21,7 @@ export default function TestSongs() {
   const [loading, setLoading] = useState(true);
   const [playing, setPlaying] = useState<string | null>(null);
   const [loadingSong, setLoadingSong] = useState<string | null>(null);
+  const [savedKey, setSavedKey] = useState<string | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
@@ -52,7 +53,6 @@ export default function TestSongs() {
       audioRef.current.pause();
     }
 
-    // Fetch a fresh preview URL on-demand
     let url = song.previewUrl;
     if (song.deezerId) {
       setLoadingSong(songKey);
@@ -85,6 +85,34 @@ export default function TestSongs() {
     setPlaying(songKey);
   }
 
+  async function saveOffset(
+    categoryId: string,
+    songIndex: number,
+    value: number,
+  ) {
+    const cat = categories.find((c) => c.id === categoryId);
+    if (!cat) return;
+    cat.songs[songIndex].startOffset = value;
+    setCategories([...categories]);
+
+    try {
+      await fetch("/api/songs/offset", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          category: categoryId,
+          songIndex,
+          startOffset: value,
+        }),
+      });
+      const key = `${categoryId}-${songIndex}`;
+      setSavedKey(key);
+      setTimeout(() => setSavedKey((k) => (k === key ? null : k)), 1500);
+    } catch {
+      // silent fail
+    }
+  }
+
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
@@ -110,16 +138,16 @@ export default function TestSongs() {
           </p>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
-            {cat.songs.map((song) => {
+            {cat.songs.map((song, idx) => {
               const songKey = `${song.title}-${song.artist}`;
+              const offsetKey = `${cat.id}-${idx}`;
               const isPlaying = playing === songKey;
               const isLoading = loadingSong === songKey;
+              const isSaved = savedKey === offsetKey;
               return (
-                <button
+                <div
                   key={song.title + song.artist}
-                  onClick={() => togglePlay(song)}
-                  disabled={isLoading}
-                  className={`relative flex items-center gap-3 p-3 rounded-xl border-2 text-left transition-all ${
+                  className={`relative flex flex-col p-3 rounded-xl border-2 transition-all ${
                     isPlaying
                       ? "border-purple-500 bg-purple-50 shadow-md"
                       : isLoading
@@ -127,38 +155,75 @@ export default function TestSongs() {
                         : "border-gray-200 bg-white hover:border-purple-300 hover:shadow-sm"
                   }`}
                 >
-                  <div className="w-10 h-10 rounded-lg overflow-hidden bg-gray-100 flex-shrink-0">
-                    {song.coverUrl ? (
-                      <img
-                        src={song.coverUrl}
-                        alt={song.title}
-                        className="w-full h-full object-cover"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center text-lg">
-                        🎵
-                      </div>
+                  <button
+                    onClick={() => togglePlay(song)}
+                    disabled={isLoading}
+                    className="flex items-center gap-3 text-left w-full"
+                  >
+                    <div className="w-10 h-10 rounded-lg overflow-hidden bg-gray-100 flex-shrink-0">
+                      {song.coverUrl ? (
+                        <img
+                          src={song.coverUrl}
+                          alt={song.title}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center text-lg">
+                          🎵
+                        </div>
+                      )}
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-xs font-display font-bold text-gray-800 truncate">
+                        {song.title}
+                      </p>
+                      <p className="text-[10px] text-gray-500 truncate">
+                        {song.artist}
+                      </p>
+                    </div>
+                    {isPlaying && (
+                      <span className="text-purple-600 text-xs">▶</span>
+                    )}
+                    {isLoading && (
+                      <span className="text-gray-400 text-xs">⏳</span>
+                    )}
+                  </button>
+                  <div className="flex items-center gap-1.5 mt-2 pt-2 border-t border-gray-100">
+                    <label className="text-[10px] text-gray-400 whitespace-nowrap">
+                      offset:
+                    </label>
+                    <input
+                      type="number"
+                      min={0}
+                      max={29}
+                      value={song.startOffset ?? 0}
+                      onChange={(e) => {
+                        const val = Math.max(
+                          0,
+                          Math.min(29, parseInt(e.target.value) || 0),
+                        );
+                        const updated = [...categories];
+                        const c = updated.find((x) => x.id === cat.id)!;
+                        c.songs[idx].startOffset = val;
+                        setCategories(updated);
+                      }}
+                      onBlur={(e) => {
+                        const val = Math.max(
+                          0,
+                          Math.min(29, parseInt(e.target.value) || 0),
+                        );
+                        saveOffset(cat.id, idx, val);
+                      }}
+                      className="w-12 text-xs text-center border border-gray-200 rounded px-1 py-0.5 focus:border-purple-400 focus:outline-none"
+                    />
+                    <span className="text-[10px] text-gray-400">s</span>
+                    {isSaved && (
+                      <span className="text-[10px] text-green-500 ml-auto">
+                        ✓
+                      </span>
                     )}
                   </div>
-                  <div className="min-w-0 flex-1">
-                    <p className="text-xs font-display font-bold text-gray-800 truncate">
-                      {song.title}
-                    </p>
-                    <p className="text-[10px] text-gray-500 truncate">
-                      {song.artist}
-                    </p>
-                  </div>
-                  {isPlaying && (
-                    <div className="absolute top-1 right-2 text-purple-600 text-xs">
-                      ▶
-                    </div>
-                  )}
-                  {isLoading && (
-                    <div className="absolute top-1 right-2 text-gray-400 text-xs">
-                      ⏳
-                    </div>
-                  )}
-                </button>
+                </div>
               );
             })}
           </div>

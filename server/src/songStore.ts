@@ -13,6 +13,7 @@ interface Song {
   previewUrl: string;
   coverUrl: string | null;
   startOffset?: number;
+  media?: string;
 }
 
 interface SongCategory {
@@ -125,6 +126,7 @@ export interface SongEntry {
   coverUrl: string | null;
   category: string;
   startOffset?: number;
+  media?: string;
 }
 
 export function getSongsByCategories(categoryIds: string[], count: number): SongEntry[] {

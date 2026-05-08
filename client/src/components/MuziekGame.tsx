@@ -358,6 +358,14 @@ export default function MuziekGame({ state, isSpectator }: Props) {
                 <p className="font-display font-bold text-lg text-gray-500 mt-1">
                   {state.correctArtist}
                 </p>
+                {state.media && (
+                  <p className="font-display text-sm text-gray-400 mt-1">
+                    {state.category?.toLowerCase().includes("anime")
+                      ? "📺"
+                      : "🎮"}{" "}
+                    {state.media}
+                  </p>
+                )}
                 {state.winnerName ? (
                   <p className="mt-3 text-green-600 font-display font-bold">
                     🏆 {state.winnerName} raadde het!

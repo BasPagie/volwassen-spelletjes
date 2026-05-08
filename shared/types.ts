@@ -283,6 +283,7 @@ export interface MuziekClientState {
   correctTitle: string | null;     // revealed after song ends
   correctArtist: string | null;    // revealed after song ends
   coverUrl: string | null;         // revealed after song ends
+  media: string | null;            // source game/anime (revealed after song ends)
   scores: MuziekPlayerScore[];
   phase: 'listening' | 'reveal' | 'finished';
   options?: string[];              // multiple-choice options (meerkeuze mode)
@@ -437,9 +438,9 @@ export interface ServerToClientEvents {
   // ─── Muziek ────────────────────────────────────────
   'muziek:settings-updated': (settings: MuziekSettings) => void;
   'muziek:song': (data: MuziekClientState) => void;
-  'muziek:buzz-result': (data: { correct: boolean; penalty?: number; position?: number }) => void;
-  'muziek:song-won': (data: { winnerId: string; winnerName: string; correctTitle: string; correctArtist: string; coverUrl: string | null; scores: MuziekPlayerScore[] }) => void;
-  'muziek:song-timeout': (data: { correctTitle: string; correctArtist: string; coverUrl: string | null; scores: MuziekPlayerScore[] }) => void;
+  'muziek:buzz-result': (data: { correct: boolean; penalty?: number; position?: number; mediaOnly?: boolean; points?: number }) => void;
+  'muziek:song-won': (data: { winnerId: string; winnerName: string; correctTitle: string; correctArtist: string; coverUrl: string | null; media: string | null; scores: MuziekPlayerScore[] }) => void;
+  'muziek:song-timeout': (data: { correctTitle: string; correctArtist: string; coverUrl: string | null; media: string | null; scores: MuziekPlayerScore[] }) => void;
   'muziek:scores-updated': (data: { scores: MuziekPlayerScore[] }) => void;
   'muziek:game-end': (data: { scores: MuziekPlayerScore[] }) => void;
   // ─── Briefing ──────────────────────────────────────
