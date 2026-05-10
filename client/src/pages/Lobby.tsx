@@ -597,6 +597,54 @@ export default function Lobby() {
                     </div>
                   </div>
                 </div>
+              ) : state.room?.gameCategory === "muziek" ? (
+                <div className="space-y-3 text-sm text-gray-600 leading-relaxed">
+                  <div className="rounded-xl p-4 bg-purple-50">
+                    <p className="font-display font-bold text-purple-700 mb-2">
+                      🎵 Raad het Nummer
+                    </p>
+                    <p>
+                      Luister naar een kort fragment van een nummer en raad zo
+                      snel mogelijk welk nummer het is!
+                    </p>
+                  </div>
+                  <div className="border-t border-gray-100 pt-3 space-y-2">
+                    <div className="flex gap-2 items-start">
+                      <span className="text-lg">🎧</span>
+                      <p>
+                        Je hoort een kort fragment van een nummer. Luister goed!
+                      </p>
+                    </div>
+                    <div className="flex gap-2 items-start">
+                      <span className="text-lg">⌨️</span>
+                      <p>
+                        Typ de titel of artiest in en druk op{" "}
+                        <strong>Raad!</strong> — typfoutjes worden geaccepteerd.
+                      </p>
+                    </div>
+                    <div className="flex gap-2 items-start">
+                      <span className="text-lg">❌</span>
+                      <p>
+                        Fout geraden? Je kunt dat nummer niet meer raden en
+                        scoort geen punten.
+                      </p>
+                    </div>
+                    <div className="flex gap-2 items-start">
+                      <span className="text-lg">🔥</span>
+                      <p>
+                        Meerdere nummers achter elkaar goed? Je bouwt een streak
+                        op voor bonuspunten!
+                      </p>
+                    </div>
+                    <div className="flex gap-2 items-start">
+                      <span className="text-lg">🏆</span>
+                      <p>
+                        Na alle nummers wint de speler met de meeste punten.
+                        Sneller raden = meer punten!
+                      </p>
+                    </div>
+                  </div>
+                </div>
               ) : (
                 <div className="space-y-3 text-sm text-gray-600 leading-relaxed">
                   <GameModeCard
