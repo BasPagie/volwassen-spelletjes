@@ -91,8 +91,8 @@ app.patch('/api/songs/offset', (req, res) => {
     res.status(400).json({ error: 'Invalid parameters' });
     return;
   }
-  if (startOffset < 0 || startOffset > 29) {
-    res.status(400).json({ error: 'startOffset must be between 0 and 29' });
+  if (startOffset < 0 || startOffset > 600) {
+    res.status(400).json({ error: 'startOffset must be between 0 and 600' });
     return;
   }
   const songsPath = path.join(__dirname, '..', 'data', 'songs.json');

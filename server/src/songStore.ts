@@ -95,10 +95,9 @@ export async function getAllSongsGroupedFresh() {
     const batch = allSongs.slice(i, i + BATCH_SIZE);
     await Promise.all(
       batch.map(async (song) => {
-        const freshUrl = await fetchFreshPreviewUrl(song.deezerId);
-        if (freshUrl) {
-          song.previewUrl = freshUrl;
-        }
+        const fresh = await fetchFreshTrackData(song.deezerId);
+        if (fresh.preview) song.previewUrl = fresh.preview;
+        if (fresh.cover) song.coverUrl = fresh.cover;
       }),
     );
   }
@@ -165,14 +164,17 @@ export function getSongsByCategoryName(categoryName: string): SongEntry[] {
  * Fetch a fresh preview URL from Deezer's API for a given track ID.
  * Returns the fresh URL or null on failure.
  */
-async function fetchFreshPreviewUrl(deezerId: number): Promise<string | null> {
+async function fetchFreshTrackData(deezerId: number): Promise<{ preview: string | null; cover: string | null }> {
   try {
     const res = await fetch(`https://api.deezer.com/track/${deezerId}`);
-    if (!res.ok) return null;
+    if (!res.ok) return { preview: null, cover: null };
     const data = await res.json();
-    return data.preview || null;
+    return {
+      preview: data.preview || null,
+      cover: data.album?.cover_medium || null,
+    };
   } catch {
-    return null;
+    return { preview: null, cover: null };
   }
 }
 
@@ -187,10 +189,9 @@ export async function refreshPreviewUrls(songs: SongEntry[]): Promise<void> {
     await Promise.all(
       batch.map(async (song) => {
         if (!song.deezerId) return; // iTunes songs don't need refresh
-        const freshUrl = await fetchFreshPreviewUrl(song.deezerId);
-        if (freshUrl) {
-          song.previewUrl = freshUrl;
-        }
+        const fresh = await fetchFreshTrackData(song.deezerId);
+        if (fresh.preview) song.previewUrl = fresh.preview;
+        if (fresh.cover) song.coverUrl = fresh.cover;
       }),
     );
   }

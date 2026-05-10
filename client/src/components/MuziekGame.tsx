@@ -146,9 +146,9 @@ export default function MuziekGame({ state, isSpectator }: Props) {
     };
   }, [socket]);
 
-  // Clear result flash (only for text input mode, not multiple choice)
+  // Clear result flash (only for wrong answers in text input mode)
   useEffect(() => {
-    if (lastResult && !selectedOption) {
+    if (lastResult === "wrong" && !selectedOption) {
       if (resultTimeout.current) clearTimeout(resultTimeout.current);
       resultTimeout.current = setTimeout(() => {
         setLastResult(null);
@@ -293,16 +293,36 @@ export default function MuziekGame({ state, isSpectator }: Props) {
             {!isRevealing && (
               <div className="mb-6">
                 <motion.div
-                  animate={{ scale: [1, 1.1, 1] }}
-                  transition={{ repeat: Infinity, duration: 1.5 }}
-                  className="w-24 h-24 mx-auto bg-purple-100 rounded-full flex items-center justify-center"
+                  key={lastResult === "correct" ? "correct" : "listening"}
+                  initial={
+                    lastResult === "correct"
+                      ? { scale: 0.5, opacity: 0 }
+                      : false
+                  }
+                  animate={
+                    lastResult === "correct"
+                      ? { scale: 1, opacity: 1 }
+                      : { scale: [1, 1.1, 1] }
+                  }
+                  transition={
+                    lastResult === "correct"
+                      ? { type: "spring", stiffness: 300, damping: 15 }
+                      : { repeat: Infinity, duration: 1.5 }
+                  }
+                  className={`w-24 h-24 mx-auto rounded-full flex items-center justify-center ${lastResult === "correct" ? "bg-green-100" : "bg-purple-100"}`}
                 >
-                  <span className="text-5xl">{audioError ? "⚠️" : "🎧"}</span>
+                  <span className="text-5xl">
+                    {audioError ? "⚠️" : lastResult === "correct" ? "✅" : "🎧"}
+                  </span>
                 </motion.div>
-                <p className="mt-4 font-display font-bold text-lg text-gray-600">
+                <p
+                  className={`mt-4 font-display font-bold text-lg ${lastResult === "correct" ? "text-green-600" : "text-gray-600"}`}
+                >
                   {audioError
                     ? "Audio kon niet geladen worden — typ je gok!"
-                    : "Welk nummer is dit?"}
+                    : lastResult === "correct"
+                      ? "Nummer geraden!"
+                      : "Welk nummer is dit?"}
                 </p>
                 {/* Volume slider */}
                 <div className="mt-3 flex items-center justify-center gap-2 max-w-[200px] mx-auto">
@@ -446,20 +466,16 @@ export default function MuziekGame({ state, isSpectator }: Props) {
             </div>
           )}
 
-          {/* Result flash */}
+          {/* Result flash (wrong only) */}
           <AnimatePresence>
-            {lastResult && (
+            {lastResult === "wrong" && (
               <motion.p
                 initial={{ opacity: 0, y: 5 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
-                className={`text-center mt-2 font-display font-bold text-sm ${
-                  lastResult === "correct" ? "text-green-500" : "text-red-500"
-                }`}
+                className="text-center mt-2 font-display font-bold text-sm text-red-500"
               >
-                {lastResult === "correct"
-                  ? "✅ Goed!"
-                  : "❌ Fout! Probeer opnieuw"}
+                ❌ Fout! Probeer opnieuw
               </motion.p>
             )}
           </AnimatePresence>

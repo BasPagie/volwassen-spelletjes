@@ -1,367 +1,9 @@
 [
   {
-    "id": "pop",
-    "name": "Pop Hits",
-    "description": "De grootste pophits",
-    "songs": [
-      {
-        "title": "Blinding Lights",
-        "artist": "The Weeknd",
-        "acceptedAnswers": [
-          "blinding lights",
-          "the weeknd",
-          "blinding lights the weeknd",
-          "the weeknd blinding lights"
-        ],
-        "deezerId": 908604612,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/1/b/2/0/1b27825bf63c36edcdc7fac9f920214e.mp3?hdnea=exp=1778090538~acl=/api/1/1/1/b/2/0/1b27825bf63c36edcdc7fac9f920214e.mp3*~data=user_id=0,application_id=42~hmac=1609d1937cb2df469378f261b78ab95112bdde7e6af735fb8b078a00365aa67e",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/fd00ebd6d30d7253f813dba3bb1c66a9/250x250-000000-80-0-0.jpg",
-        "startOffset": 0
-      },
-      {
-        "title": "Shape of You",
-        "artist": "Ed Sheeran",
-        "acceptedAnswers": [
-          "shape of you",
-          "ed sheeran",
-          "shape of you ed sheeran",
-          "ed sheeran shape of you"
-        ],
-        "deezerId": 139470659,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/f/1/b/0/f1becf66c6264a6a0306fc47d47690b0.mp3?hdnea=exp=1778090539~acl=/api/1/1/f/1/b/0/f1becf66c6264a6a0306fc47d47690b0.mp3*~data=user_id=0,application_id=42~hmac=2803aa18a43e462ae15e5b36db32494a355ee2e3d3722f903152a8976d4f8b4a",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/107c2b43f10c249077c1f7618563bb63/250x250-000000-80-0-0.jpg",
-        "startOffset": 0
-      },
-      {
-        "title": "Levitating",
-        "artist": "Dua Lipa",
-        "acceptedAnswers": [
-          "levitating",
-          "dua lipa",
-          "levitating dua lipa",
-          "dua lipa levitating"
-        ],
-        "deezerId": 1124841682,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/9/c/5/0/9c570bc806fc277bb73ba024e956d057.mp3?hdnea=exp=1778090539~acl=/api/1/1/9/c/5/0/9c570bc806fc277bb73ba024e956d057.mp3*~data=user_id=0,application_id=42~hmac=45040d48a8c78fd6c25d2f918a7171f9d5fa1dd7edbb2f915293dfc5ae441fc6",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/f8364f090ba04f1b19b381ec0390f3e4/250x250-000000-80-0-0.jpg",
-        "startOffset": 0
-      },
-      {
-        "title": "Bad Guy",
-        "artist": "Billie Eilish",
-        "acceptedAnswers": [
-          "bad guy",
-          "billie eilish",
-          "bad guy billie eilish",
-          "billie eilish bad guy"
-        ],
-        "deezerId": 655095912,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/b/5/2/0/b528e07441caa4883c8d1c4b746bf47c.mp3?hdnea=exp=1778090540~acl=/api/1/1/b/5/2/0/b528e07441caa4883c8d1c4b746bf47c.mp3*~data=user_id=0,application_id=42~hmac=c7529dbbd1eeb73ee00791601b5e9c6c725735f3696cefb0e8db92c9a785803d",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/6630083f454d48eadb6a9b53f035d734/250x250-000000-80-0-0.jpg",
-        "startOffset": 0
-      },
-      {
-        "title": "Uptown Funk",
-        "artist": "Bruno Mars",
-        "acceptedAnswers": [
-          "uptown funk",
-          "bruno mars",
-          "uptown funk bruno mars",
-          "bruno mars uptown funk"
-        ],
-        "deezerId": 92734438,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/b/0/a/0/b0a30d99fddf73c172e0d3f308899dd5.mp3?hdnea=exp=1778090540~acl=/api/1/1/b/0/a/0/b0a30d99fddf73c172e0d3f308899dd5.mp3*~data=user_id=0,application_id=42~hmac=97e46f351435d22958a50f045748a3ab6d6044dd8f51e238e50d1e4ead063da1",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/3734366a73152d0367a83a4b09fd163f/250x250-000000-80-0-0.jpg",
-        "startOffset": 0
-      },
-      {
-        "title": "Happy",
-        "artist": "Pharrell Williams",
-        "acceptedAnswers": [
-          "happy",
-          "pharrell williams",
-          "happy pharrell williams",
-          "pharrell williams happy"
-        ],
-        "deezerId": 701326562,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/9/0/5/0/90543b3c88fed677915d879fa4320288.mp3?hdnea=exp=1778090541~acl=/api/1/1/9/0/5/0/90543b3c88fed677915d879fa4320288.mp3*~data=user_id=0,application_id=42~hmac=e11db40de6646dec560061573bf3219a68dcd5ae2a6370fc7709b699327f6377",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/a1939a9a40dc97ed404cc4597c6a32bc/250x250-000000-80-0-0.jpg",
-        "startOffset": 0
-      },
-      {
-        "title": "Rolling in the Deep",
-        "artist": "Adele",
-        "acceptedAnswers": [
-          "rolling in the deep",
-          "adele",
-          "rolling in the deep adele",
-          "adele rolling in the deep"
-        ],
-        "deezerId": 8086126,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/d/8/7/0/d87d2d1789c1b4d96992d8079a29360b.mp3?hdnea=exp=1778090541~acl=/api/1/1/d/8/7/0/d87d2d1789c1b4d96992d8079a29360b.mp3*~data=user_id=0,application_id=42~hmac=72d54eb0a4ac7441fb283e853492ea9cc3fee3b2c86c6c854c12f2c97bfd8093",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/dc1ce848d830ecc93521be5a78350364/250x250-000000-80-0-0.jpg",
-        "startOffset": 0
-      },
-      {
-        "title": "Someone Like You",
-        "artist": "Adele",
-        "acceptedAnswers": [
-          "someone like you",
-          "adele",
-          "someone like you adele",
-          "adele someone like you"
-        ],
-        "deezerId": 8086136,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/c/f/6/0/cf61cfa01f653ad6b8696a81c6e4d747.mp3?hdnea=exp=1778090542~acl=/api/1/1/c/f/6/0/cf61cfa01f653ad6b8696a81c6e4d747.mp3*~data=user_id=0,application_id=42~hmac=f97ac14724309aec2c5fd1d538551ae9773e28757c0215611be74ccdad43afbc",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/dc1ce848d830ecc93521be5a78350364/250x250-000000-80-0-0.jpg",
-        "startOffset": 0
-      },
-      {
-        "title": "Shake It Off",
-        "artist": "Taylor Swift",
-        "acceptedAnswers": [
-          "shake it off",
-          "taylor swift",
-          "shake it off taylor swift",
-          "taylor swift shake it off"
-        ],
-        "deezerId": 89077555,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/2/d/9/0/2d9810a9179e50e255861f3980d310df.mp3?hdnea=exp=1778090542~acl=/api/1/1/2/d/9/0/2d9810a9179e50e255861f3980d310df.mp3*~data=user_id=0,application_id=42~hmac=0e0a63cc2846ce26fb9b65fd7a3d77cb2b156731ac617437683b60f556b41d13",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/68b4e986958b17f05b062ffa8d7ae114/250x250-000000-80-0-0.jpg",
-        "startOffset": 0
-      },
-      {
-        "title": "Anti-Hero",
-        "artist": "Taylor Swift",
-        "acceptedAnswers": [
-          "anti-hero",
-          "antihero",
-          "taylor swift",
-          "anti-hero taylor swift",
-          "taylor swift anti-hero"
-        ],
-        "deezerId": 1976903157,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/4/1/1/0/4110a4ad9a0f2dfd6ff84a7bffad5a46.mp3?hdnea=exp=1778090543~acl=/api/1/1/4/1/1/0/4110a4ad9a0f2dfd6ff84a7bffad5a46.mp3*~data=user_id=0,application_id=42~hmac=bb895ac3881d772e71e70657f48cde6395a906531bd6c79a93ece11794867cd1",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/f571cb780b339ec087201b1cea53c3d9/250x250-000000-80-0-0.jpg",
-        "startOffset": 0
-      },
-      {
-        "title": "As It Was",
-        "artist": "Harry Styles",
-        "acceptedAnswers": [
-          "as it was",
-          "harry styles",
-          "as it was harry styles",
-          "harry styles as it was"
-        ],
-        "deezerId": 1703487577,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/9/3/7/0/9372c78844baf74b7a06bd467151518a.mp3?hdnea=exp=1778090543~acl=/api/1/1/9/3/7/0/9372c78844baf74b7a06bd467151518a.mp3*~data=user_id=0,application_id=42~hmac=2ded9e405395a08b1bf1e7d0b33b71837d65b1bb31fbe65ee7da760c206ec102",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/b0e936124f59e669ddba02ebe5893f95/250x250-000000-80-0-0.jpg",
-        "startOffset": 0
-      },
-      {
-        "title": "Stay",
-        "artist": "The Kid LAROI",
-        "acceptedAnswers": [
-          "stay",
-          "the kid laroi",
-          "stay the kid laroi",
-          "the kid laroi stay"
-        ],
-        "deezerId": 1425844092,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/c/2/7/0/c27d817565b9df8ab6393bb8202b58b9.mp3?hdnea=exp=1778090544~acl=/api/1/1/c/2/7/0/c27d817565b9df8ab6393bb8202b58b9.mp3*~data=user_id=0,application_id=42~hmac=6182ffeba641d30a8905b920bf5a9160c481237f697332d3d42793da3075448b",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/dd6fe7fa9267185c4b835bd4f155d1d2/250x250-000000-80-0-0.jpg",
-        "startOffset": 0
-      },
-      {
-        "title": "Dance Monkey",
-        "artist": "Tones and I",
-        "acceptedAnswers": [
-          "dance monkey",
-          "tones and i",
-          "dance monkey tones and i",
-          "tones and i dance monkey"
-        ],
-        "deezerId": 739870792,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/b/5/9/0/b59d3c5a5127030c2d7255c557405f69.mp3?hdnea=exp=1778090544~acl=/api/1/1/b/5/9/0/b59d3c5a5127030c2d7255c557405f69.mp3*~data=user_id=0,application_id=42~hmac=b09096223785a449b1dc557b8cc03d9c18046bd7a1e8f34e051f070b28f1c3de",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/5636a569737f8dad9a928f3d907c493a/250x250-000000-80-0-0.jpg",
-        "startOffset": 0
-      },
-      {
-        "title": "Watermelon Sugar",
-        "artist": "Harry Styles",
-        "acceptedAnswers": [
-          "watermelon sugar",
-          "harry styles",
-          "watermelon sugar harry styles",
-          "harry styles watermelon sugar"
-        ],
-        "deezerId": 830336922,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/f/7/5/0/f75672f3225537bd26bb33f0f8947618.mp3?hdnea=exp=1778090545~acl=/api/1/1/f/7/5/0/f75672f3225537bd26bb33f0f8947618.mp3*~data=user_id=0,application_id=42~hmac=37539d83e073f4b879390d348a5c747d61b82aff8735bedfb6ff6b64f0469056",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/346c524c15ecccbc4a8a78e8972a352c/250x250-000000-80-0-0.jpg",
-        "startOffset": 0
-      },
-      {
-        "title": "drivers license",
-        "artist": "Olivia Rodrigo",
-        "acceptedAnswers": [
-          "drivers license",
-          "olivia rodrigo",
-          "drivers license olivia rodrigo",
-          "olivia rodrigo drivers license"
-        ],
-        "deezerId": 1378342592,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/4/d/5/0/4d54d919da63ae5ed6f2de3e05433317.mp3?hdnea=exp=1778090545~acl=/api/1/1/4/d/5/0/4d54d919da63ae5ed6f2de3e05433317.mp3*~data=user_id=0,application_id=42~hmac=3cccfbda8ef2f3529f248c52aebaf576881a599587cc12880699b2c9dc6063c4",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/e68da86fd7976135c2d2d1715afaef7c/250x250-000000-80-0-0.jpg",
-        "startOffset": 0
-      },
-      {
-        "title": "good 4 u",
-        "artist": "Olivia Rodrigo",
-        "acceptedAnswers": [
-          "good 4 u",
-          "olivia rodrigo",
-          "good 4 u olivia rodrigo",
-          "olivia rodrigo good 4 u"
-        ],
-        "deezerId": 1378342622,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/f/8/7/0/f87c0d1c4c9e6f80c68c0fad96621642.mp3?hdnea=exp=1778090545~acl=/api/1/1/f/8/7/0/f87c0d1c4c9e6f80c68c0fad96621642.mp3*~data=user_id=0,application_id=42~hmac=f55a22296a40a88a5509537f1a7ceed2a2bca76c34bcd2c1a106bfca2e801655",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/e68da86fd7976135c2d2d1715afaef7c/250x250-000000-80-0-0.jpg",
-        "startOffset": 0
-      },
-      {
-        "title": "Flowers",
-        "artist": "Miley Cyrus",
-        "acceptedAnswers": [
-          "flowers",
-          "miley cyrus",
-          "flowers miley cyrus",
-          "miley cyrus flowers"
-        ],
-        "deezerId": 2105158337,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/c/a/1/0/ca19f3388408a917038cb083873c4ae1.mp3?hdnea=exp=1778090546~acl=/api/1/1/c/a/1/0/ca19f3388408a917038cb083873c4ae1.mp3*~data=user_id=0,application_id=42~hmac=54b45f69bcadc3c991e2b0b1885a2427bb45e15b79bce979521fd36d34351764",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/98610629a40996b61b3d24bd5ab8c2e1/250x250-000000-80-0-0.jpg",
-        "startOffset": 0
-      },
-      {
-        "title": "Cruel Summer",
-        "artist": "Taylor Swift",
-        "acceptedAnswers": [
-          "cruel summer",
-          "taylor swift",
-          "cruel summer taylor swift",
-          "taylor swift cruel summer"
-        ],
-        "deezerId": 737967292,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/c/d/2/0/cd2322270b4d6a7f34448c642123b257.mp3?hdnea=exp=1778090546~acl=/api/1/1/c/d/2/0/cd2322270b4d6a7f34448c642123b257.mp3*~data=user_id=0,application_id=42~hmac=2cdcbeeb4d08ae61a7968545583cbf10a65924e6c9d9253c8c99097307761658",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/6111c5ab9729c8eac47883e4e50e9cf8/250x250-000000-80-0-0.jpg",
-        "startOffset": 0
-      },
-      {
-        "title": "Heat Waves",
-        "artist": "Glass Animals",
-        "acceptedAnswers": [
-          "heat waves",
-          "glass animals",
-          "heat waves glass animals",
-          "glass animals heat waves"
-        ],
-        "deezerId": 1040154662,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/3/c/e/0/3ce23f319354c1eb009e7d11c57b75e2.mp3?hdnea=exp=1778090547~acl=/api/1/1/3/c/e/0/3ce23f319354c1eb009e7d11c57b75e2.mp3*~data=user_id=0,application_id=42~hmac=b5b5efbec8bc1d828c68f0156c8e6cc2daada16fd6b35a1bab6c0adf610c7d6c",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/04ea51c6eb90a6208f2e47da861cf1a5/250x250-000000-80-0-0.jpg",
-        "startOffset": 0
-      },
-      {
-        "title": "Peaches",
-        "artist": "Justin Bieber",
-        "acceptedAnswers": [
-          "peaches",
-          "justin bieber",
-          "peaches justin bieber",
-          "justin bieber peaches"
-        ],
-        "deezerId": 1280165222,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/f/3/f/0/f3fcfb36e1d7c904d8f1bab0497c4d6c.mp3?hdnea=exp=1778090548~acl=/api/1/1/f/3/f/0/f3fcfb36e1d7c904d8f1bab0497c4d6c.mp3*~data=user_id=0,application_id=42~hmac=8d515c468cd4e48db85141c96232d95b157d4eabe3cef6e4fc20902b584c19c9",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/87468622c8e7ac9dce7b541be136aa4c/250x250-000000-80-0-0.jpg",
-        "startOffset": 0
-      }
-    ]
-  },
-  {
     "id": "memes",
     "name": "Memes & Guilty Pleasures",
     "description": "Viral hits en guilty pleasures",
     "songs": [
-      {
-        "title": "WAP",
-        "artist": "Cardi B",
-        "acceptedAnswers": [
-          "wap",
-          "cardi b",
-          "wap cardi b",
-          "cardi b wap"
-        ],
-        "deezerId": 1044791832,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/4/7/8/0/478c54679c8c60148e256ae4984b51bc.mp3?hdnea=exp=1778090548~acl=/api/1/1/4/7/8/0/478c54679c8c60148e256ae4984b51bc.mp3*~data=user_id=0,application_id=42~hmac=0d82d28b935b700315d4e1faa5d55fdd1cd78f9ca266baa8a774bbd1d0582a1b",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/884908fd2fd1ea7fb6f98a5b345ad7d8/250x250-000000-80-0-0.jpg",
-        "startOffset": 0
-      },
-      {
-        "title": "Old Town Road",
-        "artist": "Lil Nas X",
-        "acceptedAnswers": [
-          "old town road",
-          "lil nas x",
-          "old town road lil nas x",
-          "lil nas x old town road"
-        ],
-        "deezerId": 699056192,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/2/e/4/0/2e4be56a5de5e1113d00f58d92207137.mp3?hdnea=exp=1778090548~acl=/api/1/1/2/e/4/0/2e4be56a5de5e1113d00f58d92207137.mp3*~data=user_id=0,application_id=42~hmac=796fcff36bc01badd4f18c3034a3ab4ca3a3d253ae7c2206a5c956b8dbb880fa",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/3cfd6900fd2b342ec0e478faf300f6a2/250x250-000000-80-0-0.jpg",
-        "startOffset": 0
-      },
-      {
-        "title": "MONTERO",
-        "artist": "Lil Nas X",
-        "acceptedAnswers": [
-          "montero",
-          "lil nas x",
-          "montero lil nas x",
-          "lil nas x montero"
-        ],
-        "deezerId": 1283264142,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/8/b/7/0/8b7f0c442e08f6116e458eaa8e3d305f.mp3?hdnea=exp=1778090549~acl=/api/1/1/8/b/7/0/8b7f0c442e08f6116e458eaa8e3d305f.mp3*~data=user_id=0,application_id=42~hmac=7353daed8b8e73bcf8272d31d490be84e98b1912a9a1a0b67d266c70455dff0e",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/fc939e4030254f80bd90b616f2a1d0a6/250x250-000000-80-0-0.jpg",
-        "startOffset": 0
-      },
-      {
-        "title": "Industry Baby",
-        "artist": "Lil Nas X",
-        "acceptedAnswers": [
-          "industry baby",
-          "lil nas x",
-          "industry baby lil nas x",
-          "lil nas x industry baby"
-        ],
-        "deezerId": 1439691952,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/5/5/7/0/5577101efe35c3671f18a1039c8c6d77.mp3?hdnea=exp=1778090549~acl=/api/1/1/5/5/7/0/5577101efe35c3671f18a1039c8c6d77.mp3*~data=user_id=0,application_id=42~hmac=aa676efff24c4a994c441a736082c32c41cd44c29f8506ff622cb345b72080ef",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/a65e86966cfd34b2aa292856136ef9ac/250x250-000000-80-0-0.jpg",
-        "startOffset": 0
-      },
-      {
-        "title": "Never Gonna Give You Up",
-        "artist": "Rick Astley",
-        "acceptedAnswers": [
-          "never gonna give you up",
-          "rick astley",
-          "never gonna give you up rick astley",
-          "rick astley never gonna give you up"
-        ],
-        "deezerId": 14408104,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/e/7/7/0/e773d9a1121ced48f2e74bca4271699c.mp3?hdnea=exp=1778090550~acl=/api/1/1/e/7/7/0/e773d9a1121ced48f2e74bca4271699c.mp3*~data=user_id=0,application_id=42~hmac=48873e5f7ba4ca25943eaccb2fdb43ccaa13db40abdbe97746575d7265883163",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/a37761cd98b72998ff1d8cbfedbf0863/250x250-000000-80-0-0.jpg",
-        "startOffset": 0
-      },
       {
         "title": "Gangnam Style",
         "artist": "PSY",
@@ -490,22 +132,6 @@
         "startOffset": 0
       },
       {
-        "title": "Blue (Da Ba Dee)",
-        "artist": "Eiffel 65",
-        "acceptedAnswers": [
-          "blue",
-          "blue da ba dee",
-          "da ba dee",
-          "eiffel 65",
-          "blue eiffel 65",
-          "eiffel 65 blue"
-        ],
-        "deezerId": 89629797,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/e/b/0/0/eb0591cd63ab61069bc14b1082f78efe.mp3?hdnea=exp=1778160662~acl=/api/1/1/e/b/0/0/eb0591cd63ab61069bc14b1082f78efe.mp3*~data=user_id=0,application_id=42~hmac=903981931cf22413f232e1dd427859703199015865f8bc8b9958b9246aa92e29",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/03aaa3268500f38fe03588f7b25522dd/250x250-000000-80-0-0.jpg",
-        "startOffset": 0
-      },
-      {
         "title": "Witch Doctor",
         "artist": "Cartoons",
         "acceptedAnswers": [
@@ -548,20 +174,6 @@
         "startOffset": 0
       },
       {
-        "title": "Barbie Girl",
-        "artist": "Aqua",
-        "acceptedAnswers": [
-          "barbie girl",
-          "aqua",
-          "barbie girl aqua",
-          "aqua barbie girl"
-        ],
-        "deezerId": 1115044,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/4/3/7/0/4371d1b1cfd9c181f987a3befea3585b.mp3?hdnea=exp=1778090557~acl=/api/1/1/4/3/7/0/4371d1b1cfd9c181f987a3befea3585b.mp3*~data=user_id=0,application_id=42~hmac=0bed5b325746de733cc8d158cab9a4256e750246f2a43e7d82acbd2cbe4072f2",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/89c2dae2b498dc9ca9151324d02eca2d/250x250-000000-80-0-0.jpg",
-        "startOffset": 0
-      },
-      {
         "title": "Friday",
         "artist": "Rebecca Black",
         "acceptedAnswers": [
@@ -573,6 +185,196 @@
         "deezerId": 1966669297,
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/3/6/c/0/36c3c1efa6657f35b00fb22b7da8708b.mp3?hdnea=exp=1778090557~acl=/api/1/1/3/6/c/0/36c3c1efa6657f35b00fb22b7da8708b.mp3*~data=user_id=0,application_id=42~hmac=8009f379fc2f880aedf45b955666deb8cf5599f92a9a6da3b3b7510b99e14bcf",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/8f64f2476f4587b0685ebe0610c955ce/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Shooting Stars",
+        "artist": "Bag Raiders",
+        "acceptedAnswers": [
+          "Shooting Stars"
+        ],
+        "deezerId": 4231436,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/166a6a4fb8de58a8405029acb4dba670/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Astronomia",
+        "artist": "Vicetone & Tony Igy",
+        "acceptedAnswers": [
+          "Astronomia",
+          "Coffin Dance"
+        ],
+        "deezerId": 397715312,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/3e933fcb4bc4d04f6303a17dab5e6e1c/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Tunak Tunak Tun",
+        "artist": "Daler Mehndi",
+        "acceptedAnswers": [
+          "Tunak Tunak Tun"
+        ],
+        "deezerId": 64927344,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/7397fcb4287dc14acac8074d7a677887/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "The Hampster Dance Song",
+        "artist": "Hampton the Hamster",
+        "acceptedAnswers": [
+          "Hampster Dance",
+          "Hamster Dance",
+          "The Hampster Dance Song"
+        ],
+        "deezerId": 93653056,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/29c12a5539b5a9066c90df1b07e9d76d/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "The Gummy Bear Song",
+        "artist": "Gummibär",
+        "acceptedAnswers": [
+          "Gummy Bear",
+          "The Gummy Bear Song",
+          "Im a Gummy Bear"
+        ],
+        "deezerId": 1558374012,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/bef44e8c7de739a187806878a34a390a/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Ameno",
+        "artist": "Era",
+        "acceptedAnswers": [
+          "Ameno",
+          "Dorime"
+        ],
+        "deezerId": 877655,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/b6afa992d746d7ec9d9977d8e7921f98/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Wellerman",
+        "artist": "Nathan Evans",
+        "acceptedAnswers": [
+          "Wellerman",
+          "Soon May the Wellerman Come"
+        ],
+        "deezerId": 1217284152,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/4bcd0a23f7458e9a7f8f23346f48d9fb/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Ievan Polkka",
+        "artist": "Loituma",
+        "acceptedAnswers": [
+          "Ievan Polkka",
+          "Levan Polkka",
+          "Leek Spin"
+        ],
+        "deezerId": 1935234947,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/5f06b812fc677d72e25d9e2fcd0666c7/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Running in the 90's",
+        "artist": "Max Coveri",
+        "acceptedAnswers": [
+          "Running in the 90s",
+          "Running in the 90's"
+        ],
+        "deezerId": 638083352,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/c8d07d1542c148866fa94c8d271c1175/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "PPAP",
+        "artist": "Pikotaro",
+        "acceptedAnswers": [
+          "PPAP",
+          "Pen Pineapple Apple Pen"
+        ],
+        "deezerId": 3576290941,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/8c77605fdb8e36c85281302330b6a942/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Epic Sax Guy",
+        "artist": "Sunstroke Project",
+        "acceptedAnswers": [
+          "Epic Sax Guy",
+          "Run Away"
+        ],
+        "deezerId": 2585428212,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/5fac8124a8e0b21a4853187f0a038f80/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Trololo",
+        "artist": "Eduard Khil",
+        "acceptedAnswers": [
+          "Trololo",
+          "Trololol",
+          "Trololo Song"
+        ],
+        "deezerId": 707463302,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/473c90ea6fa87627cd35e632f17b2f45/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Harlem Shake",
+        "artist": "Baauer",
+        "acceptedAnswers": [
+          "Harlem Shake"
+        ],
+        "deezerId": 64734097,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/da184c5dfab5f929d97453203493e725/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Macarena",
+        "artist": "Los Del Río",
+        "acceptedAnswers": [
+          "Macarena"
+        ],
+        "deezerId": 994491,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/6a827921da4e6afde64294d7483cbf0e/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Oh No",
+        "artist": "Kreepa",
+        "acceptedAnswers": [
+          "Oh No"
+        ],
+        "deezerId": 830374882,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/5d08ce9a652d5e3901b270599692265a/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Nyan Cat",
+        "artist": "daniwellP",
+        "acceptedAnswers": [
+          "Nyan Cat"
+        ],
+        "deezerId": 705436712,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/0e5368e91ab704623f3319c7833078ed/250x250-000000-80-0-0.jpg",
         "startOffset": 0
       }
     ]
@@ -948,7 +750,7 @@
         "previewUrl": "/audio/bloody-stream.mp3",
         "coverUrl": "https://vgmtreasurechest.com/soundtracks/jojo-s-bizarre-adventure-2nd-season-op/00%20Front.jpg",
         "media": "JoJo's Bizarre Adventure",
-        "startOffset": 0
+        "startOffset": 1
       },
       {
         "title": "Stand Proud",
@@ -996,6 +798,34 @@
         "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/f7/c5/50/f7c5504a-b047-a541-f931-323861718cb9/ANTCD-A0000013028.jpg/250x250bb.jpg",
         "media": "One Piece",
         "startOffset": 0
+      },
+      {
+        "title": "Otonoke",
+        "artist": "Creepy Nuts",
+        "acceptedAnswers": [
+          "Otonoke",
+          "Dandadan",
+          "DanDaDan"
+        ],
+        "deezerId": 3024903811,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/725e2fe052446f8928ada4036b4516d5/250x250-000000-80-0-0.jpg",
+        "media": "Dandadan",
+        "startOffset": 0
+      },
+      {
+        "title": "Bling-Bang-Bang-Born",
+        "artist": "Creepy Nuts",
+        "acceptedAnswers": [
+          "Bling-Bang-Bang-Born",
+          "Bling Bang Bang Born",
+          "Mashle"
+        ],
+        "deezerId": 2580253682,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/d19f1ef87690fdceea113cc47140b360/250x250-000000-80-0-0.jpg",
+        "media": "Mashle",
+        "startOffset": 0
       }
     ]
   },
@@ -1014,6 +844,8 @@
           "Giornos Theme",
           "giorno's theme",
           "Giorno's Theme",
+          "Golden Wind",
+          "golden wind",
           "il vento d'oro yugo kanno",
           "yugo kanno il vento d'oro"
         ],
@@ -1040,18 +872,19 @@
         "startOffset": 0
       },
       {
-        "title": "Licht und Schatten",
-        "artist": "Hiroyuki Sawano",
+        "title": "Awaken (Pillar Men Theme)",
+        "artist": "Taku Iwasaki",
         "acceptedAnswers": [
-          "licht und schatten",
-          "hiroyuki sawano",
-          "licht und schatten hiroyuki sawano",
-          "hiroyuki sawano licht und schatten"
+          "awaken",
+          "pillar men",
+          "pillar men theme",
+          "awaken pillar men",
+          "jojo",
+          "jojos bizarre adventure"
         ],
         "deezerId": 0,
-        "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview124/v4/51/3a/8d/513a8db9-0303-7616-b27f-5364c44bf334/mzaf_5432021421867809908.plus.aac.p.m4a",
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/09/b0/3b/09b03b34-00ef-aa08-937d-763b4ed0cc34/jacket_SEXX01479B00Z_550.jpg/250x250bb.jpg",
-        "media": "Attack on Titan",
+        "previewUrl": "/audio/awaken-pillar-men.mp3",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/0d21945baa01b57aadb7f0210af0d682/250x250-000000-80-0-0.jpg",
         "startOffset": 0
       },
       {
@@ -1085,48 +918,47 @@
         "startOffset": 0
       },
       {
-        "title": "Sadness and Sorrow",
-        "artist": "Toshio Masuda",
-        "acceptedAnswers": [
-          "sadness and sorrow",
-          "toshio masuda",
-          "sadness and sorrow toshio masuda",
-          "toshio masuda sadness and sorrow"
-        ],
-        "deezerId": 2765404261,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/9/a/c/0/9acb4aa2c083fe758d8a0e19237c50cd.mp3?hdnea=exp=1778090569~acl=/api/1/1/9/a/c/0/9acb4aa2c083fe758d8a0e19237c50cd.mp3*~data=user_id=0,application_id=42~hmac=f962b2059a34ca53847da6f913997c4128c9b9f875bdd266e32ca94cb6e8e24b",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/2071fc8149d7e43dca59e69f0e94c457/250x250-000000-80-0-0.jpg",
-        "media": "Naruto",
-        "startOffset": 0
-      },
-      {
-        "title": "The Raising Fighting Spirit",
-        "artist": "Toshio Masuda",
-        "acceptedAnswers": [
-          "the raising fighting spirit",
-          "toshio masuda",
-          "the raising fighting spirit toshio masuda",
-          "toshio masuda the raising fighting spirit"
-        ],
-        "deezerId": 0,
-        "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/47/8d/16/478d1698-ef3e-b680-298f-8e1c4e8800c6/mzaf_9544622060784085712.plus.aac.p.m4a",
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/bf/50/26/bf5026a4-3dda-488d-9be5-314c1d39283a/139301.jpg/250x250bb.jpg",
-        "media": "Naruto",
-        "startOffset": 0
-      },
-      {
-        "title": "Next to You",
+        "title": "Kingdom of Predators",
         "artist": "Yoshihisa Hirano",
         "acceptedAnswers": [
-          "next to you",
-          "yoshihisa hirano",
-          "next to you yoshihisa hirano",
-          "yoshihisa hirano next to you"
+          "Kingdom of Predators",
+          "Hunter x Hunter",
+          "HxH"
         ],
         "deezerId": 0,
-        "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/13/ed/b1/13edb1ff-ddb0-5e08-8cd9-9f2d03b723c1/mzaf_10981160776681886549.plus.aac.p.m4a",
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/f7/d7/18/f7d718fe-027d-9440-dda6-8a5e5f9d7847/4988021035651.png/250x250bb.jpg",
-        "media": "Death Note",
+        "previewUrl": "/audio/kingdom-of-predators.mp3",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/37d2ebfe9f39ed8853bba7f60e75fa2a/250x250-000000-80-0-0.jpg",
+        "media": "Hunter x Hunter",
+        "startOffset": 80
+      },
+      {
+        "title": "EMIYA",
+        "artist": "Hideyuki Fukasawa",
+        "acceptedAnswers": [
+          "EMIYA",
+          "Fate Stay Night",
+          "Fate",
+          "UBW",
+          "Unlimited Blade Works"
+        ],
+        "deezerId": 1434650742,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/2395c1d548a97b1300c33a2c0c5b3b13/250x250-000000-80-0-0.jpg",
+        "media": "Fate/stay night [Unlimited Blade Works]",
+        "startOffset": 0
+      },
+      {
+        "title": "Zero Eclipse",
+        "artist": "Hiroyuki Sawano",
+        "acceptedAnswers": [
+          "zero eclipse",
+          "hiroyuki sawano",
+          "zero eclipse attack on titan",
+          "attack on titan"
+        ],
+        "deezerId": 695234352,
+        "previewUrl": "",
+        "coverUrl": "https://static.wikia.nocookie.net/hiroyuki-sawano/images/5/54/Shingeki_No_Kyojin_season_3_album_cover.jpg/revision/latest?cb=20250512095400",
         "startOffset": 0
       },
       {
@@ -1139,10 +971,10 @@
           "kohei tanaka overtaken"
         ],
         "deezerId": 0,
-        "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview126/v4/8a/db/30/8adb30e6-9649-37b7-d0ef-3442fedd5d24/mzaf_610326438358990170.plus.aac.p.m4a",
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/1a/09/ae/1a09ae49-8e5b-fb5e-8bbf-91567bfd5da9/1076.jpg/250x250bb.jpg",
+        "previewUrl": "/audio/overtaken.mp3",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/bdc784994601b26617bbf4116f14a8af/250x250-000000-80-0-0.jpg",
         "media": "One Piece",
-        "startOffset": 0
+        "startOffset": 1
       },
       {
         "title": "Call of Silence",
@@ -1160,19 +992,18 @@
         "startOffset": 0
       },
       {
-        "title": "Dragon Ball Z - Prologue & Subtitle",
-        "artist": "Kenji Yamamoto",
+        "title": "Ultra Instinct",
+        "artist": "Norihito Sumitomo",
         "acceptedAnswers": [
-          "dragon ball z - prologue & subtitle",
-          "dragon ball z  prologue  subtitle",
-          "kenji yamamoto",
-          "dragon ball z - prologue & subtitle kenji yamamoto",
-          "kenji yamamoto dragon ball z - prologue & subtitle"
+          "Ultra Instinct",
+          "Dragon Ball Super",
+          "Dragon Ball",
+          "Goku"
         ],
         "deezerId": 0,
-        "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/16/61/5a/16615ab3-d3bb-8048-c2da-a1d66d3e2946/mzaf_3489977181422830853.plus.aac.p.m4a",
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music/a2/70/82/mzi.iepqoydj.jpg/250x250bb.jpg",
-        "media": "Dragon Ball Z",
+        "previewUrl": "/audio/ultra-instinct.mp3",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/08ef20e31e7d4b9edefb61e3bdb93462/250x250-000000-80-0-0.jpg",
+        "media": "Dragon Ball Super",
         "startOffset": 0
       },
       {
@@ -1191,18 +1022,19 @@
         "startOffset": 0
       },
       {
-        "title": "Fairy Tail Main Theme",
-        "artist": "Yasuharu Takanashi",
+        "title": "YouSeeBIGGIRL/T:T",
+        "artist": "Hiroyuki Sawano",
         "acceptedAnswers": [
-          "fairy tail main theme",
-          "yasuharu takanashi",
-          "fairy tail main theme yasuharu takanashi",
-          "yasuharu takanashi fairy tail main theme"
+          "YouSeeBIGGIRL",
+          "You See Big Girl",
+          "Attack on Titan",
+          "AoT",
+          "Shingeki no Kyojin"
         ],
-        "deezerId": 472517562,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/0/4/a/0/04a68fc2c64aef25f08a98de1b3ae973.mp3?hdnea=exp=1778090574~acl=/api/1/1/0/4/a/0/04a68fc2c64aef25f08a98de1b3ae973.mp3*~data=user_id=0,application_id=42~hmac=3276abb04c51560acc4133b45f83eb2103a6ffe9600c3bb23cb0f2eb69a60329",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/7ebd51a60d46847ee71c1445b5f5bd86/250x250-000000-80-0-0.jpg",
-        "media": "Fairy Tail",
+        "deezerId": 1192650602,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/5565e90a39c9f626d6d91fc7d5a51d85/250x250-000000-80-0-0.jpg",
+        "media": "Attack on Titan Season 2",
         "startOffset": 0
       },
       {
@@ -1238,19 +1070,18 @@
         "startOffset": 0
       },
       {
-        "title": "My Hero Academia - You Can Become a Hero",
-        "artist": "Yuki Hayashi",
+        "title": "L's Theme",
+        "artist": "Yoshihisa Hirano",
         "acceptedAnswers": [
-          "my hero academia - you can become a hero",
-          "my hero academia  you can become a hero",
-          "yuki hayashi",
-          "my hero academia - you can become a hero yuki hayashi",
-          "yuki hayashi my hero academia - you can become a hero"
+          "L's Theme",
+          "L no Theme",
+          "Death Note",
+          "L Theme"
         ],
-        "deezerId": 0,
-        "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/25/e2/02/25e202a2-c354-1576-5cb0-1bdc8b261788/mzaf_17082072582269816924.plus.aac.p.m4a",
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/8e/f1/32/8ef132cb-564d-82da-4c36-05250741de67/THCA-60099.jpg/250x250bb.jpg",
-        "media": "My Hero Academia",
+        "deezerId": 2665292252,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/933b657e2d22d77556bb3da3bb069e2f/250x250-000000-80-0-0.jpg",
+        "media": "Death Note",
         "startOffset": 0
       },
       {
@@ -1262,27 +1093,26 @@
           "naruto main theme toshio masuda",
           "toshio masuda naruto main theme"
         ],
-        "deezerId": 0,
-        "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/7b/fb/0b/7bfb0bce-adf5-7138-ab89-d91f665a286c/mzaf_17417061634602737591.plus.aac.p.m4a",
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/0c/52/bc/0c52bc0e-90e0-c28b-49fd-f0d507daf965/196589679086.jpg/250x250bb.jpg",
+        "deezerId": 1487544412,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/f62f9482bbf389319a769abb56d10b98/250x250-000000-80-0-0.jpg",
         "media": "Naruto",
         "startOffset": 0
       },
       {
-        "title": "Demon Slayer - Kamado Tanjiro no Uta",
-        "artist": "Go Shiina",
+        "title": "Stardust Crusaders",
+        "artist": "Yugo Kanno",
         "acceptedAnswers": [
-          "demon slayer - kamado tanjiro no uta",
-          "demon slayer  kamado tanjiro no uta",
-          "go shiina",
-          "demon slayer - kamado tanjiro no uta go shiina",
-          "go shiina demon slayer - kamado tanjiro no uta"
+          "Stardust Crusaders",
+          "Jotaro's Theme",
+          "JoJo",
+          "JoJo's Bizarre Adventure"
         ],
-        "deezerId": 1976505437,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/a/4/a/0/a4a1e9d760a452c29361dd0ea12644a7.mp3?hdnea=exp=1778090577~acl=/api/1/1/a/4/a/0/a4a1e9d760a452c29361dd0ea12644a7.mp3*~data=user_id=0,application_id=42~hmac=cd64026028c1db4065b249e80077aabcfb260a16959aab36b2393f4d669f0913",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/1113e93a4ba53223dfcb4db1d62166f7/250x250-000000-80-0-0.jpg",
-        "media": "Demon Slayer",
-        "startOffset": 0
+        "deezerId": 0,
+        "previewUrl": "/audio/stardust-crusaders.mp3",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/075726ed7724ad8e96583ed741ae2f79/250x250-000000-80-0-0.jpg",
+        "media": "JoJo's Bizarre Adventure: Stardust Crusaders",
+        "startOffset": 29
       },
       {
         "title": "One Punch Man Theme",
@@ -1300,19 +1130,17 @@
         "startOffset": 0
       },
       {
-        "title": "Tokyo Ghoul - Glassy Sky",
-        "artist": "Donna Burke",
+        "title": "Your Battle Is My Battle",
+        "artist": "Chica",
         "acceptedAnswers": [
-          "tokyo ghoul - glassy sky",
-          "tokyo ghoul  glassy sky",
-          "donna burke",
-          "tokyo ghoul - glassy sky donna burke",
-          "donna burke tokyo ghoul - glassy sky"
+          "Your Battle Is My Battle",
+          "Jujutsu Kaisen",
+          "JJK"
         ],
-        "deezerId": 0,
-        "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/db/77/75/db77754c-9816-7449-68bb-3b6efad4d85b/mzaf_4639403254789449099.plus.aac.p.m4a",
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/60/78/83/60788309-25d9-3321-6952-cbc688da6056/192914560968.jpg/250x250bb.jpg",
-        "media": "Tokyo Ghoul",
+        "deezerId": 1362930362,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/6c78b0f9fced3896799a30b9b5ad8877/250x250-000000-80-0-0.jpg",
+        "media": "Jujutsu Kaisen",
         "startOffset": 0
       }
     ]
@@ -1335,7 +1163,7 @@
         "deezerId": 0,
         "previewUrl": "https://lambda.vgmtreasurechest.com/soundtracks/super-mario-odyssey-original-soundtrack/tvygjaci/2-12.%20Jump%20Up%2C%20Super%20Star%21%20-%20New%20Donk%20City%20Festival.mp3",
         "coverUrl": "https://i1.sndcdn.com/artworks-000249363267-betlv6-t500x500.jpg",
-        "startOffset": 30,
+        "startOffset": 31,
         "media": "Super Mario Odyssey"
       },
       {
@@ -1348,7 +1176,7 @@
           "glados"
         ],
         "deezerId": 3947010221,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/8/3/2/0/8325e3491407e1f04d4cf0193b017363.mp3?hdnea=exp=1778161521~acl=/api/1/1/8/3/2/0/8325e3491407e1f04d4cf0193b017363.mp3*~data=user_id=0,application_id=42~hmac=4697af61b0eab20f6c155cdb41baf63ea826a230dbee1da08e13ad19af1718c1",
+        "previewUrl": "",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/e535d7845f6ddc4f45ab1986fb473b58/250x250-000000-80-0-0.jpg",
         "media": "Portal",
         "startOffset": 0
@@ -1362,11 +1190,11 @@
           "bury the light casey edwards",
           "casey edwards bury the light"
         ],
-        "deezerId": 2705769722,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/3/d/8/0/3d8045da0708ec7c6639b18eb2973e67.mp3?hdnea=exp=1778090580~acl=/api/1/1/3/d/8/0/3d8045da0708ec7c6639b18eb2973e67.mp3*~data=user_id=0,application_id=42~hmac=9d7e0e2c6f41e8a1b7d841cc0678d091db9a401fbafeee8b12a1ec6843b52d50",
+        "deezerId": 0,
+        "previewUrl": "/audio/bury-the-light.mp3",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/662e68c8bf5cfe843212c053c73c89f2/250x250-000000-80-0-0.jpg",
         "media": "Devil May Cry 5",
-        "startOffset": 0
+        "startOffset": 113
       },
       {
         "title": "Legends Never Die",
@@ -1482,11 +1310,11 @@
           "devil trigger casey edwards",
           "casey edwards devil trigger"
         ],
-        "deezerId": 2705779592,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/0/1/5/0/0158fef3a51e3af6a158db4253366576.mp3?hdnea=exp=1778161504~acl=/api/1/1/0/1/5/0/0158fef3a51e3af6a158db4253366576.mp3*~data=user_id=0,application_id=42~hmac=8514b7f509bc2117c066feaf9c8619dc9c942b65eafa54327cdfec863ed716d0",
+        "deezerId": 0,
+        "previewUrl": "/audio/devil-trigger.mp3",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/80c2dec68d8f7da31ab4ace26f305378/250x250-000000-80-0-0.jpg",
         "media": "Devil May Cry 5",
-        "startOffset": 0
+        "startOffset": 70
       },
       {
         "title": "Sanctuary",
@@ -1638,7 +1466,7 @@
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/7/a/a/0/7aafd52c3b0f5d8fa215b26e999d49f5.mp3?hdnea=exp=1778163088~acl=/api/1/1/7/a/a/0/7aafd52c3b0f5d8fa215b26e999d49f5.mp3*~data=user_id=0,application_id=42~hmac=71d1aaefe02ac0b3abc3a16d28f0ad8279747623422b3af73cf26286f58df220",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/b2ab6d0b329801788409c614d568202e/250x250-000000-80-0-0.jpg",
         "media": "Baldur's Gate 3",
-        "startOffset": 5
+        "startOffset": 9
       },
       {
         "title": "Lumière",
@@ -1838,7 +1666,7 @@
         ],
         "deezerId": 0,
         "previewUrl": "/audio/song-of-storms-ssbu.mp3",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/6a538e61679c2f5debe6e2a8aa902770/250x250-000000-80-0-0.jpg",
+        "coverUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTj-5E8PDHU0Nh157xUwRgxlZXKkt1T3KEHxQ&s",
         "media": "The Legend of Zelda: Ocarina of Time",
         "startOffset": 0
       },
@@ -1859,18 +1687,17 @@
         "startOffset": 0
       },
       {
-        "title": "God of War",
-        "artist": "Bear McCreary",
+        "title": "Fallen Down",
+        "artist": "Toby Fox",
         "acceptedAnswers": [
-          "god of war",
-          "bear mccreary",
-          "god of war bear mccreary",
-          "bear mccreary god of war"
+          "Fallen Down",
+          "Undertale",
+          "Toby Fox"
         ],
-        "deezerId": 1981127347,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/e/9/d/0/e9dfdd8ddc7160700068ebbacc24b959.mp3?hdnea=exp=1778090595~acl=/api/1/1/e/9/d/0/e9dfdd8ddc7160700068ebbacc24b959.mp3*~data=user_id=0,application_id=42~hmac=6e52419a8550f1a2ba69bbb23f544e95061cf610a44aa7bffe286e41c4396afa",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/501a18ed1d5c26635cb15735bb32e27b/250x250-000000-80-0-0.jpg",
-        "media": "God of War (2018)",
+        "deezerId": 413934282,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/73b741e3e925f5bb9b27ae2b3c2c78a7/250x250-000000-80-0-0.jpg",
+        "media": "Undertale",
         "startOffset": 0
       },
       {
@@ -2167,9 +1994,9 @@
           "xion",
           "yoko shimomura"
         ],
-        "deezerId": 2939849361,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/c/3/0/0/c30a721af353002080528bb0e1465053.mp3?hdnea=exp=1778193422~acl=/api/1/1/c/3/0/0/c30a721af353002080528bb0e1465053.mp3*~data=user_id=0,application_id=42~hmac=249d879b662ee6e6a4fe6d1cfd6247a2b65705afe356c4d11da5224f5f2b4a3e",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/2eeb041c95959499ce37ec92d4bad786/250x250-000000-80-0-0.jpg",
+        "deezerId": 2133108567,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/7d79a75867af3836510d67564362ea10/250x250-000000-80-0-0.jpg",
         "media": "Kingdom Hearts 358/2 Days",
         "startOffset": 0
       },
@@ -2204,18 +2031,77 @@
         "startOffset": 0
       },
       {
-        "title": "Forze del Male",
+        "title": "Hollow Bastion",
         "artist": "Yoko Shimomura",
         "acceptedAnswers": [
-          "forze del male",
-          "kingdom hearts",
-          "kingdom hearts 1",
-          "yoko shimomura"
+          "Hollow Bastion",
+          "Kingdom Hearts",
+          "Kingdom Hearts 1"
         ],
-        "deezerId": 2133108357,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/7/7/8/0/7788e2978cb37d6d0f758fa80caad3a2.mp3?hdnea=exp=1778193422~acl=/api/1/1/7/7/8/0/7788e2978cb37d6d0f758fa80caad3a2.mp3*~data=user_id=0,application_id=42~hmac=939b4b8f246de5e41eef970ed307aaf8f67d25b704a9ae4fc8138578e70593dc",
+        "deezerId": 2133108337,
+        "previewUrl": "",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/7d79a75867af3836510d67564362ea10/250x250-000000-80-0-0.jpg",
         "media": "Kingdom Hearts",
+        "startOffset": 0
+      },
+      {
+        "title": "Totems of the Grizzlemaw",
+        "artist": "Russell Brower",
+        "acceptedAnswers": [
+          "Totems of the Grizzlemaw",
+          "World of Warcraft",
+          "WoW",
+          "Wrath of the Lich King"
+        ],
+        "deezerId": 3338317651,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/aa9426ed56fef41f0e61c9a1537b36ad/250x250-000000-80-0-0.jpg",
+        "media": "World of Warcraft: Wrath of the Lich King",
+        "startOffset": 0
+      },
+      {
+        "title": "Victory Fanfare",
+        "artist": "Nobuo Uematsu",
+        "acceptedAnswers": [
+          "Victory Fanfare",
+          "Final Fantasy",
+          "Final Fantasy 7",
+          "FF7"
+        ],
+        "deezerId": 2192151537,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/fbebf372f8f28ce9c7aeac0f795a5148/250x250-000000-80-0-0.jpg",
+        "media": "Final Fantasy VII",
+        "startOffset": 0
+      },
+      {
+        "title": "Spiral Mountain",
+        "artist": "Grant Kirkhope",
+        "acceptedAnswers": [
+          "Spiral Mountain",
+          "Banjo Kazooie",
+          "Banjo and Kazooie",
+          "Banjo's Theme"
+        ],
+        "deezerId": 1043004882,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/acba1d339d1bef4c214993a0a612c977/250x250-000000-80-0-0.jpg",
+        "media": "Banjo-Kazooie",
+        "startOffset": 0
+      },
+      {
+        "title": "Title Theme",
+        "artist": "Koji Kondo",
+        "acceptedAnswers": [
+          "Title Theme",
+          "Ocarina of Time",
+          "Zelda",
+          "Legend of Zelda"
+        ],
+        "deezerId": 99294684,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/4b801d8fefe98b5cbb579e4bff1a1475/250x250-000000-80-0-0.jpg",
+        "media": "The Legend of Zelda: Ocarina of Time",
         "startOffset": 0
       }
     ]
@@ -2675,17 +2561,15 @@
         "startOffset": 0
       },
       {
-        "title": "R U Kiddin' Me",
+        "title": "Nobody's Wife",
         "artist": "Anouk",
         "acceptedAnswers": [
-          "r u kiddin me",
-          "r u kidding me",
-          "anouk",
-          "are you kidding me"
+          "Nobody's Wife",
+          "Nobodys Wife"
         ],
-        "deezerId": 3385245,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/d/5/e/0/d5ed4fc06acbe17ef5985e2b0c0e01f5.mp3?hdnea=exp=1778234331~acl=/api/1/1/d/5/e/0/d5ed4fc06acbe17ef5985e2b0c0e01f5.mp3*~data=user_id=0,application_id=42~hmac=295fc42f8340100c2f63c151492e882469c69dc31ee052e59d538d81cae9b539",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/7fe4dc0f6ebacecaf0c099fcde053b8c/250x250-000000-80-0-0.jpg",
+        "deezerId": 3169905,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/58941897d04c58d08cc41aa53207e4cf/250x250-000000-80-0-0.jpg",
         "startOffset": 0
       },
       {
@@ -2801,6 +2685,526 @@
         "deezerId": 0,
         "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview112/v4/8b/bd/84/8bbd84cb-ee22-5236-cf40-8c8b11b421b6/mzaf_4178649150424013217.plus.aac.p.m4a",
         "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/81/45/93/814593ca-f38b-1a46-da2b-ba4a64cc3d40/8720205195975.png/250x250bb.jpg",
+        "startOffset": 0
+      }
+    ]
+  },
+  {
+    "id": "70s",
+    "name": "70's Hits",
+    "description": "Iconische nummers uit de jaren 70",
+    "songs": [
+      {
+        "title": "Bohemian Rhapsody",
+        "artist": "Queen",
+        "acceptedAnswers": [
+          "bohemian rhapsody",
+          "queen"
+        ],
+        "deezerId": 9997018,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/6706f1154083f461a348508c28030a30/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Stairway to Heaven",
+        "artist": "Led Zeppelin",
+        "acceptedAnswers": [
+          "stairway to heaven",
+          "led zeppelin"
+        ],
+        "deezerId": 88003859,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/460a0edd96f743be03b7405eac38c633/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Hotel California",
+        "artist": "Eagles",
+        "acceptedAnswers": [
+          "hotel california",
+          "eagles"
+        ],
+        "deezerId": 426703682,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/7a6c7b49cfdaf4ee233f66c3070d2f40/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Imagine",
+        "artist": "John Lennon",
+        "acceptedAnswers": [
+          "imagine",
+          "john lennon"
+        ],
+        "deezerId": 7193834,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/2675a9277dfabb74c32b7a3b2c9b0170/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Stayin' Alive",
+        "artist": "Bee Gees",
+        "acceptedAnswers": [
+          "stayin alive",
+          "stayin' alive",
+          "bee gees"
+        ],
+        "deezerId": 139138743,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/abf272cffad9fb2b1552421ac6fac9c2/250x250-000000-80-0-0.jpg",
+        "startOffset": 6
+      },
+      {
+        "title": "Go Your Own Way",
+        "artist": "Fleetwood Mac",
+        "acceptedAnswers": [
+          "go your own way",
+          "fleetwood mac"
+        ],
+        "deezerId": 63480990,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/9732751ce91d786dcf30069853697078/250x250-000000-80-0-0.jpg",
+        "startOffset": 5
+      },
+      {
+        "title": "September",
+        "artist": "Earth, Wind & Fire",
+        "acceptedAnswers": [
+          "september",
+          "earth wind and fire",
+          "earth wind & fire"
+        ],
+        "deezerId": 487484142,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/18f41ecd3781fb96bffa2b0b49955db5/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Dancing Queen",
+        "artist": "ABBA",
+        "acceptedAnswers": [
+          "dancing queen",
+          "abba"
+        ],
+        "deezerId": 884025,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/b8b70d474b7a8f27799e0d665e9b737e/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Superstition",
+        "artist": "Stevie Wonder",
+        "acceptedAnswers": [
+          "superstition",
+          "stevie wonder"
+        ],
+        "deezerId": 596034702,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/dc11aaf0240dbaf1548639e1c5df8db8/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Dream On",
+        "artist": "Aerosmith",
+        "acceptedAnswers": [
+          "dream on",
+          "aerosmith"
+        ],
+        "deezerId": 2431707315,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/394ba7ecd87e1fc148ceba031a806e8f/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "We Will Rock You",
+        "artist": "Queen",
+        "acceptedAnswers": [
+          "we will rock you",
+          "queen"
+        ],
+        "deezerId": 12206933,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/c43a1011106beda256e5371be1b00271/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Wish You Were Here",
+        "artist": "Pink Floyd",
+        "acceptedAnswers": [
+          "wish you were here",
+          "pink floyd"
+        ],
+        "deezerId": 116914042,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/cb029c785b8d0cd624ddee9d4127ceff/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Smoke on the Water",
+        "artist": "Deep Purple",
+        "acceptedAnswers": [
+          "smoke on the water",
+          "deep purple"
+        ],
+        "deezerId": 60840057,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/dc8cb2cafee167b6dfec80763407c78b/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Don't Stop Me Now",
+        "artist": "Queen",
+        "acceptedAnswers": [
+          "dont stop me now",
+          "don't stop me now",
+          "queen"
+        ],
+        "deezerId": 12209331,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/fb22a75aa1aafc992230abd0bd79faef/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Barracuda",
+        "artist": "Heart",
+        "acceptedAnswers": [
+          "barracuda",
+          "heart"
+        ],
+        "deezerId": 1080638,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/7847bea7221d7572dab879611f710ecd/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Carry On Wayward Son",
+        "artist": "Kansas",
+        "acceptedAnswers": [
+          "carry on wayward son",
+          "kansas"
+        ],
+        "deezerId": 4006895,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/3d01ed3162eb6f05659971155eec7336/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "More Than a Feeling",
+        "artist": "Boston",
+        "acceptedAnswers": [
+          "more than a feeling",
+          "boston"
+        ],
+        "deezerId": 1037414,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/a25d41d718d5b81ba26cabe333049e6f/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Locomotive Breath",
+        "artist": "Jethro Tull",
+        "acceptedAnswers": [
+          "locomotive breath",
+          "jethro tull"
+        ],
+        "deezerId": 3105327,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/284894a7675dc9c2471cf56bc4b99f21/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Heart of Gold",
+        "artist": "Neil Young",
+        "acceptedAnswers": [
+          "heart of gold",
+          "neil young"
+        ],
+        "deezerId": 3826694,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/8faf47b1704c3351a48b392e29ec80a4/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Let It Be",
+        "artist": "The Beatles",
+        "acceptedAnswers": [
+          "let it be",
+          "the beatles",
+          "beatles"
+        ],
+        "deezerId": 116348656,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/fcf05300b7c17ec77a6d01028a4bef61/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Come Together",
+        "artist": "The Beatles",
+        "acceptedAnswers": [
+          "come together",
+          "the beatles",
+          "beatles"
+        ],
+        "deezerId": 116348452,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/aa94ab293730bb7845d2aa8c672b2c29/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Baba O'Riley",
+        "artist": "The Who",
+        "acceptedAnswers": [
+          "baba o'riley",
+          "baba oriley",
+          "the who"
+        ],
+        "deezerId": 2121805,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/077c3e89663134e653f97a6e85be7662/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Black Dog",
+        "artist": "Led Zeppelin",
+        "acceptedAnswers": [
+          "black dog",
+          "led zeppelin"
+        ],
+        "deezerId": 88003853,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/460a0edd96f743be03b7405eac38c633/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "You Make Loving Fun",
+        "artist": "Fleetwood Mac",
+        "acceptedAnswers": [
+          "you make loving fun",
+          "fleetwood mac"
+        ],
+        "deezerId": 63480993,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/9732751ce91d786dcf30069853697078/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Life on Mars?",
+        "artist": "David Bowie",
+        "acceptedAnswers": [
+          "life on mars",
+          "david bowie"
+        ],
+        "deezerId": 3155539,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/141c9639bd95e780ac26e4a0a527e768/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Heroes",
+        "artist": "David Bowie",
+        "acceptedAnswers": [
+          "heroes",
+          "david bowie"
+        ],
+        "deezerId": 461043312,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/5fb91018679f65199308256be3c584ab/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Crocodile Rock",
+        "artist": "Elton John",
+        "acceptedAnswers": [
+          "crocodile rock",
+          "elton john"
+        ],
+        "deezerId": 1124103,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/9faa70be1a2e8d8d270fd1c913e715ce/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Immigrant Song",
+        "artist": "Led Zeppelin",
+        "acceptedAnswers": [
+          "immigrant song",
+          "led zeppelin"
+        ],
+        "deezerId": 78652582,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/37788af586af4ab83c7cfdc6fe4ad3bc/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Born to Run",
+        "artist": "Bruce Springsteen",
+        "acceptedAnswers": [
+          "born to run",
+          "bruce springsteen"
+        ],
+        "deezerId": 132635408,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/c071343c0d0e73ceec13218e08f28aae/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "I Will Survive",
+        "artist": "Gloria Gaynor",
+        "acceptedAnswers": [
+          "i will survive",
+          "gloria gaynor"
+        ],
+        "deezerId": 1421635422,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/7281e24f40a1323a6f9298d2a1a21143/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Comfortably Numb",
+        "artist": "Pink Floyd",
+        "acceptedAnswers": [
+          "comfortably numb",
+          "pink floyd",
+          "comfortably numb pink floyd",
+          "pink floyd comfortably numb"
+        ],
+        "deezerId": 116914122,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/4/3/6/0/436032ec967e0282f468e9aaf8f1062b.mp3?hdnea=exp=1778090658~acl=/api/1/1/4/3/6/0/436032ec967e0282f468e9aaf8f1062b.mp3*~data=user_id=0,application_id=42~hmac=dc82d4979d76ee60d58af40e1de5c6c6faeaedfb9c7db1738a6cce4c4aa783e2",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/2bea643b92a8fc6b19a23756f718cbd4/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Sultans of Swing",
+        "artist": "Dire Straits",
+        "acceptedAnswers": [
+          "sultans of swing",
+          "dire straits",
+          "sultans of swing dire straits",
+          "dire straits sultans of swing"
+        ],
+        "deezerId": 2263033,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/a/6/d/0/a6d79a23ede359bbfa9caf7a8e46e772.mp3?hdnea=exp=1778090659~acl=/api/1/1/a/6/d/0/a6d79a23ede359bbfa9caf7a8e46e772.mp3*~data=user_id=0,application_id=42~hmac=c3bfc3163760569fe3775afc621ca582f59aa2f9088101e1cd39d109cb99d1e5",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/1bf2bc47623db2ec36a38be064131ce5/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Piano Man",
+        "artist": "Billy Joel",
+        "acceptedAnswers": [
+          "piano man",
+          "billy joel",
+          "piano man billy joel",
+          "billy joel piano man"
+        ],
+        "deezerId": 14333215,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/9/3/3/0/933097dc0fe9004ec219553cb6f54980.mp3?hdnea=exp=1778090660~acl=/api/1/1/9/3/3/0/933097dc0fe9004ec219553cb6f54980.mp3*~data=user_id=0,application_id=42~hmac=a8d9cb385c352975ae0c68bcc9afe18d85ac2d351da41aec5d7477f1c39b469c",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/f61883eed26156899dc5086ce8e25885/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Knockin' on Heaven's Door",
+        "artist": "Bob Dylan",
+        "acceptedAnswers": [
+          "knockin' on heaven's door",
+          "knockin on heavens door",
+          "bob dylan",
+          "knockin' on heaven's door bob dylan",
+          "bob dylan knockin' on heaven's door"
+        ],
+        "deezerId": 75768727,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/6/1/8/0/618937c6dbd9058114ae2fdad99bb2c1.mp3?hdnea=exp=1778090660~acl=/api/1/1/6/1/8/0/618937c6dbd9058114ae2fdad99bb2c1.mp3*~data=user_id=0,application_id=42~hmac=051825d8fb1b134c09a14b36cb147461af4edd1e2a61fa73ec559d5e4f5b8007",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/83f505835a6525c9754d6f1f0ab7479d/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Roundabout",
+        "artist": "Yes",
+        "acceptedAnswers": [
+          "roundabout",
+          "yes",
+          "roundabout yes",
+          "yes roundabout"
+        ],
+        "deezerId": 716219,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/7/6/b/0/76b8a24f702099a4f31572e414f5e876.mp3?hdnea=exp=1778106496~acl=/api/1/1/7/6/b/0/76b8a24f702099a4f31572e414f5e876.mp3*~data=user_id=0,application_id=42~hmac=8f3adf72eec44eb25d17a39f4c20e972223549d6f7890f003eb1e22f242bf7ab",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/0a2280085919a80732cdebad5a9cf83b/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Free Bird",
+        "artist": "Lynyrd Skynyrd",
+        "acceptedAnswers": [
+          "free bird",
+          "freebird",
+          "lynyrd skynyrd"
+        ],
+        "deezerId": 1559717,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/64e01d54ee2590fa5d3c2d1e2a3e3725/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Layla",
+        "artist": "Eric Clapton",
+        "acceptedAnswers": [
+          "layla",
+          "eric clapton"
+        ],
+        "deezerId": 1940201287,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/ec784e20f09d844d4f297560c341049b/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Rocket Man",
+        "artist": "Elton John",
+        "acceptedAnswers": [
+          "rocket man",
+          "elton john"
+        ],
+        "deezerId": 1144863,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/56121010d25e75058e2cc817037ad19b/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Bridge Over Troubled Water",
+        "artist": "Simon & Garfunkel",
+        "acceptedAnswers": [
+          "bridge over troubled water",
+          "simon and garfunkel",
+          "simon & garfunkel"
+        ],
+        "deezerId": 13174764,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/6f7036f2c3632d9e1df142f1078cb5c1/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Riders on the Storm",
+        "artist": "The Doors",
+        "acceptedAnswers": [
+          "riders on the storm",
+          "the doors",
+          "riders on the storm the doors"
+        ],
+        "deezerId": 65445466,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/91fd29601c59b7713f911e9d7a5ea605/250x250-000000-80-0-0.jpg",
+        "startOffset": 5
+      },
+      {
+        "title": "Kashmir",
+        "artist": "Led Zeppelin",
+        "acceptedAnswers": [
+          "kashmir",
+          "led zeppelin",
+          "kashmir led zeppelin"
+        ],
+        "deezerId": 95085780,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/b856ee1b505a82b9c8a762eaa2f8f064/250x250-000000-80-0-0.jpg",
         "startOffset": 0
       }
     ]
@@ -3109,6 +3513,234 @@
         "deezerId": 1056919,
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/c/8/e/0/c8e6426c7a4553311cbee87cedc4b004.mp3?hdnea=exp=1778106497~acl=/api/1/1/c/8/e/0/c8e6426c7a4553311cbee87cedc4b004.mp3*~data=user_id=0,application_id=42~hmac=476d3f8251770d67f7e1b35963b4164050248ab825c2f5ecd1e51ddd82cc56da",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/3bdcbeeaa0df5998e003c25de3c271cc/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Never Gonna Give You Up",
+        "artist": "Rick Astley",
+        "acceptedAnswers": [
+          "never gonna give you up",
+          "rick astley",
+          "rickroll"
+        ],
+        "deezerId": 14408104,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/a37761cd98b72998ff1d8cbfedbf0863/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Don't You (Forget About Me)",
+        "artist": "Simple Minds",
+        "acceptedAnswers": [
+          "dont you forget about me",
+          "don't you forget about me",
+          "simple minds"
+        ],
+        "deezerId": 3158150,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/ceef18218a8d3e16eccd3ce195752cd8/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Blue Monday",
+        "artist": "New Order",
+        "acceptedAnswers": [
+          "blue monday",
+          "new order"
+        ],
+        "deezerId": 131744046,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/197e425f52b7841c402437f34594a7bb/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Jessie's Girl",
+        "artist": "Rick Springfield",
+        "acceptedAnswers": [
+          "jessies girl",
+          "jessie's girl",
+          "rick springfield"
+        ],
+        "deezerId": 454843722,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/7ebeaa61214fb5417721fa0bae3f0a25/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Total Eclipse of the Heart",
+        "artist": "Bonnie Tyler",
+        "acceptedAnswers": [
+          "total eclipse of the heart",
+          "bonnie tyler"
+        ],
+        "deezerId": 532349,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/9bc5fa03c897154eded3719e512567cc/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Everybody Wants to Rule the World",
+        "artist": "Tears for Fears",
+        "acceptedAnswers": [
+          "everybody wants to rule the world",
+          "tears for fears"
+        ],
+        "deezerId": 2234314,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/586d7267038476352b759c0a36415d67/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Pour Some Sugar on Me",
+        "artist": "Def Leppard",
+        "acceptedAnswers": [
+          "pour some sugar on me",
+          "def leppard"
+        ],
+        "deezerId": 447552822,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/86d5af2077f5b6ef18fd0ca158a91134/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Hungry Like the Wolf",
+        "artist": "Duran Duran",
+        "acceptedAnswers": [
+          "hungry like the wolf",
+          "duran duran"
+        ],
+        "deezerId": 3130433,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/3ed10ab812e802c87e423db20800f678/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Take My Breath Away",
+        "artist": "Berlin",
+        "acceptedAnswers": [
+          "take my breath away",
+          "berlin",
+          "top gun"
+        ],
+        "deezerId": 7675055,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/021a1143e9f19493379b8cf01fa1c7c5/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Purple Rain",
+        "artist": "Prince",
+        "acceptedAnswers": [
+          "purple rain",
+          "prince"
+        ],
+        "deezerId": 374283061,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/8cc37398de3ee92bd31d286f30e7972d/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Beat It",
+        "artist": "Michael Jackson",
+        "acceptedAnswers": [
+          "beat it",
+          "michael jackson",
+          "beat it michael jackson"
+        ],
+        "deezerId": 4763165,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/a0ad67d1beb761f2cb9f8b60e5bcf07a/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Smooth Criminal",
+        "artist": "Michael Jackson",
+        "acceptedAnswers": [
+          "smooth criminal",
+          "michael jackson",
+          "smooth criminal michael jackson"
+        ],
+        "deezerId": 4603400,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/a0ad67d1beb761f2cb9f8b60e5bcf07a/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Bad",
+        "artist": "Michael Jackson",
+        "acceptedAnswers": [
+          "bad",
+          "michael jackson",
+          "bad michael jackson"
+        ],
+        "deezerId": 59509531,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/fb0a49a91ab8137ec9d028c4dbb04021/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "The Way You Make Me Feel",
+        "artist": "Michael Jackson",
+        "acceptedAnswers": [
+          "the way you make me feel",
+          "michael jackson",
+          "the way you make me feel michael jackson"
+        ],
+        "deezerId": 59509541,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/fb0a49a91ab8137ec9d028c4dbb04021/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Man in the Mirror",
+        "artist": "Michael Jackson",
+        "acceptedAnswers": [
+          "man in the mirror",
+          "michael jackson",
+          "man in the mirror michael jackson"
+        ],
+        "deezerId": 4603411,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/a0ad67d1beb761f2cb9f8b60e5bcf07a/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Greatest Love of All",
+        "artist": "Whitney Houston",
+        "acceptedAnswers": [
+          "greatest love of all",
+          "whitney houston",
+          "greatest love of all whitney houston"
+        ],
+        "deezerId": 1131194,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/e5712b346f0ca0f167da8ffd7588db3f/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "How Will I Know",
+        "artist": "Whitney Houston",
+        "acceptedAnswers": [
+          "how will i know",
+          "whitney houston",
+          "how will i know whitney houston"
+        ],
+        "deezerId": 5181151,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/ac85bc3f01075fd854ff04f4446a7d6e/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "So Emotional",
+        "artist": "Whitney Houston",
+        "acceptedAnswers": [
+          "so emotional",
+          "whitney houston",
+          "so emotional whitney houston"
+        ],
+        "deezerId": 75981532,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/26b5030b971a5fd363f82cad8cff7453/250x250-000000-80-0-0.jpg",
         "startOffset": 0
       }
     ]
@@ -3431,6 +4063,159 @@
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/e/2/2/0/e227c46b2e0978df9f7785cfb94d6b1a.mp3?hdnea=exp=1778106498~acl=/api/1/1/e/2/2/0/e227c46b2e0978df9f7785cfb94d6b1a.mp3*~data=user_id=0,application_id=42~hmac=66ced7245d880a1f4216abee429377b1e705a97d39497b426e0151ad07eb1b94",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/6b99bd86773b4a83d8f5d1d40ddad959/250x250-000000-80-0-0.jpg",
         "startOffset": 0
+      },
+      {
+        "title": "No Diggity",
+        "artist": "Blackstreet",
+        "acceptedAnswers": [
+          "no diggity",
+          "blackstreet"
+        ],
+        "deezerId": 916496,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/dae7a265b79fb71278cde2504849d6f7/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Jump Around",
+        "artist": "House of Pain",
+        "acceptedAnswers": [
+          "jump around",
+          "house of pain"
+        ],
+        "deezerId": 1584589772,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/1ce36b34e34715e1b513f89651b868a5/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Torn",
+        "artist": "Natalie Imbruglia",
+        "acceptedAnswers": [
+          "torn",
+          "natalie imbruglia"
+        ],
+        "deezerId": 992131,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/62f49979daf12319e406af9389e9c487/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Barbie Girl",
+        "artist": "Aqua",
+        "acceptedAnswers": [
+          "barbie girl",
+          "aqua"
+        ],
+        "deezerId": 1115044,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/89c2dae2b498dc9ca9151324d02eca2d/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Tubthumping",
+        "artist": "Chumbawamba",
+        "acceptedAnswers": [
+          "tubthumping",
+          "chumbawamba",
+          "i get knocked down"
+        ],
+        "deezerId": 651773022,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/130c1784ceb0397188bbfab766845a32/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Semi-Charmed Life",
+        "artist": "Third Eye Blind",
+        "acceptedAnswers": [
+          "semi-charmed life",
+          "semi charmed life",
+          "third eye blind"
+        ],
+        "deezerId": 685709,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/f4ecf5c6e643f322f0338e0f2448856e/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Kiss from a Rose",
+        "artist": "Seal",
+        "acceptedAnswers": [
+          "kiss from a rose",
+          "seal"
+        ],
+        "deezerId": 730428,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/4c895d110af6fb22aa99c2d2bf995a0d/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Under the Bridge",
+        "artist": "Red Hot Chili Peppers",
+        "acceptedAnswers": [
+          "under the bridge",
+          "red hot chili peppers",
+          "rhcp"
+        ],
+        "deezerId": 785176,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/e3f1bee87b1d5d1313641762f375a3fb/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "November Rain",
+        "artist": "Guns N' Roses",
+        "acceptedAnswers": [
+          "november rain",
+          "guns n' roses",
+          "guns n roses",
+          "november rain guns n' roses",
+          "guns n' roses november rain"
+        ],
+        "deezerId": 1169683,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/c/8/4/0/c841da8f662caa4e9b9abcd69471ea41.mp3?hdnea=exp=1778090659~acl=/api/1/1/c/8/4/0/c841da8f662caa4e9b9abcd69471ea41.mp3*~data=user_id=0,application_id=42~hmac=ba0b4be2457f2319223fad9a1bc776174d1ac3aef567d37835976d9024641532",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/546fe1eca5d3bf48c6a48fb3c0ddac63/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Black or White",
+        "artist": "Michael Jackson",
+        "acceptedAnswers": [
+          "black or white",
+          "michael jackson",
+          "black or white michael jackson"
+        ],
+        "deezerId": 15593566,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/93a5354699d552666448e1c87c976605/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "I Will Always Love You",
+        "artist": "Whitney Houston",
+        "acceptedAnswers": [
+          "i will always love you",
+          "whitney houston",
+          "i will always love you whitney houston"
+        ],
+        "deezerId": 7675403,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/d071ab8d81111be6434c2f2cf372ab13/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "I Have Nothing",
+        "artist": "Whitney Houston",
+        "acceptedAnswers": [
+          "i have nothing",
+          "whitney houston",
+          "i have nothing whitney houston"
+        ],
+        "deezerId": 7675404,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/d071ab8d81111be6434c2f2cf372ab13/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
       }
     ]
   },
@@ -3752,13 +4537,113 @@
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/2/c/0/0/2c0eb3c4304afc91c3b0c2f2e725ebbf.mp3?hdnea=exp=1778106498~acl=/api/1/1/2/c/0/0/2c0eb3c4304afc91c3b0c2f2e725ebbf.mp3*~data=user_id=0,application_id=42~hmac=91c7ad2233abcc017500c2821ded460f45013483124e83f27c11f649dec2a5be",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/21fc2bc4677aa422c1391cbbb392bf8e/250x250-000000-80-0-0.jpg",
         "startOffset": 0
+      },
+      {
+        "title": "Bring Me to Life",
+        "artist": "Evanescence",
+        "acceptedAnswers": [
+          "bring me to life",
+          "evanescence"
+        ],
+        "deezerId": 80274512,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/56c02d3764f5a078ceecd27b64b7d789/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Drops of Jupiter",
+        "artist": "Train",
+        "acceptedAnswers": [
+          "drops of jupiter",
+          "train"
+        ],
+        "deezerId": 68908956,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/f7308eb8680bb10ca8f6a89d58f38929/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Complicated",
+        "artist": "Avril Lavigne",
+        "acceptedAnswers": [
+          "complicated",
+          "avril lavigne"
+        ],
+        "deezerId": 15587465,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/1130d6301d5e87976279ea2f706fcc26/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Beautiful Day",
+        "artist": "U2",
+        "acceptedAnswers": [
+          "beautiful day",
+          "u2"
+        ],
+        "deezerId": 2162742,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/b37725cd9d9771d7674df22fafdcc0a2/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Maps",
+        "artist": "Maroon 5",
+        "acceptedAnswers": [
+          "maps",
+          "maroon 5",
+          "maroon five"
+        ],
+        "deezerId": 100052792,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/f0a1d4442389bcd7919a7054f8c0b785/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Smooth",
+        "artist": "Santana",
+        "acceptedAnswers": [
+          "smooth",
+          "santana",
+          "rob thomas"
+        ],
+        "deezerId": 82241402,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/929132f50492c7acfab23b32722f4537/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "It Wasn't Me",
+        "artist": "Shaggy",
+        "acceptedAnswers": [
+          "it wasnt me",
+          "it wasn't me",
+          "shaggy"
+        ],
+        "deezerId": 2122532,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/2db7115ada8037b73dfa057f3c045085/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Get the Party Started",
+        "artist": "P!nk",
+        "acceptedAnswers": [
+          "get the party started",
+          "pink",
+          "p!nk"
+        ],
+        "deezerId": 655356162,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/f76b7f5766941d1ed591ebab07ac459d/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
       }
     ]
   },
   {
-    "id": "2010s-nu",
-    "name": "2010s & Nu",
-    "description": "Moderne hits",
+    "id": "2010s",
+    "name": "2010s",
+    "description": "Hits uit de jaren 2010",
     "songs": [
       {
         "title": "Get Lucky",
@@ -3943,21 +4828,6 @@
         "startOffset": 0
       },
       {
-        "title": "Don't Start Now",
-        "artist": "Dua Lipa",
-        "acceptedAnswers": [
-          "don't start now",
-          "dont start now",
-          "dua lipa",
-          "don't start now dua lipa",
-          "dua lipa don't start now"
-        ],
-        "deezerId": 1124841652,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/a/d/c/0/adc712094a21dfa97e763b4db0d43402.mp3?hdnea=exp=1778090652~acl=/api/1/1/a/d/c/0/adc712094a21dfa97e763b4db0d43402.mp3*~data=user_id=0,application_id=42~hmac=cc6515563591087171fc9f391ea45f6016990da11cc62c1159950beda8f42996",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/f8364f090ba04f1b19b381ec0390f3e4/250x250-000000-80-0-0.jpg",
-        "startOffset": 0
-      },
-      {
         "title": "Riptide",
         "artist": "Vance Joy",
         "acceptedAnswers": [
@@ -4040,310 +4910,464 @@
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/3/c/1/0/3c19a82aeffd2f6f6adb63c4d8548e06.mp3?hdnea=exp=1778090654~acl=/api/1/1/3/c/1/0/3c19a82aeffd2f6f6adb63c4d8548e06.mp3*~data=user_id=0,application_id=42~hmac=418728dd1e46b9795f622162f21ba1b8569f4441311625c48a4a9c8c6bc793aa",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/134778e4c4f19ea71c82408300925a9a/250x250-000000-80-0-0.jpg",
         "startOffset": 0
+      },
+      {
+        "title": "Uptown Funk",
+        "artist": "Mark Ronson ft. Bruno Mars",
+        "acceptedAnswers": [
+          "uptown funk",
+          "bruno mars",
+          "mark ronson",
+          "uptown funk bruno mars"
+        ],
+        "deezerId": 92734438,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/3734366a73152d0367a83a4b09fd163f/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Shape of You",
+        "artist": "Ed Sheeran",
+        "acceptedAnswers": [
+          "shape of you",
+          "ed sheeran",
+          "shape of you ed sheeran"
+        ],
+        "deezerId": 139470659,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/107c2b43f10c249077c1f7618563bb63/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "bad guy",
+        "artist": "Billie Eilish",
+        "acceptedAnswers": [
+          "bad guy",
+          "billie eilish",
+          "bad guy billie eilish"
+        ],
+        "deezerId": 655095912,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/6630083f454d48eadb6a9b53f035d734/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Rolling in the Deep",
+        "artist": "Adele",
+        "acceptedAnswers": [
+          "rolling in the deep",
+          "adele",
+          "rolling in the deep adele"
+        ],
+        "deezerId": 8086126,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/dc1ce848d830ecc93521be5a78350364/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Someone Like You",
+        "artist": "Adele",
+        "acceptedAnswers": [
+          "someone like you",
+          "adele",
+          "someone like you adele"
+        ],
+        "deezerId": 8086136,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/dc1ce848d830ecc93521be5a78350364/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Havana",
+        "artist": "Camila Cabello",
+        "acceptedAnswers": [
+          "havana",
+          "camila cabello",
+          "havana camila cabello"
+        ],
+        "deezerId": 447098092,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/824145a71e397185d8a1abe57842430c/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Stay",
+        "artist": "Rihanna",
+        "acceptedAnswers": [
+          "stay",
+          "rihanna",
+          "stay rihanna"
+        ],
+        "deezerId": 62376291,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/246fb21e05da3d1460eb147123bb906b/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "All About That Bass",
+        "artist": "Meghan Trainor",
+        "acceptedAnswers": [
+          "all about that bass",
+          "meghan trainor",
+          "all about that bass meghan trainor"
+        ],
+        "deezerId": 113420702,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/14f6b5d6ab06d3bc46b15c67c15305f1/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Stressed Out",
+        "artist": "Twenty One Pilots",
+        "acceptedAnswers": [
+          "stressed out",
+          "twenty one pilots",
+          "21 pilots",
+          "stressed out twenty one pilots"
+        ],
+        "deezerId": 99976952,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/dbbde1014cda9b101412a8e27add0ad2/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Hotline Bling",
+        "artist": "Drake",
+        "acceptedAnswers": [
+          "hotline bling",
+          "drake",
+          "hotline bling drake"
+        ],
+        "deezerId": 124603286,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/56bdb7a86a27fadb96332c0c8f1b8e81/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Thunder",
+        "artist": "Imagine Dragons",
+        "acceptedAnswers": [
+          "thunder",
+          "imagine dragons",
+          "thunder imagine dragons"
+        ],
+        "deezerId": 528330501,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/247b228179aea3b083eef43522b78b45/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Shallow",
+        "artist": "Lady Gaga & Bradley Cooper",
+        "acceptedAnswers": [
+          "shallow",
+          "lady gaga",
+          "bradley cooper",
+          "shallow lady gaga"
+        ],
+        "deezerId": 561856742,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/88a8288e14f61ffa39c14ac2ef9210d8/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Señorita",
+        "artist": "Shawn Mendes & Camila Cabello",
+        "acceptedAnswers": [
+          "senorita",
+          "señorita",
+          "shawn mendes",
+          "camila cabello",
+          "senorita shawn mendes"
+        ],
+        "deezerId": 698905582,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/4426e8a06d8d0cd96263094c6178bbf9/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "thank u, next",
+        "artist": "Ariana Grande",
+        "acceptedAnswers": [
+          "thank u next",
+          "thank you next",
+          "ariana grande",
+          "thank u next ariana grande"
+        ],
+        "deezerId": 629899852,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/49e86e935da829b44cb5ffae16826e55/250x250-000000-80-0-0.jpg",
+        "startOffset": 3
+      },
+      {
+        "title": "Happy",
+        "artist": "Pharrell Williams",
+        "acceptedAnswers": [
+          "happy",
+          "pharrell williams",
+          "happy pharrell williams",
+          "pharrell williams happy"
+        ],
+        "deezerId": 701326562,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/9/0/5/0/90543b3c88fed677915d879fa4320288.mp3?hdnea=exp=1778090541~acl=/api/1/1/9/0/5/0/90543b3c88fed677915d879fa4320288.mp3*~data=user_id=0,application_id=42~hmac=e11db40de6646dec560061573bf3219a68dcd5ae2a6370fc7709b699327f6377",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/a1939a9a40dc97ed404cc4597c6a32bc/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Shake It Off",
+        "artist": "Taylor Swift",
+        "acceptedAnswers": [
+          "shake it off",
+          "taylor swift",
+          "shake it off taylor swift",
+          "taylor swift shake it off"
+        ],
+        "deezerId": 89077555,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/2/d/9/0/2d9810a9179e50e255861f3980d310df.mp3?hdnea=exp=1778090542~acl=/api/1/1/2/d/9/0/2d9810a9179e50e255861f3980d310df.mp3*~data=user_id=0,application_id=42~hmac=0e0a63cc2846ce26fb9b65fd7a3d77cb2b156731ac617437683b60f556b41d13",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/68b4e986958b17f05b062ffa8d7ae114/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
       }
     ]
   },
   {
-    "id": "classics",
-    "name": "Classics & Rock",
-    "description": "Tijdloze legendes",
+    "id": "2020s",
+    "name": "2020s",
+    "description": "Hits uit de jaren 2020",
     "songs": [
       {
-        "title": "Bohemian Rhapsody",
-        "artist": "Queen",
+        "title": "Don't Start Now",
+        "artist": "Dua Lipa",
         "acceptedAnswers": [
-          "bohemian rhapsody",
-          "queen",
-          "bohemian rhapsody queen",
-          "queen bohemian rhapsody"
+          "don't start now",
+          "dont start now",
+          "dua lipa",
+          "don't start now dua lipa",
+          "dua lipa don't start now"
         ],
-        "deezerId": 9997018,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/e/3/9/0/e395ad329758f01e5787f03e5286636f.mp3?hdnea=exp=1778090655~acl=/api/1/1/e/3/9/0/e395ad329758f01e5787f03e5286636f.mp3*~data=user_id=0,application_id=42~hmac=8ffc847ba8906ad750c50c1bb6faf64f5c1a71669dd5f7833e96bab2021658a7",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/6706f1154083f461a348508c28030a30/250x250-000000-80-0-0.jpg",
+        "deezerId": 1124841652,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/a/d/c/0/adc712094a21dfa97e763b4db0d43402.mp3?hdnea=exp=1778090652~acl=/api/1/1/a/d/c/0/adc712094a21dfa97e763b4db0d43402.mp3*~data=user_id=0,application_id=42~hmac=cc6515563591087171fc9f391ea45f6016990da11cc62c1159950beda8f42996",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/f8364f090ba04f1b19b381ec0390f3e4/250x250-000000-80-0-0.jpg",
         "startOffset": 0
       },
       {
-        "title": "Hotel California",
-        "artist": "Eagles",
+        "title": "Old Town Road",
+        "artist": "Lil Nas X",
         "acceptedAnswers": [
-          "hotel california",
-          "eagles",
-          "hotel california eagles",
-          "eagles hotel california"
+          "old town road",
+          "lil nas x",
+          "old town road lil nas x"
         ],
-        "deezerId": 426703682,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/d/e/0/0/de0b52925103149e94a7123d0c0cb6c4.mp3?hdnea=exp=1778090655~acl=/api/1/1/d/e/0/0/de0b52925103149e94a7123d0c0cb6c4.mp3*~data=user_id=0,application_id=42~hmac=4aaffb1883454e82bef8ef892b266d50920d237556e913d9ed179d4e54406917",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/7a6c7b49cfdaf4ee233f66c3070d2f40/250x250-000000-80-0-0.jpg",
+        "deezerId": 699056262,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/3cfd6900fd2b342ec0e478faf300f6a2/250x250-000000-80-0-0.jpg",
         "startOffset": 0
       },
       {
-        "title": "Stairway to Heaven",
-        "artist": "Led Zeppelin",
+        "title": "Blinding Lights",
+        "artist": "The Weeknd",
         "acceptedAnswers": [
-          "stairway to heaven",
-          "led zeppelin",
-          "stairway to heaven led zeppelin",
-          "led zeppelin stairway to heaven"
+          "blinding lights",
+          "the weeknd",
+          "weeknd",
+          "blinding lights the weeknd"
         ],
-        "deezerId": 88003859,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/2/6/6/0/26692783366247f9e456227bc4eb9550.mp3?hdnea=exp=1778090656~acl=/api/1/1/2/6/6/0/26692783366247f9e456227bc4eb9550.mp3*~data=user_id=0,application_id=42~hmac=00ac385b0fcc2760bb31ad92773d62f17e7056f8a24a12a31e8db092f01735ca",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/460a0edd96f743be03b7405eac38c633/250x250-000000-80-0-0.jpg",
+        "deezerId": 908604612,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/fd00ebd6d30d7253f813dba3bb1c66a9/250x250-000000-80-0-0.jpg",
         "startOffset": 0
       },
       {
-        "title": "Imagine",
-        "artist": "John Lennon",
+        "title": "Watermelon Sugar",
+        "artist": "Harry Styles",
         "acceptedAnswers": [
-          "imagine",
-          "john lennon",
-          "imagine john lennon",
-          "john lennon imagine"
+          "watermelon sugar",
+          "harry styles",
+          "watermelon sugar harry styles"
         ],
-        "deezerId": 7193834,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/f/c/9/0/fc9e6e7fd857d23c06e58da584e8e7d5.mp3?hdnea=exp=1778090656~acl=/api/1/1/f/c/9/0/fc9e6e7fd857d23c06e58da584e8e7d5.mp3*~data=user_id=0,application_id=42~hmac=137ee1f36250ad0dbb9925d7721ccdceae6dc0db9e0ed274197ffc484b7e422f",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/2675a9277dfabb74c32b7a3b2c9b0170/250x250-000000-80-0-0.jpg",
+        "deezerId": 830336922,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/346c524c15ecccbc4a8a78e8972a352c/250x250-000000-80-0-0.jpg",
+        "startOffset": 4
+      },
+      {
+        "title": "Levitating",
+        "artist": "Dua Lipa",
+        "acceptedAnswers": [
+          "levitating",
+          "dua lipa",
+          "levitating dua lipa"
+        ],
+        "deezerId": 1124841682,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/f8364f090ba04f1b19b381ec0390f3e4/250x250-000000-80-0-0.jpg",
         "startOffset": 0
       },
       {
-        "title": "Let It Be",
-        "artist": "The Beatles",
+        "title": "drivers license",
+        "artist": "Olivia Rodrigo",
         "acceptedAnswers": [
-          "let it be",
-          "the beatles",
-          "let it be the beatles",
-          "the beatles let it be"
+          "drivers license",
+          "driver's license",
+          "olivia rodrigo",
+          "drivers license olivia rodrigo"
         ],
-        "deezerId": 116348656,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/a/f/5/0/af5b351b100513b1c167e5ed96b7ece3.mp3?hdnea=exp=1778090657~acl=/api/1/1/a/f/5/0/af5b351b100513b1c167e5ed96b7ece3.mp3*~data=user_id=0,application_id=42~hmac=4806239931061d876016e4d3688077e749bae821fc7de57c9c16307cd961ebd3",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/fcf05300b7c17ec77a6d01028a4bef61/250x250-000000-80-0-0.jpg",
+        "deezerId": 1378342592,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/e68da86fd7976135c2d2d1715afaef7c/250x250-000000-80-0-0.jpg",
         "startOffset": 0
       },
       {
-        "title": "Hey Jude",
-        "artist": "The Beatles",
+        "title": "Dance Monkey",
+        "artist": "Tones and I",
         "acceptedAnswers": [
-          "hey jude",
-          "the beatles",
-          "hey jude the beatles",
-          "the beatles hey jude"
+          "dance monkey",
+          "tones and i",
+          "dance monkey tones and i"
         ],
-        "deezerId": 116348632,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/b/e/3/0/be3c33e5b05a25dc63b8951748615d74.mp3?hdnea=exp=1778090657~acl=/api/1/1/b/e/3/0/be3c33e5b05a25dc63b8951748615d74.mp3*~data=user_id=0,application_id=42~hmac=483a2c798d5e54e659cea4a4f14b6ede11af539519b5746a7fae3ee90af0b269",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/c65b3bd84e81056e060be144381c06c8/250x250-000000-80-0-0.jpg",
+        "deezerId": 739870792,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/5636a569737f8dad9a928f3d907c493a/250x250-000000-80-0-0.jpg",
         "startOffset": 0
       },
       {
-        "title": "Wonderwall",
-        "artist": "Oasis",
+        "title": "Anti-Hero",
+        "artist": "Taylor Swift",
         "acceptedAnswers": [
-          "wonderwall",
-          "oasis",
-          "wonderwall oasis",
-          "oasis wonderwall"
+          "anti-hero",
+          "antihero",
+          "taylor swift",
+          "anti-hero taylor swift",
+          "taylor swift anti-hero"
         ],
-        "deezerId": 985745702,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/e/9/9/0/e992ed1b27bd8da3c4f6128047285674.mp3?hdnea=exp=1778090657~acl=/api/1/1/e/9/9/0/e992ed1b27bd8da3c4f6128047285674.mp3*~data=user_id=0,application_id=42~hmac=03e780dc1cf8804544b2ab63a2bbde2af9f5273ba9bbf82624f5b0e00928c07f",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/ddb062c517401ee74d8a4df6f895d75e/250x250-000000-80-0-0.jpg",
+        "deezerId": 1976903157,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/4/1/1/0/4110a4ad9a0f2dfd6ff84a7bffad5a46.mp3?hdnea=exp=1778090543~acl=/api/1/1/4/1/1/0/4110a4ad9a0f2dfd6ff84a7bffad5a46.mp3*~data=user_id=0,application_id=42~hmac=bb895ac3881d772e71e70657f48cde6395a906531bd6c79a93ece11794867cd1",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/f571cb780b339ec087201b1cea53c3d9/250x250-000000-80-0-0.jpg",
         "startOffset": 0
       },
       {
-        "title": "Wish You Were Here",
-        "artist": "Pink Floyd",
+        "title": "As It Was",
+        "artist": "Harry Styles",
         "acceptedAnswers": [
-          "wish you were here",
-          "pink floyd",
-          "wish you were here pink floyd",
-          "pink floyd wish you were here"
+          "as it was",
+          "harry styles",
+          "as it was harry styles",
+          "harry styles as it was"
         ],
-        "deezerId": 116914042,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/4/0/d/0/40d1318ab60207bb3a025b7df23ea7ef.mp3?hdnea=exp=1778090658~acl=/api/1/1/4/0/d/0/40d1318ab60207bb3a025b7df23ea7ef.mp3*~data=user_id=0,application_id=42~hmac=0d03db08c4fd09b88941b4e0ec7c95cb25cf3a83669db72c91aaf8c2cf091ea4",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/cb029c785b8d0cd624ddee9d4127ceff/250x250-000000-80-0-0.jpg",
+        "deezerId": 1703487577,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/9/3/7/0/9372c78844baf74b7a06bd467151518a.mp3?hdnea=exp=1778090543~acl=/api/1/1/9/3/7/0/9372c78844baf74b7a06bd467151518a.mp3*~data=user_id=0,application_id=42~hmac=2ded9e405395a08b1bf1e7d0b33b71837d65b1bb31fbe65ee7da760c206ec102",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/b0e936124f59e669ddba02ebe5893f95/250x250-000000-80-0-0.jpg",
         "startOffset": 0
       },
       {
-        "title": "Comfortably Numb",
-        "artist": "Pink Floyd",
+        "title": "good 4 u",
+        "artist": "Olivia Rodrigo",
         "acceptedAnswers": [
-          "comfortably numb",
-          "pink floyd",
-          "comfortably numb pink floyd",
-          "pink floyd comfortably numb"
+          "good 4 u",
+          "olivia rodrigo",
+          "good 4 u olivia rodrigo",
+          "olivia rodrigo good 4 u"
         ],
-        "deezerId": 116914122,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/4/3/6/0/436032ec967e0282f468e9aaf8f1062b.mp3?hdnea=exp=1778090658~acl=/api/1/1/4/3/6/0/436032ec967e0282f468e9aaf8f1062b.mp3*~data=user_id=0,application_id=42~hmac=dc82d4979d76ee60d58af40e1de5c6c6faeaedfb9c7db1738a6cce4c4aa783e2",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/2bea643b92a8fc6b19a23756f718cbd4/250x250-000000-80-0-0.jpg",
+        "deezerId": 1378342622,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/f/8/7/0/f87c0d1c4c9e6f80c68c0fad96621642.mp3?hdnea=exp=1778090545~acl=/api/1/1/f/8/7/0/f87c0d1c4c9e6f80c68c0fad96621642.mp3*~data=user_id=0,application_id=42~hmac=f55a22296a40a88a5509537f1a7ceed2a2bca76c34bcd2c1a106bfca2e801655",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/e68da86fd7976135c2d2d1715afaef7c/250x250-000000-80-0-0.jpg",
         "startOffset": 0
       },
       {
-        "title": "Sultans of Swing",
-        "artist": "Dire Straits",
+        "title": "Flowers",
+        "artist": "Miley Cyrus",
         "acceptedAnswers": [
-          "sultans of swing",
-          "dire straits",
-          "sultans of swing dire straits",
-          "dire straits sultans of swing"
+          "flowers",
+          "miley cyrus",
+          "flowers miley cyrus",
+          "miley cyrus flowers"
         ],
-        "deezerId": 2263033,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/a/6/d/0/a6d79a23ede359bbfa9caf7a8e46e772.mp3?hdnea=exp=1778090659~acl=/api/1/1/a/6/d/0/a6d79a23ede359bbfa9caf7a8e46e772.mp3*~data=user_id=0,application_id=42~hmac=c3bfc3163760569fe3775afc621ca582f59aa2f9088101e1cd39d109cb99d1e5",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/1bf2bc47623db2ec36a38be064131ce5/250x250-000000-80-0-0.jpg",
+        "deezerId": 2105158337,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/c/a/1/0/ca19f3388408a917038cb083873c4ae1.mp3?hdnea=exp=1778090546~acl=/api/1/1/c/a/1/0/ca19f3388408a917038cb083873c4ae1.mp3*~data=user_id=0,application_id=42~hmac=54b45f69bcadc3c991e2b0b1885a2427bb45e15b79bce979521fd36d34351764",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/98610629a40996b61b3d24bd5ab8c2e1/250x250-000000-80-0-0.jpg",
         "startOffset": 0
       },
       {
-        "title": "November Rain",
-        "artist": "Guns N' Roses",
+        "title": "Cruel Summer",
+        "artist": "Taylor Swift",
         "acceptedAnswers": [
-          "november rain",
-          "guns n' roses",
-          "guns n roses",
-          "november rain guns n' roses",
-          "guns n' roses november rain"
+          "cruel summer",
+          "taylor swift",
+          "cruel summer taylor swift",
+          "taylor swift cruel summer"
         ],
-        "deezerId": 1169683,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/c/8/4/0/c841da8f662caa4e9b9abcd69471ea41.mp3?hdnea=exp=1778090659~acl=/api/1/1/c/8/4/0/c841da8f662caa4e9b9abcd69471ea41.mp3*~data=user_id=0,application_id=42~hmac=ba0b4be2457f2319223fad9a1bc776174d1ac3aef567d37835976d9024641532",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/546fe1eca5d3bf48c6a48fb3c0ddac63/250x250-000000-80-0-0.jpg",
+        "deezerId": 737967292,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/c/d/2/0/cd2322270b4d6a7f34448c642123b257.mp3?hdnea=exp=1778090546~acl=/api/1/1/c/d/2/0/cd2322270b4d6a7f34448c642123b257.mp3*~data=user_id=0,application_id=42~hmac=2cdcbeeb4d08ae61a7968545583cbf10a65924e6c9d9253c8c99097307761658",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/6111c5ab9729c8eac47883e4e50e9cf8/250x250-000000-80-0-0.jpg",
         "startOffset": 0
       },
       {
-        "title": "Born to Run",
-        "artist": "Bruce Springsteen",
+        "title": "Heat Waves",
+        "artist": "Glass Animals",
         "acceptedAnswers": [
-          "born to run",
-          "bruce springsteen",
-          "born to run bruce springsteen",
-          "bruce springsteen born to run"
+          "heat waves",
+          "glass animals",
+          "heat waves glass animals",
+          "glass animals heat waves"
         ],
-        "deezerId": 132635408,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/9/4/0/0/9403ab4091938da2595d356ba95b7612.mp3?hdnea=exp=1778090660~acl=/api/1/1/9/4/0/0/9403ab4091938da2595d356ba95b7612.mp3*~data=user_id=0,application_id=42~hmac=0635d8a15efab716696c8566d67d5bd1f6f7fea8e2c756fc3bc88c1ee0678caf",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/c071343c0d0e73ceec13218e08f28aae/250x250-000000-80-0-0.jpg",
+        "deezerId": 1040154662,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/3/c/e/0/3ce23f319354c1eb009e7d11c57b75e2.mp3?hdnea=exp=1778090547~acl=/api/1/1/3/c/e/0/3ce23f319354c1eb009e7d11c57b75e2.mp3*~data=user_id=0,application_id=42~hmac=b5b5efbec8bc1d828c68f0156c8e6cc2daada16fd6b35a1bab6c0adf610c7d6c",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/04ea51c6eb90a6208f2e47da861cf1a5/250x250-000000-80-0-0.jpg",
         "startOffset": 0
       },
       {
-        "title": "Piano Man",
-        "artist": "Billy Joel",
+        "title": "Peaches",
+        "artist": "Justin Bieber",
         "acceptedAnswers": [
-          "piano man",
-          "billy joel",
-          "piano man billy joel",
-          "billy joel piano man"
+          "peaches",
+          "justin bieber",
+          "peaches justin bieber",
+          "justin bieber peaches"
         ],
-        "deezerId": 14333215,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/9/3/3/0/933097dc0fe9004ec219553cb6f54980.mp3?hdnea=exp=1778090660~acl=/api/1/1/9/3/3/0/933097dc0fe9004ec219553cb6f54980.mp3*~data=user_id=0,application_id=42~hmac=a8d9cb385c352975ae0c68bcc9afe18d85ac2d351da41aec5d7477f1c39b469c",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/f61883eed26156899dc5086ce8e25885/250x250-000000-80-0-0.jpg",
+        "deezerId": 1280165222,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/f/3/f/0/f3fcfb36e1d7c904d8f1bab0497c4d6c.mp3?hdnea=exp=1778090548~acl=/api/1/1/f/3/f/0/f3fcfb36e1d7c904d8f1bab0497c4d6c.mp3*~data=user_id=0,application_id=42~hmac=8d515c468cd4e48db85141c96232d95b157d4eabe3cef6e4fc20902b584c19c9",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/87468622c8e7ac9dce7b541be136aa4c/250x250-000000-80-0-0.jpg",
         "startOffset": 0
       },
       {
-        "title": "Knockin' on Heaven's Door",
-        "artist": "Bob Dylan",
+        "title": "WAP",
+        "artist": "Cardi B",
         "acceptedAnswers": [
-          "knockin' on heaven's door",
-          "knockin on heavens door",
-          "bob dylan",
-          "knockin' on heaven's door bob dylan",
-          "bob dylan knockin' on heaven's door"
+          "wap",
+          "cardi b",
+          "wap cardi b",
+          "cardi b wap"
         ],
-        "deezerId": 75768727,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/6/1/8/0/618937c6dbd9058114ae2fdad99bb2c1.mp3?hdnea=exp=1778090660~acl=/api/1/1/6/1/8/0/618937c6dbd9058114ae2fdad99bb2c1.mp3*~data=user_id=0,application_id=42~hmac=051825d8fb1b134c09a14b36cb147461af4edd1e2a61fa73ec559d5e4f5b8007",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/83f505835a6525c9754d6f1f0ab7479d/250x250-000000-80-0-0.jpg",
+        "deezerId": 1044791832,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/4/7/8/0/478c54679c8c60148e256ae4984b51bc.mp3?hdnea=exp=1778090548~acl=/api/1/1/4/7/8/0/478c54679c8c60148e256ae4984b51bc.mp3*~data=user_id=0,application_id=42~hmac=0d82d28b935b700315d4e1faa5d55fdd1cd78f9ca266baa8a774bbd1d0582a1b",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/884908fd2fd1ea7fb6f98a5b345ad7d8/250x250-000000-80-0-0.jpg",
         "startOffset": 0
       },
       {
-        "title": "Suspicious Minds",
-        "artist": "Elvis Presley",
+        "title": "MONTERO",
+        "artist": "Lil Nas X",
         "acceptedAnswers": [
-          "suspicious minds",
-          "elvis presley",
-          "suspicious minds elvis presley",
-          "elvis presley suspicious minds"
+          "montero",
+          "lil nas x",
+          "montero lil nas x",
+          "lil nas x montero"
         ],
-        "deezerId": 1055776,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/6/6/a/0/66afac3c25d2950a39927c9e48d9c9bb.mp3?hdnea=exp=1778090661~acl=/api/1/1/6/6/a/0/66afac3c25d2950a39927c9e48d9c9bb.mp3*~data=user_id=0,application_id=42~hmac=a53eedcc6f8dc89d4f1a7d30330f9fb502b619957684cca6dc6ce801f34321f9",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/3598c1cdd425022000eba13ade236e8d/250x250-000000-80-0-0.jpg",
+        "deezerId": 1283264142,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/8/b/7/0/8b7f0c442e08f6116e458eaa8e3d305f.mp3?hdnea=exp=1778090549~acl=/api/1/1/8/b/7/0/8b7f0c442e08f6116e458eaa8e3d305f.mp3*~data=user_id=0,application_id=42~hmac=7353daed8b8e73bcf8272d31d490be84e98b1912a9a1a0b67d266c70455dff0e",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/fc939e4030254f80bd90b616f2a1d0a6/250x250-000000-80-0-0.jpg",
         "startOffset": 0
       },
       {
-        "title": "Superstition",
-        "artist": "Stevie Wonder",
+        "title": "Industry Baby",
+        "artist": "Lil Nas X",
         "acceptedAnswers": [
-          "superstition",
-          "stevie wonder",
-          "superstition stevie wonder",
-          "stevie wonder superstition"
+          "industry baby",
+          "lil nas x",
+          "industry baby lil nas x",
+          "lil nas x industry baby"
         ],
-        "deezerId": 596034702,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/2/7/7/0/2777f372b6b097206c7a50a5ef794c7a.mp3?hdnea=exp=1778090661~acl=/api/1/1/2/7/7/0/2777f372b6b097206c7a50a5ef794c7a.mp3*~data=user_id=0,application_id=42~hmac=5c56c0a5b8bee84767ea5ed7ca6db88cdb00360eb5d6f699caabc4d90b960c95",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/dc11aaf0240dbaf1548639e1c5df8db8/250x250-000000-80-0-0.jpg",
-        "startOffset": 0
-      },
-      {
-        "title": "Stayin' Alive",
-        "artist": "Bee Gees",
-        "acceptedAnswers": [
-          "stayin' alive",
-          "stayin alive",
-          "bee gees",
-          "stayin' alive bee gees",
-          "bee gees stayin' alive"
-        ],
-        "deezerId": 406815322,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/3/1/9/0/319c89b68405e15329ed21a4139fff38.mp3?hdnea=exp=1778090662~acl=/api/1/1/3/1/9/0/319c89b68405e15329ed21a4139fff38.mp3*~data=user_id=0,application_id=42~hmac=062f72646407f5706221c93d1b6157fef64c3d31b5732b183b5c17023abb0c34",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/062e4071ebfc701e5f1ca935e69a0b5b/250x250-000000-80-0-0.jpg",
-        "startOffset": 0
-      },
-      {
-        "title": "Dancing Queen",
-        "artist": "ABBA",
-        "acceptedAnswers": [
-          "dancing queen",
-          "abba",
-          "dancing queen abba",
-          "abba dancing queen"
-        ],
-        "deezerId": 884025,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/9/1/6/0/916f7137187790e999bc66e6460c07b2.mp3?hdnea=exp=1778090662~acl=/api/1/1/9/1/6/0/916f7137187790e999bc66e6460c07b2.mp3*~data=user_id=0,application_id=42~hmac=44fcba4b76758fe636b68a4ce058f5f90f2e16ffb5bcfc638e0f39f62eb063c2",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/b8b70d474b7a8f27799e0d665e9b737e/250x250-000000-80-0-0.jpg",
-        "startOffset": 0
-      },
-      {
-        "title": "I Will Survive",
-        "artist": "Gloria Gaynor",
-        "acceptedAnswers": [
-          "i will survive",
-          "gloria gaynor",
-          "i will survive gloria gaynor",
-          "gloria gaynor i will survive"
-        ],
-        "deezerId": 975366,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/b/6/4/0/b64e6b53924a0f3c72795e5fbdac5356.mp3?hdnea=exp=1778090663~acl=/api/1/1/b/6/4/0/b64e6b53924a0f3c72795e5fbdac5356.mp3*~data=user_id=0,application_id=42~hmac=3a2071114dcd5f3c0a993115406fe290a886eb557b3b478de223830a897267e3",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/9087e3caed31dabf7d60cb07bb18354c/250x250-000000-80-0-0.jpg",
-        "startOffset": 0
-      },
-      {
-        "title": "Don't Stop Me Now",
-        "artist": "Queen",
-        "acceptedAnswers": [
-          "don't stop me now",
-          "dont stop me now",
-          "queen",
-          "don't stop me now queen",
-          "queen don't stop me now"
-        ],
-        "deezerId": 12209331,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/4/2/4/0/424c67c4ef4d10490bdfad20a9f31c50.mp3?hdnea=exp=1778090663~acl=/api/1/1/4/2/4/0/424c67c4ef4d10490bdfad20a9f31c50.mp3*~data=user_id=0,application_id=42~hmac=8b3a4eabcffe7607dbf490c6ca50730348db1886f516c4a06b4b582e59428ea1",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/fb22a75aa1aafc992230abd0bd79faef/250x250-000000-80-0-0.jpg",
-        "startOffset": 0
-      },
-      {
-        "title": "Roundabout",
-        "artist": "Yes",
-        "acceptedAnswers": [
-          "roundabout",
-          "yes",
-          "roundabout yes",
-          "yes roundabout"
-        ],
-        "deezerId": 716219,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/7/6/b/0/76b8a24f702099a4f31572e414f5e876.mp3?hdnea=exp=1778106496~acl=/api/1/1/7/6/b/0/76b8a24f702099a4f31572e414f5e876.mp3*~data=user_id=0,application_id=42~hmac=8f3adf72eec44eb25d17a39f4c20e972223549d6f7890f003eb1e22f242bf7ab",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/0a2280085919a80732cdebad5a9cf83b/250x250-000000-80-0-0.jpg",
+        "deezerId": 1439691952,
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/5/5/7/0/5577101efe35c3671f18a1039c8c6d77.mp3?hdnea=exp=1778090549~acl=/api/1/1/5/5/7/0/5577101efe35c3671f18a1039c8c6d77.mp3*~data=user_id=0,application_id=42~hmac=aa676efff24c4a994c441a736082c32c41cd44c29f8506ff622cb345b72080ef",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/a65e86966cfd34b2aa292856136ef9ac/250x250-000000-80-0-0.jpg",
         "startOffset": 0
       }
     ]
@@ -4668,35 +5692,6 @@
         "startOffset": 0
       },
       {
-        "title": "Mr. Brightside",
-        "artist": "The Killers",
-        "acceptedAnswers": [
-          "mr. brightside",
-          "mr brightside",
-          "the killers",
-          "mr. brightside the killers",
-          "the killers mr. brightside"
-        ],
-        "deezerId": 953097,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/0/f/2/0/0f2afffd5ba40fc616ee562cde64b94f.mp3?hdnea=exp=1778092819~acl=/api/1/1/0/f/2/0/0f2afffd5ba40fc616ee562cde64b94f.mp3*~data=user_id=0,application_id=42~hmac=e4b9d5fc97a72944422e21e914f637d4d2bcea4b186d592b1c43c95d4ac73feb",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/ecff532dd84c6538099b58baefccb8fb/250x250-000000-80-0-0.jpg",
-        "startOffset": 0
-      },
-      {
-        "title": "Somebody That I Used to Know",
-        "artist": "Gotye",
-        "acceptedAnswers": [
-          "somebody that i used to know",
-          "gotye",
-          "somebody that i used to know gotye",
-          "gotye somebody that i used to know"
-        ],
-        "deezerId": 999163452,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/e/8/a/0/e8a36b9e40729c8dac87c3b3e7d46e8e.mp3?hdnea=exp=1778092820~acl=/api/1/1/e/8/a/0/e8a36b9e40729c8dac87c3b3e7d46e8e.mp3*~data=user_id=0,application_id=42~hmac=b4264fdc13cd4af65ce5bf8584ed283281e0e3d772a548e4a19d6c301da813e6",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/9abfe2e2261071bc0add2d94c942bf4c/250x250-000000-80-0-0.jpg",
-        "startOffset": 0
-      },
-      {
         "title": "The Less I Know the Better",
         "artist": "Tame Impala",
         "acceptedAnswers": [
@@ -4708,20 +5703,6 @@
         "deezerId": 103052662,
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/d/7/e/0/d7e09f788f6834e38f61f8a589b0390a.mp3?hdnea=exp=1778092820~acl=/api/1/1/d/7/e/0/d7e09f788f6834e38f61f8a589b0390a.mp3*~data=user_id=0,application_id=42~hmac=1fea04215be154299ecc0d6df00d43bfe516b387982a0eea71e15f6ff32d4fa8",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/de5b9b704cd4ec36f8bf49beb3e17ba2/250x250-000000-80-0-0.jpg",
-        "startOffset": 0
-      },
-      {
-        "title": "Creep",
-        "artist": "Radiohead",
-        "acceptedAnswers": [
-          "creep",
-          "radiohead",
-          "creep radiohead",
-          "radiohead creep"
-        ],
-        "deezerId": 138547415,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/b/9/c/0/b9c4cde36fbe176cc3e84dc08fc0611b.mp3?hdnea=exp=1778092821~acl=/api/1/1/b/9/c/0/b9c4cde36fbe176cc3e84dc08fc0611b.mp3*~data=user_id=0,application_id=42~hmac=adcb9829a2b3f7f84d18cb3ffb0cde0cfda44b8946d50113e37a351b77ae9df1",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/1dd56fd8824492e1a5106c99a00a85ec/250x250-000000-80-0-0.jpg",
         "startOffset": 0
       },
       {
@@ -4797,20 +5778,6 @@
         "startOffset": 0
       },
       {
-        "title": "Seven Nation Army",
-        "artist": "The White Stripes",
-        "acceptedAnswers": [
-          "seven nation army",
-          "the white stripes",
-          "seven nation army the white stripes",
-          "the white stripes seven nation army"
-        ],
-        "deezerId": 1153182282,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/7/d/e/0/7de8805c1993e802810d7ca37a615f81.mp3?hdnea=exp=1778092823~acl=/api/1/1/7/d/e/0/7de8805c1993e802810d7ca37a615f81.mp3*~data=user_id=0,application_id=42~hmac=3e2afe5b71a2770653de50e449b3950b6534d5bbadbbedbc3cc2455284761b19",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/ed0929a4c44d77c4dc524a10748fc2f6/250x250-000000-80-0-0.jpg",
-        "startOffset": 0
-      },
-      {
         "title": "Fluorescent Adolescent",
         "artist": "Arctic Monkeys",
         "acceptedAnswers": [
@@ -4837,20 +5804,6 @@
         "deezerId": 374205521,
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/5/7/0/0/570b77a46ab772caebbeb9785e93c76c.mp3?hdnea=exp=1778092824~acl=/api/1/1/5/7/0/0/570b77a46ab772caebbeb9785e93c76c.mp3*~data=user_id=0,application_id=42~hmac=2c3adccf2ad9202e48dff6b4d88dc598d43b098f4bf13d43810e71e13ec7354b",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/d73ebc04554b4ab4a334fa9acaa5f9af/250x250-000000-80-0-0.jpg",
-        "startOffset": 0
-      },
-      {
-        "title": "Bitter Sweet Symphony",
-        "artist": "The Verve",
-        "acceptedAnswers": [
-          "bitter sweet symphony",
-          "the verve",
-          "bitter sweet symphony the verve",
-          "the verve bitter sweet symphony"
-        ],
-        "deezerId": 398570642,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/3/4/1/0/341bbcf7cf85b72d242ecee1c7134483.mp3?hdnea=exp=1778092825~acl=/api/1/1/3/4/1/0/341bbcf7cf85b72d242ecee1c7134483.mp3*~data=user_id=0,application_id=42~hmac=8cfa456d0615961ab7fe846fd1990f5fd9558b370bca35e93b4d51c95c25d0bd",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/ecc7727e897198892b98e7c019fba45f/250x250-000000-80-0-0.jpg",
         "startOffset": 0
       },
       {
@@ -4985,22 +5938,8 @@
           "ac/dc thunderstruck"
         ],
         "deezerId": 92720102,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/1/1/1/0/1117489d36f3a1a80c8815c1137747a9.mp3?hdnea=exp=1778091726~acl=/api/1/1/1/1/1/0/1117489d36f3a1a80c8815c1137747a9.mp3*~data=user_id=0,application_id=42~hmac=7306d3dac268e49077b4f45aeb2955e105c461ddf921f4cde4f8c19679fefc02",
+        "previewUrl": "",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/e715766b21a8db6076f6a9a89e25cf82/250x250-000000-80-0-0.jpg",
-        "startOffset": 0
-      },
-      {
-        "title": "Smells Like Teen Spirit",
-        "artist": "Nirvana",
-        "acceptedAnswers": [
-          "smells like teen spirit",
-          "nirvana",
-          "smells like teen spirit nirvana",
-          "nirvana smells like teen spirit"
-        ],
-        "deezerId": 0,
-        "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/db/55/de/db55defb-faea-4067-2996-ca3d0888c90f/mzaf_15864000767155394153.plus.aac.p.m4a",
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/5c/53/5d/5c535d31-9c80-c752-3ea3-887615eb7d51/21UM1IM09416.rgb.jpg/250x250bb.jpg",
         "startOffset": 0
       },
       {
@@ -5010,26 +5949,11 @@
           "killing in the name",
           "rage against the machine",
           "killing in the name rage against the machine",
-          "rage against the machine killing in the name",
           "ratm"
         ],
         "deezerId": 62082829,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/0/1/0/0/010c6f527fdcc5abe6b0764fd5e6eb31.mp3?hdnea=exp=1778091727~acl=/api/1/1/0/1/0/0/010c6f527fdcc5abe6b0764fd5e6eb31.mp3*~data=user_id=0,application_id=42~hmac=086e1887f030e2069a74e51a57d32aa9ec2a15ccdbf53652f64ea06152f6a206",
+        "previewUrl": "",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/73a4d0cb2f3ec27583b9e0bc724b50c7/250x250-000000-80-0-0.jpg",
-        "startOffset": 0
-      },
-      {
-        "title": "Numb",
-        "artist": "Linkin Park",
-        "acceptedAnswers": [
-          "numb",
-          "linkin park",
-          "numb linkin park",
-          "linkin park numb"
-        ],
-        "deezerId": 0,
-        "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/9f/dd/b3/9fddb3a2-8ae0-b559-5870-b5a1d8bd5946/mzaf_11927911132157428556.plus.aac.p.m4a",
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Features125/v4/dd/7d/72/dd7d7259-d27f-5b3e-ce64-9e304d2cb40f/dj.rxzrauer.jpg/250x250bb.jpg",
         "startOffset": 0
       },
       {
@@ -5042,7 +5966,7 @@
           "metallica master of puppets"
         ],
         "deezerId": 424565232,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/7/d/e/0/7dee9f3fe45b02061a324bc8f3904d1b.mp3?hdnea=exp=1778091728~acl=/api/1/1/7/d/e/0/7dee9f3fe45b02061a324bc8f3904d1b.mp3*~data=user_id=0,application_id=42~hmac=e69db7289c2462fc35c472861d1e31fdb9d6c8d8bf10528f86992b61d702ad71",
+        "previewUrl": "",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/291e2af9295ca885b154eee75dfa0432/250x250-000000-80-0-0.jpg",
         "startOffset": 0
       },
@@ -5053,8 +5977,7 @@
           "chop suey!",
           "chop suey",
           "system of a down",
-          "chop suey! system of a down",
-          "system of a down chop suey!"
+          "chop suey! system of a down"
         ],
         "deezerId": 0,
         "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/f4/a1/c2/f4a1c207-6d73-e3bd-8fcb-bd6c5037021a/mzaf_16212608709217830172.plus.aac.p.m4a",
@@ -5068,8 +5991,7 @@
           "welcome to the jungle",
           "guns n' roses",
           "guns n roses",
-          "welcome to the jungle guns n' roses",
-          "guns n' roses welcome to the jungle"
+          "welcome to the jungle guns n' roses"
         ],
         "deezerId": 0,
         "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/18/d0/0a/18d00a9d-d7c9-9021-a18d-87e4df3e04f0/mzaf_9783242792052451523.plus.aac.p.m4a",
@@ -5086,9 +6008,9 @@
           "highway to hell ac/dc",
           "ac/dc highway to hell"
         ],
-        "deezerId": 582430,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/d/f/7/0/df7987ad86cba5d1649730e0429412c0.mp3?hdnea=exp=1778091730~acl=/api/1/1/d/f/7/0/df7987ad86cba5d1649730e0429412c0.mp3*~data=user_id=0,application_id=42~hmac=e18e19131980fde61156aced9c22bed15a8f5d0b7e29dd460d1d1eb642b57a5e",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/af98ea8dbb58554d0dd55c5d48eec9bc/250x250-000000-80-0-0.jpg",
+        "deezerId": 92719900,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/de48d988a82fc401f4b9bafc2639f7d0/250x250-000000-80-0-0.jpg",
         "startOffset": 0
       },
       {
@@ -5100,9 +6022,9 @@
           "paranoid black sabbath",
           "black sabbath paranoid"
         ],
-        "deezerId": 4398592,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/6/9/7/0/69774550439c5ed98ffa4c20668c4a7f.mp3?hdnea=exp=1778091731~acl=/api/1/1/6/9/7/0/69774550439c5ed98ffa4c20668c4a7f.mp3*~data=user_id=0,application_id=42~hmac=d34c9d0a3c0fc2bc6126d5e34ad466a3a35823638f522ab0e97be583605540e8",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/619275733fa2a16bf5e50d7aba3f52df/250x250-000000-80-0-0.jpg",
+        "deezerId": 3788156052,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/bb3b4d0378c91d2fca5204bac48f5e71/250x250-000000-80-0-0.jpg",
         "startOffset": 0
       },
       {
@@ -5128,23 +6050,9 @@
           "crazy train ozzy osbourne",
           "ozzy osbourne crazy train"
         ],
-        "deezerId": 906920,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/0/8/a/0/08a1d51d205a83805443e2dc0deee3dc.mp3?hdnea=exp=1778091732~acl=/api/1/1/0/8/a/0/08a1d51d205a83805443e2dc0deee3dc.mp3*~data=user_id=0,application_id=42~hmac=9fcf47548124ac9a1d85cd1d2369a8b4d39f2e99199fad6b2402613c77bdf46f",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/782047977ed8865d675b4d0897299e75/250x250-000000-80-0-0.jpg",
-        "startOffset": 0
-      },
-      {
-        "title": "The Trooper",
-        "artist": "Iron Maiden",
-        "acceptedAnswers": [
-          "the trooper",
-          "iron maiden",
-          "the trooper iron maiden",
-          "iron maiden the trooper"
-        ],
-        "deezerId": 3183062,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/6/a/0/0/6a0427d0cebc1764d158a8df905ce6ed.mp3?hdnea=exp=1778091732~acl=/api/1/1/6/a/0/0/6a0427d0cebc1764d158a8df905ce6ed.mp3*~data=user_id=0,application_id=42~hmac=41d96eb99141ff0b203b1eb9e876d20199f7c083f3d2a4138ed76bf80d6c60e1",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/3342f54bdb76a9e08b3e6702ee6ca67b/250x250-000000-80-0-0.jpg",
+        "deezerId": 83919189,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/556c8cec95f9b26ba9e90b13a2956144/250x250-000000-80-0-0.jpg",
         "startOffset": 0
       },
       {
@@ -5185,7 +6093,7 @@
           "rammstein du hast"
         ],
         "deezerId": 630595142,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/8/2/5/0/825a70167777b61271be768dc54b9a96.mp3?hdnea=exp=1778091734~acl=/api/1/1/8/2/5/0/825a70167777b61271be768dc54b9a96.mp3*~data=user_id=0,application_id=42~hmac=ddf11e95efd4aed802ccce86b7d6059f53351fc4b447cb756cd02a12333a1abc",
+        "previewUrl": "",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/e24ae59ad933185bd6689d388eb0f256/250x250-000000-80-0-0.jpg",
         "startOffset": 0
       },
@@ -5214,7 +6122,7 @@
           "system of a down toxicity"
         ],
         "deezerId": 15523793,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/6/8/2/0/682240371ed8bd7757aebc61fa11f274.mp3?hdnea=exp=1778091736~acl=/api/1/1/6/8/2/0/682240371ed8bd7757aebc61fa11f274.mp3*~data=user_id=0,application_id=42~hmac=d3473ba512261cadf70377a5215fc6877e4169d98ae4bf7fbdfff4c2326f783c",
+        "previewUrl": "",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/6baa3ad626e859f67bbddae6528fd949/250x250-000000-80-0-0.jpg",
         "startOffset": 0
       },
@@ -5228,7 +6136,165 @@
           "metallica one"
         ],
         "deezerId": 575867572,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/4/b/6/0/4b644cbb29fc415e3215eb8a66e886b8.mp3?hdnea=exp=1778091736~acl=/api/1/1/4/b/6/0/4b644cbb29fc415e3215eb8a66e886b8.mp3*~data=user_id=0,application_id=42~hmac=fc11b4c457542b9b4055939144ee5f73cda9224d00707950334fc9f98bd31397",
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/ce293de53f905a3ce444062ec5242d53/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Ace of Spades",
+        "artist": "Motörhead",
+        "acceptedAnswers": [
+          "ace of spades",
+          "motorhead",
+          "motörhead",
+          "ace of spades motorhead"
+        ],
+        "deezerId": 5169799,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/1b47f31e1c2106b3a71a30c3e04b7573/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Run to the Hills",
+        "artist": "Iron Maiden",
+        "acceptedAnswers": [
+          "run to the hills",
+          "iron maiden",
+          "run to the hills iron maiden"
+        ],
+        "deezerId": 3158433,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/ca87a7fc5b10f79866925db083d99ef0/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Holy Wars...The Punishment Due",
+        "artist": "Megadeth",
+        "acceptedAnswers": [
+          "holy wars",
+          "megadeth",
+          "holy wars megadeth",
+          "the punishment due"
+        ],
+        "deezerId": 3339544,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/ffa935702a1fb0a78160d5550438bf5f/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "War Pigs",
+        "artist": "Black Sabbath",
+        "acceptedAnswers": [
+          "war pigs",
+          "black sabbath",
+          "war pigs black sabbath"
+        ],
+        "deezerId": 3788156042,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/bb3b4d0378c91d2fca5204bac48f5e71/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Peace Sells",
+        "artist": "Megadeth",
+        "acceptedAnswers": [
+          "peace sells",
+          "megadeth",
+          "peace sells megadeth"
+        ],
+        "deezerId": 12565751,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/451129645169db3500114c5a15dfc19c/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Angel of Death",
+        "artist": "Slayer",
+        "acceptedAnswers": [
+          "angel of death",
+          "slayer",
+          "angel of death slayer"
+        ],
+        "deezerId": 65690440,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/9f3a4d7b906782502b53231fd546fa6b/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Cowboys from Hell",
+        "artist": "Pantera",
+        "acceptedAnswers": [
+          "cowboys from hell",
+          "pantera",
+          "cowboys from hell pantera"
+        ],
+        "deezerId": 714397,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/b8e78de81ec615be64c9179589439d17/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Hallowed Be Thy Name",
+        "artist": "Iron Maiden",
+        "acceptedAnswers": [
+          "hallowed be thy name",
+          "iron maiden",
+          "hallowed be thy name iron maiden"
+        ],
+        "deezerId": 585704662,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/7ed7d6130119c3a0afa60499ae8e9599/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Battery",
+        "artist": "Metallica",
+        "acceptedAnswers": [
+          "battery",
+          "metallica",
+          "battery metallica"
+        ],
+        "deezerId": 424565222,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/291e2af9295ca885b154eee75dfa0432/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Laid to Rest",
+        "artist": "Lamb of God",
+        "acceptedAnswers": [
+          "laid to rest",
+          "lamb of god",
+          "laid to rest lamb of god"
+        ],
+        "deezerId": 2954720791,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/14d44bc358592c3bff238d9b74d83e2d/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Tornado of Souls",
+        "artist": "Megadeth",
+        "acceptedAnswers": [
+          "tornado of souls",
+          "megadeth",
+          "tornado of souls megadeth"
+        ],
+        "deezerId": 3089054,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/4fc68581b212b22a55b0d5093d766152/250x250-000000-80-0-0.jpg",
+        "startOffset": 0
+      },
+      {
+        "title": "Blackened",
+        "artist": "Metallica",
+        "acceptedAnswers": [
+          "blackened",
+          "metallica",
+          "blackened metallica"
+        ],
+        "deezerId": 575867532,
+        "previewUrl": "",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/ce293de53f905a3ce444062ec5242d53/250x250-000000-80-0-0.jpg",
         "startOffset": 0
       }
@@ -5246,8 +6312,7 @@
           "let it go",
           "idina menzel",
           "let it go idina menzel",
-          "idina menzel let it go",
-          "frozen"
+          "idina menzel let it go"
         ],
         "deezerId": 0,
         "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/73/30/5e/73305e29-2e83-571c-25ec-af73a388f035/mzaf_7894816154286390395.plus.aac.p.m4a",
@@ -5261,8 +6326,7 @@
           "a whole new world",
           "lea salonga",
           "a whole new world lea salonga",
-          "lea salonga a whole new world",
-          "aladdin"
+          "lea salonga a whole new world"
         ],
         "deezerId": 120917666,
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/9/1/e/0/91e10a6a0827c5f1f9c16fdd4ecde0a7.mp3?hdnea=exp=1778149048~acl=/api/1/1/9/1/e/0/91e10a6a0827c5f1f9c16fdd4ecde0a7.mp3*~data=user_id=0,application_id=42~hmac=290d7b627af4d935d3e1a52c8852b01e93f43332a8b6add0124f251c8c269113",
@@ -5276,13 +6340,11 @@
           "circle of life",
           "carmen twillie",
           "elton john",
-          "circle of life elton john",
-          "lion king"
+          "circle of life elton john"
         ],
         "deezerId": 1383448242,
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/5/5/6/0/556837f617f314bf75c982b0e0adb486.mp3?hdnea=exp=1778234461~acl=/api/1/1/5/5/6/0/556837f617f314bf75c982b0e0adb486.mp3*~data=user_id=0,application_id=42~hmac=eca9c0f2b4b99944d313f46d2436f29747a1622833a03f4452099041a188a108",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/8489cddb1d53fb4e7cb0b9eb23a8aad5/250x250-000000-80-0-0.jpg",
-        "media": "The Lion King",
         "startOffset": 0
       },
       {
@@ -5293,8 +6355,7 @@
           "samuel e. wright",
           "samuel e wright",
           "under the sea samuel e. wright",
-          "samuel e. wright under the sea",
-          "kleine zeemeermin"
+          "samuel e. wright under the sea"
         ],
         "deezerId": 145187392,
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/2/1/4/0/214d0eff870457a3ad4b4b20d0d05327.mp3?hdnea=exp=1778149049~acl=/api/1/1/2/1/4/0/214d0eff870457a3ad4b4b20d0d05327.mp3*~data=user_id=0,application_id=42~hmac=ee746e164bc1b1b544bd1e2d3f4444c03e7cab79eee99210e6c1b13ccc810899",
@@ -5306,14 +6367,11 @@
         "artist": "Nathan Lane",
         "acceptedAnswers": [
           "hakuna matata",
-          "nathan lane",
-          "the lion king",
-          "lion king"
+          "nathan lane"
         ],
         "deezerId": 13621768,
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/6/b/c/0/6bc0fae2c8181acf95167e145c40a649.mp3?hdnea=exp=1778234461~acl=/api/1/1/6/b/c/0/6bc0fae2c8181acf95167e145c40a649.mp3*~data=user_id=0,application_id=42~hmac=392376b7230ffe2125d8f354f23a9f1bf47bb6782cb8b0cf9454a13a3463922e",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/51171f726641ee970c7d8514ba22f1ae/250x250-000000-80-0-0.jpg",
-        "media": "The Lion King",
         "startOffset": 0
       },
       {
@@ -5323,8 +6381,7 @@
           "once upon a dream",
           "mary costa",
           "once upon a dream mary costa",
-          "mary costa once upon a dream",
-          "sleeping beauty"
+          "mary costa once upon a dream"
         ],
         "deezerId": 13796248,
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/d/3/1/0/d31aa1a5138340f1861e2e598d13e3b5.mp3?hdnea=exp=1778149050~acl=/api/1/1/d/3/1/0/d31aa1a5138340f1861e2e598d13e3b5.mp3*~data=user_id=0,application_id=42~hmac=f7af0a64078570e4b4c00c42f3a6b3040e92733844762621718f8a142fcd010a",
@@ -5337,15 +6394,12 @@
         "acceptedAnswers": [
           "we don't talk about bruno",
           "we dont talk about bruno",
-          "encanto",
-          "we don't talk about bruno encanto",
-          "encanto we don't talk about bruno",
           "bruno"
         ],
         "deezerId": 0,
         "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/55/0a/76/550a76f2-cf9c-3e07-8b9c-5c210e73af44/mzaf_13858819433882654714.plus.aac.p.m4a",
         "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/94/4d/9a/944d9a8d-0549-f537-5706-5b083bd84a7d/21UM1IM38949.rgb.jpg/250x250bb.jpg",
-        "startOffset": 0
+        "startOffset": 5
       },
       {
         "title": "How Far I'll Go",
@@ -5356,9 +6410,7 @@
           "auli'i cravalho",
           "aulii cravalho",
           "how far i'll go auli'i cravalho",
-          "auli'i cravalho how far i'll go",
-          "moana",
-          "vaiana"
+          "auli'i cravalho how far i'll go"
         ],
         "deezerId": 136349848,
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/5/c/6/0/5c61577f8de9642363979bbb6ffc0f66.mp3?hdnea=exp=1778149051~acl=/api/1/1/5/c/6/0/5c61577f8de9642363979bbb6ffc0f66.mp3*~data=user_id=0,application_id=42~hmac=263aaa9d5eb1d339e2f422145db3821695a2cf471a15b124a279730371bdf2fd",
@@ -5371,9 +6423,6 @@
         "acceptedAnswers": [
           "you've got a friend in me",
           "youve got a friend in me",
-          "toy story",
-          "you've got a friend in me toy story",
-          "toy story you've got a friend in me",
           "randy newman"
         ],
         "deezerId": 0,
@@ -5387,10 +6436,7 @@
         "acceptedAnswers": [
           "beauty and the beast",
           "celine dion & peabo bryson",
-          "celine dion  peabo bryson",
-          "beauty and the beast celine dion & peabo bryson",
-          "celine dion & peabo bryson beauty and the beast",
-          "belle en het beest"
+          "celine dion  peabo bryson"
         ],
         "deezerId": 0,
         "previewUrl": "/audio/beauty-and-the-beast-celine.mp3",
@@ -5404,8 +6450,7 @@
           "can you feel the love tonight",
           "elton john",
           "can you feel the love tonight elton john",
-          "elton john can you feel the love tonight",
-          "lion king"
+          "elton john can you feel the love tonight"
         ],
         "deezerId": 97114650,
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/9/6/b/0/96be9fd08267356f2cd1b1d880e37a1f.mp3?hdnea=exp=1778149053~acl=/api/1/1/9/6/b/0/96be9fd08267356f2cd1b1d880e37a1f.mp3*~data=user_id=0,application_id=42~hmac=04ef1c6fbb82032bc4c1858952756506c053ea2dfec4dd162f9df39956295d10",
@@ -5419,8 +6464,7 @@
           "remember me",
           "anthony gonzalez",
           "remember me anthony gonzalez",
-          "anthony gonzalez remember me",
-          "coco"
+          "anthony gonzalez remember me"
         ],
         "deezerId": 424600092,
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/7/0/1/0/7012848085d047a375b8ffa118a71afa.mp3?hdnea=exp=1778149054~acl=/api/1/1/7/0/1/0/7012848085d047a375b8ffa118a71afa.mp3*~data=user_id=0,application_id=42~hmac=419d5ad218952f0a3ec5f4d6b31278177dbb85e9070acd1faf86a0a10fc0a2cd",
@@ -5434,8 +6478,7 @@
           "go the distance",
           "roger bart",
           "go the distance roger bart",
-          "roger bart go the distance",
-          "hercules"
+          "roger bart go the distance"
         ],
         "deezerId": 531228861,
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/2/4/7/0/24727a08fef4df05f3fcc8954737b672.mp3?hdnea=exp=1778149054~acl=/api/1/1/2/4/7/0/24727a08fef4df05f3fcc8954737b672.mp3*~data=user_id=0,application_id=42~hmac=e37edcb0b37cad6041756893ecfd24a397f2b4e4efdb961770a387ded707d7dd",
@@ -5450,8 +6493,7 @@
           "ill make a man out of you",
           "donny osmond",
           "i'll make a man out of you donny osmond",
-          "donny osmond i'll make a man out of you",
-          "mulan"
+          "donny osmond i'll make a man out of you"
         ],
         "deezerId": 1377537512,
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/3/c/c/0/3cc2f409b2d4c45e999cb9e960c629d2.mp3?hdnea=exp=1778149055~acl=/api/1/1/3/c/c/0/3cc2f409b2d4c45e999cb9e960c629d2.mp3*~data=user_id=0,application_id=42~hmac=f0ef321f474e1084c09088e0831b84b50ea50f4c9c56195fe28e54ccee9aef1c",
@@ -5465,8 +6507,7 @@
           "colors of the wind",
           "judy kuhn",
           "colors of the wind judy kuhn",
-          "judy kuhn colors of the wind",
-          "pocahontas"
+          "judy kuhn colors of the wind"
         ],
         "deezerId": 3118641,
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/3/0/a/0/30aa3dcceca768ed1040bf2922796cb8.mp3?hdnea=exp=1778149055~acl=/api/1/1/3/0/a/0/30aa3dcceca768ed1040bf2922796cb8.mp3*~data=user_id=0,application_id=42~hmac=4468cfcaf8fdf36c2fc472da27f8f1fbaf745ee4fe487ba51fc37db40ad3305d",
@@ -5480,8 +6521,7 @@
           "friend like me",
           "robin williams",
           "friend like me robin williams",
-          "robin williams friend like me",
-          "aladdin"
+          "robin williams friend like me"
         ],
         "deezerId": 120917660,
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/a/3/0/0/a303d5cff64e4ae5f247d618f74c4bcf.mp3?hdnea=exp=1778149055~acl=/api/1/1/a/3/0/0/a303d5cff64e4ae5f247d618f74c4bcf.mp3*~data=user_id=0,application_id=42~hmac=c075092fae92df18c764532170828bbe49b71bdd7f4339a1b7c394cd082fa942",
@@ -5495,9 +6535,7 @@
           "part of your world",
           "jodi benson",
           "part of your world jodi benson",
-          "jodi benson part of your world",
-          "little mermaid",
-          "kleine zeemeermin"
+          "jodi benson part of your world"
         ],
         "deezerId": 145187390,
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/d/2/5/0/d253fb4e9d35ba4a2204a6d009d4497a.mp3?hdnea=exp=1778149056~acl=/api/1/1/d/2/5/0/d253fb4e9d35ba4a2204a6d009d4497a.mp3*~data=user_id=0,application_id=42~hmac=52ccfdd63aacff9b4bc32ec62d738117bb5a25b4782ac9ae00b3c80bc7ed2a06",
@@ -5511,9 +6549,7 @@
           "i see the light",
           "mandy moore",
           "i see the light mandy moore",
-          "mandy moore i see the light",
-          "tangled",
-          "rapunzel"
+          "mandy moore i see the light"
         ],
         "deezerId": 7599985,
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/4/a/a/0/4aa830f2ae46c6685ac9d609f755b50e.mp3?hdnea=exp=1778149056~acl=/api/1/1/4/a/a/0/4aa830f2ae46c6685ac9d609f755b50e.mp3*~data=user_id=0,application_id=42~hmac=f790e92f752dba6d0700ea3af69028edeec5a75b7c57f3801537812e605f847a",
@@ -5527,8 +6563,7 @@
           "when you wish upon a star",
           "cliff edwards",
           "when you wish upon a star cliff edwards",
-          "cliff edwards when you wish upon a star",
-          "pinocchio"
+          "cliff edwards when you wish upon a star"
         ],
         "deezerId": 677778432,
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/2/7/b/0/27b2b2ec3f3a44064c25c011741389f7.mp3?hdnea=exp=1778149057~acl=/api/1/1/2/7/b/0/27b2b2ec3f3a44064c25c011741389f7.mp3*~data=user_id=0,application_id=42~hmac=7d420a667501ac3b10b4ca62362757e4de1fa4cbc54f09cf4004da887830a8d1",
@@ -5542,8 +6577,7 @@
           "be our guest",
           "angela lansbury",
           "be our guest angela lansbury",
-          "angela lansbury be our guest",
-          "beauty and the beast"
+          "angela lansbury be our guest"
         ],
         "deezerId": 7087380,
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/0/3/e/0/03e30b4d2f486d13a0f175d58e86108d.mp3?hdnea=exp=1778149057~acl=/api/1/1/0/3/e/0/03e30b4d2f486d13a0f175d58e86108d.mp3*~data=user_id=0,application_id=42~hmac=32b4c2325eeeb8c5d50ff9971f5675049ba00b61901b9f225d28e10d3a59a4bd",
@@ -5557,9 +6591,7 @@
           "almost there",
           "anika noni rose",
           "almost there anika noni rose",
-          "anika noni rose almost there",
-          "princess and the frog",
-          "prinses en de kikker"
+          "anika noni rose almost there"
         ],
         "deezerId": 534375642,
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/0/b/1/0/0b182818dd43d41f616797fdb5909cdd.mp3?hdnea=exp=1778149058~acl=/api/1/1/0/b/1/0/0b182818dd43d41f616797fdb5909cdd.mp3*~data=user_id=0,application_id=42~hmac=3b512a25881624e7629bbff1e61c4101807705c11dea7d3a60b8d914f380bbc3",
@@ -5573,9 +6605,7 @@
           "so this is love",
           "ilene woods",
           "so this is love ilene woods",
-          "ilene woods so this is love",
-          "cinderella",
-          "assepoester"
+          "ilene woods so this is love"
         ],
         "deezerId": 13796253,
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/a/b/a/0/abab843453fde905a5c5492b8f8e6c9c.mp3?hdnea=exp=1778149058~acl=/api/1/1/a/b/a/0/abab843453fde905a5c5492b8f8e6c9c.mp3*~data=user_id=0,application_id=42~hmac=c57618a7518138e3f1f14a70347f1973bc433235ca1b97c5ab02a3d71181e57f",
@@ -5589,8 +6619,7 @@
           "reflection",
           "lea salonga",
           "reflection lea salonga",
-          "lea salonga reflection",
-          "mulan"
+          "lea salonga reflection"
         ],
         "deezerId": 1377537502,
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/4/9/1/0/491207ccfbb4ab069f37e39c0eac7905.mp3?hdnea=exp=1778149058~acl=/api/1/1/4/9/1/0/491207ccfbb4ab069f37e39c0eac7905.mp3*~data=user_id=0,application_id=42~hmac=f534cf9f9df22d7d0f14ada4188eb7241f1b71b316413d5bcb13392f47b6be81",
@@ -5605,8 +6634,7 @@
           "youll be in my heart",
           "phil collins",
           "you'll be in my heart phil collins",
-          "phil collins you'll be in my heart",
-          "tarzan"
+          "phil collins you'll be in my heart"
         ],
         "deezerId": 561875132,
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/2/1/3/0/2139586678b734d02d63ef1694720648.mp3?hdnea=exp=1778149059~acl=/api/1/1/2/1/3/0/2139586678b734d02d63ef1694720648.mp3*~data=user_id=0,application_id=42~hmac=23ef96af8db6307e2fb368fa51f713975dc099271028d5bd45f6c30b712c61ec",
@@ -5621,8 +6649,7 @@
           "i just cant wait to be king",
           "jason weaver",
           "i just can't wait to be king jason weaver",
-          "jason weaver i just can't wait to be king",
-          "lion king"
+          "jason weaver i just can't wait to be king"
         ],
         "deezerId": 24307581,
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/e/3/1/0/e31206740b85ceb6f6035042a68f8047.mp3?hdnea=exp=1778149059~acl=/api/1/1/e/3/1/0/e31206740b85ceb6f6035042a68f8047.mp3*~data=user_id=0,application_id=42~hmac=2e1c1a5744dd645cf52e16bb86331d91d63491002f0478a2cdc5d4d05f39e74d",
@@ -5637,8 +6664,7 @@
           "i wont say im in love",
           "susan egan",
           "i won't say (i'm in love) susan egan",
-          "susan egan i won't say (i'm in love)",
-          "hercules"
+          "susan egan i won't say (i'm in love)"
         ],
         "deezerId": 13796274,
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/d/0/6/0/d06bd591f2395dffb7aa7ed7d04d32bf.mp3?hdnea=exp=1778149060~acl=/api/1/1/d/0/6/0/d06bd591f2395dffb7aa7ed7d04d32bf.mp3*~data=user_id=0,application_id=42~hmac=7c5c41734456b4a3c43b21d8edd6d71383146f5da36586a6710e27b7d10ddfc0",
@@ -5649,12 +6675,7 @@
         "title": "Zero to Hero",
         "artist": "Chorus - Hercules",
         "acceptedAnswers": [
-          "zero to hero",
-          "chorus - hercules",
-          "chorus  hercules",
-          "zero to hero chorus - hercules",
-          "chorus - hercules zero to hero",
-          "hercules"
+          "zero to hero"
         ],
         "deezerId": 531228901,
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/f/9/e/0/f9e9d21b3203d8d667d3ac7eca95a5cd.mp3?hdnea=exp=1778149060~acl=/api/1/1/f/9/e/0/f9e9d21b3203d8d667d3ac7eca95a5cd.mp3*~data=user_id=0,application_id=42~hmac=91f7fee3356acba06d98fb58f24b868c8ec5eaa403dd99dbef476fbf4fdb2126",
@@ -5668,8 +6689,7 @@
           "prince ali",
           "robin williams",
           "prince ali robin williams",
-          "robin williams prince ali",
-          "aladdin"
+          "robin williams prince ali"
         ],
         "deezerId": 120917664,
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/9/0/b/0/90b9777d4c9cdbaa5c84d5598958c2ce.mp3?hdnea=exp=1778149061~acl=/api/1/1/9/0/b/0/90b9777d4c9cdbaa5c84d5598958c2ce.mp3*~data=user_id=0,application_id=42~hmac=121b70ce36f42f44b499d562d2b432636bf68895f9993a048b586d826e4370e0",
@@ -5684,9 +6704,7 @@
           "bibbidibobbidiboo",
           "verna felton",
           "bibbidi-bobbidi-boo verna felton",
-          "verna felton bibbidi-bobbidi-boo",
-          "cinderella",
-          "assepoester"
+          "verna felton bibbidi-bobbidi-boo"
         ],
         "deezerId": 1518135502,
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/1/d/3/0/1d309bf8a7dff87340393e3a098822ae.mp3?hdnea=exp=1778149061~acl=/api/1/1/1/d/3/0/1d309bf8a7dff87340393e3a098822ae.mp3*~data=user_id=0,application_id=42~hmac=be30a6f2d3e0508bb7bee2189468a85690078005b29da68d72ca1dec4262f454",
@@ -5701,28 +6719,24 @@
           "samuel e. wright",
           "samuel e wright",
           "kiss the girl samuel e. wright",
-          "samuel e. wright kiss the girl",
-          "little mermaid",
-          "kleine zeemeermin"
+          "samuel e. wright kiss the girl"
         ],
         "deezerId": 3118575,
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/2/d/3/0/2d30b44dd17370baf60f929fec8310cd.mp3?hdnea=exp=1778149061~acl=/api/1/1/2/d/3/0/2d30b44dd17370baf60f929fec8310cd.mp3*~data=user_id=0,application_id=42~hmac=b9005f06c8ebf09057967bc4fe9c15a2fcf08a3e843f40c160f6dee9663aa7ea",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/e88c0d811be16205977c3f1c878a141e/250x250-000000-80-0-0.jpg",
-        "startOffset": 0
+        "startOffset": 2
       },
       {
-        "title": "Tale as Old as Time",
-        "artist": "Angela Lansbury",
+        "title": "The Bells of Notre Dame",
+        "artist": "David Ogden Stiers",
         "acceptedAnswers": [
-          "tale as old as time",
-          "beauty and the beast",
-          "angela lansbury",
-          "tale as old as time angela lansbury"
+          "the bells of notre dame",
+          "bells of notre dame",
+          "david ogden stiers"
         ],
-        "deezerId": 7087383,
-        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/5/d/4/0/5d4ac2bbe8f2c73fadaef4adc0bc8641.mp3?hdnea=exp=1778235263~acl=/api/1/1/5/d/4/0/5d4ac2bbe8f2c73fadaef4adc0bc8641.mp3*~data=user_id=0,application_id=42~hmac=6e43f1543dec7c643ee9f37b482937d803ba4c1c83ba4ce489acffe76b164108",
-        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/2b185b2c7afa0fa9968faf473fae8ac2/250x250-000000-80-0-0.jpg",
-        "media": "Beauty and the Beast",
+        "deezerId": 1761703667,
+        "previewUrl": "",
+        "coverUrl": "https://cdn-images.dzcdn.net/images/cover/9f9712c33cd8ea46eedf4914f66da7fc/250x250-000000-80-0-0.jpg",
         "startOffset": 0
       },
       {
@@ -5731,14 +6745,11 @@
         "acceptedAnswers": [
           "friends on the other side",
           "keith david",
-          "friends on the other side keith david",
-          "princess and the frog",
-          "the princess and the frog"
+          "friends on the other side keith david"
         ],
         "deezerId": 3040325151,
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/f/9/1/0/f91146ad82a3236ada06fae18b12599e.mp3?hdnea=exp=1778235239~acl=/api/1/1/f/9/1/0/f91146ad82a3236ada06fae18b12599e.mp3*~data=user_id=0,application_id=42~hmac=ba7cad90cd16e72a8cb4697b7dcbd11272853e0c98c7bffc739e1231bc9ee7d9",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/9696999db33942754d8917bca6a035e9/250x250-000000-80-0-0.jpg",
-        "media": "The Princess and the Frog",
         "startOffset": 0
       },
       {
@@ -5747,14 +6758,11 @@
         "acceptedAnswers": [
           "into the unknown",
           "idina menzel",
-          "into the unknown idina menzel",
-          "frozen",
-          "frozen 2"
+          "into the unknown idina menzel"
         ],
         "deezerId": 803932592,
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/b/1/b/0/b1b9a07baee61bef833103f03409287b.mp3?hdnea=exp=1778234585~acl=/api/1/1/b/1/b/0/b1b9a07baee61bef833103f03409287b.mp3*~data=user_id=0,application_id=42~hmac=39d1ce2bc9e93fe6826a2eac49253da7b57bc40e7de2186dcc64663d524239bb",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/bf38ba918f72837998b7c8918846ad43/250x250-000000-80-0-0.jpg",
-        "media": "Frozen 2",
         "startOffset": 0
       },
       {
@@ -5763,13 +6771,11 @@
         "acceptedAnswers": [
           "do you want to build a snowman",
           "kristen bell",
-          "do you want to build a snowman kristen bell",
-          "frozen"
+          "do you want to build a snowman kristen bell"
         ],
         "deezerId": 72371923,
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/6/d/2/0/6d26d84faea1a1b4cfabf7f87bac0f15.mp3?hdnea=exp=1778234585~acl=/api/1/1/6/d/2/0/6d26d84faea1a1b4cfabf7f87bac0f15.mp3*~data=user_id=0,application_id=42~hmac=fc7f9e085c75de9015dda7feeb0991478f63bc91ac4f95095d1a5d68b0aa8d0f",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/f669aa7623ad8af5fbeb5a196346013a/250x250-000000-80-0-0.jpg",
-        "media": "Frozen",
         "startOffset": 0
       },
       {
@@ -5778,13 +6784,11 @@
         "acceptedAnswers": [
           "for the first time in forever",
           "kristen bell",
-          "for the first time in forever kristen bell",
-          "frozen"
+          "for the first time in forever kristen bell"
         ],
         "deezerId": 72371927,
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/7/b/7/0/7b7c30974b6d7a3c58bcefd0b176cea4.mp3?hdnea=exp=1778234585~acl=/api/1/1/7/b/7/0/7b7c30974b6d7a3c58bcefd0b176cea4.mp3*~data=user_id=0,application_id=42~hmac=bf7c59ef9dd3fe8fb02196c4cd42fda47089e7da16ffd08ed9febcf4de3255f5",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/f669aa7623ad8af5fbeb5a196346013a/250x250-000000-80-0-0.jpg",
-        "media": "Frozen",
         "startOffset": 0
       },
       {
@@ -5794,14 +6798,11 @@
           "youre welcome",
           "you're welcome",
           "dwayne johnson",
-          "the rock",
-          "moana",
-          "vaiana"
+          "the rock"
         ],
         "deezerId": 136349854,
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/5/7/0/0/5702e543d79afe251266d3d42f969f80.mp3?hdnea=exp=1778234585~acl=/api/1/1/5/7/0/0/5702e543d79afe251266d3d42f969f80.mp3*~data=user_id=0,application_id=42~hmac=9473dee8dc183a2bd34944efa7b7eb90ba734d8a30ab43acceca8ae065b9d66b",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/846f7d5f33ade67c54841ae1db6756ef/250x250-000000-80-0-0.jpg",
-        "media": "Moana",
         "startOffset": 0
       },
       {
@@ -5810,13 +6811,11 @@
         "acceptedAnswers": [
           "the bare necessities",
           "bare necessities",
-          "phil harris",
-          "jungle book"
+          "phil harris"
         ],
         "deezerId": 130320338,
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/2/2/1/0/221bb7356acf949a59c41b3b25428e4a.mp3?hdnea=exp=1778234585~acl=/api/1/1/2/2/1/0/221bb7356acf949a59c41b3b25428e4a.mp3*~data=user_id=0,application_id=42~hmac=0e271ac11829eeaa451f035d71679d108a1633cb9401d80d601f3340dd48def1",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/d593a4382a5986d9da0473f1f360ce3e/250x250-000000-80-0-0.jpg",
-        "media": "The Jungle Book",
         "startOffset": 0
       },
       {
@@ -5824,13 +6823,11 @@
         "artist": "Julie Andrews",
         "acceptedAnswers": [
           "supercalifragilisticexpialidocious",
-          "julie andrews",
-          "mary poppins"
+          "julie andrews"
         ],
         "deezerId": 3118718,
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/f/6/0/0/f605572cb195bf37e6a6061886992f2d.mp3?hdnea=exp=1778234586~acl=/api/1/1/f/6/0/0/f605572cb195bf37e6a6061886992f2d.mp3*~data=user_id=0,application_id=42~hmac=bbfe4b933bf907c970b186ff148e062ae88cc1f2077c7508dfa4b32e08ee3db6",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/d1e2d91e20a7abd762ec02966ab5120a/250x250-000000-80-0-0.jpg",
-        "media": "Mary Poppins",
         "startOffset": 0
       },
       {
@@ -5839,13 +6836,11 @@
         "acceptedAnswers": [
           "a dream is a wish your heart makes",
           "dream is a wish",
-          "ilene woods",
-          "cinderella"
+          "ilene woods"
         ],
         "deezerId": 13796247,
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/b/5/8/0/b58d9780e1abc39f6e29de564fa4ee2c.mp3?hdnea=exp=1778234792~acl=/api/1/1/b/5/8/0/b58d9780e1abc39f6e29de564fa4ee2c.mp3*~data=user_id=0,application_id=42~hmac=580c60aba193333f721fcc1e30a4de1637b7d7d74becf6d213570ecab91adfb0",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/14a81bace45d294ce77d80326d67620c/250x250-000000-80-0-0.jpg",
-        "media": "Cinderella",
         "startOffset": 0
       },
       {
@@ -5854,13 +6849,11 @@
         "acceptedAnswers": [
           "strangers like me",
           "phil collins",
-          "strangers like me phil collins",
-          "tarzan"
+          "strangers like me phil collins"
         ],
         "deezerId": 561875072,
         "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/6/5/3/0/65363ca58f21bfc2b20c8744d1b09710.mp3?hdnea=exp=1778234586~acl=/api/1/1/6/5/3/0/65363ca58f21bfc2b20c8744d1b09710.mp3*~data=user_id=0,application_id=42~hmac=adab60059054663be0180ab2a1db10f52553b11941161a96988ddc5bb318c080",
         "coverUrl": "https://cdn-images.dzcdn.net/images/cover/6f48385948df5ed9a8e00c647a87e3a9/250x250-000000-80-0-0.jpg",
-        "media": "Tarzan",
         "startOffset": 0
       }
     ]

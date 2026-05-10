@@ -195,12 +195,12 @@ export default function TestSongs() {
                     <input
                       type="number"
                       min={0}
-                      max={29}
+                      max={600}
                       value={song.startOffset ?? 0}
                       onChange={(e) => {
                         const val = Math.max(
                           0,
-                          Math.min(29, parseInt(e.target.value) || 0),
+                          Math.min(600, parseInt(e.target.value) || 0),
                         );
                         const updated = [...categories];
                         const c = updated.find((x) => x.id === cat.id)!;
@@ -210,7 +210,7 @@ export default function TestSongs() {
                       onBlur={(e) => {
                         const val = Math.max(
                           0,
-                          Math.min(29, parseInt(e.target.value) || 0),
+                          Math.min(600, parseInt(e.target.value) || 0),
                         );
                         saveOffset(cat.id, idx, val);
                       }}

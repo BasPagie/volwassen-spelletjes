@@ -242,7 +242,7 @@ export interface MuziekSettings {
 export const HEARDLE_PHASES = [1, 2, 4, 7, 11, 16] as const;
 
 export const DEFAULT_MUZIEK_SETTINGS: MuziekSettings = {
-  categoryIds: ['pop', 'memes', 'anime', 'gaming', 'edm', 'dutch', '80s-90s', '2000s', '2010s-nu', 'classics'],
+  categoryIds: ['pop', 'memes', 'anime', 'gaming', 'edm', 'dutch', '80s-90s', '2000s', '2010s', '2020s'],
   questionCount: 15,
   clipDuration: 15,
   guessMode: 'both',
