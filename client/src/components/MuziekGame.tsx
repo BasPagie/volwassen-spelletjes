@@ -413,8 +413,8 @@ export default function MuziekGame({
       {/* Input area */}
       {!isRevealing && !isSpectator && (
         <div className="flex-shrink-0 mt-4">
-          {state.answered ? (
-            <p className="text-center text-green-500 font-display font-bold text-sm">
+          {state.answered && (
+            <p className="text-center text-green-500 font-display font-bold text-sm mb-2">
               ✅{" "}
               {guessMode === "artist"
                 ? "Artiest geraden!"
@@ -422,7 +422,8 @@ export default function MuziekGame({
                   ? "Nummer & artiest geraden!"
                   : "Nummer geraden!"}
             </p>
-          ) : state.heardleLockedOut ? (
+          )}
+          {state.heardleLockedOut ? (
             <p className="text-center text-orange-500 font-display font-bold text-sm">
               ⏳ Wacht op volgende fase...
             </p>

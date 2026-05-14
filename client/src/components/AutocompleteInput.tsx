@@ -1,8 +1,26 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 
+// Map special characters that NFD decomposition doesn't handle
+const CHAR_MAP: Record<string, string> = {
+  ø: "o",
+  Ø: "o",
+  đ: "d",
+  Đ: "d",
+  ł: "l",
+  Ł: "l",
+  ß: "ss",
+  æ: "ae",
+  Æ: "ae",
+  œ: "oe",
+  Œ: "oe",
+  þ: "th",
+  Þ: "th",
+};
+
 function normalizeForSearch(s: string): string {
   return s
     .toLowerCase()
+    .replace(/[øØđĐłŁßæÆœŒþÞ]/g, (ch) => CHAR_MAP[ch] ?? ch)
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .replace(/[^a-z0-9\s]/g, "")
