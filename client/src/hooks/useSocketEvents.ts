@@ -240,7 +240,9 @@ export function useSocketEvents() {
         dispatch({ type: 'ADD_TOAST', toast: { id: nextToastId(), message: `🎯 Juiste bron! +${points ?? 0} punten (halve score). Raad nu het nummer!`, type: 'info' } });
       } else {
         playSound(correct ? 'correct' : 'wrong');
-        if (!correct) {
+        if (correct) {
+          dispatch({ type: 'UPDATE_MUZIEK_STATE', patch: { answered: true } });
+        } else {
           dispatch({ type: 'ADD_TOAST', toast: { id: nextToastId(), message: '❌ Fout! Probeer opnieuw', type: 'error' } });
         }
       }
