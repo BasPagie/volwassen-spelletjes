@@ -49,8 +49,7 @@ function normalize(str: string): string {
     .trim()
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
-    .replace(/[^a-z0-9\s]/g, '')
-    .replace(/\s+/g, ' ');
+    .replace(/[^a-z0-9]/g, '');
 }
 
 function levenshtein(a: string, b: string): number {
@@ -82,8 +81,8 @@ function isGuessCorrect(guess: string, word: string): boolean {
 function guessContainsWord(guess: string, word: string): boolean {
   const normalizedGuess = normalize(guess);
   const normalizedWord = normalize(word);
-  // Only block if the full word appears as a substring (not for very short words)
-  if (normalizedWord.length >= 4 && normalizedGuess.includes(normalizedWord)) return true;
+  // Only block if the full word appears as a substring but is NOT an exact match (not for very short words)
+  if (normalizedWord.length >= 4 && normalizedGuess.includes(normalizedWord) && normalizedGuess !== normalizedWord) return true;
   return false;
 }
 
@@ -295,12 +294,7 @@ export function processGuess(roomId: string, playerId: string, guess: string): G
     return { correct: false, alreadyGuessed: true, isDrawer: false, containsWord: false, isClose: false };
   }
 
-  // Check if guess contains the word (block showing in chat)
-  if (guessContainsWord(guess, inst.currentWord)) {
-    return { correct: false, alreadyGuessed: false, isDrawer: false, containsWord: true, isClose: false };
-  }
-
-  // Check correctness
+  // Check correctness first (before containsWord, so exact matches are never silently rejected)
   if (isGuessCorrect(guess, inst.currentWord)) {
     inst.correctGuessers.push(playerId);
     inst.guessTimestamps.set(playerId, Date.now());
@@ -318,6 +312,11 @@ export function processGuess(roomId: string, playerId: string, guess: string): G
     }
 
     return { correct: true, alreadyGuessed: false, isDrawer: false, containsWord: false, isClose: false, position, score };
+  }
+
+  // Check if guess contains the word (block showing in chat)
+  if (guessContainsWord(guess, inst.currentWord)) {
+    return { correct: false, alreadyGuessed: false, isDrawer: false, containsWord: true, isClose: false };
   }
 
   // Wrong guess — check if close

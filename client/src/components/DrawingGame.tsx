@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import type {
   DrawingClientState,
   DrawingStroke,
+  DrawingPoint,
   DrawingWordChoice,
 } from "shared/types";
 import { PREMADE_AVATARS } from "shared/types";
@@ -44,6 +45,12 @@ export default function DrawingGame({
     x: number;
     y: number;
   } | null>(null);
+  const [incomingLivePoint, setIncomingLivePoint] = useState<{
+    point: DrawingPoint;
+    color: string;
+    width: number;
+    isStart: boolean;
+  } | null>(null);
   const [clearSignal, setClearSignal] = useState(0);
   const msgId = useRef(0);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -72,6 +79,15 @@ export default function DrawingGame({
 
     const handleStroke = ({ stroke }: { stroke: DrawingStroke }) => {
       setIncomingStroke(stroke);
+    };
+
+    const handleLivePoint = (data: {
+      point: DrawingPoint;
+      color: string;
+      width: number;
+      isStart: boolean;
+    }) => {
+      setIncomingLivePoint({ ...data });
     };
 
     const handleClearCanvas = () => {
@@ -160,6 +176,7 @@ export default function DrawingGame({
 
     socket.on("drawing:word-choices", handleWordChoices);
     socket.on("drawing:stroke", handleStroke);
+    socket.on("drawing:live-point", handleLivePoint);
     socket.on("drawing:fill", handleFill);
     socket.on("drawing:clear-canvas", handleClearCanvas);
     socket.on("drawing:player-guessed", handlePlayerGuessed);
@@ -170,6 +187,7 @@ export default function DrawingGame({
     return () => {
       socket.off("drawing:word-choices", handleWordChoices);
       socket.off("drawing:stroke", handleStroke);
+      socket.off("drawing:live-point", handleLivePoint);
       socket.off("drawing:fill", handleFill);
       socket.off("drawing:clear-canvas", handleClearCanvas);
       socket.off("drawing:player-guessed", handlePlayerGuessed);
@@ -207,6 +225,20 @@ export default function DrawingGame({
 
   const handleStroke = (stroke: DrawingStroke) => {
     socket?.emit("drawing:stroke", { stroke });
+  };
+
+  const handleLivePointEmit = (
+    point: DrawingPoint,
+    color: string,
+    width: number,
+    isStart: boolean,
+  ) => {
+    socket?.volatile.emit("drawing:live-point", {
+      point,
+      color,
+      width,
+      isStart,
+    });
   };
 
   const handleFill = (color: string, x: number, y: number) => {
@@ -385,12 +417,15 @@ export default function DrawingGame({
             <div className="flex-1 flex flex-col items-center min-h-0">
               <div className="relative w-full max-w-[800px] aspect-[8/5] max-h-full mx-auto">
                 <DrawingCanvas
+                  key={`${state.drawerId}-${state.turnInRound}`}
                   isDrawer={isDrawer && state.phase === "drawing"}
                   onStroke={handleStroke}
+                  onLivePoint={handleLivePointEmit}
                   onFill={handleFill}
                   onClear={handleClear}
                   onUndo={handleUndo}
                   incomingStroke={incomingStroke}
+                  incomingLivePoint={incomingLivePoint}
                   incomingFill={incomingFill}
                   clearSignal={clearSignal}
                 />

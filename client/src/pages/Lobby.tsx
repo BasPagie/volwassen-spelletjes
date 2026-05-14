@@ -137,10 +137,16 @@ export default function Lobby() {
     }
   };
 
-  if (!state.room) {
-    // No session at all → redirect to home immediately
-    if (!hasSessionForRoom) {
+  // No session at all → redirect to home immediately
+  useEffect(() => {
+    if (!state.room && !hasSessionForRoom) {
       navigate("/");
+    }
+  }, [state.room, hasSessionForRoom, navigate]);
+
+  if (!state.room) {
+    // No session at all → will redirect via effect above
+    if (!hasSessionForRoom) {
       return null;
     }
 

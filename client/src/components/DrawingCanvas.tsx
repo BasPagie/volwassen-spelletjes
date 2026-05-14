@@ -3,13 +3,21 @@ import type { DrawingStroke, DrawingPoint } from "shared/types";
 
 const COLORS = [
   "#000000", // black
+  "#444444", // dark gray
+  "#888888", // gray
+  "#FFFFFF", // white
   "#FF0000", // red
+  "#FF5722", // deep orange
   "#FF8800", // orange
   "#FFCC00", // yellow
+  "#8BC34A", // light green
   "#00CC00", // green
+  "#009688", // teal
   "#0088FF", // blue
+  "#3F51B5", // indigo
   "#8800FF", // purple
-  "#FFFFFF", // white (eraser visual)
+  "#E91E63", // pink
+  "#795548", // brown
 ];
 
 const BRUSH_SIZES = [4, 8, 14];
@@ -22,8 +30,20 @@ interface Props {
   onClear?: () => void;
   onUndo?: () => void;
   onFill?: (color: string, x: number, y: number) => void;
+  onLivePoint?: (
+    point: DrawingPoint,
+    color: string,
+    width: number,
+    isStart: boolean,
+  ) => void;
   incomingStroke?: DrawingStroke | null;
   incomingFill?: { color: string; x: number; y: number } | null;
+  incomingLivePoint?: {
+    point: DrawingPoint;
+    color: string;
+    width: number;
+    isStart: boolean;
+  } | null;
   clearSignal?: number; // increment to clear
 }
 
@@ -33,13 +53,16 @@ export default function DrawingCanvas({
   onClear,
   onUndo,
   onFill,
+  onLivePoint,
   incomingStroke,
   incomingFill,
+  incomingLivePoint,
   clearSignal,
 }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [color, setColor] = useState("#000000");
+  const [customColor, setCustomColor] = useState("#FF69B4");
   const [brushSize, setBrushSize] = useState(8);
   const [tool, setTool] = useState<Tool>("brush");
 
@@ -47,6 +70,8 @@ export default function DrawingCanvas({
   const isDrawing = useRef(false);
   const currentPoints = useRef<DrawingPoint[]>([]);
   const strokesRef = useRef<DrawingStroke[]>([]);
+  const lastLiveEmitTime = useRef(0);
+  const liveLastPoint = useRef<DrawingPoint | null>(null);
 
   // Canvas dimensions (logical)
   const CANVAS_W = 800;
@@ -92,9 +117,48 @@ export default function DrawingCanvas({
   // Handle incoming strokes from server (viewer mode)
   useEffect(() => {
     if (!incomingStroke) return;
+    liveLastPoint.current = null; // Clear live state, finalized stroke replaces it
     strokesRef.current.push(incomingStroke);
     drawStroke(incomingStroke);
   }, [incomingStroke, drawStroke]);
+
+  // Handle incoming live points from server (viewer mode — draw incrementally)
+  useEffect(() => {
+    if (!incomingLivePoint) return;
+    const { point, color: liveColor, width, isStart } = incomingLivePoint;
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    if (isStart || !liveLastPoint.current) {
+      // Draw a dot for the start of a new stroke
+      ctx.beginPath();
+      ctx.fillStyle = liveColor;
+      ctx.arc(
+        point.x * CANVAS_W,
+        point.y * CANVAS_H,
+        width / 2,
+        0,
+        Math.PI * 2,
+      );
+      ctx.fill();
+    } else {
+      // Draw line segment from last live point
+      ctx.beginPath();
+      ctx.strokeStyle = liveColor;
+      ctx.lineWidth = width;
+      ctx.lineCap = "round";
+      ctx.lineJoin = "round";
+      ctx.moveTo(
+        liveLastPoint.current.x * CANVAS_W,
+        liveLastPoint.current.y * CANVAS_H,
+      );
+      ctx.lineTo(point.x * CANVAS_W, point.y * CANVAS_H);
+      ctx.stroke();
+    }
+    liveLastPoint.current = point;
+  }, [incomingLivePoint]);
 
   // Handle clear signal
   useEffect(() => {
@@ -212,6 +276,12 @@ export default function DrawingCanvas({
       isDrawing.current = true;
       currentPoints.current = [point];
 
+      // Emit live point for start of stroke
+      const liveColor = tool === "eraser" ? "#FFFFFF" : color;
+      const liveWidth = tool === "eraser" ? brushSize * 2 : brushSize;
+      onLivePoint?.(point, liveColor, liveWidth, true);
+      lastLiveEmitTime.current = Date.now();
+
       // Draw dot for single click
       const ctx = canvas.getContext("2d");
       if (ctx) {
@@ -227,7 +297,16 @@ export default function DrawingCanvas({
         ctx.fill();
       }
     },
-    [isDrawer, color, brushSize, tool, getPoint, floodFill, onFill],
+    [
+      isDrawer,
+      color,
+      brushSize,
+      tool,
+      getPoint,
+      floodFill,
+      onFill,
+      onLivePoint,
+    ],
   );
 
   const handlePointerMove = useCallback(
@@ -236,6 +315,15 @@ export default function DrawingCanvas({
       e.preventDefault();
       const point = getPoint(e);
       currentPoints.current.push(point);
+
+      // Emit live point (throttled to ~30fps to reduce network traffic)
+      const now = Date.now();
+      if (now - lastLiveEmitTime.current >= 33) {
+        const liveColor = tool === "eraser" ? "#FFFFFF" : color;
+        const liveWidth = tool === "eraser" ? brushSize * 2 : brushSize;
+        onLivePoint?.(point, liveColor, liveWidth, false);
+        lastLiveEmitTime.current = now;
+      }
 
       // Draw incrementally
       const canvas = canvasRef.current;
@@ -256,7 +344,7 @@ export default function DrawingCanvas({
       ctx.lineTo(curr.x * CANVAS_W, curr.y * CANVAS_H);
       ctx.stroke();
     },
-    [isDrawer, color, brushSize, tool, getPoint],
+    [isDrawer, color, brushSize, tool, getPoint, onLivePoint],
   );
 
   const handlePointerUp = useCallback(
@@ -336,7 +424,7 @@ export default function DrawingCanvas({
       {isDrawer && (
         <div className="flex items-center gap-2 mt-2 flex-wrap justify-center">
           {/* Colors */}
-          <div className="flex gap-1">
+          <div className="flex gap-1 flex-wrap">
             {COLORS.map((c) => (
               <button
                 key={c}
@@ -344,7 +432,7 @@ export default function DrawingCanvas({
                   setColor(c);
                   if (tool === "eraser") setTool("brush");
                 }}
-                className={`w-7 h-7 rounded-full border-2 transition-all ${
+                className={`w-5 h-5 rounded-full border-2 transition-all ${
                   color === c && tool !== "eraser"
                     ? "border-teal-500 scale-110 shadow-md"
                     : "border-gray-300"
@@ -352,6 +440,38 @@ export default function DrawingCanvas({
                 style={{ backgroundColor: c }}
               />
             ))}
+            {/* Custom color picker */}
+            <label
+              className={`w-5 h-5 rounded-full border-2 transition-all cursor-pointer relative overflow-hidden flex items-center justify-center ${
+                color === customColor &&
+                !COLORS.includes(color) &&
+                tool !== "eraser"
+                  ? "border-teal-500 scale-110 shadow-md"
+                  : "border-gray-300"
+              }`}
+              style={{ backgroundColor: customColor }}
+              title="Kies een kleur"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="w-3 h-3 drop-shadow-[0_0_1px_rgba(0,0,0,0.5)]"
+                style={{ color: "#fff" }}
+              >
+                <path d="M17.66 5.41l.92.92-2.69 2.69-.92-.92 2.69-2.69M17.67 3c-.26 0-.51.1-.71.29l-3.12 3.12-1.93-1.91-1.41 1.41 1.42 1.42L3 16.25V21h4.75l8.92-8.92 1.42 1.42 1.41-1.41-1.92-1.92 3.12-3.12c.4-.4.4-1.03.01-1.42l-2.34-2.34c-.2-.19-.45-.29-.7-.29z" />
+              </svg>
+              <input
+                type="color"
+                value={customColor}
+                onChange={(e) => {
+                  setCustomColor(e.target.value);
+                  setColor(e.target.value);
+                  if (tool === "eraser") setTool("brush");
+                }}
+                className="absolute inset-0 opacity-0 cursor-pointer w-full h-full"
+              />
+            </label>
           </div>
 
           {/* Divider */}

@@ -377,6 +377,7 @@ export interface ClientToServerEvents {
   'drawing:start-game': () => void;
   'drawing:pick-word': (data: { word: string }) => void;
   'drawing:stroke': (data: { stroke: DrawingStroke }) => void;
+  'drawing:live-point': (data: { point: DrawingPoint; color: string; width: number; isStart: boolean }) => void;
   'drawing:fill': (data: { color: string; x: number; y: number }) => void;
   'drawing:clear-canvas': () => void;
   'drawing:undo': () => void;
@@ -430,6 +431,7 @@ export interface ServerToClientEvents {
   'drawing:state-update': (data: DrawingClientState) => void;
   'drawing:word-choices': (data: { choices: DrawingWordChoice[] }) => void;
   'drawing:stroke': (data: { stroke: DrawingStroke }) => void;
+  'drawing:live-point': (data: { point: DrawingPoint; color: string; width: number; isStart: boolean }) => void;
   'drawing:fill': (data: { color: string; x: number; y: number }) => void;
   'drawing:clear-canvas': () => void;
   'drawing:undo': () => void;

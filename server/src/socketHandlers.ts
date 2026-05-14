@@ -1019,6 +1019,17 @@ export function registerSocketHandlers(io: IOServer, socket: IOSocket): void {
     socket.to(mapping.roomId).emit('drawing:stroke', { stroke });
   });
 
+  // Relay live drawing points for real-time drawing preview (volatile — drop if slow)
+  socket.on('drawing:live-point', ({ point, color, width, isStart }) => {
+    const mapping = getSocketMapping(socket.id);
+    if (!mapping) return;
+
+    const drawerId = getDrawerId(mapping.roomId);
+    if (mapping.playerId !== drawerId) return;
+
+    socket.volatile.to(mapping.roomId).emit('drawing:live-point', { point, color, width, isStart });
+  });
+
   socket.on('drawing:fill', ({ color, x, y }) => {
     const mapping = getSocketMapping(socket.id);
     if (!mapping) return;
