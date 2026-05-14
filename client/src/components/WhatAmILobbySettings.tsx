@@ -118,6 +118,16 @@ export default function WhatAmILobbySettings({
     update({ packIds: next });
   };
 
+  const allPacksSelected =
+    PACK_META.length > 0 &&
+    PACK_META.every((p) => current.packIds.includes(p.id));
+
+  const toggleAllPacks = () => {
+    if (!isHost) return;
+    const next = allPacksSelected ? [] : PACK_META.map((p) => p.id);
+    update({ packIds: next });
+  };
+
   const addCharacter = () => {
     if (!newCharName.trim()) return;
     const char: WhatAmICharacter = {
@@ -523,12 +533,22 @@ export default function WhatAmILobbySettings({
 
       {/* Pack selector */}
       <div>
-        <span className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">
-          Karakter pakketten
-          <span className="ml-2 normal-case text-gray-300 font-normal">
-            {totalChars} karakters totaal
+        <div className="flex items-center justify-between mb-2">
+          <span className="text-xs font-bold text-gray-400 uppercase tracking-wider">
+            Karakter pakketten
+            <span className="ml-2 normal-case text-gray-300 font-normal">
+              {totalChars} karakters totaal
+            </span>
           </span>
-        </span>
+          {isHost && (
+            <button
+              onClick={toggleAllPacks}
+              className="text-xs font-medium text-orange-600 hover:text-orange-800 transition-colors"
+            >
+              {allPacksSelected ? "Deselecteer alles" : "Selecteer alles"}
+            </button>
+          )}
+        </div>
         <div className="bg-gray-50/50 rounded-2xl border border-gray-100 p-3 max-h-56 overflow-y-auto">
           <div className="flex flex-wrap gap-1.5">
             {PACK_META.map((pack) => {

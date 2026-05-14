@@ -423,12 +423,12 @@
       {
         "name": "Indiana Jones",
         "category": "Indiana Jones",
-        "imageUrl": "https://static.wikia.nocookie.net/indianajones/images/1/1d/Indiana_Jones_5_Profile.png/revision/latest/scale-to-width-down/400?cb=20230603033210"
+        "imageUrl": "https://static.wikia.nocookie.net/characterprofile/images/8/8e/Indiana_Jones_in_Raiders_of_the_Lost_Ark.jpg/revision/latest?cb=20190110031857"
       },
       {
         "name": "Forrest Gump",
         "category": "Drama",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/6/67/Forrest_Gump_poster.jpg"
+        "imageUrl": "https://static.wikia.nocookie.net/f__/images/3/34/Forrest-Gump.jpg/revision/latest?cb=20180103035647&path-prefix=forrestgump"
       },
       {
         "name": "The Terminator",
@@ -473,7 +473,7 @@
       {
         "name": "Jack Torrance",
         "category": "Horror",
-        "imageUrl": "https://static.wikia.nocookie.net/stephenking/images/5/5c/Folio-Society-JackTorrance-The-Shining.png/revision/latest/scale-to-width-down/400?cb=20260503120926"
+        "imageUrl": "https://static.wikia.nocookie.net/stephenking/images/6/6c/Jacktorrance1980.jpeg/revision/latest?cb=20191007030512"
       },
       {
         "name": "Hannibal Lecter",
@@ -610,7 +610,7 @@
       {
         "name": "Geralt of Rivia",
         "category": "The Witcher",
-        "imageUrl": "https://static.wikia.nocookie.net/witcher/images/5/51/Netflix_geralt_shirt.jpg/revision/latest/scale-to-width-down/400?cb=20191228182240"
+        "imageUrl": "https://static.wikia.nocookie.net/characterprofile/images/8/8d/Geralt_stuff.png/revision/latest?cb=20170105222826"
       },
       {
         "name": "Dwight Schrute",
@@ -672,7 +672,7 @@
       {
         "name": "Kratos",
         "category": "God of War",
-        "imageUrl": "https://media.rawg.io/media/games/4be/4be6a6ad0364751a96229c56bf69be59.jpg"
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/2/2f/Kratos_PS4.png"
       },
       {
         "name": "Master Chief",
@@ -682,7 +682,7 @@
       {
         "name": "Lara Croft",
         "category": "Tomb Raider",
-        "imageUrl": "https://cdn.akamai.steamstatic.com/steam/apps/2478970/library_600x900.jpg"
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/a/a8/LaraCroftInfobox.png"
       },
       {
         "name": "Steve",
@@ -717,12 +717,12 @@
       {
         "name": "Joel Miller",
         "category": "The Last of Us",
-        "imageUrl": "https://media.rawg.io/media/games/a5a/a5a7fb8d9cb8063a8b42ee002b410db6.jpg"
+        "imageUrl": "https://i.redd.it/9z8qm2kym1q61.jpg"
       },
       {
         "name": "Arthur Morgan",
         "category": "Red Dead Redemption",
-        "imageUrl": "https://media.rawg.io/media/games/511/5118aff5091cb3efec399c808f8c598f.jpg"
+        "imageUrl": "https://static.wikia.nocookie.net/villains/images/f/f1/Arthur_morgan_official_art.jpg/revision/latest?cb=20220315010443"
       },
       {
         "name": "Mega Man",
@@ -737,7 +737,7 @@
       {
         "name": "Toad",
         "category": "Mario",
-        "imageUrl": "https://media.rawg.io/media/games/56f/56f074a9deb83de61434c5498ab86b27.jpeg"
+        "imageUrl": "https://static.wikia.nocookie.net/characterprofile/images/2/2d/Toad_Mario_Party_10.png/revision/latest?cb=20210904032011"
       },
       {
         "name": "Luigi",
@@ -752,7 +752,7 @@
       {
         "name": "Creeper",
         "category": "Minecraft",
-        "imageUrl": "https://minecraft.wiki/images/Creeper_JE3_BE1.png"
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Minecraft_Creeper_%28Crop%29.png"
       },
       {
         "name": "Samus Aran",
@@ -818,6 +818,126 @@
         "name": "Little Mac",
         "category": "Punch-Out!!",
         "imageUrl": "https://www.smashbros.com/assets_v2/img/fighter/little_mac/main.png"
+      },
+      {
+        "name": "Ryu",
+        "category": "Street Fighter",
+        "imageUrl": "https://www.smashbros.com/assets_v2/img/fighter/ryu/main.png"
+      },
+      {
+        "name": "Chun-Li",
+        "category": "Street Fighter",
+        "imageUrl": "https://static.wikia.nocookie.net/streetfighter/images/5/5b/Chun-Li_SF6_Render.png/revision/latest/scale-to-width-down/400?cb=20220603005535"
+      },
+      {
+        "name": "Sephiroth",
+        "category": "Final Fantasy",
+        "imageUrl": "https://www.smashbros.com/assets_v2/img/fighter/sephiroth/main.png"
+      },
+      {
+        "name": "Tifa Lockhart",
+        "category": "Final Fantasy",
+        "imageUrl": "https://static.wikia.nocookie.net/finalfantasy/images/2/21/Tifa_Lockhart_from_FFVII_Rebirth_promo_render.png/revision/latest/scale-to-width-down/400?cb=20240304073043"
+      },
+      {
+        "name": "Sans",
+        "category": "Undertale",
+        "imageUrl": "https://static.wikia.nocookie.net/the-ultimate-good/images/8/8b/Sans_.webp/revision/latest?cb=20251018150835"
+      },
+      {
+        "name": "Toriel",
+        "category": "Undertale",
+        "imageUrl": "https://static.wikia.nocookie.net/undertale/images/f/f3/Toriel_battle.png/revision/latest/scale-to-width/360?cb=20250731154745"
+      },
+      {
+        "name": "Mewtwo",
+        "category": "Pokémon",
+        "imageUrl": "https://www.smashbros.com/assets_v2/img/fighter/mewtwo/main.png"
+      },
+      {
+        "name": "King K. Rool",
+        "category": "Donkey Kong",
+        "imageUrl": "https://www.smashbros.com/assets_v2/img/fighter/king_k_rool/main.png"
+      },
+      {
+        "name": "Nathan Drake",
+        "category": "Uncharted",
+        "imageUrl": "https://e.snmc.io/lk/f/x/f8b077179f573a242cc9c7347a3af3cb/5295755"
+      },
+      {
+        "name": "Geralt of Rivia",
+        "category": "The Witcher",
+        "imageUrl": "https://static.wikia.nocookie.net/characterprofile/images/8/8d/Geralt_stuff.png/revision/latest?cb=20170105222826"
+      },
+      {
+        "name": "CJ",
+        "category": "GTA San Andreas",
+        "imageUrl": "https://static.wikia.nocookie.net/gtawiki/images/f/f0/CarlJohnson-GTASA.png/revision/latest/scale-to-width-down/400?cb=20070411170134"
+      },
+      {
+        "name": "Spyro",
+        "category": "Spyro the Dragon",
+        "imageUrl": "https://static.wikia.nocookie.net/spyro/images/1/1c/Spyro_Reignited.png/revision/latest/scale-to-width-down/400?cb=20230310235810"
+      },
+      {
+        "name": "Tracer",
+        "category": "Overwatch",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/af/Overwatch_2_-_Tracer.jpg"
+      },
+      {
+        "name": "Doom Slayer",
+        "category": "DOOM",
+        "imageUrl": "https://static.wikia.nocookie.net/doom/images/f/fc/Doom_Slayer.png/revision/latest/scale-to-width-down/400?cb=20210205185112"
+      },
+      {
+        "name": "Isabelle",
+        "category": "Animal Crossing",
+        "imageUrl": "https://www.smashbros.com/assets_v2/img/fighter/isabelle/main.png"
+      },
+      {
+        "name": "Villager",
+        "category": "Animal Crossing",
+        "imageUrl": "https://www.smashbros.com/assets_v2/img/fighter/villager/main.png"
+      },
+      {
+        "name": "Diddy Kong",
+        "category": "Donkey Kong",
+        "imageUrl": "https://www.smashbros.com/assets_v2/img/fighter/diddy_kong/main.png"
+      },
+      {
+        "name": "Rayman",
+        "category": "Rayman",
+        "imageUrl": "https://static.wikia.nocookie.net/brawlhalla_gamepedia/images/c/ca/Official_Artwork_Rayman.png/revision/latest/scale-to-width-down/400?cb=20220805202343"
+      },
+      {
+        "name": "Leon Kennedy",
+        "category": "Resident Evil",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Resident_Evil_4_Remake_-_Leon_S._Kennedy.jpg/330px-Resident_Evil_4_Remake_-_Leon_S._Kennedy.jpg"
+      },
+      {
+        "name": "Agent 47",
+        "category": "Hitman",
+        "imageUrl": "https://static.wikia.nocookie.net/hitman/images/9/92/Agent_47.png/revision/latest/scale-to-width-down/400?cb=20121218105737"
+      },
+      {
+        "name": "Ellie",
+        "category": "The Last of Us",
+        "imageUrl": "https://static.wikia.nocookie.net/thelastofus/images/e/ef/Ellie.png/revision/latest/scale-to-width-down/400?cb=20140419225911"
+      },
+      {
+        "name": "Gordon Freeman",
+        "category": "Half-Life",
+        "imageUrl": "https://static.wikia.nocookie.net/half-life/images/2/20/Gordon_Freeman.png/revision/latest/scale-to-width-down/400?cb=20120416081803&path-prefix=en"
+      },
+      {
+        "name": "GLaDOS",
+        "category": "Portal",
+        "imageUrl": "https://i1.theportalwiki.net/img/0/09/GLaDOSConcept.png"
+      },
+      {
+        "name": "Waluigi",
+        "category": "Mario",
+        "imageUrl": "https://mario.wiki.gallery/images/2/27/SuperMarioParty_Waluigi.png"
       }
     ]
   },
@@ -1330,7 +1450,7 @@
       {
         "name": "Toph",
         "category": "Avatar: The Last Airbender",
-        "imageUrl": "https://static.wikia.nocookie.net/avatar/images/4/46/Toph_Beifong.png/revision/latest/scale-to-width-down/350"
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/4/46/Toph_Beifong.png"
       },
       {
         "name": "Blossom",
@@ -1375,7 +1495,7 @@
       {
         "name": "Katara",
         "category": "Avatar: The Last Airbender",
-        "imageUrl": "https://static.wikia.nocookie.net/avatar/images/7/7a/Katara_smiles_at_coronation.png/revision/latest/scale-to-width-down/350"
+        "imageUrl": "https://static.wikia.nocookie.net/characters-of-fiction/images/f/fb/Katara.png/revision/latest?cb=20240423205952"
       },
       {
         "name": "Phineas Flynn",
@@ -1385,7 +1505,67 @@
       {
         "name": "Danny Phantom",
         "category": "Danny Phantom",
-        "imageUrl": "https://static.wikia.nocookie.net/dpwikia/images/1/1f/Render-_Danny_Fenton_1.png/revision/latest/scale-to-width-down/350"
+        "imageUrl": "https://static.wikia.nocookie.net/characterprofile/images/c/cc/Danny_phantom.png/revision/latest?cb=20260109230218"
+      },
+      {
+        "name": "Zuko",
+        "category": "Avatar: The Last Airbender",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/3/3e/Prince_Zuko.jpg"
+      },
+      {
+        "name": "Sokka",
+        "category": "Avatar: The Last Airbender",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/c/cc/Sokka.png"
+      },
+      {
+        "name": "Iroh",
+        "category": "Avatar: The Last Airbender",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/b/bb/General_Iroh.jpg"
+      },
+      {
+        "name": "Azula",
+        "category": "Avatar: The Last Airbender",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/1/12/Azula.png"
+      },
+      {
+        "name": "Korra",
+        "category": "The Legend of Korra",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/d/db/Korra_The_Legend_of_Korra.jpg"
+      },
+      {
+        "name": "Squidward",
+        "category": "SpongeBob",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Squidward_Tentacles.svg/500px-Squidward_Tentacles.svg.png"
+      },
+      {
+        "name": "Garfield",
+        "category": "Garfield",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/thumb/b/bc/Garfield_the_Cat.svg/500px-Garfield_the_Cat.svg.png"
+      },
+      {
+        "name": "Samurai Jack",
+        "category": "Samurai Jack",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/7/7f/The_Samurai.jpg"
+      },
+      {
+        "name": "Roger Rabbit",
+        "category": "Who Framed Roger Rabbit",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/3/38/Roger-Rabbit.png"
+      },
+      {
+        "name": "Eric Cartman",
+        "category": "South Park",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/7/77/EricCartman.png"
+      },
+      {
+        "name": "Jessica Rabbit",
+        "category": "Who Framed Roger Rabbit",
+        "imageUrl": "https://static.wikia.nocookie.net/doblaje/images/8/8d/Jessica_Rabbit.png/revision/latest?cb=20241223154111&path-prefix=es"
+      },
+      {
+        "name": "Marge Simpson",
+        "category": "The Simpsons",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/0/0b/Marge_Simpson.png"
       }
     ]
   },
@@ -1578,6 +1758,181 @@
         "name": "Hercules",
         "category": "Hercules",
         "imageUrl": "https://static.wikia.nocookie.net/disney/images/7/70/Profile_-_Hercules.jpeg"
+      },
+      {
+        "name": "Sulley",
+        "category": "Monsters Inc.",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/3/3c/Profile_-_Sulley.jpg"
+      },
+      {
+        "name": "Hades",
+        "category": "Hercules",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/2/2c/Profile_-_Hades.jpeg"
+      },
+      {
+        "name": "Genie",
+        "category": "Aladdin",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/9/92/Profile_-_Genie.jpeg"
+      },
+      {
+        "name": "Tarzan",
+        "category": "Tarzan",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/2/2e/Profile_-_Tarzan.png"
+      },
+      {
+        "name": "Remy",
+        "category": "Ratatouille",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/0/0d/Profile_-_Remy.jpg"
+      },
+      {
+        "name": "Lightning McQueen",
+        "category": "Cars",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/8/82/Lightning_McQueen.png"
+      },
+      {
+        "name": "Ursula",
+        "category": "The Little Mermaid",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/e/e3/Ursula%28TheLittleMermaid%29character.png"
+      },
+      {
+        "name": "Captain Hook",
+        "category": "Peter Pan",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/5/58/Captain_James_Hook_%28Disney_animated_character%29.png"
+      },
+      {
+        "name": "Wall-E",
+        "category": "Wall-E",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/6/68/WALL-E_%28character%29.png"
+      },
+      {
+        "name": "Jack Skellington",
+        "category": "The Nightmare Before Christmas",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/e/ee/Jack_Skellington.png"
+      },
+      {
+        "name": "Dory",
+        "category": "Finding Nemo",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/a/ae/Dory_%28Finding_Nemo%29.png"
+      },
+      {
+        "name": "Gaston",
+        "category": "Beauty and the Beast",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/a/a7/Gaston%28BeautyandtheBeast%29.png"
+      },
+      {
+        "name": "Mr. Incredible",
+        "category": "The Incredibles",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/2/22/Mr._Incredible.png"
+      },
+      {
+        "name": "Pumbaa",
+        "category": "The Lion King",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/9/91/Pumbaa.png"
+      },
+      {
+        "name": "Timon",
+        "category": "The Lion King",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/0/01/Timon_%28The_Lion_King%29.png"
+      },
+      {
+        "name": "Elastigirl",
+        "category": "The Incredibles",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/e/ef/Helen_Parr.png"
+      },
+      {
+        "name": "Robin Hood",
+        "category": "Robin Hood",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/4/42/Robin_Hood_Disney.jpg"
+      },
+      {
+        "name": "Flynn Rider",
+        "category": "Tangled",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/8/84/Profile_-_Flynn_Rider.jpeg"
+      },
+      {
+        "name": "Abu",
+        "category": "Aladdin",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/3/3f/Profile_-_Abu.png"
+      },
+      {
+        "name": "Rafiki",
+        "category": "The Lion King",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/3/32/Profile_-_Rafiki.jpeg"
+      },
+      {
+        "name": "Esmeralda",
+        "category": "The Hunchback of Notre Dame",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/e/e4/Profile_-_Esmeralda.png"
+      },
+      {
+        "name": "Kronk",
+        "category": "The Emperor's New Groove",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/6/64/Kronk_.jpg"
+      },
+      {
+        "name": "Yzma",
+        "category": "The Emperor's New Groove",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/f/f2/Profile_-_Yzma.jpeg"
+      },
+      {
+        "name": "Quasimodo",
+        "category": "The Hunchback of Notre Dame",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/7/7f/Quasimodo.jpeg"
+      },
+      {
+        "name": "Winnie the Pooh",
+        "category": "Winnie the Pooh",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/0/03/Profile_-_Winnie_the_Pooh.png"
+      },
+      {
+        "name": "Tigger",
+        "category": "Winnie the Pooh",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/6/60/Profile_-_Tigger.png"
+      },
+      {
+        "name": "Alice",
+        "category": "Alice in Wonderland",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/7/75/Profile_-_Alice.jpeg"
+      },
+      {
+        "name": "Cheshire Cat",
+        "category": "Alice in Wonderland",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/8/8e/DisneyCheshireCat.jpg"
+      },
+      {
+        "name": "Nala",
+        "category": "The Lion King",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/5/55/Profile_-_Nala.jpeg"
+      },
+      {
+        "name": "Mushu",
+        "category": "Mulan",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/1/17/Profile_-_Mushu.jpeg"
+      },
+      {
+        "name": "Megara",
+        "category": "Hercules",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/9/91/Profile_-_Megara.jpeg"
+      },
+      {
+        "name": "Daisy Duck",
+        "category": "Mickey & Friends",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/c/c9/Classic_Daisy_Duck.png"
+      },
+      {
+        "name": "Scrooge McDuck",
+        "category": "DuckTales",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/5/54/Scrooge_McDuck.png"
+      },
+      {
+        "name": "Kuzco",
+        "category": "The Emperor's New Groove",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/f/ff/Profile_-_Kuzco.jpeg"
+      },
+      {
+        "name": "Fairy Godmother",
+        "category": "Cinderella",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/d/d9/Profile_-_Fairy_Godmother.jpeg"
       }
     ]
   },
@@ -1765,6 +2120,126 @@
         "name": "Izuku Midoriya",
         "category": "My Hero Academia",
         "imageUrl": "https://cdn.myanimelist.net/images/characters/7/299404.jpg"
+      },
+      {
+        "name": "Inuyasha",
+        "category": "InuYasha",
+        "imageUrl": "https://ami.animecharactersdatabase.com/uploads/chars/thumbs/200/5688-649599187.jpg"
+      },
+      {
+        "name": "Ken Kaneki",
+        "category": "Tokyo Ghoul",
+        "imageUrl": "https://ami.animecharactersdatabase.com/uploads/chars/thumbs/200/11498-1583262927.jpg"
+      },
+      {
+        "name": "Nezuko Kamado",
+        "category": "Demon Slayer",
+        "imageUrl": "https://ami.animecharactersdatabase.com/uploads/chars/thumbs/200/18137-1881410424.jpg"
+      },
+      {
+        "name": "Rei Ayanami",
+        "category": "Neon Genesis Evangelion",
+        "imageUrl": "https://ami.animecharactersdatabase.com/uploads/chars/thumbs/200/35236-1321031783.jpg"
+      },
+      {
+        "name": "Asuka Langley",
+        "category": "Neon Genesis Evangelion",
+        "imageUrl": "https://ami.animecharactersdatabase.com/uploads/chars/thumbs/200/35236-284573137.jpg"
+      },
+      {
+        "name": "Jolyne Cujoh",
+        "category": "JoJo's Bizarre Adventure",
+        "imageUrl": "https://ami.animecharactersdatabase.com/uploads/chars/thumbs/200/67712-153535400.jpg"
+      },
+      {
+        "name": "Josuke Higashikata",
+        "category": "JoJo's Bizarre Adventure",
+        "imageUrl": "https://ami.animecharactersdatabase.com/uploads/chars/thumbs/200/36226-309043982.jpg"
+      },
+      {
+        "name": "Sukuna",
+        "category": "Jujutsu Kaisen",
+        "imageUrl": "https://ami.animecharactersdatabase.com/uploads/chars/thumbs/200/67712-1559561098.jpg"
+      },
+      {
+        "name": "Shoyo Hinata",
+        "category": "Haikyu!!",
+        "imageUrl": "https://ami.animecharactersdatabase.com/uploads/chars/thumbs/200/5688-1928457475.jpg"
+      },
+      {
+        "name": "Piccolo",
+        "category": "Dragon Ball Z",
+        "imageUrl": "https://ami.animecharactersdatabase.com/uploads/chars/thumbs/200/5688-2141386161.jpg"
+      },
+      {
+        "name": "Sakura Haruno",
+        "category": "Naruto",
+        "imageUrl": "https://ami.animecharactersdatabase.com/uploads/chars/thumbs/200/5688-683662362.jpg"
+      },
+      {
+        "name": "Hinata Hyuga",
+        "category": "Naruto",
+        "imageUrl": "https://ami.animecharactersdatabase.com/uploads/chars/thumbs/200/67712-1796394432.jpg"
+      },
+      {
+        "name": "Ryuko Matoi",
+        "category": "Kill la Kill",
+        "imageUrl": "https://ami.animecharactersdatabase.com/uploads/chars/thumbs/200/5688-865617452.jpg"
+      },
+      {
+        "name": "Shinji Ikari",
+        "category": "Neon Genesis Evangelion",
+        "imageUrl": "https://ami.animecharactersdatabase.com/uploads/chars/thumbs/200/35236-197832620.jpg"
+      },
+      {
+        "name": "Ryuk",
+        "category": "Death Note",
+        "imageUrl": "https://ami.animecharactersdatabase.com/./images/DeathNote/Ryuk_thumb.jpg"
+      },
+      {
+        "name": "Denji",
+        "category": "Chainsaw Man",
+        "imageUrl": "https://ami.animecharactersdatabase.com/uploads/chars/thumbs/200/67712-1061259065.jpg"
+      },
+      {
+        "name": "Senku Ishigami",
+        "category": "Dr. Stone",
+        "imageUrl": "https://ami.animecharactersdatabase.com/uploads/chars/thumbs/200/42711-1681130815.jpg"
+      },
+      {
+        "name": "Shigeo Kageyama",
+        "category": "Mob Psycho 100",
+        "imageUrl": "https://ami.animecharactersdatabase.com/uploads/chars/thumbs/200/67712-1144943847.jpg"
+      },
+      {
+        "name": "Zenitsu Agatsuma",
+        "category": "Demon Slayer",
+        "imageUrl": "https://ami.animecharactersdatabase.com/uploads/chars/thumbs/200/18137-75028067.jpg"
+      },
+      {
+        "name": "Yor Forger",
+        "category": "Spy x Family",
+        "imageUrl": "https://ami.animecharactersdatabase.com/uploads/chars/thumbs/200/69407-2136545659.jpg"
+      },
+      {
+        "name": "Inosuke Hashibira",
+        "category": "Demon Slayer",
+        "imageUrl": "https://ami.animecharactersdatabase.com/uploads/chars/thumbs/200/67262-1413900794.jpg"
+      },
+      {
+        "name": "Loid Forger",
+        "category": "Spy x Family",
+        "imageUrl": "https://ami.animecharactersdatabase.com/uploads/chars/thumbs/200/69407-2090575014.jpg"
+      },
+      {
+        "name": "Violet Evergarden",
+        "category": "Violet Evergarden",
+        "imageUrl": "https://ami.animecharactersdatabase.com/uploads/chars/thumbs/200/39134-1814677834.jpg"
+      },
+      {
+        "name": "Tobio Kageyama",
+        "category": "Haikyu!!",
+        "imageUrl": "https://ami.animecharactersdatabase.com/uploads/chars/thumbs/200/5688-1128497492.jpg"
       }
     ]
   },

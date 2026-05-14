@@ -652,7 +652,7 @@ export function registerSocketHandlers(io: IOServer, socket: IOSocket): void {
               io.to(rid).emit('whatami:player-guessed', { playerId, placement, score });
               broadcastWhatAmIState(io, rid, settings);
               checkAllGuessedAndFinish(io, rid, settings);
-            });
+            }, createOnTick(io, settings), createOnTurnAdvance(io, settings));
           }
         }
       });

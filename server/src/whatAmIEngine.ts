@@ -542,6 +542,8 @@ export function scheduleWhatAmIBotGuesses(
   roomId: string,
   bots: { id: string }[],
   onBotGuessed: (roomId: string, playerId: string, placement: number, score: number) => void,
+  onTick?: (roomId: string) => void,
+  onTurnAdvance?: (roomId: string) => void,
 ): void {
   for (const bot of bots) {
     const delay = 3000 + Math.random() * 10_000; // 3–13 s
@@ -550,6 +552,16 @@ export function scheduleWhatAmIBotGuesses(
       if (!inst || inst.finished) return;
       const tracker = inst.trackers.get(bot.id);
       if (!tracker || tracker.guessedCorrectly) return;
+
+      // In turns mode, bot can only guess on its own turn
+      if (inst.gameMode === 'turns') {
+        const currentTurnId = inst.turnOrder[inst.currentTurnIndex];
+        if (bot.id !== currentTurnId) {
+          // Not this bot's turn — reschedule
+          scheduleWhatAmIBotGuesses(roomId, [bot], onBotGuessed, onTick, onTurnAdvance);
+          return;
+        }
+      }
 
       // Auto-guess correctly
       inst.placementCounter++;
@@ -561,6 +573,11 @@ export function scheduleWhatAmIBotGuesses(
       tracker.finishTimeMs = Date.now();
 
       onBotGuessed(roomId, bot.id, placement, score);
+
+      // In turns mode, advance to the next player
+      if (inst.gameMode === 'turns') {
+        advanceTurn(inst, onTick ?? (() => {}), onTurnAdvance);
+      }
     }, delay);
   }
 }

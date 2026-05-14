@@ -175,12 +175,22 @@ export default function WhatAmIGame({
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-orange-50 to-gray-50 px-2 sm:px-4 py-4 sm:py-6">
       {/* Header */}
       <div className="max-w-6xl w-full">
-        <div className="flex items-center justify-between mb-3 sm:mb-4">
+        <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
           <div className="min-w-0 flex-1">
             <h1 className="font-display font-black text-xl sm:text-2xl md:text-3xl text-orange-800">
               🎭 Wie Ben Ik?
             </h1>
           </div>
+
+          {/* Host: stop game button */}
+          {currentPlayerIsHost && !isFinished && (
+            <button
+              onClick={() => socket?.emit("whatami:force-end")}
+              className="text-xs font-display font-bold text-gray-400 hover:text-red-500 transition-colors px-3 py-1.5 rounded-lg hover:bg-red-50 shrink-0"
+            >
+              ⏹ Spel stoppen
+            </button>
+          )}
 
           {/* Timer */}
           {timeLeft !== null && (
@@ -258,105 +268,6 @@ export default function WhatAmIGame({
               </span>
             )}
           </motion.div>
-        )}
-
-        {/* Characters grid */}
-        <div
-          className={`grid gap-2 sm:gap-3 mb-4 sm:mb-6 ${
-            sortedPlayers.length === 1
-              ? "grid-cols-1 max-w-[200px] mx-auto"
-              : sortedPlayers.length === 2
-                ? "grid-cols-2 max-w-md mx-auto"
-                : sortedPlayers.length === 3
-                  ? "grid-cols-2 sm:grid-cols-3 max-w-2xl mx-auto"
-                  : sortedPlayers.length <= 4
-                    ? "grid-cols-2 sm:grid-cols-4 max-w-3xl mx-auto"
-                    : sortedPlayers.length === 5
-                      ? "grid-cols-2 sm:grid-cols-3 md:grid-cols-5"
-                      : sortedPlayers.length === 6
-                        ? "grid-cols-2 sm:grid-cols-3 md:grid-cols-6"
-                        : sortedPlayers.length <= 8
-                          ? "grid-cols-2 sm:grid-cols-3 md:grid-cols-4"
-                          : "grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
-          }`}
-        >
-          {sortedPlayers.map((ps) => {
-            const player = players.find((p) => p.id === ps.playerId);
-            const isOwn = !isModeratorHost && ps.playerId === currentPlayerId;
-            return (
-              <CharacterCard
-                key={ps.playerId}
-                playerState={ps}
-                player={player}
-                isOwn={isOwn}
-                onReroll={handleReroll}
-                canReroll={!isFinished}
-              />
-            );
-          })}
-        </div>
-
-        {/* Notepad — personal notes for tracking question answers */}
-        {!isModeratorHost && !myState?.guessedCorrectly && !isFinished && (
-          <div className="mb-4">
-            <button
-              onClick={() => setNotesOpen((p) => !p)}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-50 border border-amber-200 hover:bg-amber-100 text-amber-700 font-display font-bold text-xs sm:text-sm transition-all"
-            >
-              📝 Notities
-              {notes.trim() && (
-                <span className="w-2 h-2 rounded-full bg-amber-400" />
-              )}
-              <span className="text-[10px] ml-0.5">
-                {notesOpen ? "▲" : "▼"}
-              </span>
-            </button>
-            <AnimatePresence>
-              {notesOpen && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                  className="overflow-hidden"
-                >
-                  <div className="mt-2 bg-amber-50/60 border border-amber-200 rounded-2xl p-3">
-                    <textarea
-                      ref={textareaRef}
-                      value={notes}
-                      onChange={(e) => setNotes(e.target.value)}
-                      placeholder="Schrijf hier je notities..."
-                      rows={3}
-                      style={
-                        notesHeightRef.current
-                          ? { height: notesHeightRef.current }
-                          : undefined
-                      }
-                      onMouseUp={() => {
-                        if (textareaRef.current)
-                          notesHeightRef.current =
-                            textareaRef.current.offsetHeight;
-                      }}
-                      onTouchEnd={() => {
-                        if (textareaRef.current)
-                          notesHeightRef.current =
-                            textareaRef.current.offsetHeight;
-                      }}
-                      className="w-full px-3 py-2 rounded-xl border border-amber-200 bg-white focus:border-amber-400 focus:ring-2 focus:ring-amber-100 outline-none transition-all font-display text-sm resize-y min-h-[60px] max-h-[200px]"
-                    />
-                    {notes.trim() && (
-                      <button
-                        onClick={() => setNotes("")}
-                        className="mt-1.5 text-xs font-display font-bold text-amber-500 hover:text-amber-700 transition-colors"
-                      >
-                        🗑️ Wis notities
-                      </button>
-                    )}
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
         )}
 
         {/* Guess input (for non-moderator players who haven't guessed yet) */}
@@ -453,6 +364,69 @@ export default function WhatAmIGame({
             </div>
           )}
 
+        {/* Notepad — personal notes for tracking question answers */}
+        {!isModeratorHost && !myState?.guessedCorrectly && !isFinished && (
+          <div className="mb-4">
+            <button
+              onClick={() => setNotesOpen((p) => !p)}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-50 border border-amber-200 hover:bg-amber-100 text-amber-700 font-display font-bold text-xs sm:text-sm transition-all"
+            >
+              📝 Notities
+              {notes.trim() && (
+                <span className="w-2 h-2 rounded-full bg-amber-400" />
+              )}
+              <span className="text-[10px] ml-0.5">
+                {notesOpen ? "▲" : "▼"}
+              </span>
+            </button>
+            <AnimatePresence>
+              {notesOpen && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="overflow-hidden"
+                >
+                  <div className="mt-2 bg-amber-50/60 border border-amber-200 rounded-2xl p-3">
+                    <textarea
+                      ref={textareaRef}
+                      value={notes}
+                      onChange={(e) => setNotes(e.target.value)}
+                      placeholder="Schrijf hier je notities..."
+                      rows={3}
+                      style={
+                        notesHeightRef.current
+                          ? { height: notesHeightRef.current }
+                          : undefined
+                      }
+                      onMouseUp={() => {
+                        if (textareaRef.current)
+                          notesHeightRef.current =
+                            textareaRef.current.offsetHeight;
+                      }}
+                      onTouchEnd={() => {
+                        if (textareaRef.current)
+                          notesHeightRef.current =
+                            textareaRef.current.offsetHeight;
+                      }}
+                      className="w-full px-3 py-2 rounded-xl border border-amber-200 bg-white focus:border-amber-400 focus:ring-2 focus:ring-amber-100 outline-none transition-all font-display text-sm resize-y min-h-[60px] max-h-[200px]"
+                    />
+                    {notes.trim() && (
+                      <button
+                        onClick={() => setNotes("")}
+                        className="mt-1.5 text-xs font-display font-bold text-amber-500 hover:text-amber-700 transition-colors"
+                      >
+                        🗑️ Wis notities
+                      </button>
+                    )}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        )}
+
         {/* Already guessed banner */}
         {!isModeratorHost && myState?.guessedCorrectly && !isFinished && (
           <motion.div
@@ -471,17 +445,41 @@ export default function WhatAmIGame({
           </motion.div>
         )}
 
-        {/* Host: force-end button */}
-        {currentPlayerIsHost && !isFinished && (
-          <div className="flex justify-end mb-2">
-            <button
-              onClick={() => socket?.emit("whatami:force-end")}
-              className="text-xs font-display font-bold text-gray-400 hover:text-red-500 transition-colors px-3 py-1.5 rounded-lg hover:bg-red-50"
-            >
-              ⏹ Spel stoppen
-            </button>
-          </div>
-        )}
+        {/* Characters grid */}
+        <div
+          className={`grid gap-2 sm:gap-3 mb-4 sm:mb-6 ${
+            sortedPlayers.length === 1
+              ? "grid-cols-1 max-w-[200px] mx-auto"
+              : sortedPlayers.length === 2
+                ? "grid-cols-2 max-w-md mx-auto"
+                : sortedPlayers.length === 3
+                  ? "grid-cols-2 sm:grid-cols-3 max-w-2xl mx-auto"
+                  : sortedPlayers.length <= 4
+                    ? "grid-cols-2 sm:grid-cols-4 max-w-3xl mx-auto"
+                    : sortedPlayers.length === 5
+                      ? "grid-cols-2 sm:grid-cols-3 md:grid-cols-5"
+                      : sortedPlayers.length === 6
+                        ? "grid-cols-2 sm:grid-cols-3 md:grid-cols-6"
+                        : sortedPlayers.length <= 8
+                          ? "grid-cols-2 sm:grid-cols-3 md:grid-cols-4"
+                          : "grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
+          }`}
+        >
+          {sortedPlayers.map((ps) => {
+            const player = players.find((p) => p.id === ps.playerId);
+            const isOwn = !isModeratorHost && ps.playerId === currentPlayerId;
+            return (
+              <CharacterCard
+                key={ps.playerId}
+                playerState={ps}
+                player={player}
+                isOwn={isOwn}
+                onReroll={handleReroll}
+                canReroll={!isFinished}
+              />
+            );
+          })}
+        </div>
 
         {/* Moderator host banner + hint */}
         {isModeratorHost && !isFinished && <ModeratorPanel />}
