@@ -4,6 +4,7 @@ import { Howl } from "howler";
 import type { MuziekClientState, MuziekPlayerScore } from "shared/types";
 import { PREMADE_AVATARS, HEARDLE_PHASES } from "shared/types";
 import { useSocket } from "../context/SocketContext";
+import AutocompleteInput from "./AutocompleteInput";
 
 function isEmojiAvatar(url: string): boolean {
   return PREMADE_AVATARS.includes(url) || url.length <= 2;
@@ -12,9 +13,16 @@ function isEmojiAvatar(url: string): boolean {
 interface Props {
   state: MuziekClientState;
   isSpectator?: boolean;
+  autocompletePool?: string[];
+  guessMode?: "title" | "artist" | "both";
 }
 
-export default function MuziekGame({ state, isSpectator }: Props) {
+export default function MuziekGame({
+  state,
+  isSpectator,
+  autocompletePool = [],
+  guessMode = "title",
+}: Props) {
   const socket = useSocket();
   const [input, setInput] = useState("");
   const [lastResult, setLastResult] = useState<"correct" | "wrong" | null>(
@@ -174,13 +182,6 @@ export default function MuziekGame({ state, isSpectator }: Props) {
     [socket, state.answered, selectedOption],
   );
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      handleBuzz();
-    }
-  };
-
   // Timer calculations
   const totalMs = state.totalTimeMs || 10000;
   const fraction = Math.max(0, Math.min(1, displayMs / totalMs));
@@ -321,8 +322,16 @@ export default function MuziekGame({ state, isSpectator }: Props) {
                   {audioError
                     ? "Audio kon niet geladen worden — typ je gok!"
                     : lastResult === "correct"
-                      ? "Nummer geraden!"
-                      : "Welk nummer is dit?"}
+                      ? guessMode === "artist"
+                        ? "Artiest geraden!"
+                        : guessMode === "both"
+                          ? "Nummer & artiest geraden!"
+                          : "Nummer geraden!"
+                      : guessMode === "artist"
+                        ? "Welke artiest is dit?"
+                        : guessMode === "both"
+                          ? "Welk nummer en artiest is dit?"
+                          : "Welk nummer is dit?"}
                 </p>
                 {/* Volume slider */}
                 <div className="mt-3 flex items-center justify-center gap-2 max-w-[200px] mx-auto">
@@ -406,7 +415,12 @@ export default function MuziekGame({ state, isSpectator }: Props) {
         <div className="flex-shrink-0 mt-4">
           {state.answered ? (
             <p className="text-center text-green-500 font-display font-bold text-sm">
-              ✅ Correct!
+              ✅{" "}
+              {guessMode === "artist"
+                ? "Artiest geraden!"
+                : guessMode === "both"
+                  ? "Nummer & artiest geraden!"
+                  : "Nummer geraden!"}
             </p>
           ) : state.heardleLockedOut ? (
             <p className="text-center text-orange-500 font-display font-bold text-sm">
@@ -443,22 +457,25 @@ export default function MuziekGame({ state, isSpectator }: Props) {
               })}
             </div>
           ) : (
-            /* Text input mode */
+            /* Text input mode with autocomplete */
             <div className="flex gap-2">
-              <input
-                ref={inputRef}
-                type="text"
+              <AutocompleteInput
+                pool={autocompletePool}
                 value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onKeyDown={handleKeyDown}
+                onChange={setInput}
+                onSubmit={handleBuzz}
+                onSelect={(item) => {
+                  if (!socket || state.answered) return;
+                  socket.emit("muziek:buzz", { answer: item });
+                  setInput("");
+                }}
+                disabled={state.answered}
                 placeholder="Typ je antwoord..."
-                className="flex-1 px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-purple-400 focus:outline-none font-display font-semibold text-lg"
-                maxLength={200}
-                autoComplete="off"
+                inputRef={inputRef}
               />
               <button
                 onClick={handleBuzz}
-                disabled={!input.trim()}
+                disabled={!input.trim() || state.answered}
                 className="px-6 py-3 bg-purple-600 hover:bg-purple-700 disabled:bg-gray-300 text-white font-display font-bold rounded-xl transition-colors"
               >
                 Raad!

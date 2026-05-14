@@ -23,6 +23,16 @@ function normalize(s: string): string {
 }
 
 function isAnswerCorrect(guess: string, song: SongEntry, guessMode: 'title' | 'artist' | 'both'): boolean {
+  // Handle autocomplete "Title – Artist" format in both mode
+  if (guessMode === 'both' && guess.includes(' \u2013 ')) {
+    const [titlePart, artistPart] = guess.split(' \u2013 ');
+    if (titlePart && artistPart) {
+      const titleMatch = normalize(titlePart) === normalize(song.title);
+      const artistMatch = normalize(artistPart) === normalize(song.artist);
+      if (titleMatch && artistMatch) return true;
+    }
+  }
+
   const normalizedGuess = normalize(guess);
   if (normalizedGuess.length < 2) return false;
 
@@ -256,6 +266,37 @@ function endCurrentSong(instance: MuziekInstance): void {
   instance.onSongEnd?.(instance);
 }
 
+// ─── Autocomplete pool (all titles/artists from selected categories) ───
+export function getAutocompletePool(instance: MuziekInstance): string[] {
+  const { guessMode, categoryIds } = instance.settings;
+  // Get ALL songs from selected categories (use huge count to get everything)
+  const allSongs = getSongsByCategories(categoryIds, 99999);
+  const seen = new Set<string>();
+  const pool: string[] = [];
+
+  for (const song of allSongs) {
+    let label: string;
+    if (guessMode === 'artist') {
+      label = song.artist;
+    } else if (guessMode === 'both') {
+      label = `${song.title} \u2013 ${song.artist}`;
+    } else {
+      label = song.title;
+    }
+    if (!seen.has(label)) {
+      seen.add(label);
+      pool.push(label);
+    }
+  }
+
+  // Shuffle so ordering doesn't leak info
+  for (let i = pool.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [pool[i], pool[j]] = [pool[j], pool[i]];
+  }
+  return pool;
+}
+
 // ─── Meerkeuze: generate 4 options ─────────────────────
 function generateOptions(instance: MuziekInstance, songIndex: number): string[] {
   const song = instance.songs[songIndex];
@@ -266,8 +307,9 @@ function generateOptions(instance: MuziekInstance, songIndex: number): string[] 
   let correctAnswer: string;
   if (guessMode === 'artist') {
     correctAnswer = song.artist;
+  } else if (guessMode === 'both') {
+    correctAnswer = `${song.title} – ${song.artist}`;
   } else {
-    // 'title' or 'both' → use title as the displayed option
     correctAnswer = song.title;
   }
 
@@ -275,7 +317,7 @@ function generateOptions(instance: MuziekInstance, songIndex: number): string[] 
   const sameCategorySongs = getSongsByCategoryName(song.category);
   const sameCategoryPool: string[] = [];
   for (const other of sameCategorySongs) {
-    const option = guessMode === 'artist' ? other.artist : other.title;
+    const option = guessMode === 'artist' ? other.artist : guessMode === 'both' ? `${other.title} – ${other.artist}` : other.title;
     if (option !== correctAnswer && !sameCategoryPool.includes(option)) {
       sameCategoryPool.push(option);
     }
@@ -292,7 +334,7 @@ function generateOptions(instance: MuziekInstance, songIndex: number): string[] 
   for (let i = 0; i < instance.songs.length; i++) {
     if (i === songIndex) continue;
     const other = instance.songs[i];
-    const option = guessMode === 'artist' ? other.artist : other.title;
+    const option = guessMode === 'artist' ? other.artist : guessMode === 'both' ? `${other.title} – ${other.artist}` : other.title;
     if (option !== correctAnswer && !sameCategoryPool.includes(option) && !fallbackPool.includes(option)) {
       fallbackPool.push(option);
     }

@@ -304,7 +304,12 @@ export default function Game() {
             </div>
           </motion.div>
 
-          <MuziekGame state={mState} isSpectator={isSpectator} />
+          <MuziekGame
+            state={mState}
+            isSpectator={isSpectator}
+            autocompletePool={state.muziekAutocompletePool}
+            guessMode={state.room?.muziekSettings?.guessMode}
+          />
         </div>
         <HelpModal
           instructionKey="muziek"

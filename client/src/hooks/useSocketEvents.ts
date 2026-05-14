@@ -229,6 +229,10 @@ export function useSocketEvents() {
       dispatch({ type: 'SET_MUZIEK_STATE', state });
     });
 
+    socket.on('muziek:autocomplete-pool', ({ pool }) => {
+      dispatch({ type: 'SET_MUZIEK_AUTOCOMPLETE_POOL', pool });
+    });
+
     socket.on('muziek:buzz-result', ({ correct, mediaOnly, points }) => {
       if (isSpectatorRef.current) return;
       if (mediaOnly) {
@@ -301,6 +305,7 @@ export function useSocketEvents() {
       socket.off('drawing:game-end');
       socket.off('muziek:settings-updated');
       socket.off('muziek:song');
+      socket.off('muziek:autocomplete-pool');
       socket.off('muziek:buzz-result');
       socket.off('muziek:song-won');
       socket.off('muziek:song-timeout');

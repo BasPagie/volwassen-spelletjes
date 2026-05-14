@@ -98,6 +98,7 @@ import { DEFAULT_MUZIEK_SETTINGS } from '../../shared/types.js';
 import {
   startMuziekGame,
   getMuziekInstance,
+  getAutocompletePool,
   processMuziekBuzz,
   processHeardleSkip,
   processGiveUp,
@@ -1232,6 +1233,13 @@ export function registerSocketHandlers(io: IOServer, socket: IOSocket): void {
 
         currentRoom.status = 'playing';
         broadcastMuziekSong(io, roomId);
+
+        // Send autocomplete pool for text input mode (not meerkeuze)
+        // Emitted AFTER broadcastMuziekSong so the client has mounted MuziekGame first
+        if (!settings.meerkeuze) {
+          const pool = getAutocompletePool(instance);
+          io.to(roomId).emit('muziek:autocomplete-pool', { pool });
+        }
       });
     });
 

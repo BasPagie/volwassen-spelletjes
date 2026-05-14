@@ -442,6 +442,7 @@ export interface ServerToClientEvents {
   'muziek:song-won': (data: { winnerId: string; winnerName: string; correctTitle: string; correctArtist: string; coverUrl: string | null; media: string | null; scores: MuziekPlayerScore[] }) => void;
   'muziek:song-timeout': (data: { correctTitle: string; correctArtist: string; coverUrl: string | null; media: string | null; scores: MuziekPlayerScore[] }) => void;
   'muziek:scores-updated': (data: { scores: MuziekPlayerScore[] }) => void;
+  'muziek:autocomplete-pool': (data: { pool: string[] }) => void;
   'muziek:game-end': (data: { scores: MuziekPlayerScore[] }) => void;
   // ─── Briefing ──────────────────────────────────────
   'briefing-start': (data: { briefingKey: string; roundType?: string; gameCategory: GameCategory }) => void;

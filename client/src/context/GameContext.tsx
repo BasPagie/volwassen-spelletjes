@@ -58,6 +58,7 @@ export interface GameState {
   drawingState: DrawingClientState | null;
   // Muziek
   muziekState: MuziekClientState | null;
+  muziekAutocompletePool: string[];
   // Briefing
   briefing: {
     briefingKey: string;
@@ -84,6 +85,7 @@ const initialState: GameState = {
   snelsteVingerState: null,
   drawingState: null,
   muziekState: null,
+  muziekAutocompletePool: [],
   briefing: null,
 };
 
@@ -151,6 +153,7 @@ export type GameAction =
   | { type: "UPDATE_MUZIEK_STATE"; patch: Partial<MuziekClientState> }
   | { type: "MUZIEK_GAME_END"; scores: MuziekClientState["scores"] }
   | { type: "MUZIEK_SETTINGS_UPDATED"; settings: MuziekSettings }
+  | { type: "SET_MUZIEK_AUTOCOMPLETE_POOL"; pool: string[] }
   // ─── Tekenwedstrijd ─────────────────────────────────
   | { type: "DRAWING_SETTINGS_UPDATED"; settings: DrawingSettings }
   | { type: "SET_DRAWING_STATE"; state: DrawingClientState }
@@ -457,6 +460,12 @@ function gameReducer(state: GameState, action: GameAction): GameState {
         muziekState: action.state,
         phase: "playing",
         countdown: null,
+      };
+
+    case "SET_MUZIEK_AUTOCOMPLETE_POOL":
+      return {
+        ...state,
+        muziekAutocompletePool: action.pool,
       };
 
     case "UPDATE_MUZIEK_STATE":
