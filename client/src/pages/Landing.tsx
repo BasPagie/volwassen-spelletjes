@@ -47,7 +47,7 @@ const GAME_CATEGORIES: {
   {
     id: "drawing",
     icon: "✏️",
-    title: "Tekenwedstrijd",
+    title: "Tekenwedstrijd (BETA)",
     subtitle: "Teken & raad, wie raadt het snelst?",
     color: "text-teal-500",
     bg: "bg-teal-50 border-teal-300 hover:bg-teal-100",
