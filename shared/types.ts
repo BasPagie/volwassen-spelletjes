@@ -73,6 +73,7 @@ export interface WhatAmISettings {
   turnSeconds: number;             // seconds per turn in turn-based mode
   questionsPerTurn: number;        // how many guesses per round (1, 2, or 3)
   questionsBeforeGuess: number;    // 0 = no limit, otherwise must ask this many questions before guessing
+  maxRounds: number | null;        // null = infinite, otherwise game ends after this many full rounds
 }
 
 export const DEFAULT_WHATAMI_SETTINGS: WhatAmISettings = {
@@ -84,6 +85,7 @@ export const DEFAULT_WHATAMI_SETTINGS: WhatAmISettings = {
   turnSeconds: 120,
   questionsPerTurn: 1,
   questionsBeforeGuess: 3,
+  maxRounds: null,
 };
 
 export interface WhatAmIPlayerState {
@@ -108,6 +110,7 @@ export interface WhatAmIClientGameState {
   timeRemainingMs: number | null;
   players: WhatAmIPlayerState[];
   questionsBeforeGuess: number;   // 0 = no limit
+  maxRounds: number | null;       // null = infinite
   // Turn-based fields (only set when gameMode === 'turns')
   currentTurnPlayerId?: string;   // whose turn it is
   turnTimeRemainingMs?: number | null;   // ms left in current turn

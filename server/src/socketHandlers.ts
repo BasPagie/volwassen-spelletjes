@@ -570,6 +570,7 @@ export function registerSocketHandlers(io: IOServer, socket: IOSocket): void {
       turnSeconds: settings.turnSeconds ?? 60,
       questionsPerTurn: settings.questionsPerTurn ?? 0,
       questionsBeforeGuess: settings.questionsBeforeGuess ?? 0,
+      maxRounds: settings.maxRounds ?? null,
     };
 
     updateWhatAmISettings(mapping.roomId, safeSettings);

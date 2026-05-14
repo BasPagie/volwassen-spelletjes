@@ -166,14 +166,18 @@ export default function WhatAmIGame({
 
   const [muted, setMuted] = useState(isMuted());
   const [showHelp, setShowHelp] = useState(false);
+  const [notes, setNotes] = useState("");
+  const [notesOpen, setNotesOpen] = useState(false);
+  const notesHeightRef = useRef<number | null>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-purple-50 to-gray-50 px-2 sm:px-4 py-4 sm:py-6">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-orange-50 to-gray-50 px-2 sm:px-4 py-4 sm:py-6">
       {/* Header */}
       <div className="max-w-6xl w-full">
         <div className="flex items-center justify-between mb-3 sm:mb-4">
           <div className="min-w-0 flex-1">
-            <h1 className="font-display font-black text-xl sm:text-2xl md:text-3xl text-purple-800">
+            <h1 className="font-display font-black text-xl sm:text-2xl md:text-3xl text-orange-800">
               🎭 Wie Ben Ik?
             </h1>
           </div>
@@ -237,7 +241,7 @@ export default function WhatAmIGame({
             ) : (
               <span>
                 🔄 Beurt van{" "}
-                <span className="text-purple-700 inline-flex items-center gap-1">
+                <span className="text-orange-700 inline-flex items-center gap-1">
                   {currentTurnPlayer?.avatarUrl &&
                   (currentTurnPlayer.avatarUrl.startsWith("data:") ||
                     currentTurnPlayer.avatarUrl.startsWith("http")) ? (
@@ -292,12 +296,75 @@ export default function WhatAmIGame({
           })}
         </div>
 
+        {/* Notepad — personal notes for tracking question answers */}
+        {!isModeratorHost && !myState?.guessedCorrectly && !isFinished && (
+          <div className="mb-4">
+            <button
+              onClick={() => setNotesOpen((p) => !p)}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-50 border border-amber-200 hover:bg-amber-100 text-amber-700 font-display font-bold text-xs sm:text-sm transition-all"
+            >
+              📝 Notities
+              {notes.trim() && (
+                <span className="w-2 h-2 rounded-full bg-amber-400" />
+              )}
+              <span className="text-[10px] ml-0.5">
+                {notesOpen ? "▲" : "▼"}
+              </span>
+            </button>
+            <AnimatePresence>
+              {notesOpen && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="overflow-hidden"
+                >
+                  <div className="mt-2 bg-amber-50/60 border border-amber-200 rounded-2xl p-3">
+                    <textarea
+                      ref={textareaRef}
+                      value={notes}
+                      onChange={(e) => setNotes(e.target.value)}
+                      placeholder="Schrijf hier je notities..."
+                      rows={3}
+                      style={
+                        notesHeightRef.current
+                          ? { height: notesHeightRef.current }
+                          : undefined
+                      }
+                      onMouseUp={() => {
+                        if (textareaRef.current)
+                          notesHeightRef.current =
+                            textareaRef.current.offsetHeight;
+                      }}
+                      onTouchEnd={() => {
+                        if (textareaRef.current)
+                          notesHeightRef.current =
+                            textareaRef.current.offsetHeight;
+                      }}
+                      className="w-full px-3 py-2 rounded-xl border border-amber-200 bg-white focus:border-amber-400 focus:ring-2 focus:ring-amber-100 outline-none transition-all font-display text-sm resize-y min-h-[60px] max-h-[200px]"
+                    />
+                    {notes.trim() && (
+                      <button
+                        onClick={() => setNotes("")}
+                        className="mt-1.5 text-xs font-display font-bold text-amber-500 hover:text-amber-700 transition-colors"
+                      >
+                        🗑️ Wis notities
+                      </button>
+                    )}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        )}
+
         {/* Guess input (for non-moderator players who haven't guessed yet) */}
         {!isModeratorHost &&
           !myState?.guessedCorrectly &&
           !isFinished &&
           (!isTurnBased || isMyTurn) && (
-            <div className="bg-white rounded-2xl border-2 border-purple-200 p-3 sm:p-4 mb-4">
+            <div className="bg-white rounded-2xl border-2 border-orange-200 p-3 sm:p-4 mb-4">
               {/* Question tracker */}
               {gameState.questionsBeforeGuess > 0 && (
                 <QuestionTracker
@@ -330,14 +397,14 @@ export default function WhatAmIGame({
                       }
                       disabled={cooldownLeft > 0}
                       maxLength={100}
-                      className="flex-1 min-w-0 basis-full sm:basis-0 px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl border-2 border-gray-200 focus:border-purple-400 
-                               focus:ring-2 focus:ring-purple-100 outline-none transition-all font-display text-sm sm:text-base
+                      className="flex-1 min-w-0 basis-full sm:basis-0 px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl border-2 border-gray-200 focus:border-orange-400 
+                               focus:ring-2 focus:ring-orange-100 outline-none transition-all font-display text-sm sm:text-base
                                disabled:bg-gray-100 disabled:text-gray-400"
                     />
                     <button
                       onClick={handleSubmitGuess}
                       disabled={!guess.trim() || cooldownLeft > 0}
-                      className="px-4 sm:px-5 py-2.5 sm:py-3 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-display 
+                      className="px-4 sm:px-5 py-2.5 sm:py-3 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-display 
                                font-bold transition-all disabled:opacity-40 disabled:cursor-not-allowed text-sm sm:text-base"
                     >
                       {cooldownLeft > 0 ? `⏱ ${cooldownLeft}s` : "Raden!"}
@@ -425,7 +492,7 @@ export default function WhatAmIGame({
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="bg-white rounded-2xl border-2 border-purple-200 p-6 text-center"
+              className="bg-white rounded-2xl border-2 border-orange-200 p-6 text-center"
             >
               <div className="text-5xl mb-3">🏆</div>
               <h2 className="font-display font-black text-2xl text-gray-800 mb-2">

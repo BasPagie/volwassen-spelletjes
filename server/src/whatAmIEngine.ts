@@ -37,11 +37,12 @@ interface WhatAmIGameInstance {
   turnStartTime: number | null;    // epoch ms when current turn started
   turnTimer: ReturnType<typeof setTimeout> | null;
   questionsBeforeGuess: number;    // 0 = no limit
+  maxRounds: number | null;        // null = infinite
 }
 
 const activeGames = new Map<string, WhatAmIGameInstance>();
 
-const PLACEMENT_BONUSES = [100, 75, 50, 25]; // 1st, 2nd, 3rd, 4th+
+const PLACEMENT_BONUSES = [1000, 750, 500, 350, 250, 175, 125, 100, 75, 50]; // 1st through 10th+
 
 // ─── Fuzzy matching ──────────────────────────────────
 
@@ -93,11 +94,9 @@ function levenshtein(a: string, b: string): number {
 
 // ─── Scoring ─────────────────────────────────────────
 
-function calculateScore(startTime: number, wrongGuesses: number, placement: number): number {
-  const secondsElapsed = Math.floor((Date.now() - startTime) / 1000);
-  const baseScore = Math.max(0, 500 - secondsElapsed - wrongGuesses * 75);
+function calculateScore(_startTime: number, _wrongGuesses: number, placement: number): number {
   const bonus = PLACEMENT_BONUSES[Math.min(placement - 1, PLACEMENT_BONUSES.length - 1)];
-  return baseScore + bonus;
+  return bonus;
 }
 
 // ─── Game Lifecycle ───────────────────────────────────
@@ -109,7 +108,7 @@ export function startWhatAmIGame(
   onExpire: (roomId: string) => void,
   onTurnAdvance?: (roomId: string) => void,
 ): WhatAmIGameInstance | { error: string } {
-  const { packIds, customCharacters, timeLimitSeconds, hostPlays, gameMode, turnSeconds, questionsPerTurn, questionsBeforeGuess } = settings as any;
+  const { packIds, customCharacters, timeLimitSeconds, hostPlays, gameMode, turnSeconds, questionsPerTurn, questionsBeforeGuess, maxRounds } = settings as any;
 
   // Pool characters from all selected packs + always merge custom characters
   let packName = '';
@@ -186,6 +185,7 @@ export function startWhatAmIGame(
     turnStartTime: null,
     turnTimer: null,
     questionsBeforeGuess: questionsBeforeGuess ?? 0,
+    maxRounds: maxRounds ?? null,
   };
 
   if (instance.gameMode === 'free-for-all') {
@@ -271,6 +271,16 @@ function advanceTurn(
     // Everyone has guessed — trigger game-end check via onTurnAdvance
     if (onTurnAdvance) onTurnAdvance(instance.roomId);
     return;
+  }
+
+  // Check max rounds limit: a "round" = one full cycle through all active players
+  if (instance.maxRounds !== null) {
+    const currentRound = Math.ceil(instance.turnNumber / activePlayers.length);
+    if (currentRound >= instance.maxRounds) {
+      // Max rounds reached — end the game
+      if (onTurnAdvance) onTurnAdvance(instance.roomId);
+      return;
+    }
   }
 
   // Move to next in circular order
@@ -412,6 +422,7 @@ export function buildPlayerView(instance: WhatAmIGameInstance, playerId: string)
     timeRemainingMs,
     players,
     questionsBeforeGuess: instance.questionsBeforeGuess,
+    maxRounds: instance.maxRounds,
   };
 
   if (instance.gameMode === 'turns') {
@@ -453,6 +464,7 @@ export function buildModeratorView(instance: WhatAmIGameInstance): WhatAmIClient
     timeRemainingMs,
     players,
     questionsBeforeGuess: instance.questionsBeforeGuess,
+    maxRounds: instance.maxRounds,
   };
 
   if (instance.gameMode === 'turns') {

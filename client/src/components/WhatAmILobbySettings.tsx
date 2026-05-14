@@ -418,7 +418,7 @@ export default function WhatAmILobbySettings({
               {selectedPacks.map((pack) => (
                 <span
                   key={pack.id}
-                  className="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-medium bg-purple-50 text-purple-700"
+                  className="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-medium bg-orange-50 text-orange-700"
                 >
                   {pack.name}
                 </span>
@@ -462,6 +462,16 @@ export default function WhatAmILobbySettings({
                   </span>
                   <p className="font-medium mt-0.5">
                     {current.questionsPerTurn}
+                  </p>
+                </div>
+                <div>
+                  <span className="text-xs font-medium text-gray-400 uppercase tracking-wide">
+                    Max rondes
+                  </span>
+                  <p className="font-medium mt-0.5">
+                    {current.maxRounds
+                      ? `${current.maxRounds} rondes`
+                      : "♾️ Oneindig"}
                   </p>
                 </div>
               </>
@@ -532,7 +542,7 @@ export default function WhatAmILobbySettings({
                   className={`inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg border font-display font-semibold text-xs transition-all
                     ${
                       selected
-                        ? "border-purple-400 bg-purple-50 text-purple-700 shadow-sm"
+                        ? "border-orange-400 bg-orange-50 text-orange-700 shadow-sm"
                         : "border-gray-200 bg-white text-gray-500 hover:border-gray-300 hover:bg-gray-50"
                     } ${!isHost ? "opacity-70 cursor-default" : "cursor-pointer"}`}
                 >
@@ -588,8 +598,8 @@ export default function WhatAmILobbySettings({
         {!(showCustomSection || current.customCharacters.length > 0) ? (
           <button
             onClick={() => setShowCustomSection(true)}
-            className="w-full py-3 rounded-2xl border-2 border-dashed border-purple-200 bg-purple-50/50 
-                       text-purple-600 font-display font-bold text-sm hover:border-purple-400 hover:bg-purple-100/50 transition-all"
+            className="w-full py-3 rounded-2xl border-2 border-dashed border-orange-200 bg-orange-50/50 
+                       text-orange-600 font-display font-bold text-sm hover:border-orange-400 hover:bg-orange-100/50 transition-all"
           >
             + Eigen karakters toevoegen
           </button>
@@ -599,7 +609,7 @@ export default function WhatAmILobbySettings({
               <span className="block text-xs font-bold text-gray-400 uppercase tracking-wider">
                 Extra karakters
                 {current.customCharacters.length > 0 && (
-                  <span className="ml-2 normal-case text-purple-500 font-bold">
+                  <span className="ml-2 normal-case text-orange-500 font-bold">
                     {current.customCharacters.length} toegevoegd
                   </span>
                 )}
@@ -663,7 +673,7 @@ export default function WhatAmILobbySettings({
                                 onClick={() =>
                                   setEditingId(isEditing ? null : c.id)
                                 }
-                                className="w-7 h-7 flex items-center justify-center rounded-md border border-gray-200 bg-white text-gray-500 hover:border-purple-400 hover:text-purple-600 hover:bg-purple-50 transition-all text-sm"
+                                className="w-7 h-7 flex items-center justify-center rounded-md border border-gray-200 bg-white text-gray-500 hover:border-orange-400 hover:text-orange-600 hover:bg-orange-50 transition-all text-sm"
                                 title="Bewerken"
                               >
                                 ✏️
@@ -688,7 +698,7 @@ export default function WhatAmILobbySettings({
                                 updateCharacter(c.id, { name: e.target.value })
                               }
                               placeholder="Naam"
-                              className="w-full px-2 py-1.5 rounded-lg border border-gray-200 text-sm font-display outline-none focus:border-purple-400"
+                              className="w-full px-2 py-1.5 rounded-lg border border-gray-200 text-sm font-display outline-none focus:border-orange-400"
                             />
                             <input
                               type="text"
@@ -699,7 +709,7 @@ export default function WhatAmILobbySettings({
                                 })
                               }
                               placeholder="Categorie (optioneel)"
-                              className="w-full px-2 py-1.5 rounded-lg border border-gray-200 text-xs font-display outline-none focus:border-purple-400"
+                              className="w-full px-2 py-1.5 rounded-lg border border-gray-200 text-xs font-display outline-none focus:border-orange-400"
                             />
                             <div className="flex gap-1.5">
                               <input
@@ -711,7 +721,7 @@ export default function WhatAmILobbySettings({
                                   })
                                 }
                                 placeholder="Afbeelding URL (https://...)"
-                                className={`flex-1 px-2 py-1.5 rounded-lg border text-xs font-display outline-none ${hasFailed ? "border-orange-300 bg-orange-50 focus:border-orange-400" : "border-gray-200 focus:border-purple-400"}`}
+                                className={`flex-1 px-2 py-1.5 rounded-lg border text-xs font-display outline-none ${hasFailed ? "border-orange-300 bg-orange-50 focus:border-orange-400" : "border-gray-200 focus:border-orange-400"}`}
                               />
                             </div>
                             {hasFailed && (
@@ -747,7 +757,7 @@ export default function WhatAmILobbySettings({
                       </button>
                       <button
                         onClick={handleSaveCurrent}
-                        className="px-3 py-1.5 rounded-lg border border-purple-200 bg-purple-50 text-purple-600 font-display font-bold text-xs hover:bg-purple-100 transition-all"
+                        className="px-3 py-1.5 rounded-lg border border-orange-200 bg-orange-50 text-orange-600 font-display font-bold text-xs hover:bg-orange-100 transition-all"
                       >
                         💾 Opslaan
                       </button>
@@ -833,7 +843,7 @@ export default function WhatAmILobbySettings({
               )}
 
               {isHost && (
-                <div className="space-y-2 p-3 rounded-xl bg-purple-50 border border-purple-200">
+                <div className="space-y-2 p-3 rounded-xl bg-orange-50 border border-orange-200">
                   <div className="relative">
                     <input
                       type="text"
@@ -843,10 +853,10 @@ export default function WhatAmILobbySettings({
                       onKeyDown={(e) => e.key === "Enter" && addCharacter()}
                       placeholder="Naam karakter (bijv. Napoleon)*"
                       maxLength={80}
-                      className="w-full px-3 py-2 rounded-lg border border-gray-200 text-sm font-display outline-none focus:border-purple-400"
+                      className="w-full px-3 py-2 rounded-lg border border-gray-200 text-sm font-display outline-none focus:border-orange-400"
                     />
                     {searching && (
-                      <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-purple-500 font-display">
+                      <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-orange-500 font-display">
                         Zoeken...
                       </span>
                     )}
@@ -888,7 +898,7 @@ export default function WhatAmILobbySettings({
                       onChange={(e) => setNewCharCategory(e.target.value)}
                       placeholder="Categorie (bijv. Historisch) — optioneel"
                       maxLength={50}
-                      className="w-full px-3 py-2 rounded-lg border border-gray-200 text-sm font-display outline-none focus:border-purple-400"
+                      className="w-full px-3 py-2 rounded-lg border border-gray-200 text-sm font-display outline-none focus:border-orange-400"
                     />
                   )}
 
@@ -907,7 +917,7 @@ export default function WhatAmILobbySettings({
                   <button
                     onClick={addCharacter}
                     disabled={!newCharName.trim() || searching}
-                    className="w-full py-2 rounded-lg bg-purple-600 hover:bg-purple-700 text-white font-display font-bold text-sm 
+                    className="w-full py-2 rounded-lg bg-orange-600 hover:bg-orange-700 text-white font-display font-bold text-sm 
                          transition-all disabled:opacity-40 disabled:cursor-not-allowed"
                   >
                     {searching
@@ -934,7 +944,7 @@ export default function WhatAmILobbySettings({
               className={`flex-1 py-2 px-3 rounded-xl text-sm font-medium transition-all
                 ${
                   current.gameMode === "free-for-all"
-                    ? "bg-purple-500 text-white shadow-md"
+                    ? "bg-orange-500 text-white shadow-md"
                     : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                 } ${!isHost ? "opacity-70 cursor-default" : ""}`}
             >
@@ -946,7 +956,7 @@ export default function WhatAmILobbySettings({
               className={`flex-1 py-2 px-3 rounded-xl text-sm font-medium transition-all
                 ${
                   current.gameMode === "turns"
-                    ? "bg-purple-500 text-white shadow-md"
+                    ? "bg-orange-500 text-white shadow-md"
                     : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                 } ${!isHost ? "opacity-70 cursor-default" : ""}`}
             >
@@ -983,7 +993,7 @@ export default function WhatAmILobbySettings({
                     className={`py-1.5 px-3 rounded-lg text-xs font-bold transition-all
                       ${
                         current.turnSeconds === v
-                          ? "bg-purple-500 text-white shadow-md"
+                          ? "bg-orange-500 text-white shadow-md"
                           : "bg-gray-100 text-gray-500 hover:bg-gray-200"
                       } ${!isHost ? "opacity-70 cursor-default" : ""}`}
                   >
@@ -1008,13 +1018,51 @@ export default function WhatAmILobbySettings({
                     className={`py-1.5 px-3 rounded-lg text-xs font-bold transition-all
                       ${
                         current.questionsPerTurn === n
-                          ? "bg-purple-500 text-white shadow-md"
+                          ? "bg-orange-500 text-white shadow-md"
                           : "bg-gray-100 text-gray-500 hover:bg-gray-200"
                       } ${!isHost ? "opacity-70 cursor-default" : ""}`}
                   >
                     {n} {n === 1 ? "gok" : "gokken"}
                   </button>
                 ))}
+              </div>
+            </div>
+            <div className="border-t border-gray-100" />
+            <div>
+              <span className="text-xs font-medium text-gray-400 uppercase tracking-wide mb-2 block">
+                Max rondes
+              </span>
+              <p className="text-xs text-gray-400 mb-2">
+                Na dit aantal volledige rondes stopt het spel automatisch.
+              </p>
+              <div className="flex gap-1.5 flex-wrap">
+                {[3, 5, 10, 15, 20].map((n) => (
+                  <button
+                    key={n}
+                    onClick={() => isHost && update({ maxRounds: n })}
+                    disabled={!isHost}
+                    className={`py-1.5 px-3 rounded-lg text-xs font-bold transition-all
+                      ${
+                        current.maxRounds === n
+                          ? "bg-orange-500 text-white shadow-md"
+                          : "bg-gray-100 text-gray-500 hover:bg-gray-200"
+                      } ${!isHost ? "opacity-70 cursor-default" : ""}`}
+                  >
+                    {n} rondes
+                  </button>
+                ))}
+                <button
+                  onClick={() => isHost && update({ maxRounds: null })}
+                  disabled={!isHost}
+                  className={`py-1.5 px-3 rounded-lg text-xs font-bold transition-all
+                    ${
+                      current.maxRounds === null
+                        ? "bg-orange-500 text-white shadow-md"
+                        : "bg-gray-100 text-gray-500 hover:bg-gray-200"
+                    } ${!isHost ? "opacity-70 cursor-default" : ""}`}
+                >
+                  ♾️ Oneindig
+                </button>
               </div>
             </div>
           </div>
@@ -1039,7 +1087,7 @@ export default function WhatAmILobbySettings({
                   className={`py-1.5 px-3 rounded-lg text-xs font-bold transition-all
                     ${
                       current.timeLimitSeconds === min * 60
-                        ? "bg-purple-500 text-white shadow-md"
+                        ? "bg-orange-500 text-white shadow-md"
                         : "bg-gray-100 text-gray-500 hover:bg-gray-200"
                     } ${!isHost ? "opacity-70 cursor-default" : ""}`}
                 >
@@ -1052,7 +1100,7 @@ export default function WhatAmILobbySettings({
                 className={`py-1.5 px-3 rounded-lg text-xs font-bold transition-all
                   ${
                     current.timeLimitSeconds === null
-                      ? "bg-purple-500 text-white shadow-md"
+                      ? "bg-orange-500 text-white shadow-md"
                       : "bg-gray-100 text-gray-500 hover:bg-gray-200"
                   } ${!isHost ? "opacity-70 cursor-default" : ""}`}
               >
@@ -1082,7 +1130,7 @@ export default function WhatAmILobbySettings({
                 className={`py-1.5 px-3 rounded-lg text-xs font-bold transition-all
                   ${
                     current.questionsBeforeGuess === n
-                      ? "bg-purple-500 text-white shadow-md"
+                      ? "bg-orange-500 text-white shadow-md"
                       : "bg-gray-100 text-gray-500 hover:bg-gray-200"
                   } ${!isHost ? "opacity-70 cursor-default" : ""}`}
               >
@@ -1106,7 +1154,7 @@ export default function WhatAmILobbySettings({
               className={`flex-1 py-2 px-3 rounded-xl text-sm font-medium transition-all
                 ${
                   current.hostPlays
-                    ? "bg-purple-500 text-white shadow-md"
+                    ? "bg-orange-500 text-white shadow-md"
                     : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                 } ${!isHost ? "opacity-70 cursor-default" : ""}`}
             >
@@ -1118,7 +1166,7 @@ export default function WhatAmILobbySettings({
               className={`flex-1 py-2 px-3 rounded-xl text-sm font-medium transition-all
                 ${
                   !current.hostPlays
-                    ? "bg-purple-500 text-white shadow-md"
+                    ? "bg-orange-500 text-white shadow-md"
                     : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                 } ${!isHost ? "opacity-70 cursor-default" : ""}`}
             >
